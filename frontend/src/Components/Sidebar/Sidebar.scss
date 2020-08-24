@@ -1,0 +1,38 @@
+.sideBar {
+    flex: 0 0 auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-right: 1px solid #222222;
+    display: flex;
+    flex-flow: column nowrap;
+    &.collapsed {
+        
+        .row {
+            .label {
+                max-width: 0px;
+                margin: 0;
+            }
+        }
+    }
+    .row {
+        margin: 20px 0;
+        width: 100%;
+        flex-flow: row nowrap;
+        position: relative;
+        .icon {
+            position: relative;
+            flex: 0 0;
+            margin: 0 10px;
+            
+        }
+
+        .label {
+            position: relative;
+            flex: 0 0;
+            margin: 0 15px;
+            max-width: 150px;
+            width: auto;
+            transition: all .2s ease-in;
+        }
+    }
+}
