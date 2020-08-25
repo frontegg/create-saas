@@ -18,7 +18,7 @@ const AuthComponent: React.FC<propsType> = ({labelUppercase, description, fields
                 <Label>{item.label}</Label>
                 <Input name={item.name} type={item.type} onChange={(e) => handleChange(e, setState)} value={state[item.name]}/>
             </FormGroup>
-       ) 
+       )
     });
     const handleChange = (e: React.FormEvent<HTMLInputElement>, setState: React.Dispatch<any>) :void => {
         setState({...state, [e.currentTarget.name]: e.currentTarget.value})

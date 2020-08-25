@@ -8,7 +8,7 @@ const Routes: React.FC = () => (
   <Router history={history}>
     <Switch>
       <Route path='/auth' component={Auth} />
-      <Route exact path='/' component={MainLayout} />
+      <Route path='/' component={MainLayout} />
     </Switch>
   </Router>
 );
