@@ -1,0 +1,55 @@
+.sidebarLinkWithSub {
+    display: flex;
+    height: 2.5rem;
+    cursor: pointer;
+    color: black;
+        &.activeLink {
+            + ul {
+                display: block;
+            }
+        }
+        &.activeLink, &:hover {
+            color: #2196f3;
+            .row {
+                border-left: 4px solid #2196f3;
+            }
+        }
+        .row {
+            margin: 0;
+            width: 100%;
+            border-left: 4px solid #fff;
+            flex-flow: row nowrap;
+            align-items: center;
+            position: relative;
+            .icon {
+                position: relative;
+                flex: 2 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                svg {
+                    height: 20px;
+                    width: 20px;
+                }
+            }
+            .label {
+                position: relative;
+                flex: 5 1;
+                margin: 0 15px;
+                max-width: 150px;
+                width: auto;
+                transition: all .2s ease-in;
+            }
+            .arrow {
+                transform: rotate(-90deg);
+                transition: transform .15s ease-in-out;
+                flex: 1 1;
+                &.activeLink {
+                    transform: rotate(90deg);
+                }
+            }
+        }
+        .sidebarLink {
+            width: 100%;
+        }
+}

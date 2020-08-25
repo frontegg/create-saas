@@ -8,7 +8,6 @@ const MainLayout: React.FC = () => {
         <div className="mainLayout">
             <Sidebar/>
             <div className="main">
-
             </div>
         </div>
     )

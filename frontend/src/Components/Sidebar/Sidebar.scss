@@ -1,38 +1,51 @@
 .sideBar {
-    flex: 0 0 auto;
+    flex: 0.0001 1 auto;
     overflow-y: auto;
     overflow-x: hidden;
     border-right: 1px solid #222222;
     display: flex;
     flex-flow: column nowrap;
+    transition: flex 0.3s ease;
     &.collapsed {
-        
+        flex: 0.0001 1 4em;
+        .sideBarHeadLine {
+            span {
+                width: 0;
+                visibility: hidden;
+                opacity: 0;
+            }
+            &:before {
+                opacity: 1;
+            }
+        }
         .row {
             .label {
-                max-width: 0px;
-                margin: 0;
+                display: none;
+            }
+            .arrow {
+                display: none;
             }
         }
     }
-    .row {
-        margin: 20px 0;
-        width: 100%;
-        flex-flow: row nowrap;
-        position: relative;
-        .icon {
-            position: relative;
-            flex: 0 0;
-            margin: 0 10px;
-            
-        }
-
-        .label {
-            position: relative;
-            flex: 0 0;
-            margin: 0 15px;
-            max-width: 150px;
-            width: auto;
-            transition: all .2s ease-in;
-        }
+    ul{
+        margin: 0;
+        padding: 0;
     }
+    li {
+        width: 100%;
+        margin: 0;
+        list-style-type: none;
+        font-size: .825rem;
+        color: #212121;
+    }
+    $selector: "ul";
+    @for $i from 1 to 4 {
+        $selector: $selector + " ul";
+        #{$selector} {
+            display: none;
+        }
+        #{$selector} .row {
+            padding-left: $i*10px;
+        }
+    }  
 }

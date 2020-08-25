@@ -1,0 +1,32 @@
+.sideBarHeadLine {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: .75rem;
+    letter-spacing: .05em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 4rem;
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    position: relative;
+    span {
+        transition: opacity .15s ease-in-out
+    }
+    &:before {
+        transition: opacity .2s ease-in-out;
+        display: block;
+        opacity: 0;
+        content: "";
+        position: absolute;
+        z-index: 1;
+        top: calc(2rem - 2px);
+        left: 0;
+        right: 0;
+        height: 1px;
+        width: 100%;
+        background-color: #9e9e9e;
+    }
+}
