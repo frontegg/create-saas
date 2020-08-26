@@ -31,16 +31,19 @@
         width: 100%;
         background-color: #9e9e9e;
     }
-    @at-root  .collapsed .sideBarHeadLine {
-        padding-left: 0;
-        padding-right: 0;
-        span {
-            flex: 0 0 0em;
-            max-width: 0;
-            opacity: 0;
-        }
-        &:before {
-            opacity: 1;
+    @media (min-width: 768px) {
+        @at-root  .collapsed .sideBarHeadLine {
+            padding-left: 0;
+            padding-right: 0;
+            span {
+                flex: 0 0 0em;
+                max-width: 0;
+                opacity: 0;
+            }
+            &:before {
+                opacity: 1;
+            }
         }
     }
+
 }

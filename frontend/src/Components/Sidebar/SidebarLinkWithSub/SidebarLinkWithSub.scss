@@ -9,89 +9,104 @@
     position: relative;
     border-left: 4px solid #fff;
     transition: all .15s ease-in-out;
-            @at-root .expanded &.activeLink {
+
+            
+    @at-root .expanded &.activeLink {
+        + ul {
+            width: auto;
+            height: auto;
+        }
+    }
+    @at-root .collapsed
+    {
+        @media (max-width: 767px) {
+            .activeLink {
                 + ul {
                     width: auto;
                     height: auto;
                 }
             }
-            @at-root .collapsed
-            {
-                    .submenu:hover {
-                    > ul {
-                        opacity: 1;
-                        height: auto;
-                        position: absolute;
-                        overflow: visible;
-                        top: 0;
-                        width: 12rem;
-                        box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -2px rgba(0,0,0,.05);
-                        z-index: 10;
-                        left: 100%;
-                        li {
-                            width: 100%;
-                        }
-                        .label {
-                            max-width: unset;
-                            opacity: 1;
-                        }
-                        .arrow {
-                            max-width: unset;
-                            opacity: 1;
-                            transform: unset;
-                        }
-                    }
-                }
+        }
+        
+        .label {
+            @media (min-width: 768px) {
+                max-width: 0;
+                opacity: 0 !important;
             }
-            &.activeLink, &:hover {
-                color: #2196f3;
-                border-left: 4px solid #2196f3;
-
-                > ul {
-                    opacity: 1;
-                }
-
+        }
+        .arrow {
+            @media (min-width: 768px) {
+                max-width: 0;
+                opacity: 0 !important;
             }
-            .icon {
-                position: relative;
-                flex: 0 0 4em;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                    svg {
-                        height: 20px;
-                        width: 20px;
-                    }
-            }
-            .label {
-                flex: 2 0 7em;
+        }
+        .submenu:hover {
+            > ul {
                 opacity: 1;
-                position: relative;
-                margin: 0;
-                overflow: hidden;
-                transition: all .53s ease;
-                @at-root .collapsed & {
-                    // display: none;
-                    // flex: 0 0 0em;
-                    max-width: 0;
-                    opacity: 0;
+                height: auto;
+                position: absolute;
+                overflow: visible;
+                top: 0;
+                width: 12rem;
+                box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -2px rgba(0,0,0,.05);
+                z-index: 10;
+                left: 100%;
+                li {
+                    width: 100%;
+                }
+                .label {
+                    max-width: unset;
+                    opacity: 1 !important;
+                }
+                .arrow {
+                    max-width: unset;
+                    opacity: 1 !important;
+                    transform: unset;
                 }
             }
-            .arrow {
-                flex: 1 0 1em;
-                transform: rotate(-90deg);
-                opacity: 1;
-                transition: all .53s ease-in-out;
-                @at-root .collapsed & {
-                    // display: none;
-                    // flex: 0 0 0em;
-                    max-width: 0;
-                    opacity: 0;
-                }
-                &.activeLink {
-                    transform: rotate(90deg);
-                }
+        }
+    }
+    &.activeLink, &:hover {
+        color: #2196f3;
+        border-left: 4px solid #2196f3;
+
+        > ul {
+            opacity: 1;
+        }
+
+    }
+    .icon {
+        position: relative;
+        flex: 0 0 4em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+            svg {
+                height: 20px;
+                width: 20px;
             }
+    }
+    .label {
+        flex: 2 0 7em;
+        opacity: 1;
+        position: relative;
+        margin: 0;
+        overflow: hidden;
+        @media (min-width: 768px) {
+            transition: all .53s ease;
+        }
+    }
+    .arrow {
+        flex: 1 0 1em;
+        transform: rotate(-90deg);
+        opacity: 1;
+        @media (min-width: 768px) {
+            transition: all .53s ease;
+        }
+        &.activeLink {
+            transform: rotate(90deg);
+        }
+    }
         .sidebarLink {
             width: 100%;
         }
