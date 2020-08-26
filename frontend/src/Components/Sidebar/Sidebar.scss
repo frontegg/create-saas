@@ -4,6 +4,7 @@
     display: flex;
     flex-flow: column nowrap;
     transition: all .33s ease;
+    background-color: #fff;
     @media screen and (max-width: 767px){
         display: block;
         position: absolute;
@@ -54,6 +55,7 @@
                 }
                 span {
                     max-width: 0;
+                    visibility: hidden;
                     opacity: 0;
                 }
             } 
@@ -96,6 +98,7 @@
         font-size: .825rem;
         color: #212121;
         position: relative;
+        background-color: #fff;
     }
     >ul:last-child {
         margin-bottom: 30px;

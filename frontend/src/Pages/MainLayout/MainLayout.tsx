@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './MainLayout.scss';
 import Sidebar from '../../Components/Sidebar';
+import NavBar from '../../Components/NavBar';
 
 const MainLayout: React.FC = () => {
     const [collapsed, collapse] = React.useState<boolean>(false);
@@ -8,8 +9,7 @@ const MainLayout: React.FC = () => {
         <div className="mainLayout">
             <Sidebar/>
             <div className="main">
-                <label className="label-collapse" htmlFor="collapsing">
-                </label>
+                <NavBar/>
             </div>
         </div>
     )
