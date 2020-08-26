@@ -1,29 +1,28 @@
 .sidebarLink {
     display: flex;
+    flex-flow: row nowrap;
+    border-left: 4px solid #fff;
+    justify-content: stretch;
+    align-items: center;
     height: 2.5rem;
+    width: auto;
     cursor: pointer;
     color: black;
+    position: relative;
+    transition: all .15s ease-in-out;
             &.activeLink {
                 + ul {
-                    display: block;
+                    width: auto;
+                    height: auto;
                 }
             }
             &.activeLink, &:hover {
                 color: #2196f3;
-                .row {
-                    border-left: 4px solid #2196f3;
-                }
+                border-left: 4px solid #2196f3;
             }
-            .row {
-                margin: 0;
-                width: 100%;
-                border-left: 4px solid #fff;
-                flex-flow: row nowrap;
-                align-items: center;
-                position: relative;
                 .icon {
                     position: relative;
-                    flex: 2 0;
+                    flex: 0 0 4em;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -34,11 +33,16 @@
                 }
                 .label {
                     position: relative;
-                    flex: 6 1;
-                    margin: 0 15px;
-                    max-width: 150px;
-                    width: auto;
-                    transition: all .2s ease-in;
+                    flex: 1 0 12em;
+                    margin: 0;
+                    overflow: hidden;
+                    opacity: 1;
+                    transition: all .53s ease;
+                    @at-root .collapsed & {
+                        // display: none;
+                        // flex: 0 0 0em;
+                        max-width: 0;
+                        opacity: 0;
+                    }
                 }
-            }
 }

@@ -8,6 +8,8 @@ const MainLayout: React.FC = () => {
         <div className="mainLayout">
             <Sidebar/>
             <div className="main">
+                <label className="label-collapse" htmlFor="collapsing">
+                </label>
             </div>
         </div>
     )

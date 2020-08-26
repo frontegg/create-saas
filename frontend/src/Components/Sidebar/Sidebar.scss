@@ -1,31 +1,71 @@
 .sideBar {
-    flex: 0.0001 1 auto;
-    overflow-y: auto;
-    overflow-x: hidden;
+    flex: 0 1 16rem;
     border-right: 1px solid #222222;
     display: flex;
     flex-flow: column nowrap;
-    transition: flex 0.3s ease;
+    transition: all .33s ease;
+    .submenu {
+        > ul {
+            transition: opacity .33s ease;
+        }
+    }
+    &.expanded {
+            .submenu {
+                > ul {
+                    opacity: 1;
+                }
+        }
+    }
     &.collapsed {
-        flex: 0.0001 1 4em;
-        .sideBarHeadLine {
-            span {
-                width: 0;
-                visibility: hidden;
+        flex: 0 0 5em;
+        .submenu {
+            > ul {
                 opacity: 0;
             }
-            &:before {
-                opacity: 1;
-            }
         }
-        .row {
-            .label {
-                display: none;
-            }
-            .arrow {
-                display: none;
-            }
+        .logo {
+            a{
+                svg {
+                    height: 28px;
+                    width: 28px;
+                }
+                span {
+                    max-width: 0;
+                    opacity: 0;
+                }
+            } 
         }
+        @media screen and (max-width: 767px){
+            flex: 0 0 0px;
+            overflow: hidden;
+            border: 0px solid;
+        }
+    }
+    .logo {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: .05em;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        height: 4rem;
+        width: 100%;
+        white-space: nowrap;
+        padding-left: 1rem;
+        max-width: 16rem;
+        a{
+            svg {
+                height: 28px;
+                width: 28px;
+            }
+            span {
+                transition: all .15s ease-in-out;
+                margin-right: 0;
+                margin-left: 8px;
+            }
+        } 
     }
     ul{
         margin: 0;
@@ -37,15 +77,23 @@
         list-style-type: none;
         font-size: .825rem;
         color: #212121;
+        position: relative;
+    }
+    >ul:last-child {
+        margin-bottom: 30px;
     }
     $selector: "ul";
     @for $i from 1 to 4 {
         $selector: $selector + " ul";
         #{$selector} {
-            display: none;
+            width: 0;
+            height: 0;
+            overflow: hidden;
         }
-        #{$selector} .row {
-            padding-left: $i*10px;
+        #{$selector} li {
+            >a, >div {
+                padding-left: calc(#{$i}*10px - 4px);
+            }
         }
     }  
 }

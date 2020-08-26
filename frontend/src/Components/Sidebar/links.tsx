@@ -22,7 +22,24 @@ export const links: linksArray = [
             {
                 path: "/badges",
                 label: "Badges",
-                icon:""
+                icon:"",
+                sublinks: [
+                    {
+                        path: "/breadcrumbs",
+                        label: "Breadcrumbs",
+                        icon:"",
+                    },
+                    {
+                        path: "/buttons",
+                        label: "Buttons",
+                        icon:""
+                    },
+                    {
+                        path: "/dropdowns",
+                        label: "Dropdowns",
+                        icon:""
+                    },
+                ]
             },
             {
                 path: "/breadcrumbs",
