@@ -5,19 +5,22 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import SampleFormPage from './SampleFormPage';
 import DefaultFormPage from './DefaultFormPage';
 import SliderPage from './SliderPage';
+import NavBar from '../../Components/NavBar';
 
 const MainLayout: React.FC = () => {
 
-    // const [collapsed, collapse] = React.useState<boolean>(false);
     return (
         <div className="mainLayout">
             <Sidebar/>
             <div className="main">
-                <Switch>
-                    <Route path='/sampleforms' component={SampleFormPage} />
-                    <Route path='/defaultforms' component={DefaultFormPage} />
-                    <Route path='/sliders' component={SliderPage} />
-                </Switch>
+                <NavBar/>
+                <div className="p-4">
+                    <Switch>
+                      <Route path='/forms/sample-forms' component={SampleFormPage} />
+                      <Route path='/forms/default-forms' component={DefaultFormPage} />
+                      <Route path='/forms/sliders' component={SliderPage} />
+                    </Switch>
+                </div>
             </div>
         </div>
     )
