@@ -6,6 +6,7 @@ import SampleFormPage from './SampleFormPage';
 import DefaultFormPage from './DefaultFormPage';
 import SliderPage from './SliderPage';
 import NavBar from '../../Components/NavBar';
+import Datatable from './DatatablePage'
 
 const MainLayout: React.FC = () => {
 
@@ -19,6 +20,7 @@ const MainLayout: React.FC = () => {
                       <Route path='/forms/sample-forms' component={SampleFormPage} />
                       <Route path='/forms/default-forms' component={DefaultFormPage} />
                       <Route path='/forms/sliders' component={SliderPage} />
+                      <Route path='/tables/datatable' component={Datatable} />
                     </Switch>
                 </div>
             </div>
