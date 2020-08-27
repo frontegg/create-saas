@@ -138,7 +138,24 @@ export const links: linksArray = [
     {
         path: "/forms",
         label: "Form screen",
-        icon:""
+        icon:"",
+        sublinks: [
+            {
+                path: "/sample-forms",
+                label: "Sample forms",
+                icon:""
+            },
+            {
+                path: "/default-forms",
+                label: "Default forms",
+                icon:""
+            },
+            {
+                path: "/sliders",
+                label: "Sliders",
+                icon:""
+            },
+        ]
     },
     {
         header: "PAGES"
