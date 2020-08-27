@@ -1,0 +1,32 @@
+.NavBar {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: start;
+    align-items: center;
+    height: 4rem;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #EEEEEE;
+    position: relative;
+    label {
+        margin-bottom: 0;
+    }
+    .search-icon {
+        position: relative;
+        left: 3em;
+    }
+    .search-field {
+        flex: 1 1;
+        margin-right: 1rem;
+        max-width: 20rem;
+        border-radius: 100px;
+        border-width: 0;
+        box-sizing: border-box;
+        padding:0 3em;
+        background-color: #F5F5F5;
+        outline: none!important;
+        &:focus {
+            background-color: #F5F5F5;
+            box-shadow: none;
+        }
+    }
+}
