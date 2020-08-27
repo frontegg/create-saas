@@ -218,7 +218,7 @@ const DefaultFormPage: React.FC = () => {
     ]
 
     return (
-        <div className="container page">
+        <div className="defaultformpage">
             <div className="section-title">
                 <div className="category">
                     FORMS

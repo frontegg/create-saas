@@ -203,7 +203,7 @@ const SampleFormPage: React.FC = () => {
 
     // const [collapsed, collapse] = React.useState<boolean>(false);
     return (
-            <div className="container page">
+            <div className="sampleformpage">
                 <div className="section-title">
                     <div className="category">
                         FORMS
