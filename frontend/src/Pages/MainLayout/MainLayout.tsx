@@ -1,11 +1,14 @@
 import * as React from 'react';
 import './MainLayout.scss';
 import Sidebar from '../../Components/Sidebar';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import SampleFormPage from './SampleFormPage';
+import DefaultFormPage from './DefaultFormPage';
+import SliderPage from './SliderPage';
 import NavBar from '../../Components/NavBar';
-import { Switch, Route } from 'react-router-dom';
 
 const MainLayout: React.FC = () => {
-    const [collapsed, collapse] = React.useState<boolean>(false);
+
     return (
         <div className="mainLayout">
             <Sidebar/>
@@ -13,6 +16,9 @@ const MainLayout: React.FC = () => {
                 <NavBar/>
                 <div className="p-4">
                     <Switch>
+                      <Route path='/forms/sample-forms' component={SampleFormPage} />
+                      <Route path='/forms/default-forms' component={DefaultFormPage} />
+                      <Route path='/forms/sliders' component={SliderPage} />
                     </Switch>
                 </div>
             </div>
