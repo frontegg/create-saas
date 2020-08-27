@@ -1,0 +1,13 @@
+.slider {
+    margin: 1rem;
+    background-color: white;
+    border-radius: .5rem;
+    .content_slider {
+        padding: 1rem;
+    }
+}
+
+.content_slider {
+    width: 100%;
+    max-width: 30rem;
+}

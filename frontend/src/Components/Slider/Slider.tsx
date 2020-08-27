@@ -11,23 +11,24 @@ type SliderProps = {
     sliderType: string,
     header: string,
     description: string | JSX.Element,
-    color?: string
+    color?: string,
+    colorSlider?: string | JSX.Element,
 }
 
 
-const Slider: React.FC<SliderProps> = ({header, description, color, sliderType}) => {
+const Slider: React.FC<SliderProps> = ({header, description, color, sliderType, colorSlider}) => {
 
     let val;
 
     if ( sliderType == "RangeSlider" ) {
          val = [ Math.trunc(Math.random() * 50) , Math.trunc(Math.random() * 50) ]
     } else {
-         val = [ Math.trunc(Math.random() * 50) ]
+         val =  Math.trunc(Math.random() * 50)
     }
 
-    const [value, setValue] = React.useState<number[]>(val);
+    const [value, setValue] = React.useState<number | number[]>(val);
     const handleChange = (event: any, newValue: number | number[]) => {
-            setValue(newValue as number[]);
+            setValue(newValue);
         };
 
         const style = {
@@ -35,14 +36,14 @@ const Slider: React.FC<SliderProps> = ({header, description, color, sliderType})
         }
 
     return (
-        <div>
+        <div className="content_slider">
             <div className="header">
                     {header}
                 </div>
                 <div className="description">
                     {description}
                 </div>
-                <div>{color}</div>
+                <div>{colorSlider}</div>
                 <Sliders
                     style = {style}
                     value={value}
