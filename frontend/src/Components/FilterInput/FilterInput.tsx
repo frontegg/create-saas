@@ -34,12 +34,13 @@ interface IFilterInput {
   columnId: string
   placeholder: string
   filterTypes: string[]
+  filterValue: string
   deleteFilter: (value: string, param: string) => void;
   setFilter: (param: string, value: string) => void
 }
 
 export default function FilterInput(props: IFilterInput) {
-  const { columnId, type, placeholder, filterTypes, deleteFilter, setFilter } = props
+  const { columnId, type, placeholder, filterTypes, deleteFilter, setFilter, filterValue } = props
   const classes = useStyles();
 
   let visible = filterTypes.some((filterType: string) => filterType == placeholder)
@@ -54,7 +55,9 @@ export default function FilterInput(props: IFilterInput) {
         InputLabelProps={{
           shrink: true,
         }}
+        value={filterValue}
         onChange={(event) => setFilter(columnId, event.target.value)}
+
         InputProps={{
           endAdornment: <InputAdornment position="end" className={classes.closeBtn} onClick={() => (deleteFilter(placeholder, columnId))}><CloseIcon /></InputAdornment>
         }}

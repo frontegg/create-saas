@@ -187,35 +187,26 @@ const DataTableComponent = (props: ITableData) => {
 
   const multipleFilters = () => {
 
-    const filter = (el: any, key: keyof ISearchData) => {
+    const filter = (element: string, key: string) => {
+      if (element)
+        return element
+          .toLowerCase()
+          .includes(filters[key as keyof IData]
+            .toLowerCase())
+      return true
+    }
 
-      if (typeof el[key] === 'string') {
-
-        if (el[key].toLowerCase().includes(filters[key].toLowerCase())) {
-          return true
-        } else {
-          return false
-        }
-
-      } else {
-
-        if (String(el[key]).includes(filters[key])) {
-          return true
-        } else {
-          return false
-        }
-
+    setDataRows(rows.filter((el: any) => {
+      for (let key in filters) {
+        if (!filter(el[key].toString(), key)) return false;
       }
 
+      return true;
     }
-    setDataRows(rows.filter((el: any) =>
-      filter(el, 'name') &&
-      filter(el, 'code') &&
-      filter(el, 'population') &&
-      filter(el, 'size') &&
-      filter(el, 'density')
     ))
   }
+
+
 
   const deleteFilter = (value: string, param: string) => {
     setFilterType((prevState: string[]) => [...prevState.filter((el: string) => el !== value)])
@@ -247,6 +238,7 @@ const DataTableComponent = (props: ITableData) => {
         <div className="datatable-filters">
           {columns.map((column: IColumn) =>
             <FilterInput
+              filterValue={filters[column.id]}
               setFilter={setFilter}
               columnId={column.id}
               deleteFilter={deleteFilter}
