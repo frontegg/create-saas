@@ -9,9 +9,17 @@ export interface IColumn {
 export interface IData {
     name: string;
     code: string;
-    population: number;
-    size: number;
-    density: number;
+    population: string | number;
+    size: string | number;
+    density: string | number;
+}
+
+export interface ISearchData {
+    name: string
+    code: string
+    population: string
+    size: string
+    density: string
 }
 
 export interface ITablePaginationActionsProps {
@@ -35,6 +43,6 @@ export interface IEnhancedTableProps {
     order: IOrder;
     orderBy: string;
     rowCount: number;
-  }
+}
 
 export type IOrder = 'asc' | 'desc';

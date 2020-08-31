@@ -16,10 +16,11 @@ import {
 import SearchIcon from '@material-ui/icons/Search';
 import TablePaginationActions from './TablePaginationActions'
 import EnhancedTableHead from './EnhancedTableHead'
-import ButtonDropDown from '../../ButtonDropDown/ButtonDropDown'
+import FilterInput from '../../FilterInput/FilterInput'
+import FilterButton from '../../FilterButton/FilterButton'
 import './DataTableComponent.scss'
 
-import { ITableData, IData, IOrder } from './types'
+import { ITableData, IData, IOrder, IColumn, ISearchData } from './types'
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
@@ -97,6 +98,15 @@ const DataTableComponent = (props: ITableData) => {
   const [selected, setSelected] = React.useState<string[]>([]);
   const [dataRows, setDataRows] = React.useState<IData[]>([]);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [filterTypes, setFilterType] = React.useState<string[]>([])
+  const [filters, setFilters] = React.useState<ISearchData>({
+    name: '',
+    code: '',
+    population: '',
+    size: '',
+    density: ''
+  })
+
 
   React.useEffect(() => {
     setDataRows((prevState) => ([...prevState, ...rows]))
@@ -112,9 +122,9 @@ const DataTableComponent = (props: ITableData) => {
   };
 
   const handleRequestSort = (event: React.MouseEvent<unknown>, property: keyof IData) => {
-    const isAsc = orderBy === property && order === 'asc';
-    setOrder(isAsc ? 'desc' : 'asc');
-    setOrderBy(property);
+    const isAsc = orderBy === property && order === 'asc'
+    setOrder(isAsc ? 'desc' : 'asc')
+    setOrderBy(property)
   };
 
   const handleClick = (event: React.MouseEvent<unknown>, name: string) => {
@@ -147,31 +157,14 @@ const DataTableComponent = (props: ITableData) => {
   };
   const isSelected = (name: string) => selected.indexOf(name) !== -1;
 
-  const freeSearch = (value: any) => {
 
-    // console.log(rows.filter((el: any, i: number) => {
-    //   for (let key in el) {
-    //     if (typeof el[key] === 'string') {
+  const freeSearch = (value: string) => {
 
-    //       if (el[key].toLowerCase().includes(value)) {
-    //         return el
-    //       }
-
-    //     } else {
-
-    //       if (String(el[key]).includes(value)) {
-    //         return el
-    //       }
-
-    //     }
-    //   }
-    //   return
-    // }))
-    setDataRows(rows.filter((el: any, i: number) => {
+    setDataRows(rows.filter((el: any) => {
       for (let key in el) {
         if (typeof el[key] === 'string') {
 
-          if (el[key].toLowerCase().includes(value)) {
+          if (el[key].toLowerCase().includes(value.toLowerCase())) {
             return el
           }
 
@@ -183,8 +176,50 @@ const DataTableComponent = (props: ITableData) => {
 
         }
       }
-      return
     }))
+  }
+
+  const setFilter = (param: string, value: string) => {
+    setFilters((prevState: ISearchData) => ({ ...prevState, [param]: value }))
+  }
+
+  React.useEffect(() => { !!filters && multipleFilters() }, [filters])
+
+  const multipleFilters = () => {
+
+    const filter = (el: any, key: keyof ISearchData) => {
+
+      if (typeof el[key] === 'string') {
+
+        if (el[key].toLowerCase().includes(filters[key].toLowerCase())) {
+          return true
+        } else {
+          return false
+        }
+
+      } else {
+
+        if (String(el[key]).includes(filters[key])) {
+          return true
+        } else {
+          return false
+        }
+
+      }
+
+    }
+    setDataRows(rows.filter((el: any) =>
+      filter(el, 'name') &&
+      filter(el, 'code') &&
+      filter(el, 'population') &&
+      filter(el, 'size') &&
+      filter(el, 'density')
+    ))
+  }
+
+  const deleteFilter = (value: string, param: string) => {
+    setFilterType((prevState: string[]) => [...prevState.filter((el: string) => el !== value)])
+    setFilters((prevState: ISearchData) => ({ ...prevState, [param]: '' }))
   }
 
   return (
@@ -204,9 +239,22 @@ const DataTableComponent = (props: ITableData) => {
               ),
             }}
           />
-          <ButtonDropDown
-            lable={'Filters'}
-            items={items} />
+          <FilterButton
+            items={columns.map((el: IColumn) => el.label)}
+            setFilterType={setFilterType}
+            filterTypes={filterTypes} />
+        </div>
+        <div className="datatable-filters">
+          {columns.map((column: IColumn) =>
+            <FilterInput
+              setFilter={setFilter}
+              columnId={column.id}
+              deleteFilter={deleteFilter}
+              key={column.id}
+              filterTypes={filterTypes}
+              type='text'
+              placeholder={column.label}
+            />)}
         </div>
         <Table
           stickyHeader
