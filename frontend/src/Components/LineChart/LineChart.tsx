@@ -1,5 +1,5 @@
 import React from 'react'
-import Chart from "react-apexcharts";
+// import Chart from "react-apexcharts";
 
 type Props = { }
 const LineChart: React.FC<Props> = ({}) => {
@@ -91,7 +91,7 @@ const LineChart: React.FC<Props> = ({}) => {
 
     return (
         <div className="lineChart">
-            <Chart options={state.options} series={state.series} type="line" height={350} />
+            {/* <Chart options={state.options} series={state.series} type="line" height={350} /> */}
         </div>
     );
 }

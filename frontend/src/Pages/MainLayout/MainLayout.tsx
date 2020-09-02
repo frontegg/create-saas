@@ -45,6 +45,16 @@ const MainLayout: React.FC = () => {
                     </Switch>
                 </div>
             </div>
+            <div className="settings dropdown position-fixed">
+                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown button
+                </button>
+                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a className="dropdown-item" href="#">Action</a>
+                    <a className="dropdown-item" href="#">Another action</a>
+                    <a className="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
             <input type="checkbox" id="collapsing" className="d-none" onChange={handleCollapse} checked={collapsed}/>
             <input type="checkbox" id="fix_sidebar" className="d-none" onChange={handleFixSidebar} checked={fixedSidebar}/>
             <input type="checkbox" id="fix_navbar" className="d-none" onChange={handlesFixNavbar} checked={fixedNavbar}/>

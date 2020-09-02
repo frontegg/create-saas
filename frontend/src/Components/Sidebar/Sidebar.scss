@@ -42,7 +42,10 @@
                 .sideBar {
                     z-index: 100;
                 }
-            } 
+            }
+            .onTop .sideBar {
+                z-index: 100;
+            }
         }
 
     }
