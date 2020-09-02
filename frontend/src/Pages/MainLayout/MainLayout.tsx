@@ -9,7 +9,7 @@ import DatePickerPage from './DatePickerPage';
 import SwitchPage from './SwitchPage';
 import NavBar from '../../Components/NavBar';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import { BsGearFill } from "react-icons/bs";
+import SettingsIcon from '@material-ui/icons/Settings';
 import LabelSwitch from '../../Components/Switch';
 import Dashboard from './Dashboard';
 
@@ -65,7 +65,7 @@ const MainLayout: React.FC = () => {
             </div>
             <Dropdown className="settings position-fixed pl-2 d-none d-md-block" isOpen={dropdownOpen} toggle={toggle}>
                 <DropdownToggle className="btn-dropdown-settings">
-                        <BsGearFill/>
+                        <SettingsIcon/>
                 </DropdownToggle>
                 <DropdownMenu>
                     <div>
