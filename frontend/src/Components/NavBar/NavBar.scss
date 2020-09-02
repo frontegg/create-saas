@@ -1,4 +1,8 @@
 .NavBar {
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 110;
     display: flex;
     flex-flow: row nowrap;
     justify-content: start;
@@ -6,7 +10,6 @@
     height: 4rem;
     background-color: #FFFFFF;
     border-bottom: 1px solid #EEEEEE;
-    position: relative;
     label {
         margin-bottom: 0;
     }
@@ -29,4 +32,70 @@
             box-shadow: none;
         }
     }
+    .logo {
+        flex: 0 1 16rem;
+        transition: all 330ms cubic-bezier(0, 0, 0.2, 1);
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: .05em;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        height: 4rem;
+        white-space: nowrap;
+        padding-left: 1rem;
+        a{
+            position: relative;
+            left: -5px;
+            height: 3rem;
+            padding-right: 5px;
+            padding-left: 5px;
+            transition: width .33s ease;
+            overflow: hidden;
+            width: auto;
+            img {
+                position: relative;
+                height: 28px;
+                width: 28px;
+            }
+            span {
+                transition: all .15s ease-in-out;
+                max-width: 16rem;
+                margin-right: 0;
+                margin-left: 8px;
+            }
+        } 
+    }
+    &.collapsed {
+        .logo {
+            flex: 0 1 4rem;
+            a {
+                transition: width .33s ease;
+                overflow: hidden;
+            }
+            span {
+                max-width: 0;
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+    }
+    // @at-root .scrolled &.position-absolute .logo > a {
+    //     position: fixed;
+    //     left: calc(1rem - 5px);
+    //     width: auto;
+    //     box-shadow: 0px 4px 7px 0px #aeaeae;
+    //     background-color: #fff;
+    //     border-radius: 100px;
+    //     z-index: 120;
+    //     transition: box-shadow .13s ease;
+        
+    //     span {
+    //         max-width: unset;
+    //         opacity: 1;
+    //         visibility: visible;
+    //         transition: all .03s ease;
+    //     }
+    // }
 }
