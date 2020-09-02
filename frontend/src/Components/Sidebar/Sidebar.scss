@@ -1,19 +1,61 @@
 .sideBar {
     flex: 0 1 16rem;
-    border-right: 1px solid #222222;
+    border-right: 1px solid #EEEEEE;
     display: flex;
     flex-flow: column nowrap;
     transition: all .33s ease;
     background-color: #fff;
+    @at-root {
+         @media screen and (min-width: 768px){
+            .fixedSidebar
+            {
+                .sideBar {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    &.expanded {
+                        width: 16rem;
+                        overflow-y: auto;
+                        &::-webkit-scrollbar {
+                            display: none;
+                        }
+                    }
+                    &.collapsed {
+                        width: 4rem;
+                        overflow-y: hidden;
+                    }
+                }
+                &.scrolled {
+                    .sideBar {
+                        z-index: 120;
+                    }
+                }
+                &.onTop {
+                    .sideBar {
+                        z-index: 100;
+                    }
+                }
+            }
+            .fixedNavbar
+            {
+                .sideBar {
+                    z-index: 100;
+                }
+            } 
+        }
+
+    }
     @media screen and (max-width: 767px){
         display: block;
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
-        height: auto;
+        height: 100%;
         min-height: 100%;
         width: 16rem;
-        z-index: 10;
+        z-index: 110;
+        overflow-y: auto;
         transform: translateX(0) translateY(0) scaleX(1) scaleY(1);
         transition: transform .3s cubic-bezier(.4,0,.2,1);
         &.collapsed {
@@ -48,6 +90,7 @@
             }
         }
         .logo {
+            width: 4rem;
             a{
                 svg {
                     height: 28px;
@@ -62,6 +105,11 @@
         }
     }
     .logo {
+        position: fixed;
+        z-index: 110;
+        /* height: 4rem; */
+        background: #fff;
+        border-bottom: 1px solid #eee;
         text-transform: uppercase;
         font-weight: 700;
         font-size: 1rem;
@@ -70,13 +118,17 @@
         flex-direction: row;
         align-items: center;
         justify-content: flex-start;
-        height: 4rem;
+        min-height: 4rem;
         width: 100%;
         white-space: nowrap;
         padding-left: 1rem;
         max-width: 16rem;
+        flex: 0;
+        transition:all 330ms cubic-bezier(0, 0, 0.2, 1);
+
         a{
-            svg {
+            img {
+                position: relative;
                 height: 28px;
                 width: 28px;
             }
@@ -92,6 +144,7 @@
         padding: 0;
     }
     li {
+        transition: all .33s ease;
         width: 100%;
         margin: 0;
         list-style-type: none;
