@@ -5,8 +5,6 @@ import { withStyles } from '@material-ui/core/styles';
 import './Switch.scss';
 
 type SwitchProps = {
-    header: string,
-    description: string | JSX.Element,
     label: string,
     text_label: string,
     track_color: string,
@@ -15,15 +13,13 @@ type SwitchProps = {
     check: boolean,
 }
 
-const Switch: React.FC<SwitchProps> = ({header, description, label, text_label, slider_color, track_color, name, check}) => {
+const Switch: React.FC<SwitchProps> = ({ label, text_label, slider_color, track_color, name, check}) => {
 
     const [state, setState] = React.useState( check || false);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setState(!state);
     };
-
-    // console.log('state.checkedA = ', state.checkedA);
 
     const CustomSwitch = withStyles({
         switchBase: {
@@ -42,6 +38,15 @@ const Switch: React.FC<SwitchProps> = ({header, description, label, text_label, 
 
     return (
         <div className="content_switch">
+                    <div>
+                        <div>
+                            <div className="label">
+                                {label}
+                            </div>
+                            <div className="text-label">
+                                {text_label}
+                            </div>
+                        </div>
                         <div>
                             <CustomSwitch
                                 checked={state}
@@ -50,6 +55,7 @@ const Switch: React.FC<SwitchProps> = ({header, description, label, text_label, 
                                 inputProps={{ 'aria-label': 'secondary checkbox' }}
                             />
                         </div>
+                    </div>
         </div>
     )
 }
