@@ -44,13 +44,15 @@ const Slider: React.FC<SliderProps> = ({header, description, color, sliderType, 
                     {description}
                 </div>
                 <div>{colorSlider}</div>
-                <Sliders
-                    style = {style}
-                    value={value}
-                    onChange={handleChange}
-                    // valueLabelDisplay="auto"
-                    aria-labelledby="range-slider"
-                />
+                <div>
+                    <Sliders
+                        style = {style}
+                        value={value}
+                        onChange={handleChange}
+                        // valueLabelDisplay="auto"
+                        aria-labelledby="range-slider"
+                    />
+                </div>
         </div>
     )
 }
