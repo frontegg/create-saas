@@ -8,6 +8,7 @@ import SliderPage from './SliderPage';
 import DatePickerPage from './DatePickerPage';
 import SwitchPage from './SwitchPage';
 import NavBar from '../../Components/NavBar';
+import Datatable from './DatatablePage'
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { BsGearFill } from "react-icons/bs";
 import LabelSwitch from '../../Components/Switch';
@@ -54,6 +55,7 @@ const MainLayout: React.FC = () => {
             <div className="main" >
                 <div className="p-4 content">
                     <Switch>
+                        <Route path='/tables/datatable' component={Datatable} />
                         <Route path='/dashboard' component={Dashboard} />
                         <Route path='/forms/sample-forms' component={SampleFormPage} />
                         <Route path='/forms/default-forms' component={DefaultFormPage} />
@@ -70,14 +72,12 @@ const MainLayout: React.FC = () => {
                 <DropdownMenu>
                     <div>
                         <label htmlFor="fixnavbar" onClick={(e) => { console.log(e)}}>
-                            abc
-                            {/* <LabelSwitch label="" text_label="fix status bar" name="" track_color="rgb(144, 202, 249)" slider_color="rgb(33, 150, 243)" check={fixedNavbar} /> */}
+                            <LabelSwitch label="" text_label="fix status bar" name="" track_color="rgb(144, 202, 249)" slider_color="rgb(33, 150, 243)" check={fixedNavbar} />
                         </label>
                     </div>
                     <div>
                         <label htmlFor="fixsidebar" onClick={(e) => { console.log(e.currentTarget.isConnected)}}>
-                            def
-                            {/* <LabelSwitch label="" text_label="fix sidebar" name="" track_color="rgb(144, 202, 249)" slider_color="rgb(33, 150, 243)" check={fixedSidebar} /> */}
+                            <LabelSwitch label="" text_label="fix sidebar" name="" track_color="rgb(144, 202, 249)" slider_color="rgb(33, 150, 243)" check={fixedSidebar} />
                         </label>
                     </div>
                 </DropdownMenu>
