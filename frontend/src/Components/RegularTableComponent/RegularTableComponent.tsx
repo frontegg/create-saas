@@ -147,7 +147,7 @@ const RegularTableComponent = (props: ITableData) => {
 
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n: any) => n.name);
+      const newSelecteds = rows.map((n: any) => n.country);
       setSelected(newSelecteds);
       return;
     }
