@@ -13,29 +13,26 @@ type SwitchProps = {
     slider_color: string,
     name: string,
     check: boolean,
-    section: string
 }
 
-const Switch: React.FC<SwitchProps> = ({header, description, label, text_label, slider_color, track_color, name, check, section}) => {
+const Switch: React.FC<SwitchProps> = ({header, description, label, text_label, slider_color, track_color, name, check}) => {
 
-    const [state, setState] = React.useState({
-        checkedA: check
-    });
+    const [state, setState] = React.useState( check || false);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setState({ ...state, [event.target.name]: event.target.checked });
+        setState(!state);
     };
 
-    console.log('state.checkedA = ', state.checkedA);
+    // console.log('state.checkedA = ', state.checkedA);
 
     const CustomSwitch = withStyles({
         switchBase: {
             color: "rgb(238, 238, 238)",
             '&$checked': {
-                color: {slider_color},
+                color: slider_color,
             },
             '&$checked + $track': {
-                backgroundColor: {track_color},
+                backgroundColor: track_color,
             },
         },
         checked: {},
@@ -45,46 +42,14 @@ const Switch: React.FC<SwitchProps> = ({header, description, label, text_label, 
 
     return (
         <div className="content_switch">
-            <div className="header">
-                {header}
-            </div>
-            <div className="description">
-                {description}
-            </div>
-                <div>
-                    <div>
-                        <div className="label">
-                            {label}
-                        </div>
-                        <div className="text-label">
-                            {text_label}
-                        </div>
                         <div>
                             <CustomSwitch
-                                checked={state.checkedA}
+                                checked={state}
                                 onChange={handleChange}
                                 name={name}
                                 inputProps={{ 'aria-label': 'secondary checkbox' }}
                             />
                         </div>
-                    </div>
-                    {/* <div>
-                        <div className="label">
-                            {label}
-                        </div>
-                        <div className="text-label">
-                            {text_label}
-                        </div>
-                        <div>
-                            <CustomSwitch
-                                checked={check}
-                                onChange={handleChange}
-                                name={name}
-                                inputProps={{ 'aria-label': 'secondary checkbox' }}
-                            />
-                        </div>
-                    </div> */}
-                </div>
         </div>
     )
 }
