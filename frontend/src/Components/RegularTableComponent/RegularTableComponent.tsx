@@ -10,17 +10,21 @@ import {
   TableRow,
   TextField,
   InputAdornment,
-  Checkbox
+  Checkbox,
+  Avatar
 } from '@material-ui/core'
+import {
+  AvatarGroup
+} from '@material-ui/lab';
+import ProgressBar from '../ProgressBar'
+
 
 import SearchIcon from '@material-ui/icons/Search';
-import TablePaginationActions from './TablePaginationActions'
-import EnhancedTableHead from './EnhancedTableHead'
-import FilterInput from '../../FilterInput/FilterInput'
-import FilterButton from '../../FilterButton/FilterButton'
-import './DataTableComponent.scss'
+import TablePaginationActions from '../TableComponents/TablePaginationActions'
+import EnhancedTableHead from '../TableComponents/EnhancedTableHead'
+import './RegularTableComponent.scss'
 
-import { ITableData, IData, IOrder, IColumn, ISearchData } from './types'
+import { ITableData, IData, IOrder, IColumn, IDataRow } from './types'
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
@@ -50,15 +54,16 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     position: 'absolute',
     top: 20,
     width: 1,
+  },
+  cellPadding: {
+    padding: '5px'
+  },
+  imageSize: {
+    width: '50px',
+    height: '50px',
+    marginLeft: '-20px'
   }
 }));
-
-const items = [
-  'Name',
-  'ISO Code',
-  'Population',
-  'Density'
-]
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -79,8 +84,8 @@ function getComparator<Key extends keyof any>(
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
-function stableSort<T>(array: T[], comparator: (a: T, b: T) => number) {
-  const stabilizedThis = array.map((el, index) => [el, index] as [T, number]);
+function stableSort(array: any[], comparator: (a: any, b: any) => number) {
+  const stabilizedThis = array.map((el, index) => [el, index] as [any, number]);
   stabilizedThis.sort((a, b) => {
     const order = comparator(a[0], b[0]);
     if (order !== 0) return order;
@@ -89,23 +94,15 @@ function stableSort<T>(array: T[], comparator: (a: T, b: T) => number) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-const DataTableComponent = (props: ITableData) => {
+const RegularTableComponent = (props: ITableData) => {
   const { columns, rows } = props
   const classes = useStyles();
-  const [page, setPage] = React.useState(0);
+  const [page, setPage] = React.useState<number>(0);
   const [order, setOrder] = React.useState<IOrder>('asc');
-  const [orderBy, setOrderBy] = React.useState<keyof IData>(columns[0].id);
+  const [orderBy, setOrderBy] = React.useState<string>(columns[0].id);
   const [selected, setSelected] = React.useState<string[]>([]);
   const [dataRows, setDataRows] = React.useState<IData[]>([]);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const [filterTypes, setFilterType] = React.useState<string[]>([])
-  const [filters, setFilters] = React.useState<ISearchData>({
-    name: '',
-    code: '',
-    population: '',
-    size: '',
-    density: ''
-  })
+  const [rowsPerPage, setRowsPerPage] = React.useState<number>(10);
 
 
   React.useEffect(() => {
@@ -129,6 +126,7 @@ const DataTableComponent = (props: ITableData) => {
 
   const handleClick = (event: React.MouseEvent<unknown>, name: string) => {
     const selectedIndex = selected.indexOf(name);
+    console.log('selectedIndex',selectedIndex)
     let newSelected: string[] = [];
 
     if (selectedIndex === -1) {
@@ -149,7 +147,7 @@ const DataTableComponent = (props: ITableData) => {
 
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.name);
+      const newSelecteds = rows.map((n: any) => n.name);
       setSelected(newSelecteds);
       return;
     }
@@ -162,56 +160,50 @@ const DataTableComponent = (props: ITableData) => {
 
     setDataRows(rows.filter((el: any) => {
       for (let key in el) {
-        if (typeof el[key] === 'string') {
+        if (key !== 'team_members')
+          if (typeof el[key] === 'string') {
 
-          if (el[key].toLowerCase().includes(value.toLowerCase())) {
-            return el
+            if (el[key].toLowerCase().includes(value.toLowerCase())) {
+              return el
+            }
+
+          } else {
+
+            if (String(el[key]).includes(value)) {
+              return el
+            }
+
           }
-
-        } else {
-
-          if (String(el[key]).includes(value)) {
-            return el
-          }
-
-        }
       }
     }))
   }
 
-  const setFilter = (param: string, value: string) => {
-    setFilters((prevState: ISearchData) => ({ ...prevState, [param]: value }))
-  }
 
-  React.useEffect(() => { !!filters && multipleFilters() }, [filters])
 
-  const multipleFilters = () => {
-
-    const filter = (element: string, key: string) => {
-      if (element)
-        return element
-          .toLowerCase()
-          .includes(filters[key as keyof IData]
-            .toLowerCase())
-      return true
+  const DataRow = (props: IDataRow) => {
+    const { column, value } = props
+    
+    switch (column.id) {
+      case 'team_members':
+        return (
+          <TableCell key={column.id} align={column.align} className={classes.cellPadding}>
+            <AvatarGroup max={6}>
+              {value.map((el: any) => <Avatar className={classes.imageSize} alt="Remy Sharp" src={el} />)}
+            </AvatarGroup>
+          </TableCell>)
+      case 'progress':
+        return (
+          <TableCell key={column.id} align={column.align} >
+            <ProgressBar value={value} />
+          </TableCell>)
+      default:
+        return (
+          <TableCell key={column.id} align={column.align} >
+            {value}
+          </TableCell>)
     }
-
-    setDataRows(rows.filter((el: any) => {
-      for (let key in filters) {
-        if (!filter(el[key].toString(), key)) return false;
-      }
-
-      return true;
-    }
-    ))
   }
 
-
-
-  const deleteFilter = (value: string, param: string) => {
-    setFilterType((prevState: string[]) => [...prevState.filter((el: string) => el !== value)])
-    setFilters((prevState: ISearchData) => ({ ...prevState, [param]: '' }))
-  }
 
   return (
     <Paper className={classes.paper}>
@@ -230,23 +222,6 @@ const DataTableComponent = (props: ITableData) => {
               ),
             }}
           />
-          <FilterButton
-            items={columns.map((el: IColumn) => el.label)}
-            setFilterType={setFilterType}
-            filterTypes={filterTypes} />
-        </div>
-        <div className="datatable-filters">
-          {columns.map((column: IColumn) =>
-            <FilterInput
-              filterValue={filters[column.id]}
-              setFilter={setFilter}
-              columnId={column.id}
-              deleteFilter={deleteFilter}
-              key={column.id}
-              filterTypes={filterTypes}
-              type='text'
-              placeholder={column.label}
-            />)}
         </div>
         <Table
           stickyHeader
@@ -267,16 +242,18 @@ const DataTableComponent = (props: ITableData) => {
             {stableSort(dataRows, getComparator(order, orderBy))
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((dataRow, index) => {
-                const isItemSelected = isSelected(dataRow.name);
+                const isItemSelected = isSelected(dataRow.country);
                 const labelId = `enhanced-table-checkbox-${index}`;
+                console.log('isItemSelected', isItemSelected, 'labelId', labelId, 'index', index, 'dataRow.country', dataRow.country)
+
                 return (
                   <TableRow
                     hover
-                    onClick={(event) => handleClick(event, dataRow.name)}
+                    onClick={(event) => handleClick(event, dataRow.country)}
                     role="checkbox"
                     aria-checked={isItemSelected}
                     tabIndex={-1}
-                    key={dataRow.name}
+                    key={dataRow.country}
                     selected={isItemSelected}
                   >
                     <TableCell padding="checkbox" >
@@ -285,12 +262,11 @@ const DataTableComponent = (props: ITableData) => {
                         inputProps={{ 'aria-labelledby': labelId }}
                       />
                     </TableCell>
-                    {columns.map((column) => {
+
+                    {columns.map((column: IColumn) => {
                       const value = dataRow[column.id]
                       return (
-                        <TableCell key={column.id} align={column.align} >
-                          {value}
-                        </TableCell>
+                        <DataRow column={column} value={value} />
                       );
                     })}
                   </TableRow>
@@ -318,4 +294,4 @@ const DataTableComponent = (props: ITableData) => {
   )
 }
 
-export default DataTableComponent;
+export default RegularTableComponent;

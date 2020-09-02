@@ -1,6 +1,6 @@
 import * as React from 'react';
-import DataTableComponent from '../../../Components/TableComponents/DataTableComponent'
-import { IData, IColumn } from '../../../Components/TableComponents/DataTableComponent/types'
+import DataTableComponent from '../../../Components/DataTableComponent'
+import { IData, IColumn } from '../../../Components/DataTableComponent/types'
 
 
 const columns: IColumn[] = [
