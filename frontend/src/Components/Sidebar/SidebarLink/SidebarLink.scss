@@ -2,7 +2,7 @@
     display: flex;
     flex-flow: row nowrap;
     border-left: 4px solid #fff;
-    justify-content: stretch;
+    justify-content: flex-start;
     align-items: center;
     height: 2.5rem;
     width: auto;
@@ -37,11 +37,10 @@
                     margin: 0;
                     overflow: hidden;
                     opacity: 1;
+                    white-space: nowrap;
                     @media (min-width: 768px) {
                         transition: all .53s ease;
                         @at-root .collapsed & {
-                            // display: none;
-                            // flex: 0 0 0em;
                             max-width: 0;
                             opacity: 0;
                         }

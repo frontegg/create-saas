@@ -5,11 +5,23 @@
     display: flex;
     flex-flow: row nowrap;
     .main {
+        margin-top: 4rem;
+        transition: margin-left .33s ease;
         flex: 1 1 auto;
         background-color: #FAFAFA;
         .label-collapse {
             width: 100%;
             height: 100%;
         }
+    }
+    &.fixedSidebar .collapsed+.main {
+        margin-left: 4rem;
+    }
+    &.fixedSidebar .expanded+.main {
+        margin-left: 16rem;
+    }
+    .settings {
+        bottom: 0;
+        right: 0;
     }
 }

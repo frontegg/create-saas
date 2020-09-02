@@ -1,7 +1,7 @@
 .sidebarLinkWithSub {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: stretch;
+    justify-content: flex-start;
     align-items: center;
     height: 2.5rem;
     cursor: pointer;
