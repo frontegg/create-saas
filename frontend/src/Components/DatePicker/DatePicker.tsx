@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import DatePickers from "react-datepicker";
+import DatePickers from 'react-datepicker';
 
 import "react-datepicker/dist/react-datepicker.css";
 import './DatePicker.scss';

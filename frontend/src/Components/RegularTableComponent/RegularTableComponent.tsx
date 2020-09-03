@@ -28,7 +28,7 @@ import { ITableData, IData, IOrder, IColumn, IDataRow } from './types'
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
-    width: '100%',
+    width: '100%'
   },
   paper: {
     width: '100%',
@@ -244,7 +244,6 @@ const RegularTableComponent = (props: ITableData) => {
               .map((dataRow, index) => {
                 const isItemSelected = isSelected(dataRow.country);
                 const labelId = `enhanced-table-checkbox-${index}`;
-                console.log('isItemSelected', isItemSelected, 'labelId', labelId, 'index', index, 'dataRow.country', dataRow.country)
 
                 return (
                   <TableRow

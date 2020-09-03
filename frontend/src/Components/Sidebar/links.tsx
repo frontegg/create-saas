@@ -110,7 +110,7 @@ export const links: linksArray = [
             },
             {
                 path: "/sidebar-category",
-                label: "Alerts",
+                label: "Sidebar category table",
                 icon:""
             },
             {
