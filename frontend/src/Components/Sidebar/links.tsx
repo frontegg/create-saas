@@ -155,6 +155,16 @@ export const links: linksArray = [
                 label: "Sliders",
                 icon:""
             },
+            {
+                path: "/switches",
+                label: "Switches",
+                icon:""
+            },
+            {
+                path: "/formsteps",
+                label: "Form steps",
+                icon:""
+            },
         ]
     },
     {

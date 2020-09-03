@@ -38,10 +38,10 @@ const FormSteps: React.FC<StepProps> = ({ label, text_label }) => {
                 <div className="row">
                     <div className="col-md-12 mx-0">
                         <form id="blockform">
-                            <div id="blockbar" className="flex">
-                                <div className="flex stepone">
-                                    <div>
-                                        <span className="stepnumber">1</span>
+                            <div id="blockbar" className="flex fullwidth">
+                                <div className="flex stepone fourth-width blue-bg pad">
+                                    <div className="step width-2">
+                                        <span className="stepnumber text-color white-bg width-2 height-2 flex">1</span>
                                     </div>
                                     <div>
                                         <div>
@@ -52,9 +52,9 @@ const FormSteps: React.FC<StepProps> = ({ label, text_label }) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex steptwo">
-                                    <div>
-                                        <span className="stepnumber">2</span>
+                                <div className="flex steptwo fourth-width blue-bg pad">
+                                    <div className="step width-2" >
+                                        <span className="stepnumber text-color white-bg width-2 height-2 flex">2</span>
                                     </div>
                                     <div>
                                         <div>
@@ -65,9 +65,9 @@ const FormSteps: React.FC<StepProps> = ({ label, text_label }) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex stepthree">
-                                    <div>
-                                        <span className="stepnumber">3</span>
+                                <div className="flex stepthree fourth-width blue-bg pad">
+                                    <div className="step width-2">
+                                        <span className="stepnumber text-color white-bg width-2 height-2 flex">3</span>
                                     </div>
                                     <div>
                                         <div>
@@ -78,9 +78,9 @@ const FormSteps: React.FC<StepProps> = ({ label, text_label }) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex stepfour">
-                                    <div>
-                                        <span className="stepnumber">4</span>
+                                <div className="flex stepfour fourth-width blue-bg pad">
+                                    <div className="step width-2">
+                                        <span className="stepnumber text-color white-bg width-2 height-2 flex">4</span>
                                     </div>
                                     <div>
                                         <div>

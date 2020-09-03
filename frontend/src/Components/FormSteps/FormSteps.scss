@@ -237,11 +237,45 @@ select.list-dt:focus {
 }
 
 .stepnumber {
+    
+}
+
+.fullwidth {
+    width: 100%;
+}
+
+.fourth-width {
+    width: 25%;
+}
+
+.blue-bg {
+    background-color: #2196f3;
+}
+
+.text-color {
+    --text-opacity: 1;
+    color: #212121;
+}
+
+.pad {
+    padding: .5rem;
+}
+
+.width-2 {
     width: 2rem;
+}
+
+.height-2 {
     height: 2rem;
 }
 
+.step {
+    
+}
 
+.white-bg {
+    background-color: #fff;
+}
 
 @media (min-width: 1024px) {
     #blockbar {
