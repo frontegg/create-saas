@@ -9,6 +9,7 @@ import DatePickerPage from './DatePickerPage';
 import SwitchPage from './SwitchPage';
 import NavBar from '../../Components/NavBar';
 import Datatable from './DatatablePage'
+import FormStepsPage from './FormStepsPage';
 import RegularTable from './RegularTablePage'
 import SidebarCategoryTable from './SidebarCategoryTablePage'
 import Dashboard from './Dashboard';
@@ -94,6 +95,7 @@ const MainLayout: React.FC = () => {
                         <Route path='/tables/regular' component={RegularTable} />
                         <Route path='/forms/datepicker' component={DatePickerPage} />
                         <Route path='/forms/switches' component={SwitchPage} />
+                        <Route path='/forms/formsteps' component={FormStepsPage} />
                         <Route path='/tables/sidebar-category' component={SidebarCategoryTable} />
                     </Switch>
                 </div>
