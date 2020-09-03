@@ -5,6 +5,8 @@
     display: flex;
     flex-flow: row nowrap;
     .main {
+        margin-top: 4rem;
+        transition: margin-left .33s ease;
         flex: 1 1 auto;
         background-color: #FAFAFA;
         .label-collapse {
@@ -15,6 +17,27 @@
         &-row{
             display: flex;
             background-color: white;
+        }
+    }
+    @media screen and (min-width: 768px){
+        &.fixedSidebar .collapsed+.main {
+            margin-left: 4rem;
+        }
+        &.fixedSidebar .expanded+.main {
+            margin-left: 16rem;
+        }
+    }
+    .settings {
+        bottom: 0;
+        left: 0;
+        z-index: 120;
+        cursor: pointer;
+        .btn-dropdown-settings {
+            background: #fff;
+            border: none;
+            box-shadow: none;
+            color: #000;
+            box-shadow: 1px -3px 5px 2px #eee;
         }
     }
 }

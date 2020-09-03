@@ -224,7 +224,7 @@ const DefaultFormPage: React.FC = () => {
                     FORMS
                 </div>
                 <div className="section-name">
-                    Imputs
+                    Inputs
                 </div>
             </div>
             <div className="main">
