@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Widget from '../Widget';
 
+
 const widgets = [
     {
         label: "USERS",
@@ -39,7 +40,11 @@ const Dashboard: React.FC = () => {
             {widgets.map( (item, index) => {
                 return <Widget key={index} {...item}/>
             })}
+            <Widget>
+                
+            </Widget>
         </div>
+        
     )
 }
 export default Dashboard

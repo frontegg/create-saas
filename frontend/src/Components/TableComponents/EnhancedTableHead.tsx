@@ -6,13 +6,12 @@ import {
   TableSortLabel,
   Checkbox
 } from '@material-ui/core'
-import { IEnhancedTableProps, IData } from './types'
 
 
-const EnhancedTableHead = (props: IEnhancedTableProps) => {
+const EnhancedTableHead = (props: any) => {
   const { columns, classes, order, orderBy, rowCount, onRequestSort, numSelected, onSelectAllClick } = props;
 
-  const createSortHandler = (property: keyof IData) => (event: React.MouseEvent<unknown>) => {
+  const createSortHandler = (property: string | number) => (event: React.MouseEvent<unknown>) => {
     onRequestSort(event, property);
   };
 

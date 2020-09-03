@@ -1,5 +1,5 @@
 export interface IColumn {
-    id: 'name' | 'code' | 'population' | 'size' | 'density';
+    id: keyof IData;
     label: string;
     minWidth?: number;
     align?: 'right';
@@ -20,13 +20,6 @@ export interface ISearchData {
     population: string
     size: string
     density: string
-}
-
-export interface ITablePaginationActionsProps {
-    count: number;
-    page: number;
-    rowsPerPage: number;
-    onChangePage: (event: React.MouseEvent<HTMLButtonElement>, newPage: number) => void;
 }
 
 export interface ITableData {

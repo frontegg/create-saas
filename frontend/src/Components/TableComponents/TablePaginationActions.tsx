@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
-import { ITablePaginationActionsProps } from './types'
 import {
     IconButton
 } from '@material-ui/core'
@@ -15,6 +14,13 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         marginLeft: theme.spacing(2.5),
     }
 }));
+
+interface ITablePaginationActionsProps {
+    count: number;
+    page: number;
+    rowsPerPage: number;
+    onChangePage: (event: React.MouseEvent<HTMLButtonElement>, newPage: number) => void;
+}
 
 const TablePaginationActions = (props: ITablePaginationActionsProps) => {
     const classes = useStyles();
