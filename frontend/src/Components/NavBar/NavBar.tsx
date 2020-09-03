@@ -17,7 +17,7 @@ const NavBar: React.FC<React.HTMLAttributes<HTMLElement>> = ({className}) => {
             </label>
             <svg className="search-icon" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1.2em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             <Input className="search-field" type="text" placeholder="Search..."/>
-            <ProfileImage image="/images/m1.png"/>
+            <ProfileImage image="/images/profile.jpeg"/>
         </div>
     )
 }
