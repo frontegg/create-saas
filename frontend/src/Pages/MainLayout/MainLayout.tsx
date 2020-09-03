@@ -11,15 +11,10 @@ import NavBar from '../../Components/NavBar';
 import Datatable from './DatatablePage'
 import RegularTable from './RegularTablePage'
 import SidebarCategoryTable from './SidebarCategoryTablePage'
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import SettingsIcon from '@material-ui/icons/Settings';
-import LabelSwitch from '../../Components/Switch';
 import Dashboard from './Dashboard';
-
+import SettingsButton from '../../Components/SettingsButton';
+import {stateType} from '../../Components/SettingsButton/types';
 const MainLayout: React.FC = () => {
-    const [dropdownOpen, setDropdownOpen] = React.useState(false);
-
-    const toggle = () => setDropdownOpen(prevState => !prevState);
     const [fixedSidebar, setFixSidebar] = React.useState<boolean>(true);
     const handleFixSidebar = (event: React.ChangeEvent<HTMLInputElement>) => {
         setFixSidebar(!fixedSidebar);
@@ -49,7 +44,16 @@ const MainLayout: React.FC = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
-
+    const switches = [
+        {
+            label: "fix sidebar",
+            state: [fixedSidebar, setFixSidebar] as stateType<boolean>
+        },
+        {
+            label: "fix navbar",
+            state: [fixedNavbar, setFixNavbar] as stateType<boolean>
+        }
+    ]
     return (
         <div className={`mainLayout ${scrolled ? "scrolled" : "onTop"} ${fixedSidebar ? "fixedSidebar" : ""} ${fixedNavbar ? "fixedNavbar" : ""}`}>
             <NavBar className={`${collapsed ? "collapsed" : "expanded"} ${fixedNavbar ? "position-fixed" : "position-absolute"}`}/>
@@ -70,23 +74,7 @@ const MainLayout: React.FC = () => {
                     </Switch>
                 </div>
             </div>
-            <Dropdown className="settings position-fixed pl-2 d-none d-md-block" isOpen={dropdownOpen} toggle={toggle}>
-                <DropdownToggle className="btn-dropdown-settings">
-                        <SettingsIcon/>
-                </DropdownToggle>
-                <DropdownMenu>
-                    <div>
-                        <label htmlFor="fixnavbar" onClick={(e) => { console.log(e)}}>
-                            <LabelSwitch label="" text_label="fix status bar" name="" track_color="rgb(144, 202, 249)" slider_color="rgb(33, 150, 243)" check={fixedNavbar} />
-                        </label>
-                    </div>
-                    <div>
-                        <label htmlFor="fixsidebar" onClick={(e) => { console.log(e.currentTarget.isConnected)}}>
-                            <LabelSwitch label="" text_label="fix sidebar" name="" track_color="rgb(144, 202, 249)" slider_color="rgb(33, 150, 243)" check={fixedSidebar} />
-                        </label>
-                    </div>
-                </DropdownMenu>
-            </Dropdown>
+            <SettingsButton settings={switches}/>
             <input type="checkbox" id="collapsing" className="d-none" onChange={handleCollapse} checked={collapsed}/>
             <input type="checkbox" id="fixsidebar" className="d-none" onChange={handleFixSidebar} checked={fixedSidebar}/>
             <input type="checkbox" id="fixnavbar" className="d-none" onChange={handlesFixNavbar} checked={fixedNavbar}/>
