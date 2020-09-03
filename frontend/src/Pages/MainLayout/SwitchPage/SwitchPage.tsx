@@ -187,64 +187,60 @@ const SwitchPage: React.FC = () => {
                     Switches
                 </div>
             </div>
-            <div className="main">
+            <div className="main_switches">
                 <div className="switches">
-                <div className="content_switch">
-                    <div className="header">
-                        Default switches
-                    </div>
-                    <div className="description">
-                        <span>Use the <code>&lt;Switch /&gt;</code> component for simple switches</span>
-                    </div>
+                    <div className="content_switch">
                         <div>
-                            <div>
-                                <div>
-                                    {
-                                        SwitchPr.map((item, index) => {
-                                            return (
-                                                <Switch key={index}
-                                                    label={item.label}
-                                                    text_label={item.text_label}
-                                                    track_color={item.track_color}
-                                                    slider_color={item.slider_color}
-                                                    name={item.name}
-                                                    check={item.check}
-                                                />
-                                            )
-                                        })
-                                    }
-                                </div>
+                            <div className="header">
+                                Default switches
+                            </div>
+                            <div className="description">
+                                <span>Use the <code>&lt;Switch /&gt;</code> component for simple switches</span>
                             </div>
                         </div>
-                </div>
-                <div className="content_switch">
-                    <div className="header">
-                        Switch colors
+                        <div className="cont flex wrap">
+                            {
+                                SwitchPr.map((item, index) => {
+                                    return (
+                                        <Switch key={index}
+                                            label={item.label}
+                                            text_label={item.text_label}
+                                            track_color={item.track_color}
+                                            slider_color={item.slider_color}
+                                            name={item.name}
+                                            check={item.check}
+                                        />
+                                    )
+                                })
+                            }
+                        </div>
                     </div>
-                    <div className="description">
-                        <span>Use the <code>&lt;Switch /&gt;</code> component with the <code>color</code> prop to change the <code>Switch</code> color</span>
-                    </div>
+                    <div className="content_switch">
                         <div>
-                            <div>
-                                <div>
-                                    {
-                                        SwitchColor.map((item, index) => {
-                                            return (
-                                                <Switch key={index}
-                                                    label={item.label}
-                                                    text_label={item.text_label}
-                                                    track_color={item.track_color}
-                                                    slider_color={item.slider_color}
-                                                    name={item.name}
-                                                    check={item.check}
-                                                />
-                                            )
-                                        })
-                                    }
-                                </div>
+                            <div className="header">
+                                Switch colors
+                            </div>
+                            <div className="description">
+                                <span>Use the <code>&lt;Switch /&gt;</code> component with the <code>color</code> prop to change the <code>Switch</code> color</span>
                             </div>
                         </div>
-                </div>
+                        <div className="cont flex wrap">
+                            {
+                                SwitchColor.map((item, index) => {
+                                    return (
+                                        <Switch key={index}
+                                            label={item.label}
+                                            text_label={item.text_label}
+                                            track_color={item.track_color}
+                                            slider_color={item.slider_color}
+                                            name={item.name}
+                                            check={item.check}
+                                        />
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

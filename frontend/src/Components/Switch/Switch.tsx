@@ -11,9 +11,10 @@ type SwitchProps = {
     slider_color: string,
     name: string,
     check: boolean,
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const Switch: React.FC<SwitchProps> = ({ label, text_label, slider_color, track_color, name, check}) => {
+const Switch: React.FC<SwitchProps> = ({ label, text_label, slider_color, track_color, name, check, onChange}) => {
 
     const [state, setState] = React.useState( check || false);
 
@@ -35,27 +36,24 @@ const Switch: React.FC<SwitchProps> = ({ label, text_label, slider_color, track_
         track: {},
     })(Switches);
 
-
     return (
-        <div className="content_switch">
-                    <div>
-                        <div>
-                            <div className="label">
-                                {label}
-                            </div>
-                            <div className="text-label">
-                                {text_label}
-                            </div>
-                        </div>
-                        <div>
-                            <CustomSwitch
-                                checked={state}
-                                onChange={handleChange}
-                                name={name}
-                                inputProps={{ 'aria-label': 'secondary checkbox' }}
-                            />
-                        </div>
-                    </div>
+        <div className="form_switch flex justify-between">
+            <div>
+                <div className="label">
+                    {label}
+                </div>
+                <div className="text-label">
+                    {text_label}
+                </div>
+            </div>
+            <div>
+                <CustomSwitch
+                    checked={state}
+                    onChange={onChange || handleChange}
+                    name={name}
+                    inputProps={{ 'aria-label': 'secondary checkbox' }}
+                />
+            </div>
         </div>
     )
 }
