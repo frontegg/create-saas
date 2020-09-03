@@ -9,10 +9,11 @@ import DatePickerPage from './DatePickerPage';
 import SwitchPage from './SwitchPage';
 import NavBar from '../../Components/NavBar';
 import Datatable from './DatatablePage'
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Form } from 'reactstrap';
 import SettingsIcon from '@material-ui/icons/Settings';
 import LabelSwitch from '../../Components/Switch';
 import Dashboard from './Dashboard';
+import FormStepsPage from './FormStepsPage';
 
 const MainLayout: React.FC = () => {
     const [dropdownOpen, setDropdownOpen] = React.useState(false);
@@ -62,6 +63,7 @@ const MainLayout: React.FC = () => {
                         <Route path='/forms/sliders' component={SliderPage} />
                         <Route path='/forms/datepicker' component={DatePickerPage} />
                         <Route path='/forms/switches' component={SwitchPage} />
+                        <Route path='/forms/formsteps' component={FormStepsPage} />
                     </Switch>
                 </div>
             </div>
