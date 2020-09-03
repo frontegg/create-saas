@@ -17,9 +17,12 @@ type SwitchProps = {
 
 const Switch: React.FC<SwitchProps & React.HTMLAttributes<HTMLElement>> = ({ className, label, text_label, slider_color, track_color, name, check, value, onChange}) => {
 
-    const [state, setState] = React.useState( check || false);
+    const [state, setState] = React.useState( check || value || false);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (onChange) {
+            onChange(event);
+        }
         setState(!state);
     };
 
@@ -49,9 +52,9 @@ const Switch: React.FC<SwitchProps & React.HTMLAttributes<HTMLElement>> = ({ cla
             </div>
             <div>
                 <CustomSwitch
-                    checked={check}
-                    onChange={onChange || handleChange}
-                    value={value}
+                    checked={state}
+                    onChange={handleChange}
+                    value={state || undefined}
                     name={name}
                     inputProps={{ 'aria-label': 'secondary checkbox' }}
                 />
