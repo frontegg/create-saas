@@ -41,7 +41,7 @@ const Switch: React.FC<SwitchProps & React.HTMLAttributes<HTMLElement>> = ({ cla
     })(Switches);
 
     return (
-        <div className={`form_switch flex justify-between ${className || ""}`}>
+        <div className={`form_switch d-flex justify-content-between ${className || ""}`}>
             <div>
                 <div className="label">
                     {label}

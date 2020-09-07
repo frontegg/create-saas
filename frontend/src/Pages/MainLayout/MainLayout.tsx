@@ -15,6 +15,9 @@ import SidebarCategoryTable from './SidebarCategoryTablePage'
 import Dashboard from './Dashboard';
 import SettingsButton from '../../Components/SettingsButton';
 import {stateType} from '../../Components/SettingsButton/types';
+import UIScreenPage from './UIScreenPage';
+import Badges from './UIScreenPage/UIElementsPages/Badges';
+import Dropdowns from './UIScreenPage/UIElementsPages/Dropdowns';
 const MainLayout: React.FC = () => {
     const [fixedSidebar, setFixSidebar] = React.useState<boolean>(true);
     const handleFixSidebar = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -97,6 +100,14 @@ const MainLayout: React.FC = () => {
                         <Route path='/forms/switches' component={SwitchPage} />
                         <Route path='/forms/formsteps' component={FormStepsPage} />
                         <Route path='/tables/sidebar-category' component={SidebarCategoryTable} />
+                        <Route path="/ui-elements" render={(props) => 
+                            <UIScreenPage>
+                                <Switch>
+                                    <Route path="/ui-elements/badges" component={Badges}/>
+                                    <Route path="/ui-elements/dropdowns" component={Dropdowns}/>
+                                </Switch>
+                            </UIScreenPage>
+                        }/>
                     </Switch>
                 </div>
             </div>

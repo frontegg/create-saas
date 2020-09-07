@@ -7,7 +7,7 @@ type Props = {
     icon?: JSX.Element
 }
 
-const Widget: React.FC<Props & React.HTMLAttributes<HTMLElement>> = ({label, value, icon, className, children}) => {
+const Widget: React.FC<Props & React.HTMLAttributes<HTMLElement>> = ({label, value, icon, className="", children}) => {
     return <div className={`widget d-flex ${className}`}>
         <div className="d-flex flex-column">
             <div className="label">
