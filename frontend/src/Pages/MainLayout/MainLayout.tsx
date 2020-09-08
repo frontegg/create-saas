@@ -14,7 +14,11 @@ import RegularTable from './RegularTablePage'
 import SidebarCategoryTable from './SidebarCategoryTablePage'
 import Dashboard from './Dashboard';
 import SettingsButton from '../../Components/SettingsButton';
-import {stateType} from '../../Components/SettingsButton/types';
+import PricingPage from './PricingPage'
+import TermsPage from './TermsPage'
+import DocumentationPage from './DocumentationPage'
+
+import { stateType } from '../../Components/SettingsButton/types';
 const MainLayout: React.FC = () => {
     const [fixedSidebar, setFixSidebar] = React.useState<boolean>(true);
     const handleFixSidebar = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,17 +34,16 @@ const MainLayout: React.FC = () => {
     const handleCollapse = (event: React.ChangeEvent<HTMLInputElement>) => collapse(!collapsed);
     const [scrolled, setScrolled] = React.useState<boolean>(false);
     const handleScroll = (event: Event) => {
-            if (window.pageYOffset == 0)
-            {
-                setScrolled(false);
-            }
-            if (window.pageYOffset > 0 && !scrolled) {
-                setScrolled(true);
-            }
+        if (window.pageYOffset == 0) {
+            setScrolled(false);
+        }
+        if (window.pageYOffset > 0 && !scrolled) {
+            setScrolled(true);
+        }
     }
     React.useEffect(() => {
         window.addEventListener('scroll', handleScroll);
-    
+
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
@@ -57,8 +60,8 @@ const MainLayout: React.FC = () => {
     ]
     return (
         <div className={`mainLayout ${scrolled ? "scrolled" : "onTop"} ${fixedSidebar ? "fixedSidebar" : ""} ${fixedNavbar ? "fixedNavbar" : ""}`}>
-            <NavBar className={`${collapsed ? "collapsed" : "expanded"} ${fixedNavbar ? "position-fixed" : "position-absolute"}`}/>
-            <Sidebar className={`${collapsed ? "collapsed" : "expanded"}`}/>
+            <NavBar className={`${collapsed ? "collapsed" : "expanded"} ${fixedNavbar ? "position-fixed" : "position-absolute"}`} />
+            <Sidebar className={`${collapsed ? "collapsed" : "expanded"}`} />
             <div className="main" >
                 <div className="p-4 content">
                     <Switch>
@@ -73,13 +76,16 @@ const MainLayout: React.FC = () => {
                         <Route path='/forms/switches' component={SwitchPage} />
                         <Route path='/forms/formsteps' component={FormStepsPage} />
                         <Route path='/tables/sidebar-category' component={SidebarCategoryTable} />
+                        <Route path='/pricing' component={PricingPage} />
+                        <Route path='/terms' component={TermsPage} />
+                        <Route path='/doc' component={DocumentationPage} />
                     </Switch>
                 </div>
             </div>
-            <SettingsButton settings={switches}/>
-            <input type="checkbox" id="collapsing" className="d-none" onChange={handleCollapse} checked={collapsed}/>
-            <input type="checkbox" id="fixsidebar" className="d-none" onChange={handleFixSidebar} checked={fixedSidebar}/>
-            <input type="checkbox" id="fixnavbar" className="d-none" onChange={handlesFixNavbar} checked={fixedNavbar}/>
+            <SettingsButton settings={switches} />
+            <input type="checkbox" id="collapsing" className="d-none" onChange={handleCollapse} checked={collapsed} />
+            <input type="checkbox" id="fixsidebar" className="d-none" onChange={handleFixSidebar} checked={fixedSidebar} />
+            <input type="checkbox" id="fixnavbar" className="d-none" onChange={handlesFixNavbar} checked={fixedNavbar} />
         </div>
     )
 }
