@@ -18,6 +18,7 @@ import {stateType} from '../../Components/SettingsButton/types';
 import UIScreenPage from './UIScreenPage';
 import Badges from './UIScreenPage/UIElementsPages/Badges';
 import Dropdowns from './UIScreenPage/UIElementsPages/Dropdowns';
+import LineChartComponent from '../../Components/LineChart';
 const MainLayout: React.FC = () => {
     const [fixedSidebar, setFixSidebar] = React.useState<boolean>(true);
     const handleFixSidebar = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -105,6 +106,13 @@ const MainLayout: React.FC = () => {
                                 <Switch>
                                     <Route path="/ui-elements/badges" component={Badges}/>
                                     <Route path="/ui-elements/dropdowns" component={Dropdowns}/>
+                                </Switch>
+                            </UIScreenPage>
+                        }/>
+                        <Route path="/charts" render={(props) => 
+                            <UIScreenPage>
+                                <Switch>
+                                    <Route path="/charts/line-charts" component={LineChartComponent}/>
                                 </Switch>
                             </UIScreenPage>
                         }/>

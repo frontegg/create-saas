@@ -151,6 +151,18 @@ export const links: linksArray = [
         ]
     },
     {
+        path: "/charts",
+        label: "Charts",
+        icon:"",
+        sublinks: [
+            {
+                path: "/line-charts",
+                label: "Line charts",
+                icon:""
+            }
+        ]
+    },
+    {
         header: "PAGES"
     },
     {

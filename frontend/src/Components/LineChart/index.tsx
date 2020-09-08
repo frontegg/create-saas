@@ -1,2 +1,2 @@
-import LineChart from './LineChart';
-export default LineChart; 
+import LineChartComponent from './LineChart';
+export default LineChartComponent; 
