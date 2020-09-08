@@ -4,7 +4,7 @@ import Dropdown, { Dropup, Dropleft, Dropright } from '../../../../../Components
 import Widget from '../../../Widget';
 
 const DropdownMenu: React.FC = () => {
-    return <div className="d-flex flex-wrap text-center">
+    return <div className="d-flex flex-wrap text-center w-64">
         <div className="w-1/3 d-flex flex-column align-items-center justify-content-center h-20 space-y-1 dropdown-item">
             <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" className="stroke-current text-xl" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
             <span className="text-xs">Home</span>
@@ -45,25 +45,62 @@ const DropdownMenu: React.FC = () => {
 }
 const Dropdowns: React.FC = () => {
     return <div className="Dropdowns">
-        <Widget value="Dropdown" className="w-100 flex-column">
-            <Dropdown color="primary" className="w-25">
-                <DropdownMenu/>
-            </Dropdown>
+        <Widget className="w-100 flex-column">
+            <div className="text-sm font-light text-gray-500">Dropdowns</div>
+            <div className="text-sm font-bold mb-3">
+                <span className="capitalize">bottom position</span>
+            </div>
+            <div className="d-flex flex-row justify-content-evenly w-100">
+                <Dropdown color="primary" className="w-25" label="Left dropdown">
+                    <DropdownMenu/>
+                </Dropdown>
+                <Dropdown color="primary" className="w-25" right label="Right dropdown">
+                    <DropdownMenu/>
+                </Dropdown>
+            </div>
+            
         </Widget>
-        <Widget value="Dropleft" className="w-100 flex-column">
-            <Dropleft color="primary" className="w-25" label="Button dropleft">
-                <DropdownMenu/>
-            </Dropleft>
+        <Widget className="w-100 flex-column">
+            <div className="text-sm font-light text-gray-500">Dropdowns</div>
+            <div className="text-sm font-bold mb-3">
+                <span className="capitalize">left position</span>
+            </div>
+            <div className="d-flex flex-row justify-content-evenly w-100">
+                <Dropleft color="primary" className="w-25" label="Start dropleft">
+                    <DropdownMenu/>
+                </Dropleft>
+                <Dropleft color="primary" className="w-25" label="End dropleft" right>
+                    <DropdownMenu/>
+                </Dropleft>
+            </div>
         </Widget>
-        <Widget value="Dropright" className="w-100 flex-column">
-            <Dropright color="primary" className="w-25" label="Button dropright">
-                <DropdownMenu/>
-            </Dropright>
+        <Widget className="w-100 flex-column">
+            <div className="text-sm font-light text-gray-500">Dropdowns</div>
+            <div className="text-sm font-bold mb-3">
+                <span className="capitalize">right position</span>
+            </div>
+            <div className="d-flex flex-row justify-content-evenly w-100">
+                <Dropright color="primary" className="w-25" label="Start dropright">
+                    <DropdownMenu/>
+                </Dropright>
+                <Dropright color="primary" className="w-25" label="End dropright" right>
+                    <DropdownMenu/>
+                </Dropright>
+            </div>
         </Widget>
-        <Widget value="Dropup" className="w-100 flex-column">
-            <Dropup color="primary" className="w-25" label="Button dropup">
-                <DropdownMenu/>
-            </Dropup>
+        <Widget className="w-100 flex-column">
+            <div className="text-sm font-light text-gray-500">Dropdowns</div>
+            <div className="text-sm font-bold mb-3">
+                <span className="capitalize">top position</span>
+            </div>
+            <div className="d-flex flex-row justify-content-evenly w-100">
+                <Dropup color="primary" className="w-25" label="Left dropup">
+                    <DropdownMenu/>
+                </Dropup>
+                <Dropup color="primary" className="w-25" label="Right dropup" right>
+                    <DropdownMenu/>
+                </Dropup>
+            </div>
         </Widget>
     </div>
 }

@@ -18,6 +18,8 @@ import {stateType} from '../../Components/SettingsButton/types';
 import UIScreenPage from './UIScreenPage';
 import Badges from './UIScreenPage/UIElementsPages/Badges';
 import Dropdowns from './UIScreenPage/UIElementsPages/Dropdowns';
+import Buttons from './UIScreenPage/UIElementsPages/Buttons';
+import Paginations from './UIScreenPage/UIElementsPages/Paginations';
 const MainLayout: React.FC = () => {
     const [fixedSidebar, setFixSidebar] = React.useState<boolean>(true);
     const handleFixSidebar = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -104,7 +106,9 @@ const MainLayout: React.FC = () => {
                             <UIScreenPage>
                                 <Switch>
                                     <Route path="/ui-elements/badges" component={Badges}/>
+                                    <Route path="/ui-elements/buttons" component={Buttons}/>
                                     <Route path="/ui-elements/dropdowns" component={Dropdowns}/>
+                                    <Route path="/ui-elements/pagination" component={Paginations}/>
                                 </Switch>
                             </UIScreenPage>
                         }/>
