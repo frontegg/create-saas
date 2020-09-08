@@ -3,18 +3,17 @@ import * as React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import './FormSteps.scss';
 
-type Direction = "circle" | "nested" | "rectangle" | "designation";
+// type Direction = "circle" | "nested" | "rectangle" | "designation";
 
 type Props = {
     label?:string,
     text_label?: string,
-    direction?: Direction
+    // direction?: Direction
 }
 
 const Base:React.FC<Props> = ({
     label = "Form steps",
     text_label = "Sample form step components",
-    direction = "circle",
     children }) => {
 
     return <div className="content_step">
@@ -27,24 +26,95 @@ const Base:React.FC<Props> = ({
                         {text_label}
                     </div>
                 </div>
+                <div className="row">
+                     <div className="col-md-12 mx-0">
+                         {children}
+                     </div>
+                 </div>
              </div>
             </div>
 }
 
-type StepProps = Pick<Props, Exclude<keyof Props, keyof {direction?:Direction}>>;
 
-const circleStep: React.FC<StepProps> = (props) => {
+const CircleStep: React.FC<Props> = (props) => {
     return <Base {...props}>
-        {props.children}
+                <div id="msform">
+                            <ul id="progressbar">
+                                <li className="active" id="account"></li>
+                                <li id="personal"></li>
+                                <li id="payment"></li>
+                                <li id="confirm"></li>
+                            </ul>
+                </div>
+            </Base>
+}
+
+export const NestedStep: React.FC<Props> = (props) => {
+    return <Base {...props}>
+        <div id="blockform">
+//                             <div id="blockbar" className="flex fullwidth">
+//                                 <div className="flex stepone fourth-width blue-bg pad">
+//                                     <div className="step w-20">
+//                                         <span className="stepnumber text-color white-bg w-20 height-2 flex">1</span>
+//                                     </div>
+//                                     <div>
+//                                         <div>
+
+//                                         </div>
+//                                         <div>
+
+//                                         </div>
+//                                     </div>
+//                                 </div>
+//                                 <div className="flex steptwo fourth-width blue-bg pad">
+//                                     <div className="step w-20" >
+//                                         <span className="stepnumber text-color white-bg w-20 height-2 flex">2</span>
+//                                     </div>
+//                                     <div>
+//                                         <div>
+
+//                                         </div>
+//                                         <div>
+
+//                                         </div>
+//                                     </div>
+//                                 </div>
+//                                 <div className="flex stepthree fourth-width blue-bg pad">
+//                                     <div className="step w-20">
+//                                         <span className="stepnumber text-color white-bg w-20 height-2 flex">3</span>
+//                                     </div>
+//                                     <div>
+//                                         <div>
+
+//                                         </div>
+//                                         <div>
+
+//                                         </div>
+//                                     </div>
+//                                 </div>
+//                                 <div className="flex stepfour fourth-width blue-bg pad">
+//                                     <div className="step w-20">
+//                                         <span className="stepnumber text-color white-bg w-20 height-2 flex">4</span>
+//                                     </div>
+//                                     <div>
+//                                         <div>
+
+//                                         </div>
+//                                         <div>
+
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
     </Base>
 }
 
-export const nestedStep: React.FC<StepProps> = (props) => {
-    return <Base direction="nested" {...props}>
-        {props.children}
-    </Base>
-}
-
+<form>
+    <CircleStep/>
+    <input></input>
+    <button>submit</button>
+</form>
 
 // const FormSteps: React.FC<Props> = ({ label, text_label, direction}) => {
 
@@ -139,4 +209,4 @@ export const nestedStep: React.FC<StepProps> = (props) => {
 
 // }
 
-export default circleStep;
+export default CircleStep;
