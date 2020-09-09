@@ -139,7 +139,7 @@ select.list-dt:focus {
 }
 
 #progressbar {
-    margin-bottom: 30px;
+    margin-bottom: 0px;
     overflow: hidden;
     color: lightgrey
 }
@@ -178,8 +178,8 @@ select.list-dt:focus {
 }
 
 #progressbar li:before {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     line-height: 45px;
     display: block;
     font-size: 18px;
@@ -187,7 +187,7 @@ select.list-dt:focus {
     background: lightgray;
     border-radius: 50%;
     margin: 0 auto 10px auto;
-    padding: 2px
+    padding: 0px
 }
 
 #progressbar li:after {
@@ -197,7 +197,7 @@ select.list-dt:focus {
     background: lightgray;
     position: absolute;
     left: 0;
-    top: 22px;
+    top: 20px;
     z-index: -1
 }
 
@@ -237,40 +237,24 @@ select.list-dt:focus {
 }
 
 .stepnumber {
-    
-}
-
-.fullwidth {
-    width: 100%;
-}
-
-.fourth-width {
-    width: 25%;
+    border-radius: 100px;
+    height: 2rem;
 }
 
 .blue-bg {
     background-color: #2196f3;
 }
 
-.text-color {
-    --text-opacity: 1;
-    color: #212121;
-}
-
 .pad {
     padding: .5rem;
 }
 
-.height-2 {
-    height: 2rem;
-}
-
 .step {
-    
+    min-width: 2rem;
 }
 
-.white-bg {
-    background-color: #fff;
+.opacity-25 {
+    opacity: .25;
 }
 
 @media (min-width: 1024px) {
