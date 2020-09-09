@@ -1,3 +1,6 @@
 .Alert {
-    position: relative
+    position: relative;
+    &.alert-border-left {
+        border-left-width: .25em !important;
+    }
 }
