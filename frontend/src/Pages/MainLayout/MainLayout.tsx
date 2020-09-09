@@ -18,7 +18,8 @@ import {stateType} from '../../Components/SettingsButton/types';
 import UIScreenPage from './UIScreenPage';
 import Badges from './UIScreenPage/UIElementsPages/Badges';
 import Dropdowns from './UIScreenPage/UIElementsPages/Dropdowns';
-import LineChartComponent from '../../Components/LineChart';
+import LineChartComponent from '../../Components/Charts/LineChart';
+import ScatterChartComponent from '../../Components/Charts/ScatterChart';
 const MainLayout: React.FC = () => {
     const [fixedSidebar, setFixSidebar] = React.useState<boolean>(true);
     const handleFixSidebar = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -113,6 +114,7 @@ const MainLayout: React.FC = () => {
                             <UIScreenPage>
                                 <Switch>
                                     <Route path="/charts/line-charts" component={LineChartComponent}/>
+                                    <Route path="/charts/scatter-charts" component={ScatterChartComponent}/>
                                 </Switch>
                             </UIScreenPage>
                         }/>

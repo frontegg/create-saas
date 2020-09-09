@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Widget from '../Widget';
 import RegularTableComponent from '../../../Components/RegularTableComponent';
-import LineChartComponent from '../../../Components/LineChart';
+import LineChartComponent from '../../../Components/Charts/LineChart';
 import {columns, rows} from '../SidebarCategoryTablePage'
 
 const widgets = [
@@ -37,55 +37,57 @@ const widgets = [
 ]
 
 const lineChartData = 
-  [
-    {
-      name: 'Line 1',
-      data: [
-        { category: 'Jan', value: 4000 },
-        { category: 'Feb', value: 3000 },
-        { category: 'Mar', value: 2000 },
-        { category: 'Apr', value: 2780 },
-        { category: 'May', value: 1890 },
-        { category: 'Jun', value: 2390 },
-        { category: 'Jul', value: 3490 },
-        { category: 'Aug', value: 1890 },
-        { category: 'Sep', value: 2390 },
-        { category: 'Oct', value: 2490 },
-        { category: 'Nov', value: 2300 },
-        { category: 'Dec', value: 1999 },
-      ]
-    },
-    {
-      name: 'Line 2',
-      data: [
-        { category: 'Jan', value: 2400 },
-        { category: 'Feb', value: 1398 },
-        { category: 'Mar', value: 9800 },
-        { category: 'Apr', value: 3908 },
-        { category: 'May', value: 4800 },
-        { category: 'Jun', value: 3800 },
-        { category: 'Jul', value: 3490 },
-        { category: 'Aug', value: 1290 },
-        { category: 'Sep', value: 2290 },
-        { category: 'Oct', value: 2420 },
-        { category: 'Nov', value: 1300 },
-        { category: 'Dec', value: 2099 },
-      ]
-    }
-  ]
+[
+  {
+    name: 'sales',
+    color: '#90caf9',
+    data: [
+      { category: 'Jan', value: 4000 },
+      { category: 'Feb', value: 3000 },
+      { category: 'Mar', value: 2000 },
+      { category: 'Apr', value: 2780 },
+      { category: 'May', value: 1890 },
+      { category: 'Jun', value: 2390 },
+      { category: 'Jul', value: 3490 },
+      { category: 'Aug', value: 1890 },
+      { category: 'Sep', value: 2390 },
+      { category: 'Oct', value: 2490 },
+      { category: 'Nov', value: 2300 },
+      { category: 'Dec', value: 1999 },
+    ]
+  },
+  {
+    name: 'conversions',
+    color: '#4ca5f5',
+    data: [
+      { category: 'Jan', value: 2400 },
+      { category: 'Feb', value: 1398 },
+      { category: 'Mar', value: 9800 },
+      { category: 'Apr', value: 3908 },
+      { category: 'May', value: 4800 },
+      { category: 'Jun', value: 3800 },
+      { category: 'Jul', value: 3490 },
+      { category: 'Aug', value: 1290 },
+      { category: 'Sep', value: 2290 },
+      { category: 'Oct', value: 2420 },
+      { category: 'Nov', value: 1300 },
+      { category: 'Dec', value: 2099 },
+    ]
+  }
+]
 
 
 const Dashboard: React.FC = () => {
     return (
         <div className="dashboard d-flex flex-row flex-wrap justify-content-start">
+            <Widget>
+                <LineChartComponent data={lineChartData} />
+            </Widget>
             {widgets.map( (item, index) => {
                 return <Widget key={index} {...item}/>
             })}
             <Widget>
                 <RegularTableComponent columns={columns} rows={rows} />
-            </Widget>
-            <Widget>
-                <LineChartComponent lineChartData={lineChartData} />
             </Widget>
         </div>
         

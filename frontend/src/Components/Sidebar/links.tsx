@@ -157,7 +157,12 @@ export const links: linksArray = [
         sublinks: [
             {
                 path: "/line-charts",
-                label: "Line charts",
+                label: "Line chart",
+                icon:""
+            },
+            {
+                path: "/scatter-charts",
+                label: "Scatter chart",
                 icon:""
             }
         ]
