@@ -1,0 +1,42 @@
+$themes: (
+  light: (
+    backgroundMainColor: #fafafa,
+    backgroundColor: #fff,
+    borderColor: #eeeeee,
+    textColor: #212529,
+    buttonColor: #fff,
+    buttonBorder: 2px solid #fff
+  ),
+  dark: (
+    backgroundMainColor: #212121,
+    backgroundColor: #424242,
+    backgroundElements: #373737,
+    borderColor: #373737,
+    textColor: #ddd,
+    buttonColor: #333,
+    buttonBorder: 1px solid #aaa
+  )
+);
+
+@mixin themify($themes: $themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value
+          )
+        ) !global;
+      }
+
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}

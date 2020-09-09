@@ -5,7 +5,7 @@ import { IData, IColumn } from '../../../Components/RegularTableComponent/types'
 import { ISidebarCategory, IItemsList } from '../../../Components/SidebarCategoryComponent/types'
 
 
-const columns: IColumn[] = [
+export const columns: IColumn[] = [
     {
         id: 'country',
         label: 'COUNTRY',
@@ -34,7 +34,7 @@ function createData(country: string, active_users: number, team_members: string[
     return { country, active_users, team_members, progress };
 }
 
-const rows = [
+export const rows = [
     createData('India', 1324171354, [
         'https://i2.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1',
         'https://i2.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1',

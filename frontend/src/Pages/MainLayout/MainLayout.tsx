@@ -17,21 +17,36 @@ import SettingsButton from '../../Components/SettingsButton';
 import PricingPage from './PricingPage'
 import TermsPage from './TermsPage'
 import DocumentationPage from './DocumentationPage'
-
 import { stateType } from '../../Components/SettingsButton/types';
+import UIScreenPage from './UIScreenPage';
+import Badges from './UIScreenPage/UIElementsPages/Badges';
+import Dropdowns from './UIScreenPage/UIElementsPages/Dropdowns';
+
 const MainLayout: React.FC = () => {
     const [fixedSidebar, setFixSidebar] = React.useState<boolean>(true);
     const handleFixSidebar = (event: React.ChangeEvent<HTMLInputElement>) => {
         setFixSidebar(!fixedSidebar);
-        console.log(fixedSidebar);
     }
+
     const [fixedNavbar, setFixNavbar] = React.useState<boolean>(false);
     const handlesFixNavbar = (event: React.ChangeEvent<HTMLInputElement>) => {
         setFixNavbar(!fixedNavbar);
-        console.log(fixedNavbar);
     }
+
     const [collapsed, collapse] = React.useState<boolean>(false);
     const handleCollapse = (event: React.ChangeEvent<HTMLInputElement>) => collapse(!collapsed);
+
+    const [hovered, hoverExpand] = React.useState<boolean>(false);
+    const handleFixeHover = (event: React.MouseEvent<HTMLElement,  MouseEvent>) =>
+    {
+        if (fixedSidebar) {
+            hoverExpand(!hovered);
+        }
+        if (!fixedSidebar) {
+            hoverExpand(false);
+        }
+    }
+
     const [scrolled, setScrolled] = React.useState<boolean>(false);
     const handleScroll = (event: Event) => {
         if (window.pageYOffset == 0) {
@@ -41,6 +56,7 @@ const MainLayout: React.FC = () => {
             setScrolled(true);
         }
     }
+
     React.useEffect(() => {
         window.addEventListener('scroll', handleScroll);
 
@@ -48,6 +64,7 @@ const MainLayout: React.FC = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+    
     const switches = [
         {
             label: "fix sidebar",
@@ -60,8 +77,18 @@ const MainLayout: React.FC = () => {
     ]
     return (
         <div className={`mainLayout ${scrolled ? "scrolled" : "onTop"} ${fixedSidebar ? "fixedSidebar" : ""} ${fixedNavbar ? "fixedNavbar" : ""}`}>
-            <NavBar className={`${collapsed ? "collapsed" : "expanded"} ${fixedNavbar ? "position-fixed" : "position-absolute"}`} />
-            <Sidebar className={`${collapsed ? "collapsed" : "expanded"}`} />
+            <NavBar 
+                className={`${collapsed ? 
+                    hovered && fixedSidebar ? "expanded": "collapsed" 
+                    : "expanded"} 
+                    ${fixedNavbar ? "position-fixed" : "position-absolute"}`}/>
+            <Sidebar 
+                className={`${collapsed ? 
+                    hovered && fixedSidebar ? "expanded": "collapsed" 
+                    : "expanded"}`} 
+                onMouseLeave={handleFixeHover}
+                onMouseEnter={handleFixeHover}
+                />
             <div className="main" >
                 <div className="p-4 content">
                     <Switch>
@@ -79,6 +106,14 @@ const MainLayout: React.FC = () => {
                         <Route path='/pricing' component={PricingPage} />
                         <Route path='/terms' component={TermsPage} />
                         <Route path='/doc' component={DocumentationPage} />
+                        <Route path="/ui-elements" render={(props) => 
+                            <UIScreenPage>
+                                <Switch>
+                                    <Route path="/ui-elements/badges" component={Badges}/>
+                                    <Route path="/ui-elements/dropdowns" component={Dropdowns}/>
+                                </Switch>
+                            </UIScreenPage>
+                        }/>
                     </Switch>
                 </div>
             </div>

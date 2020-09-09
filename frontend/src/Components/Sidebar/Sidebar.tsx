@@ -6,7 +6,7 @@ import SidebarLinkWithSub from './SidebarLinkWithSub';
 import sidebarContents, {sidebarHeadlineType, sidebarLinkType, sidebarLinkWithSubType} from './types';
 import {links} from './links';
 
-const Sidebar: React.FC<React.HTMLAttributes<HTMLElement>> = ({className}) => {
+const Sidebar: React.FC<React.HTMLAttributes<HTMLElement>> = ({className, onMouseEnter, onMouseLeave}) => {
 
     const isHeadline = (link: sidebarContents): link is sidebarHeadlineType => {
         return (link as sidebarHeadlineType).header !== undefined;
@@ -17,6 +17,21 @@ const Sidebar: React.FC<React.HTMLAttributes<HTMLElement>> = ({className}) => {
     const isSidebarLinkWithSub = (link: sidebarContents): link is sidebarLinkWithSubType => {
         return (link as sidebarLinkWithSubType).sublinks !== undefined;
     }
+    // let ref:HTMLDivElement | null = null;
+    // const sidebarRef = (element: HTMLDivElement) => {
+    //         ref = element
+    // };
+    // React.useEffect(() => {
+    //     if (ref)
+    //     {
+    //         ref.addEventListener('mouseenter', (e: Event) => onMouseEnter);
+    //         ref.addEventListener('mouseleave', (e: Event) => onMouseLeave);
+    //         return () => {
+    //             ref!.removeEventListener('mouseenter',(e: Event) => onMouseEnter);
+    //             ref!.removeEventListener('mouseleave', (e: Event) => onMouseLeave);
+    //         };
+    //     }
+    // }, []);
 
     const renderSidebarLinks = (sidebarLinkItem: Array<sidebarContents>, parentPath: string = "") => {
     return (
@@ -50,7 +65,7 @@ const Sidebar: React.FC<React.HTMLAttributes<HTMLElement>> = ({className}) => {
     }
     // onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => collapse(!collapsed)}
     return (
-            <div className={`sideBar ${className}`}>
+            <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className={`sideBar ${className}`}>
                 <div className="logo">
                     <a className="d-flex flex-row align-items-center justify-content-start space-x-2" href="/">
                         <img src="/images/logo.png" alt=""/>

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Widget from '../Widget';
-
+import RegularTableComponent from '../../../Components/RegularTableComponent';
+import {columns, rows} from '../SidebarCategoryTablePage'
 
 const widgets = [
     {
@@ -41,7 +42,7 @@ const Dashboard: React.FC = () => {
                 return <Widget key={index} {...item}/>
             })}
             <Widget>
-                
+                <RegularTableComponent columns={columns} rows={rows} />
             </Widget>
         </div>
         
