@@ -1,30 +1,33 @@
 import * as React from 'react';
+import { SettingsProps, CustomizedDotSettings, CustomizedDotDataDefault } from './ScatterChartDataDefault'
 
-const CustomizedDot = (props: any) => {
-    const {
-        cx, cy, stroke, payload, value,
-    } = props;
+const CustomizedDot = (props: CustomizedDotSettings & any) => {
+    const { cx, cy, stroke, payload, value } = props;
+    const strokeColor = props.strokeColor || CustomizedDotDataDefault.strokeColor;
+    const fillColor = props.fillColor || CustomizedDotDataDefault.fillColor;
+    const r = props.r || CustomizedDotDataDefault.r;
+    const strokeWidth = props.strokeWidth || CustomizedDotDataDefault.strokeWidth;
 
     return (
-        <svg x={cx - 10} y={cy - 10} width={20} height={20}>
-          <circle cx="10" cy="10" r="6" stroke="red" stroke-width="1" fill="antiquewhite" />
+        <svg x={cx-10} y={cy-10} width={20} height={20}>
+          <circle cx="10" cy="10" r={r} stroke={strokeColor} stroke-width={strokeWidth} fill={fillColor} />
         </svg>
     );
 }
 
-export const CustomizedLegend = (props: any) => {
-    const { payload } = props;
+export const CustomizedLegend = (props: SettingsProps) => {
+    const { strokeColor, fillColor, scatterName } = props;
 
     return (
         <div style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}>
-            <svg height="20" width="20">
-                <rect x="0" y="0" width="20" height="20" stroke="red" fill="antiquewhite" stroke-width="1"/>
+            <svg height="20" width="20" style={{marginLeft:'25%'}}>
+                <rect x="0" y="0" width="20" height="20" stroke={strokeColor} fill={fillColor} stroke-width="1"/>
             </svg>
-            <div style={{marginLeft:'5px'}}>Sales</div>
+            <div style={{marginLeft:'5px'}}>{scatterName}</div>
         </div>
     );
 }
-const CustomizedDot2 = (props: any) => {
+const CustomizedDotSmile = (props: any) => {
     const {
       cx, cy, stroke, payload, value,
     } = props;

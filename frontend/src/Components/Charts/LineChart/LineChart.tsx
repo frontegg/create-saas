@@ -8,19 +8,24 @@ const LineChartComponent: React.FC<LineChartProps> = ({
   data = lineChartDataDefault,
   settings = lineChartDefaultSettings
 }) => {
+  const width = settings.width || lineChartDefaultSettings.width
+  const height = settings.height || lineChartDefaultSettings.height
+  const isEnableGrid = settings.isEnableGrid || lineChartDefaultSettings.isEnableGrid
+  const chartLine = settings.line || lineChartDefaultSettings.line
+
   return (
-    <LineChart width={settings.width} height={settings.height}>
-      {settings.isEnableGrid 
+    <LineChart width={width} height={height}>
+      {isEnableGrid
         ? <CartesianGrid strokeDasharray="3 3" />
         : null
       }
-      <XAxis dataKey="category" type="category" padding={{ left: 0, right: 0 }} allowDuplicatedCategory={false} axisLine={false} tickLine={false} />
+      <XAxis dataKey="category" type="category" allowDuplicatedCategory={false} axisLine={false} tickLine={false} />
       <YAxis dataKey="value" axisLine={false} tickLine={false} />
       <Tooltip />
       <Legend verticalAlign="top" />
       
       {data.map(line => (
-        <Line strokeWidth="2" legendType="circle" type="monotone" stroke={line.color} dataKey="value" data={line.data} name={line.name} key={line.name} activeDot={{ r: 6 }} />
+        <Line strokeWidth={chartLine?.strokeWidth} legendType="circle" type={chartLine?.type} stroke={line.color} dataKey="value" data={line.data} name={line.name} key={line.name} activeDot={chartLine?.activeDot} />
       ))}
     </LineChart>
   );

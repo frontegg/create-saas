@@ -2,7 +2,10 @@ import * as React from 'react';
 import Widget from '../Widget';
 import RegularTableComponent from '../../../Components/RegularTableComponent';
 import LineChartComponent from '../../../Components/Charts/LineChart';
+import ScatterChartComponent from '../../../Components/Charts/ScatterChart';
 import {columns, rows} from '../SidebarCategoryTablePage'
+import { Props, SettingsProps } from '../../../Components/Charts/LineChart/lineChartDataDefault'
+import { Data } from '../../../Components/Charts/ScatterChart/ScatterChartDataDefault'
 
 const widgets = [
     {
@@ -36,7 +39,7 @@ const widgets = [
     },
 ]
 
-const lineChartData = 
+const lineChartData: Props = 
 [
   {
     name: 'sales',
@@ -76,18 +79,56 @@ const lineChartData =
   }
 ]
 
+const lineChartRandomSettings: SettingsProps = {
+  width:  400,
+  height: 300,
+  isEnableGrid: false,
+  line: {
+    strokeWidth: 2,
+    type:  'monotone',
+    activeDot: {
+      r: 6
+    }
+  }
+}
+
+const scatterChartRandomData: Data = {
+  lineChartData: [
+    { x: 0, y: 10, z: 200 },
+    { x: 23, y: 15, z: 260 },
+    { x: 54, y: 35, z: 400 },
+    { x: 75, y: 67, z: 280 },
+    { x: 87, y: 88, z: 500 },
+    { x: 98, y: 32, z: 200 }
+  ],
+  xname: 'Sales',
+  yname: 'Conversion'
+}
+
+const scatterChartDefaultSettings: any = {
+  width:  400,
+  height: 400,
+  isEnableGrid: false,
+  strokeColor: 'red',
+  fillColor: 'antiquewhite',
+  scatterName: 'Sales'
+}
+
 
 const Dashboard: React.FC = () => {
     return (
         <div className="dashboard d-flex flex-row flex-wrap justify-content-start">
-            <Widget>
-                <LineChartComponent data={lineChartData} />
-            </Widget>
             {widgets.map( (item, index) => {
                 return <Widget key={index} {...item}/>
             })}
             <Widget>
                 <RegularTableComponent columns={columns} rows={rows} />
+            </Widget>
+            <Widget>
+                <LineChartComponent data={lineChartData} settings={lineChartRandomSettings} />
+            </Widget>
+            <Widget>
+                <ScatterChartComponent data={scatterChartRandomData} settings={scatterChartDefaultSettings} />
             </Widget>
         </div>
         

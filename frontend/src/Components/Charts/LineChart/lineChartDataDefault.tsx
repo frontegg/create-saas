@@ -14,22 +14,15 @@ export type SettingsProps = {
   width?:  number,
   height?: number,
   isEnableGrid?: boolean,
-  xAxis?: {
-    padding?: { 
-      left: number,
-      right: number
-    }
-  },
   line?: {
     strokeWidth?: string | number,
-    type?: 'basis' | 'basisClosed' | 'basisOpen' | 'linear' | 'linearClosed' | 'natural' | 'monotoneX' | 'monotoneY' | 'monotone' | 'step' | 'stepBefore' | 'stepAfter' | Function,
+    type?: 'basis' | 'basisClosed' | 'basisOpen' | 'linear' | 'linearClosed' | 'natural' | 'monotoneX' | 'monotoneY' | 'monotone' | 'step' | 'stepBefore' | 'stepAfter' | undefined,
     activeDot?: Boolean | React.ReactElement | Function | {
       stroke?: string,
       strokeWidth?: string | number,
       r?: number
     }
   }
-
 }
 
 export interface LineChartProps {
@@ -55,12 +48,6 @@ export const lineChartDefaultSettings: SettingsProps = {
   width:  500,
   height: 300,
   isEnableGrid: false,
-  xAxis: {
-    padding: { 
-      left: 0,
-      right: 0
-    }
-  },
   line: {
     strokeWidth: 2,
     type:  'monotone',
