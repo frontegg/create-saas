@@ -3,7 +3,9 @@ import './ProgressBar.scss';
 
 
 type Props = {
-    value: number
+    value: number,
+    colorClass?: string,
+    colorCss?: string
 }
 
 const ProgressBar: React.FC<Props> = ({ value }) => {
@@ -17,6 +19,34 @@ const ProgressBar: React.FC<Props> = ({ value }) => {
                 {value}%
             </div>
         </div>
+    )
+}
+
+export const ProgressLine: React.FC<Props> = ({ colorCss, colorClass="", value }) => {
+
+    return (
+            <div className="w-100">
+                <div className={`progress-bar h-1 ${colorClass}`} 
+                    style={{
+                        backgroundColor: colorCss, 
+                        width: `${value}%` }} />
+            </div>
+            
+    )
+}
+
+export const ProgressBarWithValue: React.FC<Props> = ({ colorCss, colorClass="", value }) => {
+
+    return (
+        <div className="w-100">
+            <div className={`progress-bar ${colorClass}`} 
+                    style={{
+                        backgroundColor: colorCss, 
+                        width: `${value}%` }} >
+                {value}%
+            </div>
+        </div>
+            
     )
 }
 

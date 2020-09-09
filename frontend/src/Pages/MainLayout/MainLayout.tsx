@@ -20,6 +20,9 @@ import Badges from './UIScreenPage/UIElementsPages/Badges';
 import Dropdowns from './UIScreenPage/UIElementsPages/Dropdowns';
 import Buttons from './UIScreenPage/UIElementsPages/Buttons';
 import Paginations from './UIScreenPage/UIElementsPages/Paginations';
+import Images from './UIScreenPage/UIElementsPages/Images';
+import Lists from './UIScreenPage/UIElementsPages/Lists';
+import ProgressBars from './UIScreenPage/UIElementsPages/ProgressBars';
 const MainLayout: React.FC = () => {
     const [fixedSidebar, setFixSidebar] = React.useState<boolean>(true);
     const handleFixSidebar = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -109,6 +112,9 @@ const MainLayout: React.FC = () => {
                                     <Route path="/ui-elements/buttons" component={Buttons}/>
                                     <Route path="/ui-elements/dropdowns" component={Dropdowns}/>
                                     <Route path="/ui-elements/pagination" component={Paginations}/>
+                                    <Route path="/ui-elements/images" component={Images}/>
+                                    <Route path="/ui-elements/lists" component={Lists}/>
+                                    <Route path="/ui-elements/progress-bar" component={ProgressBars}/>
                                 </Switch>
                             </UIScreenPage>
                         }/>

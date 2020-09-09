@@ -9,10 +9,34 @@ type Props = {
     textColor?: string,
     boxShadow?: string,
     onHoverStyle?: React.CSSProperties,
+    onActiveStyle?: React.CSSProperties,
+    onFocusStyle?: React.CSSProperties,
+    activeClassName?: string,
+    hoverClassName?: string,
+    focusClassName?: string
 } & React.HTMLAttributes<HTMLElement>;
 
-const Base:React.FC<Props > = ({onHoverStyle = {}, style = {}, boxShadow = undefined, textColor = undefined, bgColor = undefined, color = "", outline, children, className, ...next}) => {
+const Base:React.FC<Props > = ({
+    style = {}, 
+    onActiveStyle = {},
+    onHoverStyle = {},
+    onFocusStyle = {},
+    boxShadow = undefined, 
+    textColor = undefined, 
+    bgColor = undefined, 
+    color = "", 
+    outline, 
+    children, 
+    className,
+    activeClassName = "",
+    hoverClassName = "",
+    focusClassName = "",
+    onClick,
+    onFocus,
+    ...next}) => {
     const [hover, setHover] = React.useState(false);
+    const [active, setActive] = React.useState(false);
+    const [focus, setFocus] = React.useState(false);
     if (bgColor || textColor || boxShadow) {
         style = {
             ...style,
@@ -21,7 +45,27 @@ const Base:React.FC<Props > = ({onHoverStyle = {}, style = {}, boxShadow = undef
             boxShadow: boxShadow,
         }
     }
-    return <B {...next} onMouseEnter={() => setHover(!hover)}  onMouseLeave={() => setHover(!hover)} className={className} style={ hover ? { ...style, ...onHoverStyle} : style} outline={outline} color={color}>
+    return <B {...next} 
+        onClick={(e: React.MouseEvent<HTMLElement, MouseEvent>) => { 
+            onClick && onClick(e);
+            setActive(!active)}
+        }
+        onFocus={(e: React.FocusEvent<HTMLElement>) => {
+            onFocus && onFocus(e);
+            setFocus(!focus);
+        }} 
+        onMouseEnter={() => setHover(!hover)} 
+        onMouseLeave={() => setHover(!hover)} 
+        className={`${className} ${focus ? focusClassName : ""} ${active ? activeClassName : ""} ${hover ? hoverClassName : ""}`} 
+        style={{
+            ...style, 
+            ...(hover && onHoverStyle),
+            ...(active && onActiveStyle),
+            ...(focus && onFocusStyle)
+        }} 
+        outline={outline} 
+        color={color}
+        >
         {children}
     </B>
 }

@@ -18,6 +18,32 @@ const Buttons:React.FC = () => {
             <CircleButton color="primary" className="w-8 h-8 mr-3">1</CircleButton>
         </Widget>
         <Widget className="w-100">
+            <Button color="primary" 
+                className="rounded-0 mr-3 focus:shadow-none"
+                activeClassName="border-dark bg-dark text-white"
+                hoverClassName="bg-warning border-warning text-muted"
+                focusClassName="shadow-none"
+            >
+                Button
+            </Button>
+            <Button color="primary" 
+                activeClassName="border-dark bg-dark text-white"
+                hoverClassName="bg-warning border-warning text-muted"
+                focusClassName="shadow-none"
+                className="rounded mr-3 focus:shadow-none"
+            >
+                Button
+            </Button>
+            <CircleButton color="primary" 
+                activeClassName="border-dark bg-dark text-color-light"
+                hoverClassName="bg-warning border-warning text-muted"
+                focusClassName="shadow-none"
+                className="w-8 h-8 mr-3 focus:shadow-none"
+            >
+                1
+            </CircleButton>
+        </Widget>
+        <Widget className="w-100">
             <OutlineButton color="primary" className="rounded-0 mr-3">Button</OutlineButton>
             <OutlineButton color="primary" className="rounded mr-3">Button</OutlineButton>
             <CircleButton outline color="primary" className="w-8 h-8 mr-3">1</CircleButton>
