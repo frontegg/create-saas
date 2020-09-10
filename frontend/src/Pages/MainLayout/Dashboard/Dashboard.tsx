@@ -3,9 +3,13 @@ import Widget from '../Widget';
 import RegularTableComponent from '../../../Components/RegularTableComponent';
 import LineChartComponent from '../../../Components/Charts/LineChart';
 import ScatterChartComponent from '../../../Components/Charts/ScatterChart';
+import PieChartComponent from '../../../Components/Charts/PieChart';
+import BarChartComponent from '../../../Components/Charts/BarChart';
 import {columns, rows} from '../SidebarCategoryTablePage'
 import { Props, SettingsProps } from '../../../Components/Charts/LineChart/lineChartDataDefault'
 import { Data } from '../../../Components/Charts/ScatterChart/ScatterChartDataDefault'
+import { PieData, PieSettingsProps } from '../../../Components/Charts/PieChart/PieChartDataDefault'
+import { BarData, BarSettingsProps } from '../../../Components/Charts/BarChart/BarChartDataDefault'
 
 const widgets = [
     {
@@ -43,7 +47,6 @@ const lineChartData: Props =
 [
   {
     name: 'sales',
-    color: '#90caf9',
     data: [
       { category: 'Jan', value: 4000 },
       { category: 'Feb', value: 3000 },
@@ -61,7 +64,6 @@ const lineChartData: Props =
   },
   {
     name: 'conversions',
-    color: '#4ca5f5',
     data: [
       { category: 'Jan', value: 2400 },
       { category: 'Feb', value: 1398 },
@@ -83,13 +85,17 @@ const lineChartRandomSettings: SettingsProps = {
   width:  400,
   height: 300,
   isEnableGrid: false,
+  xaxis: {
+    type: 'category'
+  },
   line: {
     strokeWidth: 2,
     type:  'monotone',
     activeDot: {
       r: 6
     }
-  }
+  },
+  colors: ['#90caf9', '#4ca5f5']
 }
 
 const scatterChartRandomData: Data = {
@@ -105,13 +111,83 @@ const scatterChartRandomData: Data = {
   yname: 'Conversion'
 }
 
-const scatterChartDefaultSettings: any = {
+const scatterChartRandomSettings: any = {
   width:  400,
   height: 400,
   isEnableGrid: false,
   strokeColor: 'red',
   fillColor: 'antiquewhite',
   scatterName: 'Sales'
+}
+
+const pieChartRandomData: PieData =
+[
+  { name: 'Desktop', value: 200 },
+  { name: 'Mobile', value: 200 },
+  { name: 'Tablet', value: 200 }
+]
+
+const pieChartRandomSettings: PieSettingsProps = {
+  width:  300,
+  height: 300,
+  pie: {
+    cx: 140,
+    cy: 100,
+    startAngle: 0,
+    endAngle: 0,
+    innerRadius: 60,
+    outerRadius: 80,
+    paddingAngle: 1
+  },
+  customColors: ['#90caf9', '#4ca5f5', '#3d88e5']
+}
+
+const barChartRandomData: BarData =
+[
+  {
+    name: 'Jan', uv: 140, pv: 240,
+  },
+  {
+    name: 'Feb', uv: 67, pv: 85,
+  },
+  {
+    name: 'May', uv: 54, pv: 23,
+  },
+  {
+    name: 'Apr', uv: 67, pv: 90,
+  },
+  {
+    name: 'Mar', uv: 35, pv: 67,
+  },
+  {
+    name: 'Jun', uv: 12, pv: 43,
+  },
+  {
+    name: 'Jul', uv: 56, pv: 87,
+  },
+  {
+    name: 'Aug', uv: 69, pv: 78,
+  },
+  {
+    name: 'Sep', uv: 22, pv: 32,
+  },
+  {
+    name: 'Oct', uv: 45, pv: 12,
+  },
+  {
+    name: 'Nov', uv: 64, pv: 89,
+  },
+  {
+    name: 'Dec', uv: 22, pv: 99,
+  }
+]
+
+const barChartRandomSettings: BarSettingsProps = {
+  width:  500,
+  height: 300,
+  isEnableGrid: false,
+  isEnableLegend: false,
+  colors: ['#90caf9', '#3d88e5']
 }
 
 
@@ -122,13 +198,19 @@ const Dashboard: React.FC = () => {
                 return <Widget key={index} {...item}/>
             })}
             <Widget>
+                <PieChartComponent data={pieChartRandomData} settings={pieChartRandomSettings} />
+            </Widget>
+            <Widget>
+                <BarChartComponent data={barChartRandomData} settings={barChartRandomSettings} />
+            </Widget>
+            <Widget>
                 <RegularTableComponent columns={columns} rows={rows} />
             </Widget>
             <Widget>
                 <LineChartComponent data={lineChartData} settings={lineChartRandomSettings} />
             </Widget>
             <Widget>
-                <ScatterChartComponent data={scatterChartRandomData} settings={scatterChartDefaultSettings} />
+                <ScatterChartComponent data={scatterChartRandomData} settings={scatterChartRandomSettings} />
             </Widget>
         </div>
         

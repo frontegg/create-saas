@@ -20,6 +20,9 @@ import Badges from './UIScreenPage/UIElementsPages/Badges';
 import Dropdowns from './UIScreenPage/UIElementsPages/Dropdowns';
 import LineChartComponent from '../../Components/Charts/LineChart';
 import ScatterChartComponent from '../../Components/Charts/ScatterChart';
+import PieChartComponent from '../../Components/Charts/PieChart';
+import BarChartComponent from '../../Components/Charts/BarChart';
+
 const MainLayout: React.FC = () => {
     const [fixedSidebar, setFixSidebar] = React.useState<boolean>(true);
     const handleFixSidebar = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -115,6 +118,8 @@ const MainLayout: React.FC = () => {
                                 <Switch>
                                     <Route path="/charts/line-charts" component={LineChartComponent}/>
                                     <Route path="/charts/scatter-charts" component={ScatterChartComponent}/>
+                                    <Route path="/charts/pie-charts" component={PieChartComponent}/>
+                                    <Route path="/charts/bar-charts" component={BarChartComponent}/>
                                 </Switch>
                             </UIScreenPage>
                         }/>

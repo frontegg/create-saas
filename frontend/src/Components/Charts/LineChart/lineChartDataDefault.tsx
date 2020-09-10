@@ -3,7 +3,6 @@ import * as React from 'react';
 export type Props =  
 {
   name: string,
-  color?: string,
   data: {
     category: string | number,
     value: string | number,
@@ -14,6 +13,9 @@ export type SettingsProps = {
   width?:  number,
   height?: number,
   isEnableGrid?: boolean,
+  xaxis?: {
+    type: 'category' | 'number'
+  },
   line?: {
     strokeWidth?: string | number,
     type?: 'basis' | 'basisClosed' | 'basisOpen' | 'linear' | 'linearClosed' | 'natural' | 'monotoneX' | 'monotoneY' | 'monotone' | 'step' | 'stepBefore' | 'stepAfter' | undefined,
@@ -23,6 +25,7 @@ export type SettingsProps = {
       r?: number
     }
   }
+  colors: string[],
 }
 
 export interface LineChartProps {
@@ -48,11 +51,15 @@ export const lineChartDefaultSettings: SettingsProps = {
   width:  500,
   height: 300,
   isEnableGrid: false,
+  xaxis: {
+    type: 'category'
+  },
   line: {
     strokeWidth: 2,
     type:  'monotone',
     activeDot: {
       r: 6
     }
-  }
+  },
+  colors: ['#90caf9', '#4ca5f5']
 }
