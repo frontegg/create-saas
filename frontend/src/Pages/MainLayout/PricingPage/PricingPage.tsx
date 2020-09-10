@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { PricingSmallCards, PricingRowCards, PricingLargeCards } from '../../../Components/PricingComponents'
+import Paper from '@material-ui/core/Paper';
+
 
 export interface ICardSmallLarge {
   data: ICardSLData[]
@@ -203,11 +205,11 @@ const PricingPage: React.FC = () => {
           Pricing
         </div>
       </div>
-      <div className="main">
+      <Paper elevation={0} className="main">
         <PricingSmallCards data={cards1} />
         <PricingRowCards data={cards2} />
         <PricingLargeCards data={cards1} />
-      </div>
+      </Paper>
     </div>
   )
 }

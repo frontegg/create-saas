@@ -17,6 +17,7 @@ import SettingsButton from '../../Components/SettingsButton';
 import PricingPage from './PricingPage'
 import TermsPage from './TermsPage'
 import DocumentationPage from './DocumentationPage'
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { stateType } from '../../Components/SettingsButton/types';
 import UIScreenPage from './UIScreenPage';
 import Badges from './UIScreenPage/UIElementsPages/Badges';
@@ -37,8 +38,7 @@ const MainLayout: React.FC = () => {
     const handleCollapse = (event: React.ChangeEvent<HTMLInputElement>) => collapse(!collapsed);
 
     const [hovered, hoverExpand] = React.useState<boolean>(false);
-    const handleFixeHover = (event: React.MouseEvent<HTMLElement,  MouseEvent>) =>
-    {
+    const handleFixeHover = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
         if (fixedSidebar) {
             hoverExpand(!hovered);
         }
@@ -64,7 +64,7 @@ const MainLayout: React.FC = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
-    
+
     const switches = [
         {
             label: "fix sidebar",
@@ -75,53 +75,79 @@ const MainLayout: React.FC = () => {
             state: [fixedNavbar, setFixNavbar] as stateType<boolean>
         }
     ]
+
+    const [palletType, setPalletType] = React.useState<any>('light');
+    const palette = palletType === 'navbar' || palletType === 'sidebar' ? 'light' : palletType
+    const darkTheme = createMuiTheme({
+        palette: {
+            type: palette,
+            primary: {
+                main: '#2196f3',
+            }
+        }
+    });
+
+    React.useEffect(() => {
+        document.getElementById('root')!.className = ''
+    }, [])
+
+    const handleThemeChange = (value: any) => {
+        setPalletType(value)
+        document.getElementById('root')!.className = ''
+        document.getElementById('root')?.classList.add(`theme-${value}`)
+    };
+
     return (
-        <div className={`mainLayout ${scrolled ? "scrolled" : "onTop"} ${fixedSidebar ? "fixedSidebar" : ""} ${fixedNavbar ? "fixedNavbar" : ""}`}>
-            <NavBar 
-                className={`${collapsed ? 
-                    hovered && fixedSidebar ? "expanded": "collapsed" 
-                    : "expanded"} 
-                    ${fixedNavbar ? "position-fixed" : "position-absolute"}`}/>
-            <Sidebar 
-                className={`${collapsed ? 
-                    hovered && fixedSidebar ? "expanded": "collapsed" 
-                    : "expanded"}`} 
-                onMouseLeave={handleFixeHover}
-                onMouseEnter={handleFixeHover}
+        <ThemeProvider theme={darkTheme}>
+            <div className={`mainLayout ${scrolled ? "scrolled" : "onTop"} ${fixedSidebar ? "fixedSidebar" : ""} ${fixedNavbar ? "fixedNavbar" : ""}`}>
+                <NavBar
+                    settings={switches}
+                    handleThemeChange={handleThemeChange}
+                    palletType={palletType}
+                    className={`${collapsed ?
+                        hovered && fixedSidebar ? "expanded" : "collapsed"
+                        : "expanded"} 
+                    ${fixedNavbar ? "position-fixed" : "position-absolute"}`} />
+                <Sidebar
+                    className={`${collapsed ?
+                        hovered && fixedSidebar ? "expanded" : "collapsed"
+                        : "expanded"}`}
+                    onMouseLeave={handleFixeHover}
+                    onMouseEnter={handleFixeHover}
                 />
-            <div className="main" >
-                <div className="p-4 content">
-                    <Switch>
-                        <Route path='/tables/datatable' component={Datatable} />
-                        <Route path='/dashboard' component={Dashboard} />
-                        <Route path='/forms/sample-forms' component={SampleFormPage} />
-                        <Route path='/forms/default-forms' component={DefaultFormPage} />
-                        <Route path='/forms/sliders' component={SliderPage} />
-                        <Route path='/tables/datatable' component={Datatable} />
-                        <Route path='/tables/regular' component={RegularTable} />
-                        <Route path='/forms/datepicker' component={DatePickerPage} />
-                        <Route path='/forms/switches' component={SwitchPage} />
-                        <Route path='/forms/formsteps' component={FormStepsPage} />
-                        <Route path='/tables/sidebar-category' component={SidebarCategoryTable} />
-                        <Route path='/pricing' component={PricingPage} />
-                        <Route path='/terms' component={TermsPage} />
-                        <Route path='/doc' component={DocumentationPage} />
-                        <Route path="/ui-elements" render={(props) => 
-                            <UIScreenPage>
-                                <Switch>
-                                    <Route path="/ui-elements/badges" component={Badges}/>
-                                    <Route path="/ui-elements/dropdowns" component={Dropdowns}/>
-                                </Switch>
-                            </UIScreenPage>
-                        }/>
-                    </Switch>
+                <div className="main" >
+                    <div className="p-4 content">
+                        <Switch>
+                            <Route path='/tables/datatable' component={Datatable} />
+                            <Route path='/dashboard' component={Dashboard} />
+                            <Route path='/forms/sample-forms' component={SampleFormPage} />
+                            <Route path='/forms/default-forms' component={DefaultFormPage} />
+                            <Route path='/forms/sliders' component={SliderPage} />
+                            <Route path='/tables/datatable' component={Datatable} />
+                            <Route path='/tables/regular' component={RegularTable} />
+                            <Route path='/forms/datepicker' component={DatePickerPage} />
+                            <Route path='/forms/switches' component={SwitchPage} />
+                            <Route path='/forms/formsteps' component={FormStepsPage} />
+                            <Route path='/tables/sidebar-category' component={SidebarCategoryTable} />
+                            <Route path='/pricing' component={PricingPage} />
+                            <Route path='/terms' component={TermsPage} />
+                            <Route path='/doc' component={DocumentationPage} />
+                            <Route path="/ui-elements" render={(props) =>
+                                <UIScreenPage>
+                                    <Switch>
+                                        <Route path="/ui-elements/badges" component={Badges} />
+                                        <Route path="/ui-elements/dropdowns" component={Dropdowns} />
+                                    </Switch>
+                                </UIScreenPage>
+                            } />
+                        </Switch>
+                    </div>
+                    <input type="checkbox" id="collapsing" className="d-none" onChange={handleCollapse} checked={collapsed} />
+                    <input type="checkbox" id="fixsidebar" className="d-none" onChange={handleFixSidebar} checked={fixedSidebar} />
+                    <input type="checkbox" id="fixnavbar" className="d-none" onChange={handlesFixNavbar} checked={fixedNavbar} />
                 </div>
             </div>
-            <SettingsButton settings={switches} />
-            <input type="checkbox" id="collapsing" className="d-none" onChange={handleCollapse} checked={collapsed} />
-            <input type="checkbox" id="fixsidebar" className="d-none" onChange={handleFixSidebar} checked={fixedSidebar} />
-            <input type="checkbox" id="fixnavbar" className="d-none" onChange={handlesFixNavbar} checked={fixedNavbar} />
-        </div>
+        </ThemeProvider>
     )
 }
 

@@ -1,3 +1,5 @@
+@import "../../Pages/MainLayout/themes.scss";
+
 .inputElement {
     display: flex;
     flex-direction: column;
@@ -18,5 +20,6 @@
         border-radius: .25rem;
         padding: .5rem .75rem;
         line-height: 1.5;
+        
     }
 }

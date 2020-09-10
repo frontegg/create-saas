@@ -5,7 +5,8 @@ import {
   Typography,
   Button,
   CardActions,
-  CardContent
+  CardContent,
+  Paper
 } from '@material-ui/core';
 
 import CheckIcon from '@material-ui/icons/Check';
@@ -17,7 +18,6 @@ const useStyles = makeStyles({
     width: '100%',
     marginTop: '1rem',
     padding: '1rem',
-    backgroundColor: 'white',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
@@ -73,7 +73,7 @@ const useStyles = makeStyles({
   },
   cardPriceTxt: {
     fontWeight: 400,
-    color: '#3f51b5',
+    color: '#2196f3',
   }
 });
 
@@ -108,7 +108,7 @@ const PricingRowCards = ({ data }: ICardRow) => {
 
 
   return (
-    <div className={classes.root}>
+    <Paper elevation={0} className={classes.root}>
       <span className={classes.headerTxt} >
         Lorem ipsum dolor sit amet.
       </span>
@@ -121,7 +121,7 @@ const PricingRowCards = ({ data }: ICardRow) => {
         </div>
         <RowCard />
       </div>
-    </div>
+    </Paper>
   );
 }
 
