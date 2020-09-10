@@ -10,6 +10,7 @@
   justify-content: start;
   align-items: center;
   height: 4rem;
+  background-color: white;
   @include themify($themes) {
     color: themed("textColor");
     background-color: themed("backgroundColor");
@@ -34,6 +35,7 @@
     border-width: 0;
     box-sizing: border-box;
     padding: 0 3em;
+    background-color: #ebebeb;
     @include themify($themes) {
       background-color: themed("backgroundElements");
       color: themed("textColor");

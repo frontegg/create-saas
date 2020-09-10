@@ -11,6 +11,11 @@
   }
 }
 
+.switcher-wrapper {
+  display: flex;
+  align-items: center;
+}
+
 @media (min-width: 1024px) {
   .form_switch {
     padding-right: 1rem;

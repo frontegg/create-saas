@@ -89,11 +89,11 @@ const MainLayout: React.FC = () => {
 
     const switches = [
         {
-            label: "fix sidebar",
+            label: "Fix sidebar",
             state: [fixedSidebar, setFixSidebar] as stateType<boolean>
         },
         {
-            label: "fix navbar",
+            label: "Fix navbar",
             state: [fixedNavbar, setFixNavbar] as stateType<boolean>
         }
     ]

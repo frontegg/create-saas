@@ -6,6 +6,7 @@ import ProfileImage from '../ProfileImage';
 import Drawer from '@material-ui/core/Drawer';
 import SettingsIcon from '@material-ui/icons/Settings';
 import LabelSwitch from '../../Components/Switch';
+import Switch from '@material-ui/core/Switch';
 import { List, ListItem, ListItemText, IconButton } from '@material-ui/core';
 import { stateType } from '../../Components/SettingsButton/types';
 
@@ -68,16 +69,14 @@ const NavBar = ({ className, handleThemeChange, palletType, settings }:
                         const [state, setState] = item.state;
                         return (
                             <ListItem>
-                                <LabelSwitch
-                                    className="w-100 p-2"
-                                    label=""
-                                    text_label={item.label}
-                                    name=""
-                                    track_color="rgb(144, 202, 249)"
-                                    slider_color="rgb(33, 150, 243)"
-                                    check={state}
-                                    value={state}
-                                    onChange={() => setState(!state)} />
+                                <ListItemText primary={item.label} />
+                                <Switch
+                                    checked={state}
+                                    onChange={() => setState(!state)}
+                                    color="primary"
+                                    name="checkedB"
+                                    inputProps={{ 'aria-label': 'primary checkbox' }}
+                                />
                             </ListItem>
                         )
                     })}
