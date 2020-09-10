@@ -1,11 +1,12 @@
 import * as React from 'react';
 import './Dropdown.scss';
 
-import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Dropdown as D, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 type Direction = "up" | "down" | "left" | "right";
 type Props = {
     label?: string | JSX.Element,
     caret?: boolean,
+    right?: boolean,
     direction?: Direction,
     color?: string,
     disabled?: boolean,
@@ -14,6 +15,7 @@ type Props = {
 const Base:React.FC<Props & React.HTMLAttributes<HTMLElement>> = ({
     label = "Button dropdown",
     caret = true, 
+    right = false,
     direction = "down",
     color = "",
     disabled = false,
@@ -25,14 +27,14 @@ const Base:React.FC<Props & React.HTMLAttributes<HTMLElement>> = ({
   const toggle = () => setOpen(!dropdownOpen);
 
   return (
-    <ButtonDropdown className={className} direction={direction} isOpen={dropdownOpen} toggle={toggle}>
+    <D className={className} direction={direction} isOpen={dropdownOpen} toggle={toggle}>
       <DropdownToggle caret={caret} color={color} size={size}>
         {label}
       </DropdownToggle>
-      <DropdownMenu>
+      <DropdownMenu right={right}>
         {children}
       </DropdownMenu>
-    </ButtonDropdown>
+    </D>
   );
 }
 

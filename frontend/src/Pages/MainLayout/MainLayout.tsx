@@ -19,9 +19,19 @@ import UIScreenPage from './UIScreenPage';
 import Badges from './UIScreenPage/UIElementsPages/Badges';
 import Dropdowns from './UIScreenPage/UIElementsPages/Dropdowns';
 import LineChartComponent from '../../Components/Charts/LineChart';
-import ScatterChartComponent from '../../Components/Charts/ScatterChart';
 import PieChartComponent from '../../Components/Charts/PieChart';
 import BarChartComponent from '../../Components/Charts/BarChart';
+import ScatterChartComponent from '../../Components/Charts/ScatterChart';
+import Buttons from './UIScreenPage/UIElementsPages/Buttons';
+import Paginations from './UIScreenPage/UIElementsPages/Paginations';
+import Images from './UIScreenPage/UIElementsPages/Images';
+import Lists from './UIScreenPage/UIElementsPages/Lists';
+import ProgressBars from './UIScreenPage/UIElementsPages/ProgressBars';
+import Alerts from './UIScreenPage/UIElementsPages/Alerts';
+import Alert from '../../Components/Alert';
+import NotificationContext,{NotificationContextProvider} from './NotificationContext';
+import Notifications from './UIScreenPage/UIElementsPages/Notifications';
+import Tabs from './UIScreenPage/UIElementsPages/Tabs';
 
 const MainLayout: React.FC = () => {
     const [fixedSidebar, setFixSidebar] = React.useState<boolean>(true);
@@ -40,6 +50,7 @@ const MainLayout: React.FC = () => {
     const [hovered, hoverExpand] = React.useState<boolean>(false);
     const handleFixeHover = (event: React.MouseEvent<HTMLElement,  MouseEvent>) =>
     {
+        if(collapsed)
         if (fixedSidebar) {
             hoverExpand(!hovered);
         }
@@ -59,9 +70,11 @@ const MainLayout: React.FC = () => {
             }
     }
 
+    const [contextState, setContext] = React.useState<any>();
+    const context = React.useContext(NotificationContext);
     React.useEffect(() => {
         window.addEventListener('scroll', handleScroll);
-    
+        setContext(context);
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
@@ -78,7 +91,22 @@ const MainLayout: React.FC = () => {
         }
     ]
     return (
+        
+            <>
+                { (contextState &&
+                    <Alert 
+                        raised={contextState!.raised}
+                        outlined={contextState!.outlined}
+                        borderLeft={contextState!.borderLeft}
+                        className={` position-realtive ${contextState!.className}`} 
+                        open={contextState!.open} 
+                        style={{zIndex: 1000}}>
+                        {contextState!.text}
+                    </Alert>
+                )
+                }
         <div className={`mainLayout ${scrolled ? "scrolled" : "onTop"} ${fixedSidebar ? "fixedSidebar" : ""} ${fixedNavbar ? "fixedNavbar" : ""}`}>
+            
             <NavBar 
                 className={`${collapsed ? 
                     hovered && fixedSidebar ? "expanded": "collapsed" 
@@ -108,8 +136,16 @@ const MainLayout: React.FC = () => {
                         <Route path="/ui-elements" render={(props) => 
                             <UIScreenPage>
                                 <Switch>
+                                    <Route path="/ui-elements/alerts" component={Alerts}/>
                                     <Route path="/ui-elements/badges" component={Badges}/>
+                                    <Route path="/ui-elements/buttons" component={Buttons}/>
                                     <Route path="/ui-elements/dropdowns" component={Dropdowns}/>
+                                    <Route path="/ui-elements/pagination" component={Paginations}/>
+                                    <Route path="/ui-elements/images" component={Images}/>
+                                    <Route path="/ui-elements/lists" component={Lists}/>
+                                    <Route path="/ui-elements/progress-bar" component={ProgressBars}/>
+                                    <Route path="/ui-elements/notifications" component={Notifications}/>
+                                    <Route path="/ui-elements/tabs" component={Tabs}/>
                                 </Switch>
                             </UIScreenPage>
                         }/>
@@ -131,6 +167,7 @@ const MainLayout: React.FC = () => {
             <input type="checkbox" id="fixsidebar" className="d-none" onChange={handleFixSidebar} checked={fixedSidebar}/>
             <input type="checkbox" id="fixnavbar" className="d-none" onChange={handlesFixNavbar} checked={fixedNavbar}/>
         </div>
+        </>
     )
 }
 
