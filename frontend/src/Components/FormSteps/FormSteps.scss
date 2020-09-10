@@ -141,9 +141,9 @@ select.list-dt:focus {
 }
 
 #progressbar {
-  margin-bottom: 30px;
-  overflow: hidden;
-  color: lightgrey;
+    margin-bottom: 0px;
+    overflow: hidden;
+    color: lightgrey
 }
 
 #progressbar .active {
@@ -180,27 +180,27 @@ select.list-dt:focus {
 }
 
 #progressbar li:before {
-  width: 45px;
-  height: 45px;
-  line-height: 45px;
-  display: block;
-  font-size: 18px;
-  color: #ffffff;
-  background: lightgray;
-  border-radius: 50%;
-  margin: 0 auto 10px auto;
-  padding: 2px;
+    width: 40px;
+    height: 40px;
+    line-height: 45px;
+    display: block;
+    font-size: 18px;
+    color: #ffffff;
+    background: lightgray;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    padding: 0px
 }
 
 #progressbar li:after {
-  content: "";
-  width: 100%;
-  height: 4px;
-  background: lightgray;
-  position: absolute;
-  left: 0;
-  top: 22px;
-  z-index: -1;
+    content: '';
+    width: 100%;
+    height: 4px;
+    background: lightgray;
+    position: absolute;
+    left: 0;
+    top: 20px;
+    z-index: -1
 }
 
 #progressbar li.active:before,
@@ -239,6 +239,8 @@ select.list-dt:focus {
 }
 
 .stepnumber {
+    border-radius: 100px;
+    height: 2rem;
 }
 
 .fullwidth {
@@ -253,6 +255,7 @@ select.list-dt:focus {
   background-color: #2196f3;
 }
 
+
 .text-color {
   --text-opacity: 1;
   color: #212121;
@@ -261,6 +264,14 @@ select.list-dt:focus {
 .pad {
   padding: 0.5rem;
 }
+
+
+.step {
+    min-width: 2rem;
+}
+
+.opacity-25 {
+    opacity: .25;
 
 .width-2 {
   width: 2rem;
