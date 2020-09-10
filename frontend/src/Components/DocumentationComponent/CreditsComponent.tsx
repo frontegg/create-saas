@@ -38,7 +38,6 @@ const useStyles = makeStyles({
   },
   boldTxt: {
     fontWeight: 600,
-    color: 'black'
   },
   grayBackground: {
     backgroundColor: '#f5f5f5'
@@ -58,7 +57,7 @@ const CreditsComponent = ({ credits }: ICreditsComponent) => {
           {credits.map((el: ICredits, i: number) =>
             <li key={i} className={classes.marginBottom}>
               <div className={classes.marginBottom}>
-                <a href={el.href} className={classes.boldTxt}>{el.name}</a>
+                <a href={el.href} className={'credit-link'}>{el.name}</a>
               </div>
               {el.desc}
             </li>

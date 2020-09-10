@@ -6,7 +6,8 @@ import {
   Button,
   CardActions,
   CardContent,
-  ListItemIcon
+  ListItemIcon,
+  Paper
 } from '@material-ui/core';
 
 import EqualizerIcon from '@material-ui/icons/Equalizer';
@@ -23,7 +24,6 @@ const useStyles = makeStyles({
     width: '100%',
     marging: '1rem',
     padding: '1rem',
-    backgroundColor: 'white',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
@@ -78,7 +78,7 @@ const useStyles = makeStyles({
   },
   cardPriceTxt: {
     fontWeight: 400,
-    color: '#3f51b5',
+    color: '#2196f3',
   }
 });
 
@@ -138,7 +138,7 @@ const PricingSmallCards = ({ data }: ICardSmallLarge) => {
   }
 
   return (
-    <div className={classes.root}>
+    <Paper elevation={0} className={classes.root}>
       <span className={classes.headerTxt} >
         Lorem ipsum dolor sit amet.
       </span>
@@ -148,7 +148,7 @@ const PricingSmallCards = ({ data }: ICardSmallLarge) => {
       <div className={classes.cardsWrapper}>
         {data.map((card: ICardSLData) => <SmallCard card={card} />)}
       </div>
-    </div>
+    </Paper>
   );
 }
 

@@ -1,32 +1,20 @@
 import React, { useState } from 'react';
-import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import { makeStyles } from '@material-ui/core/styles';
 import InstallationComponent from './InstallationComponent'
 import ChangeLogComponent from './ChangeLogComponent'
 import CodeStructureComponent from './CodeStructureComponent'
 import FAQComponent from './FAQComponent'
 import CreditsComponent from './CreditsComponent'
+import {
+  Paper
+} from '@material-ui/core';
+import './Documentation.scss'
 
 const useStyles = makeStyles({
   root: {
-    width: '100%',
-    backgroundColor: 'white',
-
-  },
-  activeTab: {
-    borderBottom: 'solid 2px #007bff',
-    color: 'black',
-    cursor: 'pointer',
-    fontWeight: 700,
-    padding: '1rem'
-  },
-  tab: {
-    cursor: 'pointer',
-    color: 'black',
-    fontWeight: 700,
-    padding: '1rem'
+    width: '100%'
   }
-
 });
 
 const credits = [
@@ -151,7 +139,7 @@ const tabs = [
 ]
 
 const DocumentationComponent = (props: any) => {
-  const [activeTab, setActiveTab] = useState(tabs[1]);
+  const [activeTab, setActiveTab] = useState(tabs[0]);
   const classes = useStyles();
 
   const toggle = (tab: any) => {
@@ -161,12 +149,12 @@ const DocumentationComponent = (props: any) => {
 
 
   return (
-    <div className={classes.root}>
+    <Paper elevation={0} className={classes.root}>
       <Nav >
         {tabs.map((tab: string) =>
           <NavItem key={tab}>
             <NavLink
-              className={activeTab === tab ? classes.activeTab : classes.tab}
+              className={`${activeTab === tab ? 'active-tab' : 'default-tab '}`}
               onClick={() => { toggle(tab); }}
             >
               {tab}
@@ -192,7 +180,7 @@ const DocumentationComponent = (props: any) => {
           <CreditsComponent credits={credits} />
         </TabPane>
       </TabContent>
-    </div>
+    </Paper>
   );
 }
 

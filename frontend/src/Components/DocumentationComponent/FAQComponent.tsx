@@ -1,5 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import {
+  Paper
+} from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
@@ -39,11 +42,12 @@ const useStyles = makeStyles({
     backgroundColor: '#f5f5f5',
     fontWeight: 600,
     padding: '0.2rem',
-    width: 'fit-content'
+    width: 'fit-content',
+    color: 'black'
   },
   bigTxt: {
     fontWeight: 600,
-    color: 'black',
+    // color: 'black',
     fontSize: '1.1rem'
   },
   grayBackground: {
@@ -55,7 +59,7 @@ const FAQComponent = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <Paper elevation={0} className={classes.root}>
       <div className={classes.textOpacity}>CUSTOMIZATION</div>
       <div className={classes.textHeader}>Frequently asked questions</div>
       <div className={classes.content}>
@@ -99,7 +103,7 @@ const FAQComponent = () => {
             </li>
         </ul>
       </div>
-    </div>
+    </Paper>
   );
 }
 

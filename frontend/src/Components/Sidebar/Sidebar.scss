@@ -1,178 +1,200 @@
-.sideBar {
-    flex: 1 0 16rem;
-    max-width: 16rem;
-    border-right: 1px solid #EEEEEE;
-    display: flex;
-    flex-flow: column nowrap;
-    transition: all .33s ease;
-    background-color: #fff;
-    @at-root {
-         @media screen and (min-width: 768px){
-            .fixedSidebar
-            {
-                .sideBar {
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    height: 100%;
-                    &.expanded {
-                        width: 16rem;
-                        overflow-y: auto;
-                        &::-webkit-scrollbar {
-                            display: none;
-                        }
-                    }
-                    &.collapsed {
-                        width: 4rem;
-                        overflow-y: hidden;
-                    }
-                }
-                &.scrolled {
-                    .sideBar {
-                        z-index: 120;
-                    }
-                }
-                &.onTop {
-                    .sideBar {
-                        z-index: 100;
-                    }
-                }
-            }
-            .fixedNavbar
-            {
-                .sideBar {
-                    z-index: 100;
-                }
-            }
-            .onTop .sideBar {
-                z-index: 100;
-            }
-        }
+@import "../../Pages/MainLayout/themes.scss";
 
-    }
-    @media screen and (max-width: 767px){
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        min-height: 100%;
-        width: 16rem;
-        z-index: 110;
-        overflow-y: auto;
-        transform: translateX(0) translateY(0) scaleX(1) scaleY(1);
-        transition: transform .3s cubic-bezier(.4,0,.2,1);
-        &.collapsed {
-            transform: translateX(-16rem) translateY(0) scaleX(1) scaleY(1);
-        }
-    }
-    
-    .submenu {
-        @media (min-width: 768px) {
-            > ul {
-                transition: opacity .33s ease;
+.sideBar {
+  flex: 1 0 16rem;
+  max-width: 16rem;
+  display: flex;
+  flex-flow: column nowrap;
+  transition: all 0.33s ease;
+  @include themify($themes) {
+    color: themed("textColor");
+    background-color: themed("backgroundColor");
+    border-bottom: themed("borderBottom");
+
+    color: themed("textColorSidebar");
+    background-color: themed("backgroundColorSidebar");
+    border-bottom: themed("borderColorSidebar");
+  }
+
+  @at-root {
+    @media screen and (min-width: 768px) {
+      .fixedSidebar {
+        .sideBar {
+          position: fixed;
+          top: 0;
+          left: 0;
+          height: 100%;
+          &.expanded {
+            width: 16rem;
+            overflow-y: auto;
+            &::-webkit-scrollbar {
+              display: none;
             }
-        }
-    }
-    &.expanded {
-            .submenu {
-                > ul {
-                    opacity: 1;
-                }
-        }
-    }
-    &.collapsed {
-        flex: 0 0 5em;
-        .submenu {
-            > ul {
-                @media (min-width: 768px) {
-                    opacity: 0;
-                }
-                @media (max-width: 767px) {
-                    opacity: 1;
-                }
-            }
-        }
-        .logo {
+          }
+          &.collapsed {
             width: 4rem;
-            a{
-                svg {
-                    height: 28px;
-                    width: 28px;
-                }
-                span {
-                    max-width: 0;
-                    visibility: hidden;
-                    opacity: 0;
-                }
-            } 
+            overflow-y: hidden;
+          }
         }
+        &.scrolled {
+          .sideBar {
+            z-index: 120;
+          }
+        }
+        &.onTop {
+          .sideBar {
+            z-index: 100;
+          }
+        }
+      }
+      .fixedNavbar {
+        .sideBar {
+          z-index: 100;
+        }
+      }
+      .onTop .sideBar {
+        z-index: 100;
+      }
+    }
+  }
+  @media screen and (max-width: 767px) {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    min-height: 100%;
+    width: 16rem;
+    z-index: 110;
+    overflow-y: auto;
+    transform: translateX(0) translateY(0) scaleX(1) scaleY(1);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    &.collapsed {
+      transform: translateX(-16rem) translateY(0) scaleX(1) scaleY(1);
+    }
+  }
+
+  .submenu {
+    @media (min-width: 768px) {
+      > ul {
+        transition: opacity 0.33s ease;
+      }
+    }
+  }
+  &.expanded {
+    .submenu {
+      > ul {
+        opacity: 1;
+      }
+    }
+  }
+  &.collapsed {
+    flex: 0 0 5em;
+    .submenu {
+      > ul {
+        @media (min-width: 768px) {
+          opacity: 0;
+        }
+        @media (max-width: 767px) {
+          opacity: 1;
+        }
+      }
     }
     .logo {
-        position: fixed;
-        z-index: 110;
-        /* height: 4rem; */
-        background: #fff;
-        border-bottom: 1px solid #eee;
-        text-transform: uppercase;
-        font-weight: 700;
-        font-size: 1rem;
-        letter-spacing: .05em;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-        min-height: 4rem;
-        width: 100%;
-        white-space: nowrap;
-        padding-left: 1rem;
-        max-width: 16rem;
-        flex: 0;
-        transition:all 330ms cubic-bezier(0, 0, 0.2, 1);
+      width: 4rem;
+      a {
+        svg {
+          height: 28px;
+          width: 28px;
+        }
+        span {
+          max-width: 0;
+          visibility: hidden;
+          opacity: 0;
+        }
+      }
+    }
+  }
+  .logo {
+    position: fixed;
+    z-index: 110;
+    /* height: 4rem; */
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 4rem;
+    width: 100%;
+    white-space: nowrap;
+    padding-left: 1rem;
+    max-width: 16rem;
+    flex: 0;
+    transition: all 330ms cubic-bezier(0, 0, 0.2, 1);
 
-        a{
-            img {
-                position: relative;
-                height: 28px;
-                width: 28px;
-            }
-            span {
-                transition: all .15s ease-in-out;
-                margin-right: 0;
-                margin-left: 8px;
-            }
-        } 
+    @include themify($themes) {
+      background-color: themed("backgroundColor");
+      border-bottom: themed("borderBottom");
+
+      background-color: themed("backgroundColorSidebar");
+      border-bottom: themed("borderColorSidebar");
     }
-    ul{
-        margin: 0;
-        padding: 0;
-    }
-    li {
-        transition: all .33s ease;
-        width: 100%;
-        margin: 0;
-        list-style-type: none;
-        font-size: .825rem;
-        color: #212121;
+
+    a {
+      img {
         position: relative;
-        background-color: #fff;
+        height: 28px;
+        width: 28px;
+      }
+      span {
+        transition: all 0.15s ease-in-out;
+        margin-right: 0;
+        margin-left: 8px;
+      }
     }
-    >ul:last-child {
-        margin-top: 4rem;
-        margin-bottom: 30px;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  .li {
+    transition: all 0.33s ease;
+    width: 100%;
+    margin: 0;
+    list-style-type: none;
+    font-size: 0.825rem;
+    position: relative;
+    border-bottom: 1px solid #eee;
+    @include themify($themes) {
+      color: themed("textColor");
+      background-color: themed("backgroundColor");
+      border-bottom: themed("borderBottom");
+
+      color: themed("textColorSidebar");
+      background-color: themed("backgroundColorSidebar");
+      border-bottom: themed("borderColorSidebar");
     }
-    $selector: "ul";
-    @for $i from 1 to 4 {
-        $selector: $selector + " ul";
-        #{$selector} {
-            width: 0;
-            height: 0;
-            overflow: hidden;
-        }
-        #{$selector} li {
-            >a, >div {
-                padding-left: calc(#{$i}*10px - 4px);
-            }
-        }
-    }  
+  }
+  > ul:last-child {
+    margin-top: 4rem;
+    margin-bottom: 30px;
+  }
+  $selector: "ul";
+  @for $i from 1 to 4 {
+    $selector: $selector + " ul";
+    #{$selector} {
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
+    #{$selector} li {
+      > a,
+      > div {
+        padding-left: calc(#{$i}* 10px - 4px);
+      }
+    }
+  }
 }

@@ -3,18 +3,32 @@ $themes: (
     backgroundMainColor: #fafafa,
     backgroundColor: #fff,
     borderColor: #eeeeee,
-    textColor: #212529,
-    buttonColor: #fff,
-    buttonBorder: 2px solid #fff
+    borderLeftColor: 4px solid #eee,
+    backgroundElements: #ebebeb,
+    borderBottom: 1px solid #eee,
+    textColor: #212529
   ),
   dark: (
     backgroundMainColor: #212121,
     backgroundColor: #424242,
     backgroundElements: #373737,
+    borderLeftColor: 4px solid #373737,
+    borderBottom: 1px solid #373737,
     borderColor: #373737,
-    textColor: #ddd,
-    buttonColor: #333,
-    buttonBorder: 1px solid #aaa
+    textColor: #ddd
+  ),
+  navbar: (
+    textColorNavbar: #ddd,
+    backgroundColorNavbar: #424242,
+    borderColorNavbar: 1px solid #373737,
+    backgroundElementsrNavbar: #373737
+  ),
+  sidebar: (
+    textColorSidebar: #ddd,
+    backgroundColorSidebar: #424242,
+    borderColorSidebar: 1px solid #373737,
+    backgroundElementsrSidebar: #373737,
+    borderLeftColorSidebar: 4px solid #373737
   )
 );
 

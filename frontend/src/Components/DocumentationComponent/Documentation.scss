@@ -2,7 +2,7 @@
 
 .active-tab {
   border-bottom: solid 2px #007bff;
-  cursor: "pointer";
+  cursor: pointer;
   font-weight: "700";
   padding: 1rem;
   @include themify($themes) {
@@ -11,7 +11,7 @@
 }
 
 .default-tab {
-  cursor: "pointer";
+  cursor: pointer;
   font-weight: "700";
   padding: 1rem;
   @include themify($themes) {
