@@ -10,6 +10,7 @@
   justify-content: start;
   align-items: center;
   height: 4rem;
+  background-color: white;
   @include themify($themes) {
     color: themed("textColor");
     background-color: themed("backgroundColor");
