@@ -18,6 +18,8 @@ import {stateType} from '../../Components/SettingsButton/types';
 import UIScreenPage from './UIScreenPage';
 import Badges from './UIScreenPage/UIElementsPages/Badges';
 import Dropdowns from './UIScreenPage/UIElementsPages/Dropdowns';
+import LineChartComponent from '../../Components/Charts/LineChart';
+import ScatterChartComponent from '../../Components/Charts/ScatterChart';
 import Buttons from './UIScreenPage/UIElementsPages/Buttons';
 import Paginations from './UIScreenPage/UIElementsPages/Paginations';
 import Images from './UIScreenPage/UIElementsPages/Images';
@@ -66,22 +68,6 @@ const MainLayout: React.FC = () => {
             }
     }
 
-        // let className = "position-relative border-0"
-        // switch (notifState) {
-        //     case "top":
-        //         break;
-        //     case "fixed-top":
-        //         className+=" position-fixed fixed-top"
-        //         break;
-        //     case "fixed-bottom":
-        //         className+=" position-fixed fixed-bottom"
-        //         break;
-        //     case "fixed-bottom-padding":
-        //         className+=" position-fixed fixed-bottom m-2"
-        //         break;
-        //     default:
-        //         break;
-        // }
     const [contextState, setContext] = React.useState<any>();
     const context = React.useContext(NotificationContext);
     React.useEffect(() => {
@@ -158,6 +144,14 @@ const MainLayout: React.FC = () => {
                                     <Route path="/ui-elements/progress-bar" component={ProgressBars}/>
                                     <Route path="/ui-elements/notifications" component={Notifications}/>
                                     <Route path="/ui-elements/tabs" component={Tabs}/>
+                                </Switch>
+                            </UIScreenPage>
+                        }/>
+                        <Route path="/charts" render={(props) => 
+                            <UIScreenPage>
+                                <Switch>
+                                    <Route path="/charts/line-charts" component={LineChartComponent}/>
+                                    <Route path="/charts/scatter-charts" component={ScatterChartComponent}/>
                                 </Switch>
                             </UIScreenPage>
                         }/>
