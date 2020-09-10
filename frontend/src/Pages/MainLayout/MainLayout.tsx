@@ -30,6 +30,7 @@ import Alert from '../../Components/Alert';
 import NotificationContext,{NotificationContextProvider} from './NotificationContext';
 import Notifications from './UIScreenPage/UIElementsPages/Notifications';
 import Tabs from './UIScreenPage/UIElementsPages/Tabs';
+import Typography from './UIScreenPage/UIElementsPages/Typography';
 
 const MainLayout: React.FC = () => {
     const [fixedSidebar, setFixSidebar] = React.useState<boolean>(true);
@@ -144,6 +145,7 @@ const MainLayout: React.FC = () => {
                                     <Route path="/ui-elements/progress-bar" component={ProgressBars}/>
                                     <Route path="/ui-elements/notifications" component={Notifications}/>
                                     <Route path="/ui-elements/tabs" component={Tabs}/>
+                                    <Route path="/ui-elements/typography" component={Typography}/>
                                 </Switch>
                             </UIScreenPage>
                         }/>
