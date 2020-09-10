@@ -6,9 +6,7 @@ type Props = {
 }
 const UIScreenPage: React.FC<Props & React.HTMLAttributes<HTMLElement>> = ({category = "UI Elements", children}) => {
     return <div className="uiScreenPage">
-                <div className="section-title">
-                    <div className="category">{category}</div>
-                </div>
+                <div className="text-xs uppercase font-light text-gray-500">{category}</div>
                 {children}
             </div>
 }
