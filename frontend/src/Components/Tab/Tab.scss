@@ -1,3 +1,16 @@
 .Tab {
-    position: relative
+    position: relative;
+    .changed{
+        margin: unset;
+        color: unset;
+        &:hover,&:focus {
+            border: unset;
+            margin: unset;
+            color: unset;
+        }
+    }
+    .underlined {
+        border-bottom-width: 0.25em !important;
+        border-bottom-style: solid !important;
+    }
 }

@@ -11,13 +11,13 @@ type SwitchProps = {
     slider_color: string,
     name: string,
     check?: boolean,
-    value?: boolean, 
+    value?: boolean,
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const Switch: React.FC<SwitchProps & React.HTMLAttributes<HTMLElement>> = ({ className, label, text_label, slider_color, track_color, name, check, value, onChange}) => {
+const Switch: React.FC<SwitchProps & React.HTMLAttributes<HTMLElement>> = ({ className, label, text_label, slider_color, track_color, name, check, value, onChange }) => {
 
-    const [state, setState] = React.useState( check || value || false);
+    const [state, setState] = React.useState(check || value || false);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (onChange) {
@@ -42,7 +42,7 @@ const Switch: React.FC<SwitchProps & React.HTMLAttributes<HTMLElement>> = ({ cla
 
     return (
         <div className={`form_switch d-flex justify-content-between ${className || ""}`}>
-            <div>
+            <div className={`${label ? '':'switcher-wrapper'}`}>
                 <div className="label">
                     {label}
                 </div>
