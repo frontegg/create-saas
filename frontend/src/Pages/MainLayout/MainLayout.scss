@@ -1,34 +1,39 @@
-.mainLayout {
-    width: 100%;
-    height: auto;
-    min-height: 100%;
-    display: flex;
-    flex-flow: row nowrap;
-    .main {
-        max-width: 100%;
-        margin-top: 4rem;
-        transition: margin-left .33s ease;
-        flex: 1 1 auto;
-        background-color: #FAFAFA;
-        .label-collapse {
-            width: 100%;
-            height: 100%;
-        }
+@import "../../Pages/MainLayout/themes.scss";
 
-        &-row{
-            display: flex;
-            background-color: white;
-        }
+.mainLayout {
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  .main {
+    max-width: 100%;
+    margin-top: 4rem;
+    transition: margin-left 0.33s ease;
+    flex: 1 1 auto;
+    background-color: #fafafa;
+    @include themify($themes) {
+      color: themed("textColor");
+      background-color: themed("backgroundMainColor");
     }
-    @media screen and (min-width: 768px){
-        &.fixedSidebar .collapsed+.main {
-            margin-left: 4rem;
-        }
-        &.fixedSidebar .expanded+.main {
-            margin-left: 16rem;
-        }
+    .label-collapse {
+      width: 100%;
+      height: 100%;
+    }
+
+    &-row {
+      display: flex;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    &.fixedSidebar .collapsed + .main {
+      margin-left: 4rem;
+    }
+    &.fixedSidebar .expanded + .main {
+      margin-left: 16rem;
     }
     [name=notification] {
         z-index:1000;
     }
 }
+

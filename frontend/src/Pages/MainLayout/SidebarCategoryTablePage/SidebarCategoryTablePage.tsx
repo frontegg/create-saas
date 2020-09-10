@@ -2,7 +2,8 @@ import * as React from 'react';
 import RegularTableComponent from '../../../Components/RegularTableComponent'
 import SidebarCategoryComponent from '../../../Components/SidebarCategoryComponent'
 import { IData, IColumn } from '../../../Components/RegularTableComponent/types'
-import { ISidebarCategory, IItemsList } from '../../../Components/SidebarCategoryComponent/types'
+import { IItemsList } from '../../../Components/SidebarCategoryComponent/types'
+import Paper from '@material-ui/core/Paper';
 
 
 export const columns: IColumn[] = [
@@ -31,7 +32,7 @@ export const columns: IColumn[] = [
 ];
 
 function createData(country: string, active_users: number, team_members: string[], progress: number): IData {
-    return { country, active_users, team_members, progress };
+  return { country, active_users, team_members, progress };
 }
 
 export const rows = [
@@ -114,63 +115,65 @@ export const rows = [
 
 
 const itemsList: IItemsList = {
-    buttons: [
-        {
-            label: 'Inbox',
-            badge: 3
-        },
-        {
-            label: 'Sent',
-            badge: 0
-        },
-        {
-            label: 'Important',
-            badge: 5
-        },
-        {
-            label: 'Drafts',
-            badge: 0
-        },
-        {
-            label: 'Tags',
-            badge: 1
-        },
-        {
-            label: 'Trash',
-            badge: 0
-        }
-    ],
-    categories: [
-        'Social',
-        'Notifications',
-        'Promotions'
-    ],
-    labels: [
-        'Documents',
-        'Work',
-        'Clients',
-        'Projects'
-    ]
+  buttons: [
+    {
+      label: 'Inbox',
+      badge: 3
+    },
+    {
+      label: 'Sent',
+      badge: 0
+    },
+    {
+      label: 'Important',
+      badge: 5
+    },
+    {
+      label: 'Drafts',
+      badge: 0
+    },
+    {
+      label: 'Tags',
+      badge: 1
+    },
+    {
+      label: 'Trash',
+      badge: 0
+    }
+  ],
+  categories: [
+    'Social',
+    'Notifications',
+    'Promotions'
+  ],
+  labels: [
+    'Documents',
+    'Work',
+    'Clients',
+    'Projects'
+  ]
 }
 
 const SidebarCategoryTable: React.FC = () => {
 
-    return (
-        <div className="sampleformpage">
-            <div className="section-title">
-                <div className="category">
-                    TABLES
+  return (
+    <div className="sampleformpage">
+      <div className="section-title">
+        <div className="category">
+          TABLES
         </div>
-                <div className="section-name">
-                    Sidebar category table
+        <div className="section-name">
+          Sidebar category table
         </div>
-            </div>
-            <div className="main-row">
-                <SidebarCategoryComponent itemsList={itemsList} />
-                <RegularTableComponent columns={columns} rows={rows} />
-            </div>
-        </div>
-    )
+      </div>
+      {/* <div className="main-row"> */}
+      <Paper elevation={0} className="main-row">
+        <SidebarCategoryComponent itemsList={itemsList} />
+        <RegularTableComponent columns={columns} rows={rows} />
+      </Paper>
+      {/* </div> */}
+    </div>
+  )
 }
 
 export default SidebarCategoryTable;
