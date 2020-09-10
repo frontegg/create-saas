@@ -1,5 +1,5 @@
 {
-  "name": "metrics-service",
+  "name": "api-gw",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -11,12 +11,7 @@
     "nodemon": "nodemon",
     "pre-commit": "npm run prettier && npm run lint",
     "prettier": "prettier 'src/**/*.{js,ts,json}' --write",
-    "provision": "docker-compose up -d",
-    "start": "ts-node src/server.ts",
-    "typeorm:migrate": "ts-node ./node_modules/typeorm/cli.js migration:run",
-    "typeorm:migration:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert",
-    "typeorm:seed": "ts-node ./node_modules/typeorm/cli.js migration:run -c seed",
-    "typeorm:seed:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -c seed"
+    "start": "ts-node src/server.ts"
   },
   "repository": {
     "type": "git",
@@ -35,20 +30,16 @@
   },
   "homepage": "https://github.com/frontegg/create-saas#readme",
   "dependencies": {
-    "apollo-server-express": "^2.16.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "graphql": "^15.3.0",
-    "pg": "^8.3.0",
+    "express-http-proxy": "^1.6.2",
     "reflect-metadata": "^0.1.13",
-    "ts-node": "^8.10.2",
-    "type-graphql": "^1.0.0-rc.3",
-    "typeorm": "^0.2.25"
+    "ts-node": "^8.10.2"
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.7",
-    "@types/graphql": "^14.5.0",
+    "@types/express-http-proxy": "^1.6.1",
     "husky": "^4.2.5",
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5",

@@ -37,12 +37,12 @@ export class CreateRequestTable1597260275210 implements MigrationInterface {
         isNullable: false,
       },
       {
-        name: 'created_at',
+        name: 'createdAt',
         type: 'timestamp',
         isNullable: false,
       },
       {
-        name: 'updated_at',
+        name: 'updatedAt',
         type: 'timestamp',
         isNullable: false,
       },
