@@ -32,5 +32,8 @@
     &.fixedSidebar .expanded + .main {
       margin-left: 16rem;
     }
-  }
+    [name=notification] {
+        z-index:1000;
+    }
 }
+

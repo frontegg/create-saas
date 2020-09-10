@@ -1,7 +1,11 @@
 import * as React from 'react';
 import Widget from '../Widget';
 import RegularTableComponent from '../../../Components/RegularTableComponent';
+import LineChartComponent from '../../../Components/Charts/LineChart';
+import ScatterChartComponent from '../../../Components/Charts/ScatterChart';
 import {columns, rows} from '../SidebarCategoryTablePage'
+import { Props, SettingsProps } from '../../../Components/Charts/LineChart/lineChartDataDefault'
+import { Data } from '../../../Components/Charts/ScatterChart/ScatterChartDataDefault'
 
 const widgets = [
     {
@@ -35,6 +39,82 @@ const widgets = [
     },
 ]
 
+const lineChartData: Props = 
+[
+  {
+    name: 'sales',
+    color: '#90caf9',
+    data: [
+      { category: 'Jan', value: 4000 },
+      { category: 'Feb', value: 3000 },
+      { category: 'Mar', value: 2000 },
+      { category: 'Apr', value: 2780 },
+      { category: 'May', value: 1890 },
+      { category: 'Jun', value: 2390 },
+      { category: 'Jul', value: 3490 },
+      { category: 'Aug', value: 1890 },
+      { category: 'Sep', value: 2390 },
+      { category: 'Oct', value: 2490 },
+      { category: 'Nov', value: 2300 },
+      { category: 'Dec', value: 1999 },
+    ]
+  },
+  {
+    name: 'conversions',
+    color: '#4ca5f5',
+    data: [
+      { category: 'Jan', value: 2400 },
+      { category: 'Feb', value: 1398 },
+      { category: 'Mar', value: 9800 },
+      { category: 'Apr', value: 3908 },
+      { category: 'May', value: 4800 },
+      { category: 'Jun', value: 3800 },
+      { category: 'Jul', value: 3490 },
+      { category: 'Aug', value: 1290 },
+      { category: 'Sep', value: 2290 },
+      { category: 'Oct', value: 2420 },
+      { category: 'Nov', value: 1300 },
+      { category: 'Dec', value: 2099 },
+    ]
+  }
+]
+
+const lineChartRandomSettings: SettingsProps = {
+  width:  400,
+  height: 300,
+  isEnableGrid: false,
+  line: {
+    strokeWidth: 2,
+    type:  'monotone',
+    activeDot: {
+      r: 6
+    }
+  }
+}
+
+const scatterChartRandomData: Data = {
+  lineChartData: [
+    { x: 0, y: 10, z: 200 },
+    { x: 23, y: 15, z: 260 },
+    { x: 54, y: 35, z: 400 },
+    { x: 75, y: 67, z: 280 },
+    { x: 87, y: 88, z: 500 },
+    { x: 98, y: 32, z: 200 }
+  ],
+  xname: 'Sales',
+  yname: 'Conversion'
+}
+
+const scatterChartDefaultSettings: any = {
+  width:  400,
+  height: 400,
+  isEnableGrid: false,
+  strokeColor: 'red',
+  fillColor: 'antiquewhite',
+  scatterName: 'Sales'
+}
+
+
 const Dashboard: React.FC = () => {
     return (
         <div className="dashboard d-flex flex-row flex-wrap justify-content-start">
@@ -43,6 +123,12 @@ const Dashboard: React.FC = () => {
             })}
             <Widget>
                 <RegularTableComponent columns={columns} rows={rows} />
+            </Widget>
+            <Widget>
+                <LineChartComponent data={lineChartData} settings={lineChartRandomSettings} />
+            </Widget>
+            <Widget>
+                <ScatterChartComponent data={scatterChartRandomData} settings={scatterChartDefaultSettings} />
             </Widget>
         </div>
         

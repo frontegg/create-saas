@@ -22,6 +22,20 @@ import { stateType } from '../../Components/SettingsButton/types';
 import UIScreenPage from './UIScreenPage';
 import Badges from './UIScreenPage/UIElementsPages/Badges';
 import Dropdowns from './UIScreenPage/UIElementsPages/Dropdowns';
+import LineChartComponent from '../../Components/Charts/LineChart';
+import ScatterChartComponent from '../../Components/Charts/ScatterChart';
+import Buttons from './UIScreenPage/UIElementsPages/Buttons';
+import Paginations from './UIScreenPage/UIElementsPages/Paginations';
+import Images from './UIScreenPage/UIElementsPages/Images';
+import Lists from './UIScreenPage/UIElementsPages/Lists';
+import ProgressBars from './UIScreenPage/UIElementsPages/ProgressBars';
+import Alerts from './UIScreenPage/UIElementsPages/Alerts';
+import Alert from '../../Components/Alert';
+import NotificationContext,{NotificationContextProvider} from './NotificationContext';
+import Notifications from './UIScreenPage/UIElementsPages/Notifications';
+import Tabs from './UIScreenPage/UIElementsPages/Tabs';
+import Typography from './UIScreenPage/UIElementsPages/Typography';
+
 
 const MainLayout: React.FC = () => {
     const [fixedSidebar, setFixSidebar] = React.useState<boolean>(true);
@@ -38,7 +52,11 @@ const MainLayout: React.FC = () => {
     const handleCollapse = (event: React.ChangeEvent<HTMLInputElement>) => collapse(!collapsed);
 
     const [hovered, hoverExpand] = React.useState<boolean>(false);
-    const handleFixeHover = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+
+    const handleFixeHover = (event: React.MouseEvent<HTMLElement,  MouseEvent>) =>
+    {
+        if(collapsed)
+
         if (fixedSidebar) {
             hoverExpand(!hovered);
         }
@@ -57,6 +75,8 @@ const MainLayout: React.FC = () => {
         }
     }
 
+    const [contextState, setContext] = React.useState<any>();
+    const context = React.useContext(NotificationContext);
     React.useEffect(() => {
         window.addEventListener('scroll', handleScroll);
 
@@ -115,37 +135,52 @@ const MainLayout: React.FC = () => {
                     onMouseLeave={handleFixeHover}
                     onMouseEnter={handleFixeHover}
                 />
-                <div className="main" >
-                    <div className="p-4 content">
-                        <Switch>
-                            <Route path='/tables/datatable' component={Datatable} />
-                            <Route path='/dashboard' component={Dashboard} />
-                            <Route path='/forms/sample-forms' component={SampleFormPage} />
-                            <Route path='/forms/default-forms' component={DefaultFormPage} />
-                            <Route path='/forms/sliders' component={SliderPage} />
-                            <Route path='/tables/datatable' component={Datatable} />
-                            <Route path='/tables/regular' component={RegularTable} />
-                            <Route path='/forms/datepicker' component={DatePickerPage} />
-                            <Route path='/forms/switches' component={SwitchPage} />
-                            <Route path='/forms/formsteps' component={FormStepsPage} />
-                            <Route path='/tables/sidebar-category' component={SidebarCategoryTable} />
-                            <Route path='/pricing' component={PricingPage} />
-                            <Route path='/terms' component={TermsPage} />
-                            <Route path='/doc' component={DocumentationPage} />
-                            <Route path="/ui-elements" render={(props) =>
-                                <UIScreenPage>
-                                    <Switch>
-                                        <Route path="/ui-elements/badges" component={Badges} />
-                                        <Route path="/ui-elements/dropdowns" component={Dropdowns} />
-                                    </Switch>
-                                </UIScreenPage>
-                            } />
-                        </Switch>
-                    </div>
-                    <input type="checkbox" id="collapsing" className="d-none" onChange={handleCollapse} checked={collapsed} />
-                    <input type="checkbox" id="fixsidebar" className="d-none" onChange={handleFixSidebar} checked={fixedSidebar} />
-                    <input type="checkbox" id="fixnavbar" className="d-none" onChange={handlesFixNavbar} checked={fixedNavbar} />
+              <div className="main" >
+                <div className="p-4 content">
+                    <Switch>
+                        <Route path='/tables/datatable' component={Datatable} />
+                        <Route path='/dashboard' component={Dashboard} />
+                        <Route path='/forms/sample-forms' component={SampleFormPage} />
+                        <Route path='/forms/default-forms' component={DefaultFormPage} />
+                        <Route path='/forms/sliders' component={SliderPage} />
+                        <Route path='/tables/datatable' component={Datatable} />
+                        <Route path='/tables/regular' component={RegularTable} />
+                        <Route path='/forms/datepicker' component={DatePickerPage} />
+                        <Route path='/forms/switches' component={SwitchPage} />
+                        <Route path='/forms/formsteps' component={FormStepsPage} />
+                        <Route path='/tables/sidebar-category' component={SidebarCategoryTable} />
+                        <Route path="/ui-elements" render={(props) => 
+                            <UIScreenPage>
+                                <Switch>
+                                    <Route path="/ui-elements/alerts" component={Alerts}/>
+                                    <Route path="/ui-elements/badges" component={Badges}/>
+                                    <Route path="/ui-elements/buttons" component={Buttons}/>
+                                    <Route path="/ui-elements/dropdowns" component={Dropdowns}/>
+                                    <Route path="/ui-elements/pagination" component={Paginations}/>
+                                    <Route path="/ui-elements/images" component={Images}/>
+                                    <Route path="/ui-elements/lists" component={Lists}/>
+                                    <Route path="/ui-elements/progress-bar" component={ProgressBars}/>
+                                    <Route path="/ui-elements/notifications" component={Notifications}/>
+                                    <Route path="/ui-elements/tabs" component={Tabs}/>
+                                    <Route path="/ui-elements/typography" component={Typography}/>
+                                </Switch>
+                            </UIScreenPage>
+                        }/>
+                        <Route path="/charts" render={(props) => 
+                            <UIScreenPage>
+                                <Switch>
+                                    <Route path="/charts/line-charts" component={LineChartComponent}/>
+                                    <Route path="/charts/scatter-charts" component={ScatterChartComponent}/>
+                                </Switch>
+                            </UIScreenPage>
+                        }/>
+                    </Switch>
                 </div>
+            </div>
+            <SettingsButton settings={switches}/>
+            <input type="checkbox" id="collapsing" className="d-none" onChange={handleCollapse} checked={collapsed}/>
+            <input type="checkbox" id="fixsidebar" className="d-none" onChange={handleFixSidebar} checked={fixedSidebar}/>
+            <input type="checkbox" id="fixnavbar" className="d-none" onChange={handlesFixNavbar} checked={fixedNavbar}/>
             </div>
         </ThemeProvider>
     )
