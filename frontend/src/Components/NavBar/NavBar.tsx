@@ -7,6 +7,8 @@ import Drawer from '@material-ui/core/Drawer';
 import SettingsIcon from '@material-ui/icons/Settings';
 import LabelSwitch from '../../Components/Switch';
 import { List, ListItem, ListItemText, IconButton } from '@material-ui/core';
+import { stateType } from '../../Components/SettingsButton/types';
+
 
 
 const useStyles = makeStyles({
@@ -24,7 +26,8 @@ const useStyles = makeStyles({
     }
 });
 
-const NavBar = ({ className, handleThemeChange, palletType, settings }: any) => {
+const NavBar = ({ className, handleThemeChange, palletType, settings }:
+    { className: string, handleThemeChange: (value: 'light' | 'dark' | 'navbar' | 'sidebar') => void, palletType: string, settings: Array<{ label: string, state: stateType<boolean> }> }) => {
     const [state, setState] = React.useState(false);
     const classes = useStyles();
     const toggleDrawer = (open: boolean) => {

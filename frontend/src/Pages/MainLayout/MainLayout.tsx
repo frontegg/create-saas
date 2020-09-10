@@ -98,7 +98,7 @@ const MainLayout: React.FC = () => {
         }
     ]
 
-    const [palletType, setPalletType] = React.useState<any>('light');
+    const [palletType, setPalletType] = React.useState<'light' | 'dark' | 'navbar' | 'sidebar'>('light');
     const palette = palletType === 'navbar' || palletType === 'sidebar' ? 'light' : palletType
     const darkTheme = createMuiTheme({
         palette: {
@@ -113,7 +113,7 @@ const MainLayout: React.FC = () => {
         document.getElementById('root')!.className = ''
     }, [])
 
-    const handleThemeChange = (value: any) => {
+    const handleThemeChange = (value: 'light' | 'dark' | 'navbar' | 'sidebar') => {
         setPalletType(value)
         document.getElementById('root')!.className = ''
         document.getElementById('root')?.classList.add(`theme-${value}`)
