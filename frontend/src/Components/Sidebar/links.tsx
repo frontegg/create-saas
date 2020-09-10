@@ -164,6 +164,16 @@ export const links: linksArray = [
                 path: "/scatter-charts",
                 label: "Scatter chart",
                 icon:""
+            },
+            {
+                path: "/pie-charts",
+                label: "Pie chart",
+                icon:""
+            },
+            {
+                path: "/bar-charts",
+                label: "Bar chart",
+                icon:""
             }
         ]
     },

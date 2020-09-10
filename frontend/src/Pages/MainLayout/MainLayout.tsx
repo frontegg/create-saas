@@ -23,6 +23,8 @@ import UIScreenPage from './UIScreenPage';
 import Badges from './UIScreenPage/UIElementsPages/Badges';
 import Dropdowns from './UIScreenPage/UIElementsPages/Dropdowns';
 import LineChartComponent from '../../Components/Charts/LineChart';
+import PieChartComponent from '../../Components/Charts/PieChart';
+import BarChartComponent from '../../Components/Charts/BarChart';
 import ScatterChartComponent from '../../Components/Charts/ScatterChart';
 import Buttons from './UIScreenPage/UIElementsPages/Buttons';
 import Paginations from './UIScreenPage/UIElementsPages/Paginations';
@@ -171,6 +173,8 @@ const MainLayout: React.FC = () => {
                                 <Switch>
                                     <Route path="/charts/line-charts" component={LineChartComponent}/>
                                     <Route path="/charts/scatter-charts" component={ScatterChartComponent}/>
+                                    <Route path="/charts/pie-charts" component={PieChartComponent}/>
+                                    <Route path="/charts/bar-charts" component={BarChartComponent}/>
                                 </Switch>
                             </UIScreenPage>
                         }/>
