@@ -9,7 +9,7 @@ const AuthComponent: React.FC<propsType> = ({labelUppercase, description, fields
     const [state, setState] = React.useState<stateType>({});
     React.useEffect(() => {
         const initialState = fields.reduce((obj, field) => {
-            obj[item.name] = item.initialValue || "";
+            // obj[item.name] = item.initialValue || "";
             return obj;
         }, {});
         // call setState only ONCE for ALL fields.
