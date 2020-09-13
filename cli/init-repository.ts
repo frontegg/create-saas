@@ -52,7 +52,7 @@ const longCommand = (command: string, text: string, onSuccess: () => void) => {
 };
 
 export async function initRepo(name: string): Promise<void> {
-  let projectName = name;
+  let projectName = name || '';
   while (!projectName.length) {
     const response = await prompts({
       type: 'text',
@@ -70,7 +70,7 @@ export async function initRepo(name: string): Promise<void> {
   }
 
   await longCommand(
-    `git clone https://github.com/frontegg/create-saas -b change-create-saas-script ${projectName}`,
+    `git clone https://github.com/frontegg/create-saas ${projectName}`,
     chalk.white.bold('Fetching data'),
     () => console.log(chalk.green('✔ ') + chalk.white.bold('Finished fetching data')),
   );

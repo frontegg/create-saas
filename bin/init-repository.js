@@ -61,7 +61,7 @@ const longCommand = (command, text, onSuccess) => {
 };
 function initRepo(name) {
     return __awaiter(this, void 0, void 0, function* () {
-        let projectName = name;
+        let projectName = name || '';
         while (!projectName.length) {
             const response = yield prompts({
                 type: 'text',
@@ -75,7 +75,7 @@ function initRepo(name) {
             console.log(chalk.red('✖ ') + chalk.white.bold('User and password must be supplied'));
             return;
         }
-        yield longCommand(`git clone https://github.com/frontegg/create-saas -b change-create-saas-script ${projectName}`, chalk.white.bold('Fetching data'), () => console.log(chalk.green('✔ ') + chalk.white.bold('Finished fetching data')));
+        yield longCommand(`git clone https://github.com/frontegg/create-saas ${projectName}`, chalk.white.bold('Fetching data'), () => console.log(chalk.green('✔ ') + chalk.white.bold('Finished fetching data')));
         yield longCommand(`cd ${projectName} && npm i && npx lerna bootstrap`, chalk.white.bold('Installing packages'), () => console.log(chalk.green('✔ ') + chalk.white.bold('Finished installing packages')));
     });
 }

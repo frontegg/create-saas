@@ -3,12 +3,18 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const yargs = require("yargs");
 const run_services_1 = require("./run-services");
+const deploy_services_1 = require("./deploy-services");
+const add_service_1 = require("./add-service");
+const remove_service_1 = require("./remove-service");
 const init_repository_1 = require("./init-repository");
 const commands = {
     run: run_services_1.startServices,
+    deploy: deploy_services_1.deployServices,
     init: init_repository_1.initRepo,
+    add: add_service_1.addService,
+    remove: remove_service_1.removeService,
 };
-const COMMANDS = ['run', 'add', 'remove'];
+const COMMANDS = ['run', 'add', 'remove', 'deploy'];
 function getCommandAndArgs(argv) {
     const args = argv._;
     if (COMMANDS.includes(args[0])) {
