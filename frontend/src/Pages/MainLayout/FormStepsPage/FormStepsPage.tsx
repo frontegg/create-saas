@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { CircleStep, NestedStep, RectangleStep, Form } from '../../../Components/FormSteps';
+import { CircleStep, NestedStep, RectangleStep, StepForm } from '../../../Components/FormSteps';
 
 
 const FormStepsPage: React.FC = () => {
 
-    const [fields, setFields] = React.useState<any>([
+    const [fields, setFields] = React.useState([
         {
             label: 'Name',
             value: '',
@@ -16,6 +16,29 @@ const FormStepsPage: React.FC = () => {
             type: 'text',
         },
     ]);
+
+    const steps = [{
+        label: "Lorem ipsum dolor",
+        number: 1,
+        active: true
+    },
+    {
+        label: " ipsum dolor Lorem",
+        number: 2,
+        active: false
+    },
+    {
+        label: " ipsum Lorem  dolor",
+        number: 3,
+        active: false
+    },
+    {
+        label: "Lorem ddddd",
+        number: 4,
+        active: false
+    }]
+    const state1 = [...steps]
+    const state2 = [...steps]
 
     const setField = (label:string, value: string) => {
         const index = fields.findIndex(((item: any) => item!.label === label))
@@ -47,9 +70,9 @@ const FormStepsPage: React.FC = () => {
                             Sample form step components
                         </div>
                     </div>
-                    <CircleStep />
-                    <NestedStep />
-                    <RectangleStep />
+                    <CircleStep steps={steps}/>
+                    <NestedStep steps={steps}/>
+                    <RectangleStep steps={steps}/>
                 </div>
                 <div>
                     <div className="mb-4">
@@ -60,8 +83,9 @@ const FormStepsPage: React.FC = () => {
                             Ready to use form steps example
                         </div>
                     </div>
-                    <RectangleStep />
-                    {/* <Form fields={fields} /> */}
+                    
+                    <StepForm stepElement={RectangleStep} steps={[...state1]} fields={fields}/>
+                    <StepForm stepElement={NestedStep} steps={[...state2]} fields={fields}/>
                 </div>
             </div>
         </div>
