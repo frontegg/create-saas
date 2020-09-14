@@ -39,7 +39,7 @@ export const NestedStep: React.FC<Props> = (props) => {
     return <Base {...props}>
         <div id="blockform">
             <div id="blockbar" className="d-flex w-100">
-                <div className="d-flex stepone w-25 bg-primary pad">
+                <div className="d-flex stepone w-25 activ pad">
                     <div className="step align-self-center">
                         <span className="stepnumber text-black bg-white d-flex justify-content-center align-items-center">1</span>
                     </div>
@@ -101,7 +101,7 @@ export const RectangleStep: React.FC<Props> = (props) => {
         <div className="designation">
             <div className="d-flex w-100">
                 <div className="w-25">
-                    <button className="btn btn-default w-100 bg-primary text-white">Step 1</button>
+                    <button className="btn btn-default w-100 activ text-white">Step 1</button>
                 </div>
                 <div className="w-25 opacity-25">
                     <button className="btn btn-default w-100">Step 2</button>
