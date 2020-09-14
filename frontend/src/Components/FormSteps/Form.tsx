@@ -13,12 +13,12 @@ type Props = {
 export const Form: React.FC<Props> = ({ fields, setField }) => {
 
 
-    const updateField = (event: any) => {
-        console.log(event)
-        console.log(setField)
-        const value, label
-        setField(label, value)
-    }
+    // const updateField = (event: any) => {
+    //     console.log(event)
+    //     console.log(setField)
+    //     const value, label
+    //     setField(label, value)
+    // }
 
     return (
         <div>
@@ -28,7 +28,7 @@ export const Form: React.FC<Props> = ({ fields, setField }) => {
                         return (
                             <label key={item!.label}>
                                 {item.label}
-                                <input type={item!.type} value={item!.value} name={item!.label} onChange={updateField} />
+                                <input type={item!.type} value={item!.value} name={item!.label} />
                             </label>
                         )
                     })

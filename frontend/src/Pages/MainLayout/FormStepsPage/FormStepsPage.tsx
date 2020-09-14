@@ -61,7 +61,7 @@ const FormStepsPage: React.FC = () => {
                         </div>
                     </div>
                     <RectangleStep />
-                    <Form fields={fields} setField={setField} />
+                    {/* <Form fields={fields} /> */}
                 </div>
             </div>
         </div>
