@@ -1,65 +1,92 @@
-
+@import "../../Pages/MainLayout/themes.scss";
 
 .sampleformpage {
-    // padding: 1rem;
-    background-color: #fafafa;
+  // padding: 1rem;
+  background-color: #fafafa;
+  @include themify($themes) {
+    color: themed("textColor");
+    background-color: themed("backgroundMainColor");
+  }
 }
 
-.category, .header {
-    color: #9e9e9e;
-    font-size: .75rem;
+.category,
+.header {
+  color: #9e9e9e;
+  font-size: 0.75rem;
 }
 
 .section-name {
-    font-size: 1.25rem;
+  font-size: 1.25rem;
 }
 
-.description, .section-name {
-    font-weight: 700;
+.description,
+.section-name {
+  font-weight: 700;
 }
 .description {
-    margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .section-title {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 .inputGroup .input-field {
-    font-size: .75rem;
-    display: block;
-    width: 100%;
-    max-width: 35rem;
-    margin-bottom: 1rem;
+  font-size: 0.75rem;
+  display: block;
+  width: 100%;
+  max-width: 35rem;
+  margin-bottom: 1rem;
 }
 
 .forn-input {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: #fff;
-    border-color: #e2e8f0;
-    border-width: 1px;
-    border-radius: .25rem;
-    padding: .5rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  border-color: #e2e8f0;
+  border-width: 1px;
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.form-input {
+  @include themify($themes) {
+    color: themed("textColor");
+    background-color: themed("backgroundColor");
+    border:themed("borderBottom");
+  }
+  &:focus {
+    @include themify($themes) {
+      background-color: themed("backgroundElements");
+      color: themed("textColor");
+      background-color: themed("backgroundColor");
+    }
+    box-shadow: none;
+  }
 }
 
 .form {
-    width: 100%;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border-width: 1px;
-    border-radius: .5rem;
-    background-color: #fff;
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-width: 1px;
+  border-radius: 0.5rem;
+  background-color: #fff;
+
+  @include themify($themes) {
+    color: themed("textColor");
+    background-color: themed("backgroundColor");
+  }
 }
 
 .btn.btn-primary {
-    border-radius: .5rem;
-    font-size: .75rem;
-    padding: .5rem 1rem;
-    font-weight: 700;
-    text-transform: uppercase;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 

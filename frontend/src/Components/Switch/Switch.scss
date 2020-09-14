@@ -1,19 +1,28 @@
+@import "../../Pages/MainLayout/themes.scss";
+
 .content_switch {
-    width: 100%;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border-width: 1px;
-    border-radius: .5rem;
-    background-color: #fff;
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-width: 1px;
+  border-radius: 0.5rem;
+  @include themify($themes) {
+    background-color: themed("backgroundColor");
+  }
+}
+
+.switcher-wrapper {
+  display: flex;
+  align-items: center;
 }
 
 @media (min-width: 1024px) {
-    .form_switch {
-        padding-right: 1rem;
-        margin-bottom: .5rem;
-        width: 25%;
-    }
-    .wrap {
-        flex-wrap: wrap;
-    }
+  .form_switch {
+    padding-right: 1rem;
+    margin-bottom: 0.5rem;
+    width: 25%;
+  }
+  .wrap {
+    flex-wrap: wrap;
+  }
 }

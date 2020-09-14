@@ -1,80 +1,82 @@
+@import "../../Pages/MainLayout/themes.scss";
+
 * {
-    margin: 0;
-    padding: 0
+  margin: 0;
+  padding: 0;
 }
 
 html {
-    height: 100%
+  height: 100%;
 }
 
 #grad1 {
-    background-color: #9C27B0;
-    background-image: linear-gradient(120deg, #FF4081, #81D4FA)
+  background-color: #9c27b0;
+  background-image: linear-gradient(120deg, #ff4081, #81d4fa);
 }
 
 #msform {
-    text-align: center;
-    position: relative;
-    margin-top: 20px
+  text-align: center;
+  position: relative;
+  margin-top: 20px;
 }
 
 #msform fieldset .form-card {
-    background: white;
-    border: 0 none;
-    border-radius: 0px;
-    box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
-    padding: 20px 40px 30px 40px;
-    box-sizing: border-box;
-    width: 94%;
-    margin: 0 3% 20px 3%;
-    position: relative
+  background: white;
+  border: 0 none;
+  border-radius: 0px;
+  box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+  padding: 20px 40px 30px 40px;
+  box-sizing: border-box;
+  width: 94%;
+  margin: 0 3% 20px 3%;
+  position: relative;
 }
 
 #msform fieldset {
-    background: white;
-    border: 0 none;
-    border-radius: 0.5rem;
-    box-sizing: border-box;
-    width: 100%;
-    margin: 0;
-    padding-bottom: 20px;
-    position: relative
+  background: white;
+  border: 0 none;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding-bottom: 20px;
+  position: relative;
 }
 
 #msform fieldset:not(:first-of-type) {
-    display: none
+  display: none;
 }
 
 #msform fieldset .form-card {
-    text-align: left;
-    color: #9E9E9E
+  text-align: left;
+  color: #9e9e9e;
 }
 
 #msform input,
 #msform textarea {
-    padding: 0px 8px 4px 8px;
-    border: none;
-    border-bottom: 1px solid #ccc;
-    border-radius: 0px;
-    margin-bottom: 25px;
-    margin-top: 2px;
-    width: 100%;
-    box-sizing: border-box;
-    font-family: montserrat;
-    color: #2C3E50;
-    font-size: 16px;
-    letter-spacing: 1px
+  padding: 0px 8px 4px 8px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0px;
+  margin-bottom: 25px;
+  margin-top: 2px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: montserrat;
+  color: #2c3e50;
+  font-size: 16px;
+  letter-spacing: 1px;
 }
 
 #msform input:focus,
 #msform textarea:focus {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    border: none;
-    font-weight: bold;
-    border-bottom: 2px solid #2196f3;
-    outline-width: 0
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: none;
+  font-weight: bold;
+  border-bottom: 2px solid #2196f3;
+  outline-width: 0;
 }
 
 // #msform .action-button {
@@ -112,30 +114,30 @@ html {
 // }
 
 select.list-dt {
-    border: none;
-    outline: 0;
-    border-bottom: 1px solid #ccc;
-    padding: 2px 5px 3px 5px;
-    margin: 2px
+  border: none;
+  outline: 0;
+  border-bottom: 1px solid #ccc;
+  padding: 2px 5px 3px 5px;
+  margin: 2px;
 }
 
 select.list-dt:focus {
-    border-bottom: 2px solid #2196f3
+  border-bottom: 2px solid #2196f3;
 }
 
 .card {
-    z-index: 0;
-    border: none;
-    border-radius: 0.5rem;
-    position: relative
+  z-index: 0;
+  border: none;
+  border-radius: 0.5rem;
+  position: relative;
 }
 
 .fs-title {
-    font-size: 25px;
-    color: #2C3E50;
-    margin-bottom: 10px;
-    font-weight: bold;
-    text-align: left
+  font-size: 25px;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: left;
 }
 
 #progressbar {
@@ -145,7 +147,7 @@ select.list-dt:focus {
 }
 
 #progressbar .active {
-    color: #000000
+  color: #000000;
 }
 
 .activ {
@@ -153,32 +155,32 @@ select.list-dt:focus {
 }
 
 #progressbar li {
-    list-style-type: none;
-    font-size: 12px;
-    width: 25%;
-    float: left;
-    position: relative;
-    z-index: 10;
+  list-style-type: none;
+  font-size: 12px;
+  width: 25%;
+  float: left;
+  position: relative;
+  z-index: 10;
 }
 
 #progressbar #account:before {
-    font-family: FontAwesome;
-    content: "1"
+  font-family: FontAwesome;
+  content: "1";
 }
 
 #progressbar #personal:before {
-    font-family: FontAwesome;
-    content: "2"
+  font-family: FontAwesome;
+  content: "2";
 }
 
 #progressbar #payment:before {
-    font-family: FontAwesome;
-    content: "3"
+  font-family: FontAwesome;
+  content: "3";
 }
 
 #progressbar #confirm:before {
-    font-family: FontAwesome;
-    content: "4"
+  font-family: FontAwesome;
+  content: "4";
 }
 
 #progressbar li:before {
@@ -207,37 +209,37 @@ select.list-dt:focus {
 
 #progressbar li.active:before,
 #progressbar li.active:after {
-    background: #2196f3
+  background: #2196f3;
 }
 
 .radio-group {
-    position: relative;
-    margin-bottom: 25px
+  position: relative;
+  margin-bottom: 25px;
 }
 
 .radio {
-    display: inline-block;
-    width: 204;
-    height: 104;
-    border-radius: 0;
-    background: lightblue;
-    box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
-    box-sizing: border-box;
-    cursor: pointer;
-    margin: 8px 2px
+  display: inline-block;
+  width: 204;
+  height: 104;
+  border-radius: 0;
+  background: lightblue;
+  box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  cursor: pointer;
+  margin: 8px 2px;
 }
 
 .radio:hover {
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3)
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 .radio.selected {
-    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1)
+  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1);
 }
 
 .fit-image {
-    width: 100%;
-    object-fit: cover
+  width: 100%;
+  object-fit: cover;
 }
 
 .stepnumber {
@@ -245,13 +247,28 @@ select.list-dt:focus {
     height: 2rem;
 }
 
+.fullwidth {
+  width: 100%;
+}
+
+.fourth-width {
+  width: 25%;
+}
+
 .blue-bg {
-    background-color: #2196f3;
+  background-color: #2196f3;
+}
+
+
+.text-color {
+  --text-opacity: 1;
+  color: #212121;
 }
 
 .pad {
-    padding: .5rem;
+  padding: 0.5rem;
 }
+
 
 .step {
     min-width: 2rem;
@@ -259,10 +276,29 @@ select.list-dt:focus {
 
 .opacity-25 {
     opacity: .25;
+
+.width-2 {
+  width: 2rem;
+}
+
+.height-2 {
+  height: 2rem;
+}
+
+.step {
+}
+
+.white-bg {
+  background-color: #fff;
 }
 
 @media (min-width: 1024px) {
-    #blockbar {
-        flex-direction: row;
-    }
+  #blockbar {
+    flex-direction: row;
+  }
+}
+.content_step {
+  @include themify($themes) {
+    background-color: themed("backgroundColor");
+  }
 }
