@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from 'recharts';
 import { barChartDefaultData, BarChartProps, barChartDefaultSettings } from './BarChartDataDefault'
 
@@ -13,14 +13,16 @@ const BarChartComponent: React.FC<BarChartProps> = ({
   const isEnableGrid = settings.isEnableGrid || barChartDefaultSettings.isEnableGrid
   const isEnableLegend = settings.isEnableLegend || barChartDefaultSettings.isEnableLegend
   const colors = settings.colors || barChartDefaultSettings.colors
-
   return (
+    <ResponsiveContainer>
     <BarChart
       width={width}
       height={height}
       data={data}
+      barSize={settings.barSize}
+      barCategoryGap={settings.barCategoryGap}
       margin={{
-        top: 5, right: 30, left: 20, bottom: 5,
+        top: 5, right: 30, left: 10, bottom: 5,
       }}
     >
       {isEnableGrid
@@ -37,11 +39,12 @@ const BarChartComponent: React.FC<BarChartProps> = ({
       {
         Object.keys(data[0]).map((keyName, i) => 
           keyName !== 'name'
-          ? <Bar dataKey={keyName} key={keyName} fill={colors[(i - 1) % colors.length]} />
+          ? <Bar dataKey={keyName}  key={keyName} fill={colors[(i - 1) % colors.length]} />
           : null
         )
       }
     </BarChart>
+    </ResponsiveContainer>
   );
 }
 

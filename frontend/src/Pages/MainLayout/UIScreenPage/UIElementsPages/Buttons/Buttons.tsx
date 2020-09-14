@@ -3,7 +3,7 @@ import './Buttons.scss';
 import Widget from '../../../Widget';
 import Button, {OutlineButton, CircleButton} from '../../../../../Components/Button';
 import { FlatButton, RaisedButton } from '../../../../../Components/Button/Button';
-import { ButtonGroup } from 'reactstrap';
+import { ButtonGroup, Row } from 'reactstrap';
 
 const FlatOnHoverStyle = {
     backgroundColor: "#e5f5f5",
@@ -12,10 +12,14 @@ const FlatOnHoverStyle = {
 const Buttons:React.FC = () => {
     return <div className="Buttons">
         <div className="text-xl font-bold">Buttons</div>
-        <Widget className="w-100">
-            <Button color="primary" className="rounded-0 mr-3">Button</Button>
-            <Button color="primary" className="rounded mr-3">Button</Button>
-            <CircleButton color="primary" className="w-8 h-8 mr-3">1</CircleButton>
+        <Widget col className="w-100">
+            <div className="text-sm font-light text-grey-500">Conversions</div>
+            <div className="text-sm font-bold"><span>This year</span></div>
+            <Row className="w-100 mx-0 mt-3">
+                <Button color="primary" className="rounded-0 mr-3">Button</Button>
+                <Button color="primary" className="rounded mr-3">Button</Button>
+                <CircleButton color="primary" className="w-8 h-8 mr-3">1</CircleButton>
+            </Row>
         </Widget>
         <Widget className="w-100">
             <Button color="primary" 

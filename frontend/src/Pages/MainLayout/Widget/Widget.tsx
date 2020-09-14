@@ -5,10 +5,11 @@ type Props = {
     label?: string,
     value?: string,
     icon?: JSX.Element
+    col?: boolean
 }
 
-const Widget: React.FC<Props & React.HTMLAttributes<HTMLElement>> = ({label, value, icon, className="", children}) => {
-    return <div className={`widget d-flex ${className}`}>
+const Widget: React.FC<Props & React.HTMLAttributes<HTMLElement>> = ({col, label, value, icon, className="", children}) => {
+    return <div className={`widget d-flex mr-2 mb-4 bg-white ${className}`}>
         <div className="d-flex flex-column">
             <div className="label">
                 {label}
@@ -20,7 +21,13 @@ const Widget: React.FC<Props & React.HTMLAttributes<HTMLElement>> = ({label, val
         <div className="icon">
             {icon}
         </div>
-        {children}
+        {col 
+        ?
+        <div className="d-flex flex-column w-100">
+            {children}
+        </div>
+        : children
+        }
     </div>
 }
 export default Widget;

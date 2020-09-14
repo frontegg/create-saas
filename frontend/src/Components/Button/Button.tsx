@@ -3,6 +3,7 @@ import {Button as B} from 'reactstrap';
 import './Button.scss';
 
 type Props = {
+    active?: boolean,
     outline?: boolean,
     color?: string,
     bgColor?: string,
@@ -17,6 +18,7 @@ type Props = {
 } & React.HTMLAttributes<HTMLElement>;
 
 const Base:React.FC<Props > = ({
+    active,
     style = {}, 
     onActiveStyle = {},
     onHoverStyle = {},
@@ -35,7 +37,6 @@ const Base:React.FC<Props > = ({
     onFocus,
     ...next}) => {
     const [hover, setHover] = React.useState(false);
-    const [active, setActive] = React.useState(false);
     const [focus, setFocus] = React.useState(false);
     if (bgColor || textColor || boxShadow) {
         style = {
@@ -46,10 +47,7 @@ const Base:React.FC<Props > = ({
         }
     }
     return <B {...next} 
-        onClick={(e: React.MouseEvent<HTMLElement, MouseEvent>) => { 
-            onClick && onClick(e);
-            setActive(!active)}
-        }
+        onClick={onClick}
         onFocus={(e: React.FocusEvent<HTMLElement>) => {
             onFocus && onFocus(e);
             setFocus(!focus);

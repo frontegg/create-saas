@@ -40,6 +40,17 @@ import Typography from './UIScreenPage/UIElementsPages/Typography';
 
 
 const MainLayout: React.FC = () => {
+
+    const getWindowDimensions = () => {
+        const { innerWidth: width, innerHeight: height } = window;
+        console.log(width, height)
+        return {
+          width,
+          height
+        };
+      }
+    
+
     const [fixedSidebar, setFixSidebar] = React.useState<boolean>(true);
     const handleFixSidebar = (event: React.ChangeEvent<HTMLInputElement>) => {
         setFixSidebar(!fixedSidebar);
@@ -52,6 +63,12 @@ const MainLayout: React.FC = () => {
 
     const [collapsed, collapse] = React.useState<boolean>(false);
     const handleCollapse = (event: React.ChangeEvent<HTMLInputElement>) => collapse(!collapsed);
+
+    const [windowDimensions, setWindowDimensions] = React.useState(getWindowDimensions());
+    const handleResize = () => {
+            // setWindowDimensions(getWindowDimensions());
+    }
+    
 
     const [hovered, hoverExpand] = React.useState<boolean>(false);
 
@@ -80,10 +97,13 @@ const MainLayout: React.FC = () => {
     const [contextState, setContext] = React.useState<any>();
     const context = React.useContext(NotificationContext);
     React.useEffect(() => {
+        if (windowDimensions.width < 768) 
+            collapse(true);
         window.addEventListener('scroll', handleScroll);
-
+        window.addEventListener('resize', handleResize);
         return () => {
             window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleResize);
         };
     }, []);
 

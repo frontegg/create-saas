@@ -10,6 +10,7 @@ import { Props, SettingsProps } from '../../../Components/Charts/LineChart/lineC
 import { Data } from '../../../Components/Charts/ScatterChart/ScatterChartDataDefault'
 import { PieData, PieSettingsProps } from '../../../Components/Charts/PieChart/PieChartDataDefault'
 import { BarData, BarSettingsProps } from '../../../Components/Charts/BarChart/BarChartDataDefault'
+import { Row, Col } from 'reactstrap';
 
 const widgets = [
     {
@@ -34,11 +35,6 @@ const widgets = [
         label: "SESSION DURATION",
         value: "1m 24s",
         icon: <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" className="stroke-current text-grey-500" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>,
-        className: "flex-row justify-content-between"
-    },
-    {
-        label: "something else",
-        value: "some value",
         className: "flex-row justify-content-between"
     },
 ]
@@ -187,6 +183,7 @@ const barChartRandomSettings: BarSettingsProps = {
   height: 300,
   isEnableGrid: false,
   isEnableLegend: false,
+  barSize: 10,
   colors: ['#90caf9', '#3d88e5']
 }
 
@@ -197,19 +194,27 @@ const Dashboard: React.FC = () => {
             {widgets.map( (item, index) => {
                 return <Widget key={index} {...item}/>
             })}
-            <Widget>
-                <PieChartComponent data={pieChartRandomData} settings={pieChartRandomSettings} />
-            </Widget>
-            <Widget>
-                <BarChartComponent data={barChartRandomData} settings={barChartRandomSettings} />
-            </Widget>
-            <Widget>
+            <Row className="mx-0 w-100">
+              <Widget col className="w-2/3 flex-shrink-0">
+                  <div className="w-100 text-sm font-light text-grey-500">Conversions</div>
+                  <div className="w-100 text-sm font-bold"><span>This year</span></div>
+                  <BarChartComponent data={barChartRandomData} settings={barChartRandomSettings} />
+              </Widget>
+              <Widget col className="w-1/4 flex-shrink-0 justify-content-center">
+                  <div className="text-sm font-light text-grey-500">Sessions</div>
+                  <div className="text-sm font-bold"><span>By device</span></div>
+                  <div className="w-100 d-flex justify-content-center">
+                    <PieChartComponent data={pieChartRandomData} settings={pieChartRandomSettings} />
+                  </div>
+              </Widget>
+            </Row>
+            <Widget className="w-100">
                 <RegularTableComponent columns={columns} rows={rows} />
             </Widget>
-            <Widget>
+            <Widget className="flex-shrink-0 flex-grow-0">
                 <LineChartComponent data={lineChartData} settings={lineChartRandomSettings} />
             </Widget>
-            <Widget>
+            <Widget className="flex-shrink-0 flex-grow-0">
                 <ScatterChartComponent data={scatterChartRandomData} settings={scatterChartRandomSettings} />
             </Widget>
         </div>

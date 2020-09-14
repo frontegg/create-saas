@@ -1,8 +1,6 @@
 import * as React from 'react';
 import './Tab.scss';
-import { Nav, NavItem, NavLink, TabContent, TabPane, Row, Col, Card, CardTitle, CardText, Button } from 'reactstrap';
-import Tabs from '../../Pages/MainLayout/UIScreenPage/UIElementsPages/Tabs';
-import { Divider } from '@material-ui/core';
+import { Nav, NavItem, NavLink, TabContent, TabPane, Row, Col } from 'reactstrap';
 
 type TabItemProps = {
     activeClass? :string,
@@ -13,13 +11,13 @@ type TabItemProps = {
 export const TabItem: React.FC<TabItemProps> = ({activeClass="",activeTab, tabId, toggle, children, className=""}) => {  
     return  <NavItem className={activeClass && " border-0 m-0 p-0 bg-white"}>
                 {activeClass ? 
-                <div className={`${className} ${activeTab === tabId && `active ${activeClass}`}`}
+                <div className={`${className} cursor-pointer ${activeTab === tabId ? `active ${activeClass}` : ""}`}
                 onClick={() => { toggle(tabId); }}>
                     {children}
                 </div>
                 :
                 <NavLink
-                className={` ${activeTab === tabId && `active`}`}
+                className={`${className} cursor-pointer ${activeTab === tabId ? `active` : ""}`}
                 onClick={() => { toggle(tabId); }}
                 >
                 {children}
@@ -33,16 +31,17 @@ type TabPanelProps = {
     tabContentClass?:string
     onToggle?: (tab: string) => void,
     vertical?: boolean,
+    verticalIcons?: boolean,
     pills?: boolean,
     tabs?: {
         tabId: string,
         active?: boolean,
-        label: string,
+        label: JSX.Element | string,
         content?: any 
     }[]
 } & React.HTMLAttributes<HTMLElement>
 
-const Tab:React.FC<TabPanelProps> = ({tabs, navClass, tabContentClass="", activeClass, activeTabId = "1", onToggle, vertical, pills }) => {
+const DefaultTab:React.FC<TabPanelProps> = ({tabs, navClass, tabContentClass="", activeClass, activeTabId = "1", onToggle, vertical, pills, verticalIcons = true}) => {
     const [activeTab, setActiveTab] = React.useState(activeTabId);
     
     const toggle = (tab:string) => {
@@ -56,13 +55,14 @@ const Tab:React.FC<TabPanelProps> = ({tabs, navClass, tabContentClass="", active
             {props.children}
         </TabItem>
     if(vertical)
-    return <div className="Tab ">
-                <Row>
-                    <Col>
-                        <Nav vertical pills={pills} tabs className={activeClass && " border-0 m-0 p-0 bg-white"}>
+    return <div className="Tab d-flex flex-row">
+                        <Nav vertical pills={pills} tabs className={`${pills ? "border-0" : ""}  ${activeClass && " border-0 m-0 p-0 bg-white"}`}>
                             { tabs && tabs.map((item, index) => {
-                                return <TI tabId={item.tabId}>
-                                    {item.label}
+                                return <TI key={index} {...item} tabId={item.tabId}>
+                                    {verticalIcons 
+                                    ? <div className="text-center">{item.label}</div>
+                                    : <div className="d-flex align-items-center justify-content-between">{item.label}</div>
+                                     }
                                 </TI>
                             })
                             }
@@ -78,11 +78,9 @@ const Tab:React.FC<TabPanelProps> = ({tabs, navClass, tabContentClass="", active
                             }
 
                         </Nav>
-                    </Col>
-                    <Col>
-                        <TabContent className={`mt-3 ${tabContentClass}`} activeTab={activeTab}>
+                        <TabContent className={`ml-1 ${tabContentClass}`} activeTab={activeTab}>
                             {tabs && tabs.map((item, index) => {
-                                return  <TabPane tabId={item.tabId}>
+                                return  <TabPane key={index} tabId={item.tabId}>
                                             <Row>
                                                 <Col sm="12">
                                                     {item.content}
@@ -107,14 +105,15 @@ const Tab:React.FC<TabPanelProps> = ({tabs, navClass, tabContentClass="", active
                             </TabPane>
                             </>}
                         </TabContent>
-                    </Col>
-                </Row>
             </div>
     else return <div className="Tab">
-                    <Nav pills={pills} tabs className={activeClass && " border-0 m-0 p-0 bg-white"}>
+                    <Nav pills={pills} tabs className={`${pills ? "border-0" : ""}  ${activeClass && " border-0 m-0 p-0 bg-white"}`}>
                         { tabs && tabs.map((item, index) => {
-                                return <TI tabId={item.tabId}>
-                                    {item.label}
+                                return <TI key={index} {...item} tabId={item.tabId}>
+                                    {verticalIcons 
+                                    ? <div className="text-center">{item.label}</div>
+                                    : <div className="d-flex align-items-center justify-content-between">{item.label}</div>
+                                     }
                                 </TI>
                             })
                             }
@@ -131,7 +130,7 @@ const Tab:React.FC<TabPanelProps> = ({tabs, navClass, tabContentClass="", active
                     </Nav>
                         <TabContent className="mt-3" activeTab={activeTab}>
                         {tabs && tabs.map((item, index) => {
-                                return  <TabPane tabId={item.tabId}>
+                                return  <TabPane key={index} tabId={item.tabId}>
                                             <Row>
                                                 <Col sm="12">
                                                     {item.content}
@@ -159,4 +158,10 @@ const Tab:React.FC<TabPanelProps> = ({tabs, navClass, tabContentClass="", active
                     </div>
 }
 
-export default Tab;
+export const VTabs: React.FC<TabPanelProps> = (props) => <DefaultTab {...props} vertical/>
+export const UTabs: React.FC<TabPanelProps> = (props) => <DefaultTab {...props} navClass="btn border-0 rounded-0" activeClass={`${props.activeClass} underlined`}/>
+export const ITabs: React.FC<TabPanelProps> = (props) => {
+    return <DefaultTab {...props} verticalIcons={false} pills/>
+}
+
+export default DefaultTab;
