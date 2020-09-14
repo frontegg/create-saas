@@ -8,13 +8,18 @@ const AuthComponent: React.FC<propsType> = ({labelUppercase, description, fields
 
     const [state, setState] = React.useState<stateType>({});
     React.useEffect(() => {
-        fields.forEach((item) => {
-            setState({...state, [item.name]: item.initialValue || ""})
-        })
+        const initialState = fields.reduce((obj, field) => {
+            obj[item.name] = item.initialValue || "";
+            return obj;
+        }, {});
+        // call setState only ONCE for ALL fields.
+        // maybe even to set this initialState at the beginning of
+        // component and not to use useEffect at all.
+        setState(initialState);
     }, [])
     const RenderFields = fields.map((item, index): React.ReactElement => {
        return (
-            <FormGroup>
+            <FormGroup key={index}>
                 <Label>{item.label}</Label>
                 <Input name={item.name} type={item.type} onChange={(e) => handleChange(e, setState)} value={state[item.name]}/>
             </FormGroup>

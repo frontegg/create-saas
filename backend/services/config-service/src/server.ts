@@ -1,10 +1,8 @@
-import 'reflect-metadata';
 import * as express from 'express';
-import { createConnection } from 'typeorm';
+import { APP_PORT, DB_URI } from './lib/config';
+import connectDB from './db';
+import schema from './schema/schema';
 import { ApolloServer } from 'apollo-server-express';
-import { buildSchema } from 'type-graphql';
-import { RequestResolver } from './resolvers/Request';
-import { APP_PORT } from './lib/config';
 
 const app: express.Application = express();
 
@@ -17,8 +15,7 @@ app.get('/', (req, res) => {
 });
 
 async function main() {
-  await createConnection();
-  const schema = await buildSchema({ resolvers: [RequestResolver], validate: false });
+  await connectDB(DB_URI);
   const context = ({ req }: Context) => {
     const tenantId = req.headers['frontegg-tenant-id'] || '';
     return { tenantId };
