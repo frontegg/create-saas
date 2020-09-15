@@ -33,7 +33,7 @@ import Lists from './UIScreenPage/UIElementsPages/Lists';
 import ProgressBars from './UIScreenPage/UIElementsPages/ProgressBars';
 import Alerts from './UIScreenPage/UIElementsPages/Alerts';
 import Alert from '../../Components/Alert';
-import NotificationContext,{NotificationContextProvider} from './NotificationContext';
+import NotificationContext,{NotificationContextProvider, NotificationContextType} from './NotificationContext';
 import Notifications from './UIScreenPage/UIElementsPages/Notifications';
 import Tabs from './UIScreenPage/UIElementsPages/Tabs';
 import Typography from './UIScreenPage/UIElementsPages/Typography';
@@ -94,8 +94,7 @@ const MainLayout: React.FC = () => {
         }
     }
 
-    const [contextState, setContext] = React.useState<any>();
-    const context = React.useContext(NotificationContext);
+    const context = React.useContext<NotificationContextType>(NotificationContext);
     React.useEffect(() => {
         if (windowDimensions.width < 768) 
             collapse(true);
@@ -141,6 +140,40 @@ const MainLayout: React.FC = () => {
 
     return (
         <ThemeProvider theme={darkTheme}>
+            <div className="position-fixed fixed-bottom">
+            {context && 
+                            Object.entries(context.notifications).map(([key, value]) => {
+                            if (value.position === "fixed-bottom") return <Alert 
+                                    notification_key={key}
+                                    {...value}
+                                    // raised={value.raised}
+                                    // outlined={value.outlined}
+                                    // borderLeft={value.borderLeft}
+                                    className={` position-realtive ${value.className}`} 
+                                    // open={value.open} 
+                                    style={{zIndex: 1000}}>
+                                    {value.text}
+                                </Alert>
+                            })
+                }
+            </div>
+            <div className="position-fixed fixed-top">
+            {context && 
+                            Object.entries(context.notifications).map(([key, value]) => {
+                            if (value.position === "fixed-top") return <Alert 
+                                    notification_key={key}
+                                    {...value}
+                                    // raised={value.raised}
+                                    // outlined={value.outlined}
+                                    // borderLeft={value.borderLeft}
+                                    className={` position-realtive ${value.className}`} 
+                                    // open={value.open} 
+                                    style={{zIndex: 1000}}>
+                                    {value.text}
+                                </Alert>
+                            })
+                }
+            </div>
             <div className={`mainLayout ${scrolled ? "scrolled" : "onTop"} ${fixedSidebar ? "fixedSidebar" : ""} ${fixedNavbar ? "fixedNavbar" : ""}`}>
                 <NavBar
                     settings={switches}
@@ -158,6 +191,22 @@ const MainLayout: React.FC = () => {
                     onMouseEnter={handleFixeHover}
                 />
               <div className="main" >
+              {context && 
+                            Object.entries(context.notifications).map(([key, value]) => {
+                                if (value.position === "top") return <Alert 
+                                    notification_key={key}
+                                    {...value}
+                                    // raised={value.raised}
+                                    // outlined={value.outlined}
+                                    // borderLeft={value.borderLeft}
+                                    // className={` position-realtive ${value.className}`} 
+                                    // open={value.open} 
+                                    style={{zIndex: 1000}}>
+                                    {value.text}
+                                </Alert>
+                            })
+                }
+                
                 <div className="p-4 content">
                     <Switch>
                         <Route path='/tables/datatable' component={Datatable} />

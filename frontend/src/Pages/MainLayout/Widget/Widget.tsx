@@ -9,7 +9,7 @@ type Props = {
 }
 
 const Widget: React.FC<Props & React.HTMLAttributes<HTMLElement>> = ({col, label, value, icon, className="", children}) => {
-    return <div className={`widget d-flex mr-2 mb-4 bg-white ${className}`}>
+    return <div className={`widget d-flex mr-2 mb-4 ${className}`}>
         <div className="d-flex flex-column">
             <div className="label">
                 {label}
