@@ -7,10 +7,10 @@ import './AuthComponent.scss';
 const AuthComponent: React.FC<propsType> = ({labelUppercase, description, fields}) => {
 
     const [state, setState] = React.useState<stateType>({});
-        const initialState = fields.reduce((obj:stateType, field: IField) => {
-            obj[field.name] = field.initialValue || "";
-            return obj;
-        }, {});
+    const initialState = fields.reduce((obj:stateType, field: IField) => {
+        obj[field.name] = field.initialValue || "";
+        return obj;
+    }, {});
 
         setState(initialState);
     const RenderFields = fields.map((item, index): React.ReactElement => {

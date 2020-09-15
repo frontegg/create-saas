@@ -73,9 +73,7 @@ const Datatable: React.FC = () => {
           Datatables
         </div>
       </div>
-      <div className="main">
         <DataTableComponent columns={columns} rows={rows} />
-      </div>
     </div>
   )
 }
