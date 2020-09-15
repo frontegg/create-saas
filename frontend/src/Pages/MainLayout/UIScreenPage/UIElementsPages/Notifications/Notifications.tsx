@@ -27,7 +27,7 @@ const Notifications: React.FC = () => {
                     <Button onClick={() => {
                         context &&
                         context.addNotification({
-                        position: "fixed-bottom",
+                        position: "fixed-top",
                         key: "key2",
                         open: true,
                         text: "I'm alert",
@@ -59,45 +59,6 @@ const Notifications: React.FC = () => {
                         text: "I'm alert",
                         className:"w-auto m-3",
                         color: "danger"
-                        })
-                    }}>
-                        fixed bottom padding
-                    </Button>
-                    <Button onClick={() => {
-                        context &&
-                        context.addNotification({
-                        position: "fixed-top",
-                        key: "key5",
-                        open: true,
-                        text: "I'm alert",
-                        className:"w-auto m-3",
-                        color: "primary"
-                        })
-                    }}>
-                        fixed bottom padding
-                    </Button>
-                    <Button onClick={() => {
-                        context &&
-                        context.addNotification({
-                        position: "fixed-top",
-                        key: "key6",
-                        open: true,
-                        text: "I'm alert",
-                        className:"w-auto m-3",
-                        color: "success"
-                        })
-                    }}>
-                        fixed bottom padding
-                    </Button>
-                    <Button onClick={() => {
-                        context &&
-                        context.addNotification({
-                        position: "fixed-top",
-                        key: "key7",
-                        open: true,
-                        text: "I'm alert",
-                        className:"w-auto m-3",
-                        color: "warning"
                         })
                     }}>
                         fixed bottom padding
