@@ -12,6 +12,8 @@ import { PieData, PieSettingsProps } from '../../../Components/Charts/PieChart/P
 import { BarData, BarSettingsProps } from '../../../Components/Charts/BarChart/BarChartDataDefault'
 import ProjectStatusComponent from '../../../Components/ProjectStatusComponent';
 import { IProjectStatus } from '../../../Components/ProjectStatusComponent/type';
+import ActivitiesComponent from '../../../Components/ActivitiesComponent';
+import { IActivitiesComponent } from '../../../Components/ActivitiesComponent/type';
 
 const widgets = [
   {
@@ -219,6 +221,33 @@ const ProjectStatusData: IProjectStatus[] = [
   }
 ]
 
+const ActivitiesData: IActivitiesComponent[] = [
+  {
+    title: 'Perferendis dignissimos provident saepe in.',
+    desc: 'Corporis in est quae exercitationem.',
+    status: 'a few seconds ago',
+    value: 1
+  },
+  {
+    title: 'Eos et aut perspiciatis et.',
+    desc: 'Hic praesentium veritatis sapiente voluptatem.',
+    status: 'a day ago',
+    value: 2
+  },
+  {
+    title: 'Vero voluptatibus est voluptas quas.',
+    desc: 'Ut iusto praesentium harum molestias.',
+    status: '2 days ago',
+    value: 3
+  },
+  {
+    title: 'Non maxime fuga nemo officiis.',
+    desc: 'Dolore nam laudantium vel voluptatem.',
+    status: '3 days ago',
+    value: 4
+  }
+]
+
 
 const Dashboard: React.FC = () => {
   return (
@@ -241,12 +270,14 @@ const Dashboard: React.FC = () => {
       <Widget>
         <ScatterChartComponent data={scatterChartRandomData} settings={scatterChartRandomSettings} />
       </Widget>
-      <Widget className='flex-column'>
+      <Widget className='flex-column' label='Project status' value='This week'>
         {ProjectStatusData.map((item: IProjectStatus) =>
           <ProjectStatusComponent {...item} />
         )}
       </Widget>
-      <Widget>
+      <Widget className='flex-column' label='Activities' value='Today'>
+        {ActivitiesData.map((item: IActivitiesComponent) =>
+          <ActivitiesComponent {...item} />)}
       </Widget>
     </div>
 
