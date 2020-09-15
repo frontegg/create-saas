@@ -17,7 +17,7 @@ const Base:React.FC<Props> = ({
     rightClassName = ""
 }) => {
 
-    return <div className={`list d-flex flex-row m-2 align-items-center ${className}`}>
+    return <div className={`list d-flex flex-row p-2 align-items-center ${className}`}>
         <div className="flex-shrink-0">
             {typeof left === "string" 
             ? <CircularBadge className={`mr-3 font-bold text-lg ${leftClassName}`} large>

@@ -1,22 +1,18 @@
 import * as React from 'react';
 import InputElement from '../InputElement';
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import {propsType, stateType} from './types';
+import {propsType, stateType, IField} from './types';
 import './AuthComponent.scss';
 
 const AuthComponent: React.FC<propsType> = ({labelUppercase, description, fields}) => {
 
     const [state, setState] = React.useState<stateType>({});
-    React.useEffect(() => {
-        const initialState = fields.reduce((obj, field) => {
-            // obj[item.name] = item.initialValue || "";
-            return obj;
-        }, {});
-        // call setState only ONCE for ALL fields.
-        // maybe even to set this initialState at the beginning of
-        // component and not to use useEffect at all.
+    const initialState = fields.reduce((obj:stateType, field: IField) => {
+        obj[field.name] = field.initialValue || "";
+        return obj;
+    }, {});
+
         setState(initialState);
-    }, [])
     const RenderFields = fields.map((item, index): React.ReactElement => {
        return (
             <FormGroup key={index}>
