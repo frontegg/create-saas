@@ -7,8 +7,8 @@ import { Col } from 'reactstrap';
 const img = <img src="/images/profile.jpeg" alt="" className="mr-3 h-8 rounded-circle shadow-outline-blue-300"></img>
 const Lists:React.FC = () => {
     return <div className="Lists">
-        <Widget>
-            <Col>
+        <Widget className="flex-wrap">
+            <Col xs={12} md={6}>
                 <List className="w-100 mb-2" right={1}>
                         <div className="text-sm">Voluptas repellendus est alias ut.</div>
                 </List>
@@ -22,7 +22,7 @@ const Lists:React.FC = () => {
                         <div className="text-sm">Voluptas repellendus est alias ut.</div>
                 </List>
             </Col>
-            <Col>
+            <Col xs={12} md={6}>
                 <List className="w-100" left={img} right={1}>
                         <div className="text-sm">Voluptas repellendus est alias ut.</div>
                 </List>
@@ -37,8 +37,8 @@ const Lists:React.FC = () => {
                 </List>
             </Col>
         </Widget>
-        <Widget>
-            <Col sm={6}>
+        <Widget className="flex-wrap">
+            <Col xs={12} md={6}>
             <List className="w-100" left={img} right={2}>
                         <div className="text-sm font-bold">Voluptas repellendus est alias ut.</div>
                         <div className="text-sm">Voluptatem velit et consectetur incidunt vero officiis commodi soluta iure.</div>
@@ -56,7 +56,7 @@ const Lists:React.FC = () => {
                         <div className="text-sm">Voluptatem velit et consectetur incidunt vero officiis commodi soluta iure.</div>
             </List>
             </Col>
-            <Col sm={6}>
+            <Col xs={12} md={6}>
             <List className="w-100" left="AB" right="2 days ago">
                         <div className="text-sm font-bold">Voluptas repellendus est alias ut.</div>
                         <div className="text-sm">Voluptatem velit et consectetur incidunt vero officiis commodi soluta iure.</div>
@@ -75,8 +75,8 @@ const Lists:React.FC = () => {
             </List>
             </Col>
         </Widget>
-        <Widget>
-            <Col sm={6}>
+        <Widget className="flex-wrap">
+            <Col xs={12} md={6}>
                 <List className="w-100" left={img} right={1}>
                             <div className="text-sm font-bold">Voluptas repellendus est alias ut.</div>
                             <div className="text-sm text-grey-500">Voluptatem velit et consectetur incidunt vero officiis commodi soluta iure.</div>

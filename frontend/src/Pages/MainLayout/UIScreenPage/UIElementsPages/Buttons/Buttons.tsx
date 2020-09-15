@@ -62,18 +62,18 @@ const Buttons:React.FC = () => {
             <RaisedButton outline onHoverStyle={FlatOnHoverStyle} color="primary" className="rounded mr-3">Button</RaisedButton>
             <CircleButton outline onHoverStyle={FlatOnHoverStyle} color="primary" className="border-0 shadow w-8 h-8 mr-3">1</CircleButton>
         </Widget>
-        <Widget className="w-100">
-            <ButtonGroup className="mr-3">
+        <Widget className="w-100 flex-wrap">
+            <ButtonGroup className="mb-3 mr-3">
                 <OutlineButton color="primary">Left</OutlineButton>
                 <OutlineButton color="primary">Center</OutlineButton>
                 <OutlineButton color="primary">Right</OutlineButton>
             </ButtonGroup>
-            <ButtonGroup className="mr-3">
+            <ButtonGroup className="mb-3 mr-3">
                 <Button color="primary">Left</Button>
                 <Button color="primary">Center</Button>
                 <Button color="primary">Right</Button>
             </ButtonGroup>
-            <ButtonGroup className="shadow mr-3">
+            <ButtonGroup className="shadow mb-3 mr-3">
                 <FlatButton onHoverStyle={FlatOnHoverStyle} color="primary">Left</FlatButton>
                 <FlatButton onHoverStyle={FlatOnHoverStyle} color="primary">Center</FlatButton>
                 <FlatButton onHoverStyle={FlatOnHoverStyle} color="primary">Right</FlatButton>

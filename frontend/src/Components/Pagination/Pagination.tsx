@@ -35,7 +35,7 @@ export const Base:React.FC<Props> = ({
     });
     return (
         <div className={props.className}>
-          <ul className="d-inline-flex list-style-none m-0 p-0 align-items-center">
+          <ul className="d-inline-flex list-style-none m-0 p-0 align-items-center flex-wrap">
             {items.map(({ page, type, selected, ...item }, index) => {
               let children = null;
             
