@@ -97,6 +97,7 @@ const MainLayout: React.FC = () => {
     React.useEffect(() => {
         if (windowDimensions.width < 768) 
             collapse(true);
+        else collapse(false);
         window.addEventListener('scroll', handleScroll);
         window.addEventListener('resize', handleResize);
         return () => {
@@ -145,11 +146,7 @@ const MainLayout: React.FC = () => {
                             if (value.position === "fixed-bottom") return <Alert 
                                     notification_key={key}
                                     {...value}
-                                    // raised={value.raised}
-                                    // outlined={value.outlined}
-                                    // borderLeft={value.borderLeft}
                                     className={` position-realtive ${value.className}`} 
-                                    // open={value.open} 
                                     style={{zIndex: 1000}}>
                                     {value.text}
                                 </Alert>
@@ -162,11 +159,7 @@ const MainLayout: React.FC = () => {
                             if (value.position === "fixed-top") return <Alert 
                                     notification_key={key}
                                     {...value}
-                                    // raised={value.raised}
-                                    // outlined={value.outlined}
-                                    // borderLeft={value.borderLeft}
                                     className={` position-realtive ${value.className}`} 
-                                    // open={value.open} 
                                     style={{zIndex: 1000}}>
                                     {value.text}
                                 </Alert>

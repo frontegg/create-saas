@@ -2,6 +2,7 @@ import * as React from 'react';
 import TermsComponent from '../../../Components/TermsComponent'
 
 import { ITermsData } from '../../../Components/TermsComponent/type'
+import Widget from '../Widget';
 
 export const termsContent: ITermsData[] = [
   {
@@ -90,9 +91,9 @@ const TermsPage = () => {
           Terms of service
         </div>
       </div>
-      <div className="main">
+      <Widget>
         <TermsComponent termsContent={termsContent} />
-      </div>
+      </Widget>
     </div>
   )
 }
