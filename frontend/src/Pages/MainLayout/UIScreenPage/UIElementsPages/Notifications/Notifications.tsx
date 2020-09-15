@@ -4,9 +4,29 @@ import Widget from '../../../Widget';
 import { Col, Row } from 'reactstrap';
 import Button from '../../../../../Components/Button';
 import NotificationContext, {NotificationContextType} from '../../../NotificationContext';
+import {NotificationManager} from 'react-notifications';
 
+type notificationType = 'info' | 'success' | 'warning' | 'error'
 const Notifications: React.FC = () => {
     const context = React.useContext<NotificationContextType>(NotificationContext);
+    const createNotification = (type: notificationType) => {
+            switch (type) {
+                case 'info':
+                NotificationManager.info('Info message');
+                break;
+                case 'success':
+                NotificationManager.success('Success message', 'Title here');
+                break;
+                case 'warning':
+                NotificationManager.warning('Warning message', 'Close after 3000ms', 3000);
+                break;
+                case 'error':
+                NotificationManager.error('Error message', 'Click me!', 5000, () => {
+                    alert('callback');
+                });
+                break;
+            }
+    };
     return <div className="Notifications">
         <Widget>
             <Col>
@@ -62,6 +82,12 @@ const Notifications: React.FC = () => {
                         })
                     }}>
                         fixed bottom padding
+                    </Button>
+                    <Button onClick={() => {createNotification('success')}}>
+                        at right corner
+                    </Button>
+                    <Button onClick={() => {createNotification('warning')}}>
+                        at right corner with other colors
                     </Button>
                 </Row>
             </Col>

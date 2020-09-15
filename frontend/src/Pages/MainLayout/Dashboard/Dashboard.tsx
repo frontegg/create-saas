@@ -15,6 +15,7 @@ import { IProjectStatus } from '../../../Components/ProjectStatusComponent/type'
 import ActivitiesComponent from '../../../Components/ActivitiesComponent';
 import { IActivitiesComponent } from '../../../Components/ActivitiesComponent/type';
 import { Row, Col } from 'reactstrap';
+import { ResponsiveContainer } from 'recharts';
 
 const widgets = [
     {
@@ -187,6 +188,7 @@ const barChartRandomSettings: BarSettingsProps = {
   height: 300,
   isEnableGrid: false,
   isEnableLegend: false,
+  barSize: 10,
   colors: ['#90caf9', '#3d88e5']
 }
 
@@ -268,11 +270,8 @@ const Dashboard: React.FC = () => {
       <Widget className="w-100">
           <RegularTableComponent columns={columns} rows={rows} />
       </Widget>
-      <Widget className="flex-shrink-0 flex-grow-0">
+      <Widget className="flex-grow-1 flex-shrink-0 w-2/3" style={{minHeight: "320px"}}>
           <LineChartComponent data={lineChartData} settings={lineChartRandomSettings} />
-      </Widget>
-      <Widget className="flex-shrink-0 flex-grow-0">
-          <ScatterChartComponent data={scatterChartRandomData} settings={scatterChartRandomSettings} />
       </Widget>
       <Widget className='flex-column' label='Project status' value='This week'>
         {ProjectStatusData.map((item: IProjectStatus) =>

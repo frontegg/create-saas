@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine,
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine, ResponsiveContainer,
 } from 'recharts';
 import { lineChartDataDefault, lineChartDefaultSettings, LineChartProps } from './lineChartDataDefault'
 
@@ -16,7 +16,11 @@ const LineChartComponent: React.FC<LineChartProps> = ({
   const colors = settings.colors || lineChartDefaultSettings.colors
 
   return (
-    <LineChart width={width} height={height}>
+    <ResponsiveContainer>
+    <LineChart 
+      width={width}
+      height={height}
+    >
       {isEnableGrid
         ? <CartesianGrid strokeDasharray="3 3" />
         : null
@@ -30,6 +34,7 @@ const LineChartComponent: React.FC<LineChartProps> = ({
         <Line strokeWidth={chartLine?.strokeWidth} legendType="circle" type={chartLine?.type} stroke={colors[i % colors.length]} dataKey="value" data={line.data} name={line.name} key={line.name} activeDot={chartLine?.activeDot} />
       ))}
     </LineChart>
+    </ResponsiveContainer>
   );
 }
 
