@@ -13,7 +13,7 @@ const FormStepsPage: React.FC = () => {
         {
             label: 'Email',
             value: '',
-            type: 'text',
+            type: 'email',
         },
     ]);
 
@@ -25,20 +25,39 @@ const FormStepsPage: React.FC = () => {
     {
         label: " ipsum dolor Lorem",
         number: 2,
-        active: false
+        active: false,
+        disabled: true
     },
     {
         label: " ipsum Lorem  dolor",
         number: 3,
-        active: false
+        active: false,
+        disabled: true
     },
     {
         label: "Lorem ddddd",
         number: 4,
-        active: false
+        active: false,
+        disabled: true
     }]
-    const state1 = [...steps]
-    const state2 = [...steps]
+
+    const formSteps = [{
+        key: 1,
+        fields: fields
+    },
+    {
+        key: 2,
+        fields: fields
+    },
+    {
+        key: 3,
+        fields: fields
+    },
+    {
+        key: 4,
+        fields: fields
+    }]
+
 
     const setField = (label:string, value: string) => {
         const index = fields.findIndex(((item: any) => item!.label === label))
@@ -84,8 +103,7 @@ const FormStepsPage: React.FC = () => {
                         </div>
                     </div>
                     
-                    <StepForm stepElement={RectangleStep} steps={[...state1]} fields={fields}/>
-                    <StepForm stepElement={NestedStep} steps={[...state2]} fields={fields}/>
+                    <StepForm stepElement={NestedStep} steps={[...steps]} formSteps={[...formSteps]}/>
                 </div>
             </div>
         </div>

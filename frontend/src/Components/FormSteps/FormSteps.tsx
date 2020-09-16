@@ -6,7 +6,8 @@ import './FormSteps.scss';
 type Props = {
     label?:string,
     text_label?: string,
-}
+    onClick?: (event: React.MouseEvent<any>, currentNumber: number) => void
+} & React.HTMLAttributes<HTMLElement>
 
 const Base:React.FC<Props> = ({ children }) => {
 
@@ -26,7 +27,8 @@ type StepProps = {
         active?: boolean,
         visited?: boolean,
         label: string,
-        number?: number
+        number?: number,
+        disabled?: boolean,
     }[]
 }
 
@@ -42,7 +44,7 @@ export const CircleStep: React.FC<Props & StepProps> = (props) => {
                     {
                         props.steps && props.steps.map(
                             (step, index) => {
-                               return <div key={index} className={` ${step.active ? "active" : ""} flex-1 d-flex step justify-content-center align-items-center`}>
+                               return <div style={step.disabled ? {cursor: "not-allowed"} : {}} key={index} className={` ${step.active ? "active" : ""} flex-1 d-flex step justify-content-center align-items-center`} onClick={(event) => { !step.disabled && props.onClick && props.onClick(event, step.number || (index + 1))}}>
                                     <span className={` d-inline-flex h-16 w-16  ${step.visited ? "bg-success" : ""} ${step.active ? "bg-primary" : "bg-secondary"} align-items-center justify-content-center rounded-circle`}>
                                         {step.number || index+1}
                                     </span>
@@ -62,7 +64,10 @@ export const NestedStep: React.FC<Props & StepProps> = (props) => {
                 {
                     props.steps && props.steps.map(
                         (step, index) =>  
-                      <div key={index} className={`d-flex stepone w-25  ${step.visited ? "bg-success" : ""} ${step.active ? "activ" : ""} pad`}>
+                      <div key={index} 
+                        className={`d-flex stepone w-25  ${step.visited ? "bg-success" : ""} ${step.active ? "activ" : ""} pad`} 
+                        style={step.disabled ? {cursor: "not-allowed"} : {}}
+                        onClick={(event) => { !step.disabled && props.onClick && props.onClick(event, step.number || (index + 1));}}>
                             <div className="step align-self-center">
                             <span className="stepnumber text-black bg-white d-flex justify-content-center align-items-center">{step.number}</span>
                             </div>
@@ -131,7 +136,9 @@ export const RectangleStep: React.FC<Props & StepProps> = (props) => {
                         (step, index) => {
 
                 return <div className="w-25">
-                            <button className={`btn btn-default rounded-0 w-100  ${step.visited ? "btn-success border-0" : ""} ${step.active ? "btn-primary text-white" :"text-dark"}`}>{
+                            <button disabled={step.disabled} style={step.disabled ? {cursor: "not-allowed"} : {}}
+                                className={`btn btn-default rounded-0 w-100  ${step.visited ? "btn-success border-0" : ""} ${step.active ? "btn-primary text-white" :"text-dark"}`} 
+                                onClick={(event) => { !step.disabled && props.onClick && props.onClick(event, step.number || (index + 1));}}>{
                                 step.label
                             }</button>
                         </div>
