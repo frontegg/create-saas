@@ -25,10 +25,17 @@ type Props = {
 } & React.HTMLAttributes<HTMLFormElement> & StepProps
 
 export const StepForm: React.FC<Props> = ({formSteps, stepElement, steps, setField, onSubmit }) => {
-
+    let formStepsInitialState: {[key:string]: any} = {};
+    formSteps.map((step, index) => {
+        return step.fields.map((field, index) => {
+            return formStepsInitialState[step.key+field.label] = field.value;
+        })
+    })
+    const [inputFields, setInputFields] = React.useState(formStepsInitialState);
     const [stepState, setStepState] = React.useState(steps);
     const [activeKey , setActiveKey] = React.useState<number>(1);
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        console.log(event.currentTarget.target);
         event.preventDefault();
         let cloneStep = [...stepState!];
 
@@ -78,11 +85,22 @@ export const StepForm: React.FC<Props> = ({formSteps, stepElement, steps, setFie
                     formSteps.map((step, index) =>
                         {
                             return (
-                                <div key={index} className={`${step.key === activeKey ? 'd-block  d-flex flex-column' : 'd-none'}`}>
-                                    {step.fields.map((item) => {
-                                        return <label key={item!.label}>
+                                <div key={index} className="d-flex flex-column">
+                                    {step.key === activeKey && step.fields.map((item) => {
+                                        return <label key={item.label}>
                                             {item.label}
-                                            <input className="w-100 mt-2 form-control" type={item!.type} name={item!.label} placeholder={item!.placeholder} />
+                                            <input 
+                                            required 
+                                            className="w-100 mt-2 form-control" 
+                                            type={item.type} 
+                                            name={item.label}
+                                            value={inputFields[step.key+item.label]}
+                                            onChange={(event) => {
+                                                setInputFields({
+                                                    ...inputFields, 
+                                                    [step.key+item.label]: event.currentTarget.value})
+                                                }}
+                                            placeholder={item!.placeholder} />
                                         </label>
                                     }) }
                                 </div>
