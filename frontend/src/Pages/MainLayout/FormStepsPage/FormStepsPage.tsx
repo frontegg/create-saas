@@ -25,19 +25,19 @@ const FormStepsPage: React.FC = () => {
         active: true
     },
     {
-        label: " ipsum dolor Lorem",
+        label: "Lorem ipsum dolor",
         number: 2,
         active: false,
         disabled: true
     },
     {
-        label: " ipsum Lorem  dolor",
+        label: "Lorem ipsum dolor",
         number: 3,
         active: false,
         disabled: true
     },
     {
-        label: "Lorem ddddd",
+        label: "Lorem ipsum dolor",
         number: 4,
         active: false,
         disabled: true
@@ -71,7 +71,7 @@ const FormStepsPage: React.FC = () => {
                         Steps
                     </div>
                 </div>
-                <div className="bg-white rounded mb-4">
+                <div className="rounded border mb-4 back-col">
                     <div className="p-4">
                         <div className="">
                             <div className="label">
@@ -86,7 +86,7 @@ const FormStepsPage: React.FC = () => {
                         <RectangleStep steps={steps}/>
                     </div>
                 </div>
-                <div className="bg-white rounded">
+                <div className="border rounded back-col">
                     <div className="p-4">
                         <div className="mb-4">
                             <div className="label">

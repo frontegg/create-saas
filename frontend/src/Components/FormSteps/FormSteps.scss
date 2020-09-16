@@ -10,6 +10,12 @@
     background-color: #2196f3;
 }
 
+.back-col {
+  @include themify($themes) {
+    background-color: themed("backgroundColor");
+  }
+}
+
 .step {
   z-index: 10;
   position: relative;
