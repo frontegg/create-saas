@@ -1,39 +1,26 @@
 import * as React from 'react';
 import { Input } from 'reactstrap';
 import './NavBar.scss';
-import { makeStyles } from '@material-ui/core/styles';
 import ProfileImage from '../ProfileImage';
-import Drawer from '@material-ui/core/Drawer';
 import SettingsIcon from '@material-ui/icons/Settings';
-import LabelSwitch from '../../Components/Switch';
-import Switch from '@material-ui/core/Switch';
-import { List, ListItem, ListItemText, IconButton } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 import { stateType } from '../../Components/SettingsButton/types';
+import SettingsSidebar from '../SettingsSidebar';
 
 
+const NavBar = ({ className, handleThemeChange, palletType, settings, handleChangeNavbar }:
+    {
+        className: string,
+        handleThemeChange: (value: 'light' | 'dark' | 'navbar' | 'sidebar') => void,
+        palletType: string,
+        settings: Array<{ label: string, state: stateType<boolean> }>,
+        handleChangeNavbar: (value: string, param: string, theme: string) => void
+    }) => {
+    const [state, setState] = React.useState(false)
 
-const useStyles = makeStyles({
-    list: {
-        width: 250,
-    },
-    header: {
-        backgroundColor: '#1976d2',
-        textAlign: 'center',
-        height: '4rem',
-        fontSize: '1.2rem',
-        color: 'white',
-        fontWeight: 600,
-        paddingTop: '1.2rem'
-    }
-});
-
-const NavBar = ({ className, handleThemeChange, palletType, settings }:
-    { className: string, handleThemeChange: (value: 'light' | 'dark' | 'navbar' | 'sidebar') => void, palletType: string, settings: Array<{ label: string, state: stateType<boolean> }> }) => {
-    const [state, setState] = React.useState(false);
-    const classes = useStyles();
     const toggleDrawer = (open: boolean) => {
         setState(open);
-    };
+    }
 
     return (
         <div className={`NavBar ${className}`}>
@@ -52,36 +39,14 @@ const NavBar = ({ className, handleThemeChange, palletType, settings }:
             <IconButton color="primary" onClick={() => toggleDrawer(true)}>
                 <SettingsIcon fontSize="inherit" />
             </IconButton>
-            <Drawer anchor={'right'} open={state} onClose={() => toggleDrawer(false)} >
-                <div className={classes.header}>SETTINGS</div>
-                <List className={classes.list}>
-                    {[
-                        { text: 'Dark background', id: 'dark' },
-                        { text: 'Light background', id: 'light' },
-                        { text: 'Dark navbar', id: 'navbar' },
-                        { text: 'Dark sidebar', id: 'sidebar' }
-                    ].map((el: any) => (
-                        <ListItem button disabled={palletType === el.id} key={el.text} onClick={() => handleThemeChange(el.id)}>
-                            <ListItemText primary={el.text} />
-                        </ListItem>
-                    ))}
-                    {settings.map((item: any) => {
-                        const [state, setState] = item.state;
-                        return (
-                            <ListItem>
-                                <ListItemText primary={item.label} />
-                                <Switch
-                                    checked={state}
-                                    onChange={() => setState(!state)}
-                                    color="primary"
-                                    name="checkedB"
-                                    inputProps={{ 'aria-label': 'primary checkbox' }}
-                                />
-                            </ListItem>
-                        )
-                    })}
-                </List>
-            </Drawer>
+            <SettingsSidebar
+                state={state}
+                toggleDrawer={toggleDrawer}
+                handleThemeChange={handleThemeChange}
+                palletType={palletType}
+                settings={settings}
+                handleChangeNavbar={handleChangeNavbar}
+            />
         </div>
     )
 }

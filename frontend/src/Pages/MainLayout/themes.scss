@@ -29,6 +29,18 @@ $themes: (
     borderColorSidebar: 1px solid #757575,
     backgroundElementsrSidebar: #373737,
     borderLeftColorSidebar: 4px solid #373737
+  ),
+  customNavbar: (
+    customNavbarColor: var(--custom-nav-bg),
+    customNavbarTxtColor: var(--custom-nav-txt),
+    customNavbarSearch: var(--custom-nav-search),
+    customNavbarBorderBottom: 1px solid var(--custom-nav-bg)
+  ),
+  customSidebar: (
+    customSidebarColor: var(--custom-sidebar-bg),
+    customSidebarTxtColor: var(--custom-sidebar-txt),
+    customSidebarActiveTab: var(--custom-sidebar-active-tab),
+    customSidebarActiveTabBorder: 4px solid var(--custom-sidebar-active-tab)
   )
 );
 

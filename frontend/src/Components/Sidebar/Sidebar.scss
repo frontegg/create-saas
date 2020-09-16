@@ -14,6 +14,10 @@
     color: themed("textColorSidebar");
     background-color: themed("backgroundColorSidebar");
     border-right: themed("borderColorSidebar");
+
+    color: themed("customSidebarTxtColor");
+    background-color: themed("customSidebarColor");
+    border-right: themed("customSidebarColor");
   }
 
   @at-root {
@@ -144,6 +148,10 @@
       border-right: themed("borderColorSidebar");
       background-color: themed("backgroundColorSidebar");
       border-bottom: themed("borderColorSidebar");
+
+      background-color: themed("customSidebarColor");
+      border-right: themed("customSidebarColor");
+      border-bottom: themed("customSidebarColor");
     }
 
     a {
@@ -176,6 +184,9 @@
 
       color: themed("textColorSidebar");
       background-color: themed("backgroundColorSidebar");
+
+      color: themed("customSidebarTxtColor");
+      background-color: themed("customSidebarColor");
     }
   }
   > ul:last-child {
