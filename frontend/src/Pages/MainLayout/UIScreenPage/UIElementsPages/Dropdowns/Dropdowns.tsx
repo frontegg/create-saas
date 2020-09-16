@@ -45,6 +45,7 @@ const DropdownMenu: React.FC = () => {
 }
 const Dropdowns: React.FC = () => {
     return <div className="Dropdowns">
+        <div className="text-xl font-bold mb-3">Dropdowns</div>
         <Widget className="w-100 flex-column">
             <div className="text-sm font-light text-gray-500">Dropdowns</div>
             <div className="text-sm font-bold mb-3">

@@ -8,8 +8,8 @@ type Props = {
     col?: boolean
 }
 
-const Widget: React.FC<Props & React.HTMLAttributes<HTMLElement>> = ({col, label, value, icon, className="", children}) => {
-    return <div className={`widget d-flex mr-2 mb-4 ${className}`}>
+const Widget: React.FC<Props & React.HTMLAttributes<HTMLElement>> = ({col, label, value, icon, className="", style={},  children}) => {
+    return <div className={`widget d-flex mr-2 mb-4 ${className}`} style={style}>
         <div className="d-flex flex-column">
             <div className="label">
                 {label}

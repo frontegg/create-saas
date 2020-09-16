@@ -205,7 +205,7 @@ const PricingPage: React.FC = () => {
           Pricing
         </div>
       </div>
-      <Paper elevation={0} className="main">
+      <Paper elevation={0}>
         <PricingSmallCards data={cards1} />
         <PricingRowCards data={cards2} />
         <PricingLargeCards data={cards1} />

@@ -33,10 +33,14 @@ import Lists from './UIScreenPage/UIElementsPages/Lists';
 import ProgressBars from './UIScreenPage/UIElementsPages/ProgressBars';
 import Alerts from './UIScreenPage/UIElementsPages/Alerts';
 import Alert from '../../Components/Alert';
-import NotificationContext, { NotificationContextProvider, NotificationContextType } from './NotificationContext';
+import NotificationContext,{NotificationContextProvider, NotificationContextType} from './NotificationContext';
+import {NotificationContainer} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 import Notifications from './UIScreenPage/UIElementsPages/Notifications';
 import Tabs from './UIScreenPage/UIElementsPages/Tabs';
 import Typography from './UIScreenPage/UIElementsPages/Typography';
+import BreadcrumbsPage from './UIScreenPage/UIElementsPages/Breadcrumbs';
+
 
 
 const MainLayout: React.FC = () => {
@@ -97,6 +101,7 @@ const MainLayout: React.FC = () => {
     React.useEffect(() => {
         if (windowDimensions.width < 768)
             collapse(true);
+        else collapse(false);
         window.addEventListener('scroll', handleScroll);
         window.addEventListener('resize', handleResize);
         return () => {
@@ -146,39 +151,32 @@ const MainLayout: React.FC = () => {
     return (
         <ThemeProvider theme={darkTheme}>
             <div className="position-fixed fixed-bottom">
-                {context &&
-                    Object.entries(context.notifications).map(([key, value]) => {
-                        if (value.position === "fixed-bottom") return <Alert
-                            notification_key={key}
-                            {...value}
-                            // raised={value.raised}
-                            // outlined={value.outlined}
-                            // borderLeft={value.borderLeft}
-                            className={` position-realtive ${value.className}`}
-                            // open={value.open} 
-                            style={{ zIndex: 1000 }}>
-                            {value.text}
-                        </Alert>
-                    })
+            {context && 
+                            Object.entries(context.notifications).map(([key, value]) => {
+                            if (value.position === "fixed-bottom") return <Alert 
+                                    notification_key={key}
+                                    {...value}
+                                    className={` position-realtive ${value.className}`} 
+                                    style={{zIndex: 1000}}>
+                                    {value.text}
+                                </Alert>
+                            })
                 }
             </div>
             <div className="position-fixed fixed-top">
-                {context &&
-                    Object.entries(context.notifications).map(([key, value]) => {
-                        if (value.position === "fixed-top") return <Alert
-                            notification_key={key}
-                            {...value}
-                            // raised={value.raised}
-                            // outlined={value.outlined}
-                            // borderLeft={value.borderLeft}
-                            className={` position-realtive ${value.className}`}
-                            // open={value.open} 
-                            style={{ zIndex: 1000 }}>
-                            {value.text}
-                        </Alert>
-                    })
+            {context && 
+                            Object.entries(context.notifications).map(([key, value]) => {
+                            if (value.position === "fixed-top") return <Alert 
+                                    notification_key={key}
+                                    {...value}
+                                    className={` position-realtive ${value.className}`} 
+                                    style={{zIndex: 1000}}>
+                                    {value.text}
+                                </Alert>
+                            })
                 }
             </div>
+            <NotificationContainer/>
             <div className={`mainLayout ${scrolled ? "scrolled" : "onTop"} ${fixedSidebar ? "fixedSidebar" : ""} ${fixedNavbar ? "fixedNavbar" : ""}`}>
                 <NavBar
                     handleChangeNavbar={handleChangeNavbar}
@@ -242,6 +240,7 @@ const MainLayout: React.FC = () => {
                                         <Route path="/ui-elements/notifications" component={Notifications} />
                                         <Route path="/ui-elements/tabs" component={Tabs} />
                                         <Route path="/ui-elements/typography" component={Typography} />
+                                        <Route path="/ui-elements/breadcrumbs" component={BreadcrumbsPage} />
                                     </Switch>
                                 </UIScreenPage>
                             } />
