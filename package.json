@@ -45,6 +45,7 @@
   },
   "homepage": "https://github.com/frontegg/create-saas#readme",
   "dependencies": {
+    "@types/validatorjs": "^3.15.0",
     "chalk": "^4.1.0",
     "child_process": "^1.0.2",
     "command-exists": "^1.2.9",
@@ -54,6 +55,7 @@
     "ora": "^5.0.0",
     "prompts": "^2.3.2",
     "shelljs": "^0.8.4",
+    "validatorjs": "^3.19.2",
     "yargs": "^15.4.1"
   },
   "devDependencies": {

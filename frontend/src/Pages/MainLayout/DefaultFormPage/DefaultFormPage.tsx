@@ -17,14 +17,16 @@ const DefaultFormPage: React.FC = () => {
             type: "text",
             placeholder: "john@example.com",
             name: "name",
-            signature: 'First name is required'
+            signature: 'First name is required',
+            validType: 'invalid'
         },
         {
             label: "First name",
             type: "text",
             placeholder: "john@example.com",
             name: "name",
-            signature: 'First name is valid'
+            signature: 'First name is valid',
+            validType: 'valid'
         }
     ]
 
@@ -42,14 +44,16 @@ const DefaultFormPage: React.FC = () => {
             type: "text",
             placeholder: "john@example.com",
             name: "name",
-            signature: 'First name is required'
+            signature: 'First name is required',
+            validType: 'invalid'
         },
         {
             label: "First name",
             type: "text",
             placeholder: "john@example.com",
             name: "name",
-            signature: 'First name is valid'
+            signature: 'First name is valid',
+            validType: 'valid'
         }
     ]
 
@@ -64,7 +68,7 @@ const DefaultFormPage: React.FC = () => {
                 { value: 'Option 4', label: 'Option 4' }
               ],
             name: "option",
-            signature: 'This is a hint'
+            signature: 'This is a hint',
 
         },
         {
@@ -77,10 +81,11 @@ const DefaultFormPage: React.FC = () => {
                 { value: 'Option 4', label: 'Option 4' }
               ],
             name: "option",
-            signature: 'First name is required'
+            signature: 'First name is required',
+            validType: 'invalid'
         },
         {
-            label: "Label",
+            label: "First name",
             type: "select",
             options: [
                 { value: 'Option 1', label: 'Option 1' },
@@ -89,7 +94,8 @@ const DefaultFormPage: React.FC = () => {
                 { value: 'Option 4', label: 'Option 4' }
               ],
             name: "option",
-            signature: 'First name is valid'
+            signature: 'First name is valid',
+            validType: 'valid'
         }
     ]
 
@@ -117,7 +123,8 @@ const DefaultFormPage: React.FC = () => {
                 { value: 'Option 4', label: 'Option 4' }
               ],
             name: "option",
-            signature: 'First name is required'
+            signature: 'First name is required',
+            validType: 'invalid'
         },
         {
             label: "Label",
@@ -129,7 +136,8 @@ const DefaultFormPage: React.FC = () => {
                 { value: 'Option 4', label: 'Option 4' }
               ],
             name: "option",
-            signature: 'First name is valid'
+            signature: 'First name is valid',
+            validType: 'valid'
         }
     ]
 
@@ -138,19 +146,24 @@ const DefaultFormPage: React.FC = () => {
             label: "Label",
             type: "radio",
             name: "r1",
-            signature: 'This is a hint'
+            signature: 'This is a hint',
+            values: ['Option 1', 'Option 2']
         },
         {
             label: "First name",
             type: "radio",
-            name: "r1",
-            signature: 'First name is required'
+            name: "r2",
+            signature: 'First name is required',
+            values: ['Option 1', 'Option 2'],
+            validType: 'invalid'
         },
         {
             label: "First name",
             type: "radio",
-            name: "r1",
-            signature: 'First name is valid'
+            name: "r3",
+            signature: 'First name is valid',
+            values: ['Option 1', 'Option 2'],
+            validType: 'valid'
         }
     ]
 
@@ -158,20 +171,25 @@ const DefaultFormPage: React.FC = () => {
         {
             label: "Label",
             type: "radio",
-            name: "r1",
-            signature: 'This is a hint'
+            name: "r3",
+            signature: 'This is a hint',
+            values: ['Option 1', 'Option 2']
         },
         {
             label: "First name",
             type: "radio",
-            name: "r1",
-            signature: 'First name is required'
+            name: "r4",
+            signature: 'First name is required',
+            values: ['Option 1', 'Option 2'],
+            validType: 'invalid'
         },
         {
             label: "First name",
             type: "radio",
-            name: "r1",
-            signature: 'First name is valid'
+            name: "r5",
+            signature: 'First name is valid',
+            values: ['Option 1', 'Option 2'],
+            validType: 'valid'
         }
     ]
 
@@ -180,19 +198,24 @@ const DefaultFormPage: React.FC = () => {
             label: "Label",
             type: "checkbox",
             name: "r1",
-            signature: 'This is a hint'
+            signature: 'This is a hint',
+            values: ['Option 1', 'Option 2'],
         },
         {
             label: "First name",
             type: "checkbox",
-            name: "r1",
-            signature: 'First name is required'
+            name: "r2",
+            signature: 'First name is required',
+            values: ['Option 1', 'Option 2'],
+            validType: 'invalid'
         },
         {
             label: "First name",
             type: "checkbox",
-            name: "r1",
-            signature: 'First name is valid'
+            name: "r3",
+            signature: 'First name is valid',
+            values: ['Option 1', 'Option 2'],
+            validType: 'valid'
         }
     ]
 
@@ -200,20 +223,25 @@ const DefaultFormPage: React.FC = () => {
         {
             label: "Label",
             type: "checkbox",
-            name: "r1",
-            signature: 'This is a hint'
+            name: "r4",
+            signature: 'This is a hint',
+            values: ['Option 1', 'Option 2'],
         },
         {
             label: "First name",
             type: "checkbox",
-            name: "r1",
-            signature: 'First name is required'
+            name: "r5",
+            signature: 'First name is required',
+            values: ['Option 1', 'Option 2'],
+            validType: 'invalid'
         },
         {
             label: "First name",
             type: "checkbox",
-            name: "r1",
-            signature: 'First name is valid'
+            name: "r6",
+            signature: 'First name is valid',
+            values: ['Option 1', 'Option 2'],
+            validType: 'valid'
         }
     ]
 
@@ -228,14 +256,14 @@ const DefaultFormPage: React.FC = () => {
                 </div>
             </div>
             <div className="main">
-                <DefaultForm inputs={TextInputs} description="Text inputs" header="Regular"/>
-                <DefaultForm inputs={InlineTextInputs} description="Inline text inputs" header="Inline"/>
+                <DefaultForm inputs={TextInputs} description="Text inputs" header="Regular" />
+                <DefaultForm inputs={InlineTextInputs} description="Inline text inputs" header="Inline" gridType={'inline'} />
                 <DefaultForm inputs={SelectInputs} description="Select inputs" header="Selects"/>
-                <DefaultForm inputs={InlineSelectInputs} description="Inline select inputs" header="Inline Selects"/>
-                <DefaultForm inputs={DefaultComponents} description="Default components" header="Radios"/>
-                <DefaultForm inputs={InlineRadioInputs} description="Inline radio inputs" header="Inline radios"/>
-                <DefaultForm inputs={DefaultComponentsCheckbox} description="Default components" header="Checkboxes"/>
-                <DefaultForm inputs={InlineCheckboxInputs} description="Inline checkbox inputs" header="Inline checkboxes"/>
+                <DefaultForm inputs={InlineSelectInputs} description="Inline select inputs" header="Inline Selects" gridType={'inline'} />
+                <DefaultForm inputs={DefaultComponents} description="Default components" header="Radios" gridType={'inline'} />
+                <DefaultForm inputs={InlineRadioInputs} description="Inline radio inputs" header="Inline radios" gridType={'inline'} radioInline={true} />
+                <DefaultForm inputs={DefaultComponentsCheckbox} description="Default components" header="Checkboxes" gridType={'inline'} />
+                <DefaultForm inputs={InlineCheckboxInputs} description="Inline checkbox inputs" header="Inline checkboxes" gridType={'inline'} radioInline={true} />
             </div>
         </div>
     )

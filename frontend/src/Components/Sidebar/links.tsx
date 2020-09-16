@@ -148,6 +148,11 @@ export const links: linksArray = [
                 label: "Form steps",
                 icon:""
             },
+            {
+                path: "/validation",
+                label: "Form validation",
+                icon:""
+            },
         ]
     },
     // {
