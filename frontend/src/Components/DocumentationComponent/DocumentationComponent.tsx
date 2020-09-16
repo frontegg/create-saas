@@ -132,7 +132,7 @@ const importantFiles = [
 
 const tabs = [
   'INSTALLATION',
-  // 'CODE STRUCTURE',
+  'CODE STRUCTURE',
   'FAQ',
   'CREDITS',
   'LOGS'
@@ -170,9 +170,9 @@ const DocumentationComponent = (props: any) => {
         <TabPane tabId="LOGS">
           <ChangeLogComponent data={{ date: 'Jul 25, 2020', status: 'RELEASE', update: ['Initial release', 'Published template at this demo url'] }} />
         </TabPane>
-        {/* <TabPane tabId="CODE STRUCTURE">
+        <TabPane tabId="CODE STRUCTURE">
           <CodeStructureComponent importantFiles={importantFiles} importantFolders={importantFolders} />
-        </TabPane> */}
+        </TabPane>
         <TabPane tabId="FAQ">
           <FAQComponent />
         </TabPane>
