@@ -11,5 +11,7 @@ export interface IField {
     options?: {
         label: string,
         value: any
-    }[]
+    }[],
+    validType?: 'invalid' | 'valid' | undefined,
+    values?: string[]
 }

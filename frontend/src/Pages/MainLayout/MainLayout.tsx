@@ -3,6 +3,7 @@ import './MainLayout.scss';
 import Sidebar from '../../Components/Sidebar';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import SampleFormPage from './SampleFormPage';
+import ValidationFormPage from './ValidationFormPage';
 import DefaultFormPage from './DefaultFormPage';
 import SliderPage from './SliderPage';
 import DatePickerPage from './DatePickerPage';
@@ -150,6 +151,7 @@ const MainLayout: React.FC = () => {
                         <Route path='/forms/datepicker' component={DatePickerPage} />
                         <Route path='/forms/switches' component={SwitchPage} />
                         <Route path='/forms/formsteps' component={FormStepsPage} />
+                        <Route path='/forms/validation' component={ValidationFormPage} />
                         <Route path='/tables/sidebar-category' component={SidebarCategoryTable} />
                         <Route path="/ui-elements" render={(props) => 
                             <UIScreenPage>

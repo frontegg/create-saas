@@ -4,24 +4,46 @@ import SampleForm from '../../../Components/SampleForm';
 
 const SampleFormPage: React.FC = () => {
 
+    const customErrors: any = {
+        required: "Please enter a valid :attribute",
+        regex: "Please enter a valid :attribute",
+        email: "Please enter a valid :attribute",
+        min: "Your password should have at least :min characters",
+        max: "Your password should have no more than :max characters",
+        'required.Message': "Please enter a message",
+        'required.Username': "Please enter your name",
+        'required.Password': ":attribute is required",
+        'required.PasswordOld': ":attribute is required",
+        'required.New password': ":attribute is required",
+        'required.PasswordNew': "Password confirmation is required",
+        'required.Language': ":attribute is required",
+        'required.CurrentPassword': ":attribute is required",
+        'required.ConfirmNewPasswor': ":attribute is required",
+        'required_if.CurrentEmail': "Please enter a valid email",
+        'required.NewEmail': "Please enter a valid email"
+    }
+
     const ContactInputs: IField[] = [
         {
             label: "Name",
             type: "text",
             placeholder: "Enter you name",
-            name: "Username"
+            name: "Username",
+            validation: "required|string"
         },
         {
             label: "Email",
             type: "email",
             placeholder: "Enter you emaill",
-            name: "Email"
+            name: "Email",
+            validation: "required|email"
         },
         {
             label: "message",
             type: "text",
             placeholder: "Enter something...",
-            name: "Message"
+            name: "Message",
+            validation: "required"
         }
     ]
     const LoginInputs: IField[] = [
@@ -29,13 +51,15 @@ const SampleFormPage: React.FC = () => {
             label: "Email",
             type: "email",
             placeholder: "Enter you name",
-            name: "Email"
+            name: "Email",
+            validation: "required"
         },
         {
             label: "Password",
             type: "password",
             placeholder: "Enter your password",
             name: "Password",
+            validation: "required|string|min:4|max:8"
         }
     ]
     const CreateAccInputs: IField[] = [
@@ -43,29 +67,34 @@ const SampleFormPage: React.FC = () => {
             label: "Username",
             type: "text",
             placeholder: "Enter you username",
-            name: "Username",
+            name: "username",
+            validation: "required|string"
         },
         {
             label: "Email",
             type: "email",
             placeholder: "Enter you name",
             name: "Email",
+            validation: "required"
         },
         {
             label: "Password",
             type: "password",
             placeholder: "Enter your password",
             name: "Password",
+            validation: "required|string|min:4|max:8"
         },
         {
             label: "I agree to the terms of service",
             type: "checkbox",
             name: "IagreeService",
+            validation: "required|regex:true"
         },
         {
             label: "I agree to the privacy policy",
             type: "checkbox",
             name: "IagreePolicy",
+            validation: "required|regex:true"
         }
     ]
 
@@ -74,13 +103,15 @@ const SampleFormPage: React.FC = () => {
             label: "New password",
             type: "password",
             placeholder: "Enter your new password",
-            name: "PasswordOld",
+            name: "New password",
+            validation: "required|string|min:4|max:8"
         },
         {
             label: "Confirm new password",
             type: "password",
             placeholder: "Enter your new password confirmation",
             name: "PasswordNew",
+            validation: "required|string|min:4|max:8"
         }
     ]
 
@@ -90,6 +121,7 @@ const SampleFormPage: React.FC = () => {
             type: "email",
             placeholder: "Enter you email",
             name: "Email",
+            validation: "required"
         }
     ]
 
@@ -99,6 +131,7 @@ const SampleFormPage: React.FC = () => {
             type: "email",
             placeholder: "Enter you email",
             name: "Email",
+            validation: "required"
         }
     ]
 
@@ -108,6 +141,7 @@ const SampleFormPage: React.FC = () => {
             type: "email",
             placeholder: "Enter you email",
             name: "Email",
+            validation: "required"
         }
     ]
 
@@ -116,31 +150,36 @@ const SampleFormPage: React.FC = () => {
             label: "First name",
             type: "text",
             placeholder: "Enter you first name",
-            name: "FirstName",
+            name: "First name",
+            validation: "required"
         },
         {
             label: "Last name",
             type: "text",
             placeholder: "Enter you last name",
-            name: "LastName",
+            name: "Last Name",
+            validation: "required"
         },
         {
             label: "Email address",
             type: "email",
             placeholder: "Enter you email address",
-            name: "Email",
+            name: "Email address",
+            validation: "required"
         },
         {
             label: "Company",
             type: "text",
             placeholder: "Enter you company",
             name: "Company",
+            validation: "required"
         },
         {
             label: "Position",
             type: "text",
             placeholder: "Enter you position",
             name: "Position",
+            validation: "required"
         },
         {
             label: "Language",
@@ -152,6 +191,7 @@ const SampleFormPage: React.FC = () => {
                 { value: 'Portuguese', label: 'Portuguese' }
               ],
             name: "Language",
+            validation: "required"
         }
     ]
 
@@ -161,22 +201,28 @@ const SampleFormPage: React.FC = () => {
             type: "email",
             placeholder: "Enter you current email address",
             name: "CurrentEmail",
+            validation: "required_if:NewEmail"
         },
         {
             label: "New email",
             type: "email",
             placeholder: "Enter you new email address",
             name: "NewEmail",
+            validation: "required"
         },
         {
             label: "Daily updates",
             type: "radio",
             name: "DailyUpdates",
+            cases: ["Yes", "No"],
+            validation: "required"
         },
         {
             label: "Weekly updates",
             type: "radio",
             name: "WeeklyUpdates",
+            cases: ["Yes", "No"],
+            validation: "required"
         }
     ]
 
@@ -186,18 +232,21 @@ const SampleFormPage: React.FC = () => {
             type: "password",
             placeholder: "Enter your current password",
             name: "CurrentPassword",
+            validation: "required|string|min:4|max:8"
         },
         {
             label: "Confirm new password",
             type: "password",
             placeholder: "Enter your new password",
             name: "PasswordNew",
+            validation: "required|string|min:4|max:8"
         },
         {
             label: "Confirm new password",
             type: "password",
             placeholder: "Enter your new password confirmation",
             name: "ConfirmNewPasswor",
+            validation: "required|string|min:4|max:8"
         }
     ]
 
@@ -213,16 +262,16 @@ const SampleFormPage: React.FC = () => {
                     </div>
                 </div>
                 <div className="main">
-                    <SampleForm inputs={ContactInputs} description="Sample contact us form" header="Contact us"/>
-                    <SampleForm inputs={LoginInputs} description="Sample login form" header="Login"/>
-                    <SampleForm inputs={CreateAccInputs} description="Sample create account form" header="Create account"/>
-                    <SampleForm inputs={ResetPassInputs} description="Sample reset password form" header="Reset password"/>
-                    <SampleForm inputs={ForgotPassInputs} description="Sample forgot password form" header="Forgot password"/>
-                    <SampleForm inputs={LockScreenInputs} description="Sample lock screen form" header="Lock screen"/>
-                    <SampleForm inputs={SubscribeInputs} description="Sample lock screen form" header="Lock screen"/>
-                    <SampleForm inputs={AccountSettingsInputs} description="Sample account settings form" header="Account settings"/>
-                    <SampleForm inputs={EmailPreferencesInputs} description="Sample email preferences form" header="Email preferences"/>
-                    <SampleForm inputs={SecuritySettingsInputs} description="Sample security settings form" header="Security settings"/>
+                    <SampleForm inputs={ContactInputs} customErrors={customErrors} description="Sample contact us form" header="Contact us"/>
+                    <SampleForm inputs={LoginInputs} customErrors={customErrors} description="Sample login form" header="Login"/>
+                    <SampleForm inputs={CreateAccInputs} customErrors={customErrors} description="Sample create account form" header="Create account"/>
+                    <SampleForm inputs={ResetPassInputs} customErrors={customErrors} description="Sample reset password form" header="Reset password"/>
+                    <SampleForm inputs={ForgotPassInputs} customErrors={customErrors} description="Sample forgot password form" header="Forgot password"/>
+                    <SampleForm inputs={LockScreenInputs} customErrors={customErrors} description="Sample lock screen form" header="Lock screen"/>
+                    <SampleForm inputs={SubscribeInputs} customErrors={customErrors} description="Sample subscribe form" header="Lock screen"/>
+                    <SampleForm inputs={AccountSettingsInputs} customErrors={customErrors} description="Sample account settings form" header="Account settings"/>
+                    <SampleForm inputs={EmailPreferencesInputs} customErrors={customErrors} description="Sample email preferences form" header="Email preferences"/>
+                    <SampleForm inputs={SecuritySettingsInputs} customErrors={customErrors} description="Sample security settings form" header="Security settings"/>
                 </div>
             </div>
     )
