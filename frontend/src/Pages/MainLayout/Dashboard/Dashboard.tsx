@@ -254,7 +254,7 @@ const Dashboard: React.FC = () => {
                 return <Widget key={index} {...item}/>
             })}
       <Row className="mx-0 w-100">
-        <Widget col className="w-2/3 flex-shrink-0">
+        <Widget col className="w-2/3 flex-shrink-0" style={{minHeight: "320px"}}>
             <div className="w-100 text-sm font-light text-grey-500">Conversions</div>
             <div className="w-100 text-sm font-bold"><span>This year</span></div>
             <BarChartComponent data={barChartRandomData} settings={barChartRandomSettings} />

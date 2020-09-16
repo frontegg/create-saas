@@ -47,7 +47,6 @@ const MainLayout: React.FC = () => {
 
     const getWindowDimensions = () => {
         const { innerWidth: width, innerHeight: height } = window;
-        console.log(width, height)
         return {
             width,
             height
@@ -66,11 +65,16 @@ const MainLayout: React.FC = () => {
     }
 
     const [collapsed, collapse] = React.useState<boolean>(false);
-    const handleCollapse = (event: React.ChangeEvent<HTMLInputElement>) => collapse(!collapsed);
+    const handleCollapse = (event: React.ChangeEvent<HTMLInputElement>) => {
+        collapse(!collapsed);
+    }
 
     const [windowDimensions, setWindowDimensions] = React.useState(getWindowDimensions());
     const handleResize = () => {
-        // setWindowDimensions(getWindowDimensions());
+        setWindowDimensions(getWindowDimensions());
+        if (windowDimensions.width < 768)
+            collapse(true);
+        else collapse(false);
     }
 
 
@@ -101,7 +105,7 @@ const MainLayout: React.FC = () => {
     React.useEffect(() => {
         if (windowDimensions.width < 768)
             collapse(true);
-        else collapse(false);
+
         window.addEventListener('scroll', handleScroll);
         window.addEventListener('resize', handleResize);
         return () => {
@@ -122,7 +126,7 @@ const MainLayout: React.FC = () => {
     ]
 
     const [palletType, setPalletType] = React.useState<'light' | 'dark' | 'navbar' | 'sidebar'>('light');
-    const palette = palletType === 'navbar' || palletType === 'sidebar' ? 'light' : palletType
+    const palette = palletType === 'navbar' || palletType === 'sidebar' ? 'light' : palletType;
     const darkTheme = createMuiTheme({
         palette: {
             type: palette,
@@ -130,10 +134,10 @@ const MainLayout: React.FC = () => {
                 main: '#2196f3',
             }
         }
-    });
+    })
 
     React.useEffect(() => {
-        document.getElementById('root')?.classList.add(`theme-light`)
+        document.getElementById('root')?.classList.add(`theme-light`);
     }, [])
 
     const handleThemeChange = (value: 'light' | 'dark' | 'navbar' | 'sidebar') => {
@@ -189,7 +193,7 @@ const MainLayout: React.FC = () => {
                     ${fixedNavbar ? "position-fixed" : "position-absolute"}`} />
                 <Sidebar
                     className={`${collapsed ?
-                        hovered && fixedSidebar ? "expanded" : "collapsed"
+                        (getWindowDimensions().width > 767 && hovered && fixedSidebar) ? "expanded" : "collapsed"
                         : "expanded"}`}
                     onMouseLeave={handleFixeHover}
                     onMouseEnter={handleFixeHover}
@@ -257,7 +261,7 @@ const MainLayout: React.FC = () => {
                         </Switch>
                     </div>
                 </div>
-                <SettingsButton settings={switches} />
+                {/* <SettingsButton settings={switches} /> */}
                 <input type="checkbox" id="collapsing" className="d-none" onChange={handleCollapse} checked={collapsed} />
                 <input type="checkbox" id="fixsidebar" className="d-none" onChange={handleFixSidebar} checked={fixedSidebar} />
                 <input type="checkbox" id="fixnavbar" className="d-none" onChange={handlesFixNavbar} checked={fixedNavbar} />
