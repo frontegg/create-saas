@@ -11,13 +11,14 @@ type LinkType = {
 type Props = {
     separator?: JSX.Element | string
     home?: boolean
+    icon?: JSX.Element | string
     links: LinkType[]
 } & React.HTMLAttributes<HTMLElement>
 
-const Breadcrumbs:React.FC<Props> = ({separator="/", links, home}) => {
+const Breadcrumbs:React.FC<Props> = ({separator="/", links, home, icon}) => {
     return <div className="Breadcrumbs">
         <B separator={separator} aria-label="breadcrumb">
-        {home && <HomeIcon/>}
+        {home && ( icon || <HomeIcon/>)}
         <Link color="inherit" href="/">
           Home
         </Link>

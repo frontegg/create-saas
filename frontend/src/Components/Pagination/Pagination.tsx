@@ -97,7 +97,7 @@ const DefaultPagination:React.FC<Props> = ({ className, children, count, page, p
         (props) => 
         <CircleButton {...props} 
             outline
-            className={`ml-2 font-bold text-xs text-black w-8 h-8 shadow-none ${props.className}`}
+            className={`ml-2 font-bold text-xs w-8 h-8 shadow-none ${props.className}`}
             hoverClassName="bg-grey-200"
             activeClassName="text-white font-bold bg-blue-500"
             >

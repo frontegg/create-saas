@@ -41,19 +41,50 @@ const tabs2 = [{
 
 const Tabs:React.FC = () => {
     return <div className="Tabs">
-        <Widget>
+        <div className="text-xl font-bold mb-3">Tabs</div>
+        <Widget col>
+            <div className="mb-3">
+                <div className="text-sm font-light text-grey-500">Default tabs</div>
+                <div className="text-sm font-bold">
+                    <span>Use the <code>&lt;DefaultTabs /&gt;</code> component for tabs with <code>pills</code> prop</span>
+                </div>
+            </div>
             <DefaultTabs navClass="mx-3" activeTabId="tab_favorites" tabs={tabs} pills/>
         </Widget>
-        <Widget>
+        <Widget col>
+            <div className="mb-3">
+                <div className="text-sm font-light text-grey-500">Vertical tabs</div>
+                <div className="text-sm font-bold">
+                    <span>Use the <code>&lt;VerticalTabs /&gt;</code> component for vertical tabs</span>
+                </div>
+            </div>
             <VerticalTabs activeTabId="tab_favorites" vertical tabs={tabs} pills/>
         </Widget>
-        <Widget>
+        <Widget col>
+            <div className="mb-3">
+                <div className="text-sm font-light text-grey-500">Underlined tabs</div>
+                <div className="text-sm font-bold">
+                    <span>Use the <code>&lt;UnderlinedTabs /&gt;</code> component for underlined tabs</span>
+                </div>
+            </div>
             <UnderlinedTabs activeTabId="tab_favorites" tabs={tabs2} activeClass="border-primary"/>
         </Widget>
-        <Widget>
+        <Widget col>
+            <div className="mb-3">
+                <div className="text-sm font-light text-grey-500">Tabs with icons</div>
+                <div className="text-sm font-bold">
+                 <span>Use the <code>&lt;IconTabs /&gt;</code> component for tabs with icons</span>
+                </div>
+            </div>
             <IconTabs activeTabId="tab_favorites" tabs={tabs} />
         </Widget>
-        <Widget>
+        <Widget col>
+            <div className="mb-3">
+                <div className="text-sm font-light text-grey-500">Default tabs</div>
+                <div className="text-sm font-bold">
+                    <span>Use the <code>&lt;DefaultTabs /&gt;</code> component for tabs with <code>pills</code> prop</span>
+                </div>
+            </div>
             <DefaultTabs activeTabId="tab_favorites" tabs={tabs2} pills/>
         </Widget> 
         <Widget>

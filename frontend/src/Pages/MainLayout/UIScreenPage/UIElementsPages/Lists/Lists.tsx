@@ -2,12 +2,21 @@ import * as React from 'react';
 import './Lists.scss';
 import Widget from '../../../Widget';
 import List from '../../../../../Components/List';
-import { Col } from 'reactstrap';
+import { Col, Row } from 'reactstrap';
 
 const img = <img src="/images/profile.jpeg" alt="" className="mr-3 h-8 rounded-circle shadow-outline-blue-300"></img>
 const Lists:React.FC = () => {
     return <div className="Lists">
+        <div className="text-xl font-bold mb-3">Lists</div>
         <Widget className="flex-wrap">
+            <Col xs={12}>
+            <div className="mb-3">
+                <div className="text-sm font-light text-grey-500">Single line lists</div>
+                <div className="text-sm font-bold">
+                    <span>Use the following examples as starting points for your single list components</span>
+                </div>
+            </div>
+            </Col>
             <Col xs={12} md={6}>
                 <List className="w-100 mb-2" right={1}>
                         <div className="text-sm">Voluptas repellendus est alias ut.</div>
@@ -38,6 +47,14 @@ const Lists:React.FC = () => {
             </Col>
         </Widget>
         <Widget className="flex-wrap">
+            <Col xs={12}>
+            <div className="mb-3">
+                <div className="text-sm font-light text-grey-500">Double line lists</div>
+                <div className="text-sm font-bold">
+                    <span>Use the following examples as starting points for your double list components</span>
+                </div>
+            </div>
+            </Col>
             <Col xs={12} md={6}>
             <List className="w-100" left={img} right={2}>
                         <div className="text-sm font-bold">Voluptas repellendus est alias ut.</div>
@@ -76,6 +93,14 @@ const Lists:React.FC = () => {
             </Col>
         </Widget>
         <Widget className="flex-wrap">
+            <Col xs={12}>
+            <div className="mb-3">
+                <div className="text-sm font-light text-grey-500">Multi line lists</div>
+                <div className="text-sm font-bold">
+                    <span>Use the following examples as starting points for your multi line list components</span>
+                </div>
+            </div>
+            </Col>
             <Col xs={12} md={6}>
                 <List className="w-100" left={img} right={1}>
                             <div className="text-sm font-bold">Voluptas repellendus est alias ut.</div>
