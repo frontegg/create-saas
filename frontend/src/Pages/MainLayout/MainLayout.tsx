@@ -49,11 +49,11 @@ const MainLayout: React.FC = () => {
         const { innerWidth: width, innerHeight: height } = window;
         console.log(width, height)
         return {
-          width,
-          height
+            width,
+            height
         };
-      }
-    
+    }
+
 
     const [fixedSidebar, setFixSidebar] = React.useState<boolean>(true);
     const handleFixSidebar = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,9 +70,9 @@ const MainLayout: React.FC = () => {
 
     const [windowDimensions, setWindowDimensions] = React.useState(getWindowDimensions());
     const handleResize = () => {
-            // setWindowDimensions(getWindowDimensions());
+        // setWindowDimensions(getWindowDimensions());
     }
-    
+
 
     const [hovered, hoverExpand] = React.useState<boolean>(false);
 
@@ -99,7 +99,7 @@ const MainLayout: React.FC = () => {
 
     const context = React.useContext<NotificationContextType>(NotificationContext);
     React.useEffect(() => {
-        if (windowDimensions.width < 768) 
+        if (windowDimensions.width < 768)
             collapse(true);
         else collapse(false);
         window.addEventListener('scroll', handleScroll);
@@ -142,6 +142,12 @@ const MainLayout: React.FC = () => {
         document.getElementById('root')?.classList.add(`theme-${value}`)
     };
 
+    const handleChangeNavbar = (value: string, param: string, theme: string) => {
+        document.getElementById('root')?.classList.add(`theme-${theme}`)
+        const app: HTMLElement | null = document.querySelector('.app')
+        app?.style.setProperty(param, value)
+    }
+
     return (
         <ThemeProvider theme={darkTheme}>
             <div className="position-fixed fixed-bottom">
@@ -173,6 +179,7 @@ const MainLayout: React.FC = () => {
             <NotificationContainer/>
             <div className={`mainLayout ${scrolled ? "scrolled" : "onTop"} ${fixedSidebar ? "fixedSidebar" : ""} ${fixedNavbar ? "fixedNavbar" : ""}`}>
                 <NavBar
+                    handleChangeNavbar={handleChangeNavbar}
                     settings={switches}
                     handleThemeChange={handleThemeChange}
                     palletType={palletType}
@@ -188,21 +195,21 @@ const MainLayout: React.FC = () => {
                     onMouseEnter={handleFixeHover}
                 />
                 <div className="main" >
-                  {context && 
-                            Object.entries(context.notifications).map(([key, value]) => {
-                                if (value.position === "top") return <Alert 
-                                    notification_key={key}
-                                    {...value}
-                                    // raised={value.raised}
-                                    // outlined={value.outlined}
-                                    // borderLeft={value.borderLeft}
-                                    // className={` position-realtive ${value.className}`} 
-                                    // open={value.open} 
-                                    style={{zIndex: 1000}}>
-                                    {value.text}
-                                </Alert>
-                            })
-                  }
+                    {context &&
+                        Object.entries(context.notifications).map(([key, value]) => {
+                            if (value.position === "top") return <Alert
+                                notification_key={key}
+                                {...value}
+                                // raised={value.raised}
+                                // outlined={value.outlined}
+                                // borderLeft={value.borderLeft}
+                                // className={` position-realtive ${value.className}`} 
+                                // open={value.open} 
+                                style={{ zIndex: 1000 }}>
+                                {value.text}
+                            </Alert>
+                        })
+                    }
                     <div className="p-4 content">
                         <Switch>
                             <Route path='/tables/datatable' component={Datatable} />
