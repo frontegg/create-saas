@@ -5,23 +5,29 @@ type StepProps = {
         visited?: boolean
         label: string,
         number?: number
+        disabled? : boolean
     }[]
 }
 
 type Props = {
     stepElement: React.ComponentType<any> | React.ElementType<any>,
-    fields:
+    formSteps: {
+        key: number,
+        fields:
         {
             label: string,
             value: string,
             type: string,
+            placeholder: string
         }[],
+    }[]
     setField?: void,
 } & React.HTMLAttributes<HTMLFormElement> & StepProps
 
-export const StepForm: React.FC<Props> = ({steps, stepElement, fields, setField, onSubmit }) => {
+export const StepForm: React.FC<Props> = ({formSteps, stepElement, steps, setField, onSubmit }) => {
 
     const [stepState, setStepState] = React.useState(steps);
+    const [activeKey , setActiveKey] = React.useState<number>(1);
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         let cloneStep = [...stepState!];
@@ -32,32 +38,58 @@ export const StepForm: React.FC<Props> = ({steps, stepElement, fields, setField,
                 cloneStep[index].active = false;
                 cloneStep[index].visited = true;
                 cloneStep[index+1].active = true;
+                cloneStep[index+1].disabled = false;
             }
 
         setStepState(cloneStep);
+        setActiveKey(cloneStep[index+1].number || index+2);
     }
-    // const updateField = (event: any) => {
-    //     console.log(event)
-    //     console.log(setField)
-    //     const value, label
-    //     setField(label, value)
-    // }
+
+    const handleClick = (event: React.MouseEvent<any>, currentClickNumber: number) => {
+
+        let cloneStep = [...stepState!];
+
+        cloneStep = cloneStep.map((step, index) => {
+            let number;
+            if (step.number) {
+                number = step.number;
+            }
+            else number = index + 1;
+            step.active = false;
+            step.visited = false;
+
+            if (number < currentClickNumber) {
+                step.visited = true;
+            }
+            if (number === currentClickNumber) {
+                step.active = true;
+            }
+            return step;
+        })
+        setStepState(cloneStep);
+        setActiveKey(currentClickNumber);
+    }
     const StepComponent: React.ElementType<any> = stepElement;
     return (
         <div>
-            <StepComponent steps={stepState}/>
+            <StepComponent onClick={handleClick} steps={stepState}/>
             <form onSubmit={handleSubmit}>
                 {
-                    fields.map((item) => {
-                        return (
-                            <label key={item!.label}>
-                                {item.label}
-                                <input type={item!.type} value={item!.value} name={item!.label} />
-                            </label>
-                        )
+                    formSteps.map((step, index) =>
+                        {
+                            return (
+                                <div key={index} className={`${step.key === activeKey ? 'd-block  d-flex flex-column' : 'd-none'}`}>
+                                    {step.fields.map((item) => {
+                                        return <label key={item!.label}>
+                                            {item.label}
+                                            <input className="w-100 mt-2 form-control" type={item!.type} name={item!.label} placeholder={item!.placeholder} />
+                                        </label>
+                                    }) }
+                                </div>
+                            )
                     })
                 }
-                <input type="submit" value="Submit" />
+                <input className="btn btn-primary" type="submit" value="Submit" />
             </form>
         </div>
     )
