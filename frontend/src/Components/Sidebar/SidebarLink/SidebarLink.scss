@@ -19,6 +19,9 @@
 
     color: themed("textColorSidebar");
     border-left: themed("borderLeftColorSidebar");
+
+    color: themed("customSidebarTxtColor");
+    border-left: themed("customSidebarColor");
   }
   &.activeLink {
     + ul {
@@ -30,6 +33,11 @@
   &:hover {
     color: #2196f3;
     border-left: 4px solid #2196f3;
+
+    @include themify($themes) {
+      color: themed("customSidebarActiveTab");
+      border-left: themed("customSidebarActiveTabBorder");
+    }
   }
   .icon {
     position: relative;

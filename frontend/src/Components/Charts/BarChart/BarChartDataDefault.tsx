@@ -9,6 +9,8 @@ export type BarData =
 export type BarSettingsProps = {
   width?:  number,
   height?: number,
+  barSize?: number,
+  barCategoryGap?: number,
   isEnableGrid?: boolean,
   isEnableLegend?: boolean,
   colors: string[]

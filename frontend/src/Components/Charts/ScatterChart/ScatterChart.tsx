@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Legend
+  ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 import { scatterChartDataDefault, scatterChartDefaultSettings, ScatterChartProps } from './ScatterChartDataDefault'
 import CustomizedDot, {CustomizedLegend} from './ScatterChartDot'
@@ -17,10 +17,10 @@ const LineChartComponent: React.FC<ScatterChartProps> = ({
   const scatterName = settings.scatterName || scatterChartDefaultSettings.scatterName
 
   return (
+    <ResponsiveContainer>
     <ScatterChart
       width={width}
       height={height}
-      margin={{top: 10, right: 10, left: 0, bottom: 10}}
     >
       {isEnableGrid
         ? <CartesianGrid strokeDasharray="3 3" />
@@ -32,6 +32,7 @@ const LineChartComponent: React.FC<ScatterChartProps> = ({
       <Legend verticalAlign="top" content={<CustomizedLegend strokeColor={strokeColor} fillColor={fillColor} scatterName={scatterName} />} />
       <Scatter name={scatterName} data={data.lineChartData} shape={<CustomizedDot strokeColor={strokeColor} fillColor={fillColor} />} />
     </ScatterChart>
+    </ResponsiveContainer>
   );
 }
 

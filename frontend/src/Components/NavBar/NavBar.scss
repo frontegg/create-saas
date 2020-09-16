@@ -19,6 +19,10 @@
     color: themed("textColorNavbar");
     background-color: themed("backgroundColorNavbar");
     border-bottom: themed("borderBottomNavbar");
+
+    background-color: themed("customNavbarColor");
+    color: themed("customNavbarTxtColor");
+    border-bottom: themed("customNavbarBorderBottom");
   }
   label {
     margin-bottom: 0;
@@ -42,12 +46,18 @@
 
       color: themed("textColorNavbar");
       background-color: themed("backgroundElementsrNavbar");
+
+      background-color: themed("customNavbarSearch");
+      color: themed("customNavbarTxtColor");
     }
     outline: none !important;
     &:focus {
       @include themify($themes) {
         background-color: themed("backgroundElements");
         color: themed("textColor");
+
+        background-color: themed("customNavbarSearch");
+        color: themed("customNavbarTxtColor");
       }
       box-shadow: none;
     }

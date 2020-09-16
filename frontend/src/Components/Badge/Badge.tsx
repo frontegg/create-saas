@@ -28,7 +28,7 @@ const Badge:React.FC<Props & React.HTMLAttributes<HTMLElement>> = ({
             className={`badge Badge
             ${className}
             ${circular ? `circular w-h-${size}` : `px-1 py-${size}`}
-            ${outline ? `text-${color} bg-white border border-${color}` :
+            ${outline ? `text-${color} border border-${color}` :
             `badge-${color}`}`}>
                 {children}
             </span>

@@ -9,11 +9,15 @@
   @include themify($themes) {
     color: themed("textColor");
     background-color: themed("backgroundColor");
-    border-bottom: themed("borderBottom");
+    border-right: themed("borderBottom");
 
     color: themed("textColorSidebar");
     background-color: themed("backgroundColorSidebar");
-    border-bottom: themed("borderColorSidebar");
+    border-right: themed("borderColorSidebar");
+
+    color: themed("customSidebarTxtColor");
+    background-color: themed("customSidebarColor");
+    border-right: themed("customSidebarColor");
   }
 
   @at-root {
@@ -69,6 +73,7 @@
     overflow-y: auto;
     transform: translateX(0) translateY(0) scaleX(1) scaleY(1);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
     &.collapsed {
       transform: translateX(-16rem) translateY(0) scaleX(1) scaleY(1);
     }
@@ -138,9 +143,15 @@
     @include themify($themes) {
       background-color: themed("backgroundColor");
       border-bottom: themed("borderBottom");
+      border-right: themed("borderBottom");
 
+      border-right: themed("borderColorSidebar");
       background-color: themed("backgroundColorSidebar");
       border-bottom: themed("borderColorSidebar");
+
+      background-color: themed("customSidebarColor");
+      border-right: themed("customSidebarColor");
+      border-bottom: themed("customSidebarColor");
     }
 
     a {
@@ -167,15 +178,15 @@
     list-style-type: none;
     font-size: 0.825rem;
     position: relative;
-    border-bottom: 1px solid #eee;
     @include themify($themes) {
       color: themed("textColor");
       background-color: themed("backgroundColor");
-      border-bottom: themed("borderBottom");
 
       color: themed("textColorSidebar");
       background-color: themed("backgroundColorSidebar");
-      border-bottom: themed("borderColorSidebar");
+
+      color: themed("customSidebarTxtColor");
+      background-color: themed("customSidebarColor");
     }
   }
   > ul:last-child {

@@ -20,6 +20,10 @@
     color: themed("textColorSidebar");
     background-color: themed("backgroundColorSidebar");
     border-left: themed("borderLeftColorSidebar");
+
+    color: themed("customSidebarTxtColor");
+    background-color: themed("customSidebarColor");
+    border-left: themed("customSidebarColor");
   }
 
   @at-root .expanded &.activeLink {
@@ -80,7 +84,10 @@
   &:hover {
     color: #2196f3;
     border-left: 4px solid #2196f3;
-
+    @include themify($themes) {
+      color: themed("customSidebarActiveTab");
+      border-left: themed("customSidebarActiveTabBorder");
+    }
     > ul {
       opacity: 1;
     }

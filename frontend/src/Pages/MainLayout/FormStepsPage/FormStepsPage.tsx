@@ -1,9 +1,64 @@
 import * as React from 'react';
-import {CircleStep, NestedStep, RectangleStep} from '../../../Components/FormSteps';
-
+import { CircleStep, NestedStep, RectangleStep, StepForm } from '../../../Components/FormSteps';
 
 
 const FormStepsPage: React.FC = () => {
+
+    const [fields, setFields] = React.useState([
+        {
+            label: 'Name',
+            value: '',
+            type: 'text',
+            placeholder: 'Enter you name'
+        },
+        {
+            label: 'Email',
+            value: '',
+            type: 'email',
+            placeholder: 'Enter you email'
+        },
+    ]);
+
+    const steps = [{
+        label: "Lorem ipsum dolor",
+        number: 1,
+        active: true
+    },
+    {
+        label: "Lorem ipsum dolor",
+        number: 2,
+        active: false,
+        disabled: true
+    },
+    {
+        label: "Lorem ipsum dolor",
+        number: 3,
+        active: false,
+        disabled: true
+    },
+    {
+        label: "Lorem ipsum dolor",
+        number: 4,
+        active: false,
+        disabled: true
+    }]
+
+    const formSteps = [{
+        key: 1,
+        fields: fields
+    },
+    {
+        key: 2,
+        fields: fields
+    },
+    {
+        key: 3,
+        fields: fields
+    },
+    {
+        key: 4,
+        fields: fields
+    }]
 
     return (
         <div>
@@ -16,30 +71,34 @@ const FormStepsPage: React.FC = () => {
                         Steps
                     </div>
                 </div>
-                <div>
-                    <div className="">
-                        <div className="label">
-                            Form steps
+                <div className="rounded border mb-4 back-col">
+                    <div className="p-4">
+                        <div className="">
+                            <div className="label">
+                                Form steps
+                            </div>
+                            <div className="text-label font-weight-bold">
+                                Sample form step components
+                            </div>
                         </div>
-                        <div className="text-label">
-                            Sample form step components
-                        </div>
+                        <CircleStep steps={steps}/>
+                        <NestedStep steps={steps}/>
+                        <RectangleStep steps={steps}/>
                     </div>
-                    <CircleStep />
-                    <NestedStep />
-                    <RectangleStep />
                 </div>
-                <div>
-                    <div className="mb-4">
-                        <div className="label">
-                            Example
+                <div className="border rounded back-col">
+                    <div className="p-4">
+                        <div className="mb-4">
+                            <div className="label">
+                                Example
+                            </div>
+                            <div className="text-label font-weight-bold">
+                                Ready to use form steps example
+                            </div>
                         </div>
-                        <div className="text-label">
-                            Ready to use form steps example
-                        </div>
+
+                        <StepForm stepElement={NestedStep} steps={[...steps]} formSteps={[...formSteps]}/>
                     </div>
-                    <RectangleStep />
-                    
                 </div>
             </div>
         </div>

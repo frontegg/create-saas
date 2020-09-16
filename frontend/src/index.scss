@@ -4,9 +4,13 @@ body,
 .app {
   width: 100%;
   height: 100%;
-  --bg: #fcfcfc;
-  --bg-panel: #ebebeb;
-  --color-text: #212529;
+  --custom-nav-bg: #fcfcfc;
+  --custom-nav-txt: #212529;
+  --custom-nav-search: #212529;
+
+  --custom-sidebar-bg: #fcfcfc;
+  --custom-sidebar-txt: #000;
+  --custom-sidebar-active-tab: #2196f3;
 }
 
 @font-face {

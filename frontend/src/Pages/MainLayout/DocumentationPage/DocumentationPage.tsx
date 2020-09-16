@@ -1,5 +1,6 @@
 import * as React from 'react';
 import DocumentationComponent from '../../../Components/DocumentationComponent'
+import Widget from '../Widget';
 
 const DocumentationPage: React.FC = () => {
 
@@ -13,9 +14,9 @@ const DocumentationPage: React.FC = () => {
           Dashboard documentation
         </div>
       </div>
-      <div className="main">
+      <Widget>
         <DocumentationComponent />
-      </div>
+      </Widget>
     </div>
   )
 }
