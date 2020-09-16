@@ -26,7 +26,7 @@ export const ProgressLine: React.FC<Props> = ({ colorCss, colorClass="", value }
 
     return (
             <div className="w-100">
-                <div className={`progress-bar h-1 ${colorClass}`} 
+                <div className={`progress-bar my-3 h-1 ${colorClass}`} 
                     style={{
                         backgroundColor: colorCss, 
                         width: `${value}%` }} />
@@ -39,7 +39,7 @@ export const ProgressBarWithValue: React.FC<Props> = ({ colorCss, colorClass="",
 
     return (
         <div className="w-100">
-            <div className={`progress-bar ${colorClass}`} 
+            <div className={`progress-bar mb-5 ${colorClass}`} 
                     style={{
                         backgroundColor: colorCss, 
                         width: `${value}%` }} >

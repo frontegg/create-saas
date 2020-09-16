@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Notifications from './UIScreenPage/UIElementsPages/Notifications';
 
 interface NotificationObject {
+    key: string,
     open?: boolean,
     color?: string,
     text?: string,
@@ -10,36 +10,47 @@ interface NotificationObject {
     raised?: boolean,
     borderLeft?: boolean,
     className?: string,
-    setNotification?: (notif: Omit<NotificationObject, "setNotification">) => void
 }
-const NotificationContext = React.createContext<NotificationObject | null>(null);
-const NotificationContextProvider: React.FC<React.HTMLAttributes<HTMLElement>> = ({children}) => {
+interface NotificationQueueObject {
+    notifications: { [key: string]: NotificationObject },
+}
+export type NotificationContextType = NotificationQueueObject & {
+    addNotification: (notif: NotificationObject) => void
+    deleteNotification: (key: string) => void
+}
+const NotificationContext = React.createContext<NotificationContextType>(
+    {
+        notifications: {},
+        addNotification: (notif) => {},
+        deleteNotification: (key) => {}
+    })
+const NotificationContextProvider: React.FC<React.HTMLAttributes<HTMLElement>> = ({ children }) => {
 
-    const [state, setState] = React.useState<NotificationObject>({
-        open: undefined,
-        color: undefined,
-        text: undefined,
-        position: undefined,
-        outlined: undefined,
-        raised: undefined,
-        borderLeft: undefined,
-        className: undefined
+    const [state, setState] = React.useState<NotificationQueueObject>({
+        notifications: {}
     });
-    const setNotification = (notif: Omit<NotificationObject, "setNotification">) => {
+    const addNotification = (notif: NotificationObject) => {
+        let duplState = state.notifications;
+        duplState[notif.key as string] = notif
         setState({
-            ...notif,
-            setNotification: setNotification
+            notifications: duplState,
         })
     };
-    React.useEffect(() => {
+    const deleteNotification = (key: string) => {
+        let duplState = state.notifications;
+        delete duplState[key]
         setState({
-            ...state,
-            setNotification: setNotification
+            notifications: duplState
         })
-      }, []);
-    return <NotificationContext.Provider value={state}>{children}</NotificationContext.Provider>;
+    };
+    const contextValue = {
+        ...state,
+        addNotification: addNotification,
+        deleteNotification: deleteNotification
+    }
+    return <NotificationContext.Provider value={contextValue as NotificationContextType}>{children}</NotificationContext.Provider>;
 
-} ;
+};
 
-export {NotificationContextProvider};
+export { NotificationContextProvider };
 export default NotificationContext;

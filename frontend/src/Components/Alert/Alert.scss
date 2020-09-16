@@ -1,5 +1,16 @@
+@import "../../Pages/MainLayout/themes.scss";
 .Alert {
     position: relative;
+    &.raised,
+    &.outlined, 
+    &.alert-border-left {
+        background-color: #fff;
+        @include themify($themes) {
+            color: themed("textColor");
+            background-color: themed("backgroundColor");
+            border: themed("borderBottom");
+        }
+    }
     &.alert-border-left {
         border-left-width: .25em !important;
     }

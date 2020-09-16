@@ -37,7 +37,7 @@ const rows = [
         'https://i2.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1',
         'https://i2.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1',
         'https://i2.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1'],
-    100),
+        100),
     createData('China', 1403500365, [
         'https://i2.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1',
         'https://i2.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1',
@@ -123,9 +123,7 @@ const RegularTable: React.FC = () => {
                     Regular Table
         </div>
             </div>
-            <div className="main">
-                <RegularTableComponent columns={columns} rows={rows} />
-            </div>
+            <RegularTableComponent columns={columns} rows={rows} />
         </div>
     )
 }

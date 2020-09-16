@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 
 async function main() {
   await createConnection();
-  const schema = await buildSchema({ resolvers: [RequestResolver] });
+  const schema = await buildSchema({ resolvers: [RequestResolver], validate: false });
   const context = ({ req }: Context) => {
     const tenantId = req.headers['frontegg-tenant-id'] || '';
     return { tenantId };

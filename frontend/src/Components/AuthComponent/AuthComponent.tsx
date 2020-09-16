@@ -1,20 +1,21 @@
 import * as React from 'react';
 import InputElement from '../InputElement';
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import {propsType, stateType} from './types';
+import {propsType, stateType, IField} from './types';
 import './AuthComponent.scss';
 
 const AuthComponent: React.FC<propsType> = ({labelUppercase, description, fields}) => {
 
     const [state, setState] = React.useState<stateType>({});
-    React.useEffect(() => {
-        fields.forEach((item) => {
-            setState({...state, [item.name]: item.initialValue || ""})
-        })
-    }, [])
+    const initialState = fields.reduce((obj:stateType, field: IField) => {
+        obj[field.name] = field.initialValue || "";
+        return obj;
+    }, {});
+
+        setState(initialState);
     const RenderFields = fields.map((item, index): React.ReactElement => {
        return (
-            <FormGroup>
+            <FormGroup key={index}>
                 <Label>{item.label}</Label>
                 <Input name={item.name} type={item.type} onChange={(e) => handleChange(e, setState)} value={state[item.name]}/>
             </FormGroup>

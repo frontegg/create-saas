@@ -6,7 +6,7 @@
     "outDir": "./bin",
     "strict": true
   },
-  "include": ["src/cli"],
+  "include": ["cli"],
   "exclude": ["node_modules", "**/__tests__/*"],
   "compileOnSave": true
 }

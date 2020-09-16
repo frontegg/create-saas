@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "target": "es6",
+    "module": "commonjs",
+    "declaration": true,
+    "strict": true
+  },
+  "exclude": ["node_modules", "**/__tests__/*"],
+  "compileOnSave": true,
+  "emitDecoratorMetadata": true,
+  "experimentalDecorators": true
+}

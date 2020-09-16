@@ -3,7 +3,7 @@ import './Buttons.scss';
 import Widget from '../../../Widget';
 import Button, {OutlineButton, CircleButton} from '../../../../../Components/Button';
 import { FlatButton, RaisedButton } from '../../../../../Components/Button/Button';
-import { ButtonGroup } from 'reactstrap';
+import { ButtonGroup, Row } from 'reactstrap';
 
 const FlatOnHoverStyle = {
     backgroundColor: "#e5f5f5",
@@ -12,10 +12,14 @@ const FlatOnHoverStyle = {
 const Buttons:React.FC = () => {
     return <div className="Buttons">
         <div className="text-xl font-bold">Buttons</div>
-        <Widget className="w-100">
-            <Button color="primary" className="rounded-0 mr-3">Button</Button>
-            <Button color="primary" className="rounded mr-3">Button</Button>
-            <CircleButton color="primary" className="w-8 h-8 mr-3">1</CircleButton>
+        <Widget col className="w-100">
+            <div className="text-sm font-light text-grey-500">Conversions</div>
+            <div className="text-sm font-bold"><span>This year</span></div>
+            <Row className="w-100 mx-0 mt-3">
+                <Button color="primary" className="rounded-0 mr-3">Button</Button>
+                <Button color="primary" className="rounded mr-3">Button</Button>
+                <CircleButton color="primary" className="w-8 h-8 mr-3">1</CircleButton>
+            </Row>
         </Widget>
         <Widget className="w-100">
             <Button color="primary" 
@@ -58,18 +62,18 @@ const Buttons:React.FC = () => {
             <RaisedButton outline onHoverStyle={FlatOnHoverStyle} color="primary" className="rounded mr-3">Button</RaisedButton>
             <CircleButton outline onHoverStyle={FlatOnHoverStyle} color="primary" className="border-0 shadow w-8 h-8 mr-3">1</CircleButton>
         </Widget>
-        <Widget className="w-100">
-            <ButtonGroup className="mr-3">
+        <Widget className="w-100 flex-wrap">
+            <ButtonGroup className="mb-3 mr-3">
                 <OutlineButton color="primary">Left</OutlineButton>
                 <OutlineButton color="primary">Center</OutlineButton>
                 <OutlineButton color="primary">Right</OutlineButton>
             </ButtonGroup>
-            <ButtonGroup className="mr-3">
+            <ButtonGroup className="mb-3 mr-3">
                 <Button color="primary">Left</Button>
                 <Button color="primary">Center</Button>
                 <Button color="primary">Right</Button>
             </ButtonGroup>
-            <ButtonGroup className="shadow mr-3">
+            <ButtonGroup className="shadow mb-3 mr-3">
                 <FlatButton onHoverStyle={FlatOnHoverStyle} color="primary">Left</FlatButton>
                 <FlatButton onHoverStyle={FlatOnHoverStyle} color="primary">Center</FlatButton>
                 <FlatButton onHoverStyle={FlatOnHoverStyle} color="primary">Right</FlatButton>

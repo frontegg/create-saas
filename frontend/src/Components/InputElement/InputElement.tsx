@@ -1,8 +1,7 @@
 import * as React from 'react';
 import './InputElement.scss';
 import { type } from 'os';
-
-type inputTypes = 'text' | 'password' | 'email' | 'tel' | 'file';
+import { inputTypes } from './../AuthComponent/types';
 
 type Props = {
     label: string,
