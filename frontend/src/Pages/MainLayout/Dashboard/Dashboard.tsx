@@ -13,6 +13,9 @@ import { IProjectStatus } from '../../../Components/ProjectStatusComponent/type'
 import ActivitiesComponent from '../../../Components/ActivitiesComponent';
 import { Row } from 'reactstrap';
 
+import moment from 'moment';
+import { detect } from 'detect-browser';
+
 const widgets = [
   {
     label: 'USERS',
@@ -156,12 +159,6 @@ const lineChartRandomSettings: SettingsProps = {
   colors: ['#90caf9', '#4ca5f5'],
 };
 
-const pieChartRandomData: PieData = [
-  { name: 'Desktop', value: 200 },
-  { name: 'Mobile', value: 200 },
-  { name: 'Tablet', value: 200 },
-];
-
 const pieChartRandomSettings: PieSettingsProps = {
   width: 300,
   height: 300,
@@ -176,69 +173,6 @@ const pieChartRandomSettings: PieSettingsProps = {
   },
   customColors: ['#90caf9', '#4ca5f5', '#3d88e5'],
 };
-
-const barChartRandomData: BarData = [
-  {
-    name: 'Jan',
-    uv: 140,
-    pv: 240,
-  },
-  {
-    name: 'Feb',
-    uv: 67,
-    pv: 85,
-  },
-  {
-    name: 'May',
-    uv: 54,
-    pv: 23,
-  },
-  {
-    name: 'Apr',
-    uv: 67,
-    pv: 90,
-  },
-  {
-    name: 'Mar',
-    uv: 35,
-    pv: 67,
-  },
-  {
-    name: 'Jun',
-    uv: 12,
-    pv: 43,
-  },
-  {
-    name: 'Jul',
-    uv: 56,
-    pv: 87,
-  },
-  {
-    name: 'Aug',
-    uv: 69,
-    pv: 78,
-  },
-  {
-    name: 'Sep',
-    uv: 22,
-    pv: 32,
-  },
-  {
-    name: 'Oct',
-    uv: 45,
-    pv: 12,
-  },
-  {
-    name: 'Nov',
-    uv: 64,
-    pv: 89,
-  },
-  {
-    name: 'Dec',
-    uv: 22,
-    pv: 99,
-  },
-];
 
 const barChartRandomSettings: BarSettingsProps = {
   width: 500,
@@ -307,47 +241,100 @@ const ActivitiesData = [
   },
 ];
 
-const Dashboard: React.FC = () => {
-  return (
-    <div className='dashboard d-flex flex-row flex-wrap justify-content-start'>
-      {widgets.map((item, index: number) => {
-        return <Widget key={index} {...item} />;
-      })}
-      <Row className='mx-0 w-100'>
-        <Widget col className='w-2/3 flex-shrink-0' style={{ minHeight: '320px' }}>
-          <div className='w-100 text-sm font-light text-grey-500'>Conversions</div>
-          <div className='w-100 text-sm font-bold'>
-            <span>This year</span>
-          </div>
-          <BarChartComponent data={barChartRandomData} settings={barChartRandomSettings} />
+function getBarChartData(requests: any): BarData {
+  const data: { [key: string]: { success: number; failed: number } } = {};
+  requests.forEach(({ createdAt, statusCode }: any) => {
+    const month = moment(createdAt).format('MMM');
+    const success = statusCode < 400 ? 'success' : 'failed';
+    if (data[month]) {
+      data[month][success]++;
+    } else {
+      data[month] = { success: 0, failed: 0 };
+      data[month][success]++;
+    }
+  });
+  const barChartRandomData: BarData = [];
+  for (const [key, { success, failed }] of Object.entries(data)) {
+    barChartRandomData.push({ name: key, pv: success, uv: failed });
+  }
+  return barChartRandomData;
+}
+
+function getPieChartData(requests: any): PieData {
+  let chromeCount = 0,
+    edgeCount = 0,
+    firefoxCount = 0,
+    undetectedCount = 0;
+  requests.forEach(({ userAgent }: any) => {
+    const browser = detect(userAgent);
+    switch (browser && browser.name) {
+      case 'chrome':
+        chromeCount++;
+        break;
+      case 'firefox':
+        firefoxCount++;
+        break;
+      case 'edge-chromium':
+      case 'edge':
+        edgeCount++;
+        break;
+      default:
+        undetectedCount++;
+    }
+  });
+  return [
+    { name: 'Chrome', value: chromeCount },
+    { name: 'Edge', value: edgeCount },
+    { name: 'Firefox', value: firefoxCount },
+    { name: 'Not Detected', value: undetectedCount },
+  ];
+}
+
+class Dashboard extends React.Component<any> {
+  render() {
+    const { requests } = this.props;
+    return (
+      <div className='dashboard d-flex flex-row flex-wrap justify-content-start'>
+        {widgets.map((item, index: number) => {
+          return <Widget key={index} {...item} />;
+        })}
+        <Row className='mx-0 w-100'>
+          <Widget col className='w-2/3 flex-shrink-0' style={{ minHeight: '320px' }}>
+            <div className='w-100 text-sm font-light text-grey-500'>Requests</div>
+            <div className='w-100 text-sm font-bold'>
+              <span>This year</span>
+            </div>
+            <BarChartComponent data={getBarChartData(requests)} settings={barChartRandomSettings} />
+          </Widget>
+          <Widget col className='w-1/4 flex-shrink-0 justify-content-center'>
+            <div className='text-sm font-light text-grey-500'>Sessions</div>
+            <div className='text-sm font-bold'>
+              <span>By device</span>
+            </div>
+            <div className='w-100 d-flex justify-content-center'>
+              <PieChartComponent data={getPieChartData(requests)} settings={pieChartRandomSettings} />
+            </div>
+          </Widget>
+        </Row>
+        <Widget className='w-100'>
+          <RegularTableComponent columns={columns} rows={rows} />
         </Widget>
-        <Widget col className='w-1/4 flex-shrink-0 justify-content-center'>
-          <div className='text-sm font-light text-grey-500'>Sessions</div>
-          <div className='text-sm font-bold'>
-            <span>By device</span>
-          </div>
-          <div className='w-100 d-flex justify-content-center'>
-            <PieChartComponent data={pieChartRandomData} settings={pieChartRandomSettings} />
-          </div>
+        <Widget className='flex-grow-1 flex-shrink-0 w-2/3' style={{ minHeight: '320px' }}>
+          <LineChartComponent data={lineChartData} settings={lineChartRandomSettings} />
         </Widget>
-      </Row>
-      <Widget className='w-100'>
-        <RegularTableComponent columns={columns} rows={rows} />
-      </Widget>
-      <Widget className='flex-grow-1 flex-shrink-0 w-2/3' style={{ minHeight: '320px' }}>
-        <LineChartComponent data={lineChartData} settings={lineChartRandomSettings} />
-      </Widget>
-      <Widget className='flex-column' label='Project status' value='This week'>
-        {ProjectStatusData.map((item: IProjectStatus, index: number) => (
-          <ProjectStatusComponent {...item} key={index} />
-        ))}
-      </Widget>
-      <Widget className='flex-column' label='Activities' value='Today'>
-        {ActivitiesData.map((item, index: number) => (
-          <ActivitiesComponent {...item} key={index} />
-        ))}
-      </Widget>
-    </div>
-  );
-};
+        <Widget className='flex-column' label='Project status' value='This week'>
+          {ProjectStatusData.map((item: IProjectStatus, index: number) => (
+            <ProjectStatusComponent {...item} key={index} />
+          ))}
+        </Widget>
+        <Widget className='flex-column' label='Activities' value='Today'>
+          {ActivitiesData.map((item, index: number) => (
+            <ActivitiesComponent {...item} key={index} />
+          ))}
+        </Widget>
+      </div>
+    );
+  }
+}
+
 export default Dashboard;

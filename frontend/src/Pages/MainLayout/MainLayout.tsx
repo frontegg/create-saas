@@ -37,6 +37,29 @@ import Notifications from './UIScreenPage/UIElementsPages/Notifications';
 import Tabs from './UIScreenPage/UIElementsPages/Tabs';
 import Typography from './UIScreenPage/UIElementsPages/Typography';
 import BreadcrumbsPage from './UIScreenPage/UIElementsPages/Breadcrumbs';
+import { useQuery, gql } from '@apollo/client';
+
+const REQUESTS = gql`
+  query {
+    requests {
+      id
+      tenantId
+      url
+      userAgent
+      statusCode
+      createdAt
+    }
+  }
+`;
+
+const MainDashboard = () => {
+  const { loading, error, data } = useQuery(REQUESTS);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+
+  return <Dashboard requests={data.requests} />;
+};
 
 const MainLayout: React.FC = () => {
   const getWindowDimensions = () => {
@@ -222,7 +245,7 @@ const MainLayout: React.FC = () => {
           <div className='p-4 content'>
             <Switch>
               <Route path='/tables/datatable' component={Datatable} />
-              <Route path='/dashboard' component={Dashboard} />
+              <Route path='/dashboard' component={MainDashboard} />
               <Route path='/forms/sample-forms' component={SampleFormPage} />
               <Route path='/forms/default-forms' component={DefaultFormPage} />
               <Route path='/forms/sliders' component={SliderPage} />
