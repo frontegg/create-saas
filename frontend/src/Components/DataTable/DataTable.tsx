@@ -14,11 +14,11 @@ import {
 } from '@material-ui/core';
 
 import SearchIcon from '@material-ui/icons/Search';
-import TablePaginationActions from '../TableComponents/TablePaginationActions';
-import EnhancedTableHead from '../TableComponents/EnhancedTableHead';
+import TablePaginationActions from '../Table/TablePaginationActions';
+import EnhancedTableHead from '../Table/EnhancedTableHead';
 import FilterInput from '../FilterInput/FilterInput';
 import FilterButton from '../FilterButton/FilterButton';
-import './DataTableComponent.scss';
+import './DataTable.scss';
 
 import { ITableData, IData, IOrder, IColumn, ISearchData } from './types';
 
@@ -84,7 +84,7 @@ function stableSort<T>(array: T[], comparator: (a: T, b: T) => number) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-const DataTableComponent = (props: ITableData) => {
+const DataTable = (props: ITableData) => {
   const { columns, rows } = props;
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
@@ -296,4 +296,4 @@ const DataTableComponent = (props: ITableData) => {
   );
 };
 
-export default DataTableComponent;
+export default DataTable;

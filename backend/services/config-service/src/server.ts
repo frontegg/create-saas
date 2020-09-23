@@ -1,9 +1,9 @@
-import * as express from 'express';
+import express from 'express';
 import { APP_PORT, DB_URI } from './lib/config';
 import connectDB from './db';
 import schema from './graphql/schema';
 import { ApolloServer } from 'apollo-server-express';
-import * as morgan from 'morgan';
+import morgan from 'morgan';
 
 const app: express.Application = express();
 

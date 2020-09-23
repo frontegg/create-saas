@@ -17,9 +17,9 @@ import { AvatarGroup } from '@material-ui/lab';
 import ProgressBar from '../ProgressBar';
 
 import SearchIcon from '@material-ui/icons/Search';
-import TablePaginationActions from '../TableComponents/TablePaginationActions';
-import EnhancedTableHead from '../TableComponents/EnhancedTableHead';
-import './RegularTableComponent.scss';
+import TablePaginationActions from '../Table/TablePaginationActions';
+import EnhancedTableHead from '../Table/EnhancedTableHead';
+import './RegularTable.scss';
 
 import { ITableData, IData, IOrder, IColumn, IDataRow } from './types';
 
@@ -93,7 +93,7 @@ function stableSort(array: any[], comparator: (a: any, b: any) => number) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-const RegularTableComponent = (props: ITableData) => {
+const RegularTable = (props: ITableData) => {
   const { columns, rows } = props;
   const classes = useStyles();
   const [page, setPage] = React.useState<number>(0);
@@ -275,4 +275,4 @@ const RegularTableComponent = (props: ITableData) => {
   );
 };
 
-export default RegularTableComponent;
+export default RegularTable;

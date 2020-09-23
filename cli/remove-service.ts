@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import * as shell from 'shelljs';
-import * as fs from 'fs';
-import * as prompts from 'prompts';
+import shell from 'shelljs';
+import fs from 'fs';
+import prompts from 'prompts';
 
 export async function removeService(args: string[]): Promise<void> {
   const [name] = args;

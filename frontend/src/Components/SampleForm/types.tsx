@@ -1,5 +1,3 @@
-export type inputTypes = 'text' | 'password' | 'email' | 'tel' | 'file';
-
 export interface IField {
   label: string;
   name: string;

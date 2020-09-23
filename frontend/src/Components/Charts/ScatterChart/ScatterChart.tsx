@@ -3,7 +3,7 @@ import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Re
 import { scatterChartDataDefault, scatterChartDefaultSettings, ScatterChartProps } from './ScatterChartDataDefault';
 import CustomizedDot, { CustomizedLegend } from './ScatterChartDot';
 
-const LineChartComponent: React.FC<ScatterChartProps> = ({
+const LineChart: React.FC<ScatterChartProps> = ({
   data = scatterChartDataDefault,
   settings = scatterChartDefaultSettings,
 }) => {
@@ -35,4 +35,4 @@ const LineChartComponent: React.FC<ScatterChartProps> = ({
   );
 };
 
-export default LineChartComponent;
+export default LineChart;

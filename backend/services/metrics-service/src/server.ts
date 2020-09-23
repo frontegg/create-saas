@@ -1,6 +1,6 @@
 import 'reflect-metadata';
-import * as express from 'express';
-import * as morgan from 'morgan';
+import express from 'express';
+import morgan from 'morgan';
 import { createConnection } from 'typeorm';
 import { ApolloServer } from 'apollo-server-express';
 import { buildFederatedSchema } from './helpers/buildFederatedSchema';

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import * as yargs from 'yargs';
+import yargs from 'yargs';
 import { startServices } from './run-services';
 import { deployServices } from './deploy-services';
 import { addService } from './add-service';

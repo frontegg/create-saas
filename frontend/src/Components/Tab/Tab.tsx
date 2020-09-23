@@ -8,6 +8,7 @@ type TabItemProps = {
   tabId: string;
   toggle: (tab: string) => void;
 } & React.HTMLAttributes<HTMLElement>;
+
 export const TabItem: React.FC<TabItemProps> = ({
   activeClass = '',
   activeTab,
@@ -38,6 +39,7 @@ export const TabItem: React.FC<TabItemProps> = ({
     </NavItem>
   );
 };
+
 type TabPanelProps = {
   activeTabId?: string;
   activeClass?: string;

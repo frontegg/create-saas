@@ -42,9 +42,7 @@ const DefaultForm: React.FC<DefaultFormProps> = ({
           if (input.options) {
             return (
               <React.Fragment key={index}>
-                <div
-                  key={index}
-                  className={'input-group form-group' + (gridType === 'inline' ? ' form-inline' : ' col')}>
+                <div key={index} className={'form-group' + (gridType === 'inline' ? ' form-inline' : ' col')}>
                   <Label className='form-check-label mr-sm-2'>{input.label}</Label>
 
                   <select
@@ -66,7 +64,7 @@ const DefaultForm: React.FC<DefaultFormProps> = ({
 
           if (input.type === 'radio') {
             return (
-              <div key={index} className={'input-group form-group' + (radioInline ? ' form-inline' : '')}>
+              <div key={index} className={'form-group' + (radioInline ? ' form-inline' : '')}>
                 <div>
                   <Label>{input.label}</Label>
                 </div>
@@ -96,7 +94,7 @@ const DefaultForm: React.FC<DefaultFormProps> = ({
 
           if (input.type === 'checkbox') {
             return (
-              <div className={'input-group form-group' + (radioInline ? ' form-inline' : '')} key={index}>
+              <div className={'form-group' + (radioInline ? ' form-inline' : '')} key={index}>
                 <div>
                   <Label>{input.label}</Label>
                 </div>
@@ -125,7 +123,7 @@ const DefaultForm: React.FC<DefaultFormProps> = ({
 
           return (
             <div className={gridType === 'inline' ? '' : 'col'} key={index}>
-              <div key={index} className='input-group'>
+              <div key={index}>
                 <div className='input-field'>
                   {gridType === 'inline' ? (
                     <div className='form-inline'>

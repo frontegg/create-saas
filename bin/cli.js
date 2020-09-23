@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const yargs = require("yargs");
+const yargs_1 = __importDefault(require("yargs"));
 const run_services_1 = require("./run-services");
 const deploy_services_1 = require("./deploy-services");
 const add_service_1 = require("./add-service");
@@ -23,7 +26,7 @@ function getCommandAndArgs(argv) {
     return { command: 'init', args: argv.name || args[0] };
 }
 function run() {
-    const argv = yargs.options({
+    const argv = yargs_1.default.options({
         name: { type: 'string' },
     }).argv;
     const { command, args } = getCommandAndArgs(argv);

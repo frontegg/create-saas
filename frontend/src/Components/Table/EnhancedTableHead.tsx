@@ -38,4 +38,5 @@ const EnhancedTableHead = (props: any) => {
     </TableHead>
   );
 };
+
 export default EnhancedTableHead;

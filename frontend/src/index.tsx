@@ -2,13 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
+import { withFrontegg } from './withFrontegg';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './tailwind.output.css';
+import { BrowserRouter } from 'react-router-dom';
+
+const AppWithFrontegg = withFrontegg(App);
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <AppWithFrontegg />
+  </BrowserRouter>,
   document.getElementById('root'),
 );
 

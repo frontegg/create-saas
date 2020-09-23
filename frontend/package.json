@@ -8,9 +8,10 @@
     "eject": "react-scripts eject",
     "lint": "tslint -p tsconfig.json -c tslint.json --fix",
     "prebuild": "npm run build:tailwind",
+    "pre-commit": "npm run prettier && npm run lint",
     "prestart": "npm run build:tailwind",
     "prettier": "prettier --write 'src/**/*.{ts,tsx,json,scss,md}'",
-    "start": "PORT=3006 react-scripts start",
+    "start": "react-scripts start",
     "test": "react-scripts test"
   },
   "eslintConfig": {
@@ -28,6 +29,10 @@
   },
   "dependencies": {
     "@apollo/client": "^3.1.5",
+    "@frontegg/react": "^0.3.13",
+    "@frontegg/react-auth": "^1.0.70",
+    "@frontegg/react-core": "^1.0.70",
+    "@frontegg/react-elements-material-ui": "^1.0.70",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
@@ -51,7 +56,7 @@
     "reactstrap": "^8.5.1",
     "recharts": "^1.8.5",
     "tailwindcss": "^1.8.4",
-    "typescript": "^3.7.5",
+    "typescript": "^3.9.7",
     "validatorjs": "^3.19.2"
   },
   "devDependencies": {

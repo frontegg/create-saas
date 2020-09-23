@@ -4,7 +4,9 @@
     "target": "es6",
     "module": "commonjs",
     "declaration": true,
-    "strict": true
+    "strict": true,
+    "noImplicitAny": false,
+    "esModuleInterop": true
   },
   "exclude": ["node_modules", "**/__tests__/*"],
   "compileOnSave": true

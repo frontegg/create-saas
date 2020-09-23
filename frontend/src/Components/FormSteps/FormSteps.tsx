@@ -105,7 +105,7 @@ export const RectangleStep: React.FC<Props & StepProps> = (props) => {
           {props.steps &&
             props.steps.map((step, index) => {
               return (
-                <div className='w-25'>
+                <div className='w-25' key={index}>
                   <button
                     disabled={step.disabled}
                     style={step.disabled ? { cursor: 'not-allowed' } : {}}

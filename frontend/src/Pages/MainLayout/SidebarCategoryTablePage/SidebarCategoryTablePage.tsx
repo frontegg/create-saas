@@ -1,8 +1,8 @@
 import React from 'react';
-import RegularTableComponent from '../../../Components/RegularTableComponent';
-import SidebarCategoryComponent from '../../../Components/SidebarCategoryComponent';
-import { IData, IColumn } from '../../../Components/RegularTableComponent/types';
-import { IItemsList } from '../../../Components/SidebarCategoryComponent/types';
+import RegularTable from '../../../Components/RegularTable';
+import SidebarCategory from '../../../Components/SidebarCategory';
+import { IData, IColumn } from '../../../Components/RegularTable/types';
+import { IItemsList } from '../../../Components/SidebarCategory/types';
 import Paper from '@material-ui/core/Paper';
 
 export const columns: IColumn[] = [
@@ -226,8 +226,8 @@ const SidebarCategoryTable: React.FC = () => {
         <div className='section-name'>Sidebar category table</div>
       </div>
       <Paper elevation={0} className='main-row'>
-        <SidebarCategoryComponent itemsList={itemsList} />
-        <RegularTableComponent columns={columns} rows={rows} />
+        <SidebarCategory itemsList={itemsList} />
+        <RegularTable columns={columns} rows={rows} />
       </Paper>
     </div>
   );

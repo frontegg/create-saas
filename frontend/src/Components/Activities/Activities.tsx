@@ -32,15 +32,15 @@ const useStyles = makeStyles(() =>
   }),
 );
 
-type ActivitiesComponentProps = {
+type ActivitiesProps = {
   title: string;
-  desc: string;
+  description: string;
   status: string;
   value: number;
 };
 
-const ActivitiesComponent = (props: ActivitiesComponentProps) => {
-  const { title, desc, value, status } = props;
+const Activities = (props: ActivitiesProps) => {
+  const { title, description, value, status } = props;
   const { root, badge, line, content } = useStyles();
   return (
     <Paper elevation={0} className={root}>
@@ -51,7 +51,7 @@ const ActivitiesComponent = (props: ActivitiesComponentProps) => {
       <div className={content}>
         <div className='font-weight-bold'>{title}</div>
         <div>
-          {desc}
+          {description}
           <br />
           {status}
         </div>
@@ -60,4 +60,4 @@ const ActivitiesComponent = (props: ActivitiesComponentProps) => {
   );
 };
 
-export default ActivitiesComponent;
+export default Activities;

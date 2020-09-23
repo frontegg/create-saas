@@ -9,13 +9,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.initRepo = void 0;
-const prompts = require("prompts");
-const ora = require("ora");
-const chalk = require("chalk");
+const prompts_1 = __importDefault(require("prompts"));
+const ora_1 = __importDefault(require("ora"));
+const chalk_1 = __importDefault(require("chalk"));
 const child_process_1 = require("child_process");
-const spinner = ora('');
+const spinner = ora_1.default('');
 const questions = [
     {
         type: 'select',
@@ -63,20 +66,20 @@ function initRepo(name) {
     return __awaiter(this, void 0, void 0, function* () {
         let projectName = name || '';
         while (!projectName.length) {
-            const response = yield prompts({
+            const response = yield prompts_1.default({
                 type: 'text',
                 name: 'project',
                 message: 'Choose project name',
             });
             projectName = response.project;
         }
-        const { sourceControl, user, password } = yield prompts(questions);
+        const { sourceControl, user, password } = yield prompts_1.default(questions);
         if (sourceControl && !(user && password)) {
-            console.log(chalk.red('✖ ') + chalk.white.bold('User and password must be supplied'));
+            console.log(chalk_1.default.red('✖ ') + chalk_1.default.white.bold('User and password must be supplied'));
             return;
         }
-        yield longCommand(`git clone https://github.com/frontegg/create-saas ${projectName}`, chalk.white.bold('Fetching data'), () => console.log(chalk.green('✔ ') + chalk.white.bold('Finished fetching data')));
-        yield longCommand(`cd ${projectName} && npm i && npx lerna bootstrap`, chalk.white.bold('Installing packages'), () => console.log(chalk.green('✔ ') + chalk.white.bold('Finished installing packages')));
+        yield longCommand(`git clone https://github.com/frontegg/create-saas ${projectName}`, chalk_1.default.white.bold('Fetching data'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished fetching data')));
+        yield longCommand(`cd ${projectName} && npm i && npx lerna bootstrap`, chalk_1.default.white.bold('Installing packages'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished installing packages')));
     });
 }
 exports.initRepo = initRepo;

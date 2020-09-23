@@ -17,7 +17,7 @@ The service uses `Feature` model as an example.
    * `npm run provision`
 
    * `npm run start`
-   
+
 ### Requests Examples
 
     curl \
@@ -25,23 +25,23 @@ The service uses `Feature` model as an example.
       -H "Content-Type: application/json" \
       -H "frontegg-tenant-id: 90b02525-0d38-415e-8e23-dc4d8c1c4cb0" \
       --data '{ "query": "{ feature(id: \"5f4f93bf18022e3ac727c1c1\") { name, id, tenantId } }" }' \
-      http://localhost:3002/graphql
+      http://localhost:5002/graphql
 
     curl \
       -X POST \
       -H "Content-Type: application/json" \
       -H "frontegg-tenant-id: 90b02525-0d38-415e-8e23-dc4d8c1c4cb0" \
       --data '{ "query": "{ features { name, id, tenantId } }" }' \
-      http://localhost:3002/graphql
-      
+      http://localhost:5002/graphql
+
     curl \
       -H "Content-Type: application/json" \
       -H "frontegg-tenant-id: 90b02525-0d38-415e-8e23-dc4d8c1c4cb0" \
       -d '{ "query": "mutation { addFeature(name: \"feature\", enabled: true) { id } }" }' \
-      http://localhost:3002/graphql
+      http://localhost:5002/graphql
 
 
-### License 
+### License
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 

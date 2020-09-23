@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import * as shell from 'shelljs';
-import * as prompts from 'prompts';
+import shell from 'shelljs';
+import prompts from 'prompts';
 
 export async function addService(args: string[]): Promise<void> {
   const [name] = args;

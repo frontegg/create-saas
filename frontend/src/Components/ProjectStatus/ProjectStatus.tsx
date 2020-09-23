@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { Paper, Avatar } from '@material-ui/core';
 import ProgressBar from '../ProgressBar';
-import { IProjectStatus } from './type';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -22,7 +21,15 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const ProjectStatusComponent = ({ title, desc, img, value }: IProjectStatus) => {
+export type ProjectStatusProps = {
+  title: string;
+  description: string;
+  img: string;
+  value: number;
+};
+
+const ProjectStatus = (props: ProjectStatusProps) => {
+  const { title, description, img, value } = props;
   const classes = useStyles();
 
   return (
@@ -30,11 +37,11 @@ const ProjectStatusComponent = ({ title, desc, img, value }: IProjectStatus) => 
       <Avatar className={classes.avatarBorder} alt='Remy Sharp' src={img} />
       <div className={classes.content}>
         <div className='font-weight-bold'>{title}</div>
-        <div>{desc}</div>
+        <div>{description}</div>
         <ProgressBar value={value} />
       </div>
     </Paper>
   );
 };
 
-export default ProjectStatusComponent;
+export default ProjectStatus;

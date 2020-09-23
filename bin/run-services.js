@@ -9,13 +9,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.startServices = void 0;
-const shell = require("shelljs");
+const shelljs_1 = __importDefault(require("shelljs"));
 function startServices() {
     return __awaiter(this, void 0, void 0, function* () {
-        shell.exec('npm run provision', { silent: true });
-        shell.exec('npm run start');
+        shelljs_1.default.exec('npm run provision', { silent: true });
+        shelljs_1.default.exec('npm run start');
     });
 }
 exports.startServices = startServices;

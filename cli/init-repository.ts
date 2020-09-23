@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import * as prompts from 'prompts';
-import * as ora from 'ora';
-import * as chalk from 'chalk';
+import prompts from 'prompts';
+import ora from 'ora';
+import chalk from 'chalk';
 import { spawn } from 'child_process';
 const spinner = ora('');
 

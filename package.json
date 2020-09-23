@@ -15,6 +15,7 @@
     "lint": "tslint -p tsconfig.json -c tslint.json --fix",
     "migration": "cd backend/services/metrics-service && npm run typeorm:migrate && npm run typeorm:seed",
     "pre-commit": "npm run prettier && npm run lint",
+    "pre-commit-all": "lerna run pre-commit",
     "prettier": "prettier 'cli/**/*.{js,ts,json}' --write",
     "provision": "lerna run provision",
     "run-api-gw": "ts-node backend/api-gw/src/server.ts",

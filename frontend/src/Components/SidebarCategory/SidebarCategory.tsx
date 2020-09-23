@@ -48,7 +48,7 @@ const ListItemIcons: React.FC<any> = ({ label }) => {
   }
 };
 
-const SidebarCategoryComponent = (props: ISidebarCategory) => {
+const SidebarCategory = (props: ISidebarCategory) => {
   const {
     itemsList: { buttons, categories, labels },
   } = props;
@@ -97,4 +97,4 @@ const SidebarCategoryComponent = (props: ISidebarCategory) => {
   );
 };
 
-export default SidebarCategoryComponent;
+export default SidebarCategory;

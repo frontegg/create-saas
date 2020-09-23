@@ -1,19 +1,25 @@
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import {
+  BarChart as RechartsBarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from 'recharts';
 import { barChartDefaultData, BarChartProps, barChartDefaultSettings } from './BarChartDataDefault';
 
-const BarChartComponent: React.FC<BarChartProps> = ({
-  data = barChartDefaultData,
-  settings = barChartDefaultSettings,
-}) => {
+const BarChart: React.FC<BarChartProps> = ({ data = barChartDefaultData, settings = barChartDefaultSettings }) => {
   const width = settings.width || barChartDefaultSettings.width;
   const height = settings.height || barChartDefaultSettings.height;
   const isEnableGrid = settings.isEnableGrid || barChartDefaultSettings.isEnableGrid;
-  const isEnableLegend = settings.isEnableLegend || barChartDefaultSettings.isEnableLegend;
+  const isEnableLegend = barChartDefaultSettings.isEnableLegend;
   const colors = settings.colors || barChartDefaultSettings.colors;
   return (
     <ResponsiveContainer>
-      <BarChart
+      <RechartsBarChart
         width={width}
         height={height}
         data={data}
@@ -33,9 +39,9 @@ const BarChartComponent: React.FC<BarChartProps> = ({
         {Object.keys(data[0]).map((keyName, i) =>
           keyName !== 'name' ? <Bar dataKey={keyName} key={keyName} fill={colors[(i - 1) % colors.length]} /> : null,
         )}
-      </BarChart>
+      </RechartsBarChart>
     </ResponsiveContainer>
   );
 };
 
-export default BarChartComponent;
+export default BarChart;

@@ -6,6 +6,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import { IconButton } from '@material-ui/core';
 import { stateType } from '../SettingsButton/types';
 import SettingsSidebar from '../SettingsSidebar';
+import { Notifications } from '@frontegg/react';
 
 const NavBar = ({
   className,
@@ -30,6 +31,7 @@ const NavBar = ({
     <div className={`NavBar ${className}`}>
       <div className='logo d-none d-md-flex'>
         <a className='d-flex flex-row align-items-center justify-content-start' href='/'>
+          <Notifications />
           <img src='/images/logo.png' alt='' />
           <span>Frontegg</span>
         </a>

@@ -1,6 +1,6 @@
 import React from 'react';
-import RegularTableComponent from '../../../Components/RegularTableComponent';
-import { IData, IColumn } from '../../../Components/RegularTableComponent/types';
+import RegularTable from '../../../Components/RegularTable';
+import { IData, IColumn } from '../../../Components/RegularTable/types';
 
 const columns: IColumn[] = [
   {
@@ -184,16 +184,16 @@ const rows = [
   ),
 ];
 
-const RegularTable: React.FC = () => {
+const RegularTablePage: React.FC = () => {
   return (
     <div className='sampleformpage'>
       <div className='section-title'>
         <div className='category'>TABLES</div>
         <div className='section-name'>Regular Table</div>
       </div>
-      <RegularTableComponent columns={columns} rows={rows} />
+      <RegularTable columns={columns} rows={rows} />
     </div>
   );
 };
 
-export default RegularTable;
+export default RegularTablePage;

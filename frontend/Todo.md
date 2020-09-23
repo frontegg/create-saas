@@ -11,15 +11,6 @@
 
 - [ ] use export  {TopAlert as TA, FixedTopAlert as FTA} not export const...
 
-### frontend/src/Components/AuthComponent/AuthComponent.scss
-
-- [ ] don't use camel-case in css: `.auth-container` should be `.auth-container`
-
-### frontend/src/Components/AuthComponent/AuthComponent.tsx
-
-- [ ] remove unused imports
-- [ ] line(7): types must be UpperCased
-
 ### frontend/src/Components/Badge/Badge.tsx
 
 - [ ] line(4): use `size` property instead of small,medium...
@@ -27,7 +18,6 @@
 
 ### frontend/src/Components/Breadcrumbs
 
-- [ ] don't use css camel-case
 - [ ] useMemo for building links and depends on links property
 
 ### frontend/src/Components/Button
@@ -40,10 +30,6 @@
 - [ ] toggle function depends on previous state and should call setOpen((prev) => !prev)
 - [ ] use `BootstrapButtonDropdown` instead of `ButtonDropdown` and export `ButtonDropdown` not `ButtonDropDown`
 
-### frontend/src/Components/DataTableComponent/types.tsx
-
-- [ ] import React is you are using React.MouseEvent
-
 ### frontend/src/Components/DatePicker/DatePicker.tsx
 
 - [ ] move the `import "react-datepicker/dist/react-datepicker.css";` to `DatePicker.scss`
@@ -55,7 +41,6 @@
 
 ### frontend/src/Components/DefaultForm/DefaultForm.tsx
 
-- [ ] remove unused imports
 - [ ] is there other types of form? it not, use `Form.tsx` and not `DefaultForm.tsx`
 - [ ] move `input.map` outside jsx and useMemo and depends on the related props
 - [ ] split the `input.map` to separate components, the jsx is complex
@@ -66,26 +51,6 @@
 
 - [ ] extract `IField` `options` property to separate interface and don't use `{...}[]` it should be `IFieldOptions[]`.
 - [ ] remove `undefined` from `validType` the optional `?` do it for you.
-
-### frontend/src/Components/DocumentationComponent/ChangeLogComponent.tsx
-
-- [ ] line(42): use props interface, don't construct the props in the component declaration
-
-### frontend/src/Components/DocumentationComponent/CodeStructureComponent.tsx
-
-- [ ] line(110): build the tree with recurring function, **very long file**
-
-### frontend/src/Components/DocumentationComponent/DocumentationComponent.tsx
-
-- [ ] move the default values to separate file
-
-### frontend/src/Components/DocumentationComponent/FAQComponent.tsx
-
-- [ ] use map with useMemo and empty dependency to prevent repeating yourself
-
-### frontend/src/Components/DocumentationComponent/InstallationComponent.tsx
-
-- [ ] line(37): you have empty a href values, if it's look like href you should pass the right url.
 
 ### frontend/src/Components/Dropdown/Dropdown.tsx
 
@@ -159,26 +124,16 @@
 - [ ] use `classNames`
 - [ ] line(39): move to `useMemo` outside the JSX
 
-### frontend/src/Components/PricingComponents/index.tsx
-
-- [ ] use `export {default as PricingSmallCards} from './PricingSmallCards'`
-
-### frontend/src/Components/PricingComponents/PricingSmallCards.tsx
-
-- [ ] line(90): share components props between switch cases
-- [ ] line(127): separate price as standalone component
-
 ### frontend/src/Components/ProgressBar/ProgressBar.tsx
 
 - [ ] use `classNames`
 - [ ] line(45): what if the value `< 0` or `> 100`
 
-### frontend/src/Components/ProjectStatusComponent/ProjectStatusComponent.tsx
+### frontend/src/Components/ProjectStatusComponent/ProjectStatustsx
 
-- [ ] use `description` instead of `desc`
 - [ ] line(31): remove `alt` property or set the right text
 
-### frontend/src/Components/RegularTableComponent/RegularTableComponent.tsx
+### frontend/src/Components/RegularTableComponent/RegularTabletsx
 
 - [ ] very long component
 - [ ] move helpers to separate file
@@ -190,10 +145,6 @@
 - [ ] complex JSX code
 - [ ] use `classNames`
 - [ ] duplicated IField interface
-
-### frontend/src/Components/SettingsButton/SettingsButton.scss
-
-- [ ] duplicate `box-shadow` css attribute
 
 ### frontend/src/Components/SettingsButton/SettingsButton.tsx
 
@@ -231,15 +182,6 @@
 - [ ] line(35): what if the `page < 0`
 - [ ] line(39): what if the `page > Math.max(0, Math.ceil(count / rowsPerPage) - 1))`
 
-### frontend/src/Components/TermsComponent/TermsComponent.tsx
-
-- [ ] line(35-36): empty `className` property
-- [ ] line(44): `element.desc.length` may throw exception
-- [ ] line(46): use `el.subContent?.map?.(...)` instead of `!!el.subContent ? el.subContent.map(...)`
-- [ ] line(48): don't use concatenate and plus in same expression. `${(index + 1) + '.'}`
-- [ ] line(48): `${el}` is shadowed with the upper `el` element.
-- [ ] line(48): move `*.map` to `useMemo` outside the JSX code
-
 ### frontend/src/Components/Typography/Typography.tsx
 
 - [ ] empty component should be removed
@@ -247,3 +189,8 @@
 ### frontend/src/Components/Sidebar/Sidebar.tsx
 
 - [ ] change li-darkMod css
+
+### MISC
+
+* Choose createStyles or scss file
+* Why NotificationContext is in Pages/MainLayout

@@ -1,16 +1,15 @@
 import React from 'react';
 import Widget from '../Widget';
-import RegularTableComponent from '../../../Components/RegularTableComponent';
-import LineChartComponent from '../../../Components/Charts/LineChart';
-import PieChartComponent from '../../../Components/Charts/PieChart';
-import BarChartComponent from '../../../Components/Charts/BarChart';
+import RegularTable from '../../../Components/RegularTable';
+import LineChart from '../../../Components/Charts/LineChart';
+import PieChart from '../../../Components/Charts/PieChart';
+import BarChart from '../../../Components/Charts/BarChart';
 import { columns, rows } from '../SidebarCategoryTablePage';
 import { Props, SettingsProps } from '../../../Components/Charts/LineChart/lineChartDataDefault';
 import { PieData, PieSettingsProps } from '../../../Components/Charts/PieChart/PieChartDataDefault';
 import { BarData, BarSettingsProps } from '../../../Components/Charts/BarChart/BarChartDataDefault';
-import ProjectStatusComponent from '../../../Components/ProjectStatusComponent';
-import { IProjectStatus } from '../../../Components/ProjectStatusComponent/type';
-import ActivitiesComponent from '../../../Components/ActivitiesComponent';
+import ProjectStatus, { ProjectStatusProps } from '../../../Components/ProjectStatus';
+import Activities from '../../../Components/Activities';
 import { Row } from 'reactstrap';
 
 import moment from 'moment';
@@ -183,31 +182,31 @@ const barChartRandomSettings: BarSettingsProps = {
   colors: ['#90caf9', '#3d88e5'],
 };
 
-const ProjectStatusData: IProjectStatus[] = [
+const ProjectStatusData: ProjectStatusProps[] = [
   {
     title: 'Harum quia vel vero id.',
-    desc: 'Et odio facere in quis.',
+    description: 'Et odio facere in quis.',
     img:
       'https://i2.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1',
     value: 35,
   },
   {
     title: 'Qui itaque omnis distinctio commodi.',
-    desc: 'Tempore quis omnis tempore et.',
+    description: 'Tempore quis omnis tempore et.',
     img:
       'https://i2.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1',
     value: 63,
   },
   {
     title: 'Nemo dolor reiciendis ut et.',
-    desc: 'Nisi aut iure et modi.',
+    description: 'Nisi aut iure et modi.',
     img:
       'https://i2.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1',
     value: 100,
   },
   {
     title: 'Provident dignissimos sed non quia.',
-    desc: 'Odit omnis enim sapiente labore.',
+    description: 'Odit omnis enim sapiente labore.',
     img:
       'https://i2.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1',
     value: 26,
@@ -217,25 +216,25 @@ const ProjectStatusData: IProjectStatus[] = [
 const ActivitiesData = [
   {
     title: 'Perferendis dignissimos provident saepe in.',
-    desc: 'Corporis in est quae exercitationem.',
+    description: 'Corporis in est quae exercitationem.',
     status: 'a few seconds ago',
     value: 1,
   },
   {
     title: 'Eos et aut perspiciatis et.',
-    desc: 'Hic praesentium veritatis sapiente voluptatem.',
+    description: 'Hic praesentium veritatis sapiente voluptatem.',
     status: 'a day ago',
     value: 2,
   },
   {
     title: 'Vero voluptatibus est voluptas quas.',
-    desc: 'Ut iusto praesentium harum molestias.',
+    description: 'Ut iusto praesentium harum molestias.',
     status: '2 days ago',
     value: 3,
   },
   {
     title: 'Non maxime fuga nemo officiis.',
-    desc: 'Dolore nam laudantium vel voluptatem.',
+    description: 'Dolore nam laudantium vel voluptatem.',
     status: '3 days ago',
     value: 4,
   },
@@ -304,32 +303,32 @@ class Dashboard extends React.Component<any> {
             <div className='w-100 text-sm font-bold'>
               <span>This year</span>
             </div>
-            <BarChartComponent data={getBarChartData(requests)} settings={barChartRandomSettings} />
+            <BarChart data={getBarChartData(requests)} settings={barChartRandomSettings} />
           </Widget>
           <Widget col className='w-1/4 flex-shrink-0 justify-content-center'>
-            <div className='text-sm font-light text-grey-500'>Sessions</div>
+            <div className='text-sm font-light text-grey-500'>Requests</div>
             <div className='text-sm font-bold'>
-              <span>By device</span>
+              <span>By browser</span>
             </div>
             <div className='w-100 d-flex justify-content-center'>
-              <PieChartComponent data={getPieChartData(requests)} settings={pieChartRandomSettings} />
+              <PieChart data={getPieChartData(requests)} settings={pieChartRandomSettings} />
             </div>
           </Widget>
         </Row>
         <Widget className='w-100'>
-          <RegularTableComponent columns={columns} rows={rows} />
+          <RegularTable columns={columns} rows={rows} />
         </Widget>
         <Widget className='flex-grow-1 flex-shrink-0 w-2/3' style={{ minHeight: '320px' }}>
-          <LineChartComponent data={lineChartData} settings={lineChartRandomSettings} />
+          <LineChart data={lineChartData} settings={lineChartRandomSettings} />
         </Widget>
         <Widget className='flex-column' label='Project status' value='This week'>
-          {ProjectStatusData.map((item: IProjectStatus, index: number) => (
-            <ProjectStatusComponent {...item} key={index} />
+          {ProjectStatusData.map((item: ProjectStatusProps, index: number) => (
+            <ProjectStatus {...item} key={index} />
           ))}
         </Widget>
         <Widget className='flex-column' label='Activities' value='Today'>
           {ActivitiesData.map((item, index: number) => (
-            <ActivitiesComponent {...item} key={index} />
+            <Activities {...item} key={index} />
           ))}
         </Widget>
       </div>

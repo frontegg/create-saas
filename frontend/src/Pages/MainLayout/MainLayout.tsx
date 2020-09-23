@@ -19,10 +19,10 @@ import { stateType } from '../../Components/SettingsButton/types';
 import UIScreenPage from './UIScreenPage';
 import Badges from './UIScreenPage/UIElementsPages/Badges';
 import Dropdowns from './UIScreenPage/UIElementsPages/Dropdowns';
-import LineChartComponent from '../../Components/Charts/LineChart';
-import PieChartComponent from '../../Components/Charts/PieChart';
-import BarChartComponent from '../../Components/Charts/BarChart';
-import ScatterChartComponent from '../../Components/Charts/ScatterChart';
+import LineChart from '../../Components/Charts/LineChart';
+import PieChart from '../../Components/Charts/PieChart';
+import BarChart from '../../Components/Charts/BarChart';
+import ScatterChart from '../../Components/Charts/ScatterChart';
 import Buttons from './UIScreenPage/UIElementsPages/Buttons';
 import Paginations from './UIScreenPage/UIElementsPages/Paginations';
 import Images from './UIScreenPage/UIElementsPages/Images';
@@ -38,6 +38,8 @@ import Tabs from './UIScreenPage/UIElementsPages/Tabs';
 import Typography from './UIScreenPage/UIElementsPages/Typography';
 import BreadcrumbsPage from './UIScreenPage/UIElementsPages/Breadcrumbs';
 import { useQuery, gql } from '@apollo/client';
+import { ProtectedRoute } from '@frontegg/react-auth';
+import { SSO } from '@frontegg/react-auth';
 
 const REQUESTS = gql`
   query {
@@ -244,6 +246,7 @@ const MainLayout: React.FC = () => {
             })}
           <div className='p-4 content'>
             <Switch>
+              <Route path='/sso' component={SSO.Page} />
               <Route path='/tables/datatable' component={Datatable} />
               <Route path='/dashboard' component={MainDashboard} />
               <Route path='/forms/sample-forms' component={SampleFormPage} />
@@ -264,7 +267,7 @@ const MainLayout: React.FC = () => {
                       <Route path='/ui-elements/alerts' component={Alerts} />
                       <Route path='/ui-elements/badges' component={Badges} />
                       <Route path='/ui-elements/buttons' component={Buttons} />
-                      <Route path='/ui-elements/dropdowns' component={Dropdowns} />
+                      <ProtectedRoute path='/ui-elements/dropdowns' component={Dropdowns} />
                       <Route path='/ui-elements/pagination' component={Paginations} />
                       <Route path='/ui-elements/images' component={Images} />
                       <Route path='/ui-elements/lists' component={Lists} />
@@ -282,10 +285,10 @@ const MainLayout: React.FC = () => {
                 render={(props) => (
                   <UIScreenPage>
                     <Switch>
-                      <Route path='/charts/line-charts' component={LineChartComponent} />
-                      <Route path='/charts/scatter-charts' component={ScatterChartComponent} />
-                      <Route path='/charts/pie-charts' component={PieChartComponent} />
-                      <Route path='/charts/bar-charts' component={BarChartComponent} />
+                      <Route path='/charts/line-charts' component={LineChart} />
+                      <Route path='/charts/scatter-charts' component={ScatterChart} />
+                      <Route path='/charts/pie-charts' component={PieChart} />
+                      <Route path='/charts/bar-charts' component={BarChart} />
                     </Switch>
                   </UIScreenPage>
                 )}

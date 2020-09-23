@@ -65,4 +65,5 @@ const TablePaginationActions = (props: ITablePaginationActionsProps) => {
     </div>
   );
 };
+
 export default TablePaginationActions;

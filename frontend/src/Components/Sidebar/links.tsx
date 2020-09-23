@@ -104,11 +104,6 @@ export const links: linksArray = [
     ],
   },
   {
-    path: '/doc',
-    label: 'Documentation',
-    icon: '',
-  },
-  {
     path: '/forms',
     label: 'Form screen',
     icon: '',
