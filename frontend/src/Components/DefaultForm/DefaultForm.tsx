@@ -51,7 +51,11 @@ const DefaultForm: React.FC<DefaultFormProps> = ({
                     className={checkValidation(input, 'border', 'form-control form-input mb-2 mr-sm-2')}
                     name={input.name}>
                     {input.options.map((option, i: number) => {
-                      return <option value={option.value} key={i}>{option.label}</option>;
+                      return (
+                        <option value={option.value} key={i}>
+                          {option.label}
+                        </option>
+                      );
                     })}
                   </select>
                   <div className={checkValidation(input, 'text', ' text-xs mr-sm-2')}>{input.signature}</div>
