@@ -1,7 +1,7 @@
 import React from 'react';
-import './Alert.scss';
 import { Alert as ReactstrapAlert } from 'reactstrap';
-import NotificationContext, { NotificationContextType } from '../../Pages/MainLayout/NotificationContext';
+import { NotificationContext, NotificationContextType } from '../NotificationContext';
+import './Alert.scss';
 
 type AlertProps = React.HTMLAttributes<HTMLElement> & {
   notificationKey: string;
@@ -23,7 +23,7 @@ const Alert: React.FC<AlertProps> = (props: AlertProps) => {
   return (
     <ReactstrapAlert
       color={color}
-      className={`Alert w-100 ${className}`}
+      className={`alert w-100 ${className}`}
       isOpen={isOpen}
       toggle={onDismiss}
       style={{ ...style }}>
@@ -32,51 +32,24 @@ const Alert: React.FC<AlertProps> = (props: AlertProps) => {
   );
 };
 
-export const TopAlert = (props: AlertProps) => {
+const TopAlert = (props: AlertProps) => {
   const context = React.useContext<NotificationContextType>(NotificationContext);
-  return context.addNotification({
-    ...props,
-    key: props.notificationKey,
-    position: 'top',
-  });
+  return context.addNotification({ ...props, key: props.notificationKey, position: 'top' });
 };
 
-export const FixedTopAlert = (props: AlertProps) => {
+const FixedTopAlert = (props: AlertProps) => {
   const context = React.useContext<NotificationContextType>(NotificationContext);
-  return (context.addNotification({
-    ...props,
-    key: props.notificationKey,
-    position: 'fixed-top',
-  }) as unknown) as JSX.Element;
+  return context.addNotification({ ...props, key: props.notificationKey, position: 'fixed-top' });
 };
 
-export const FixedBottomAlert = (props: AlertProps) => {
+const FixedBottomAlert = (props: AlertProps) => {
   const context = React.useContext<NotificationContextType>(NotificationContext);
-  return (context.addNotification({
-    ...props,
-    key: props.notificationKey,
-    position: 'fixed-bottom',
-  }) as unknown) as JSX.Element;
+  return context.addNotification({ ...props, key: props.notificationKey, position: 'fixed-bottom' });
 };
 
-export const FixedMarginBottomAlert = (props: AlertProps) => {
+const RelativeAlert = (props: AlertProps) => {
   const context = React.useContext<NotificationContextType>(NotificationContext);
-  return (context.addNotification({
-    ...props,
-    className: `${props.className} m-2 w-auto`,
-    key: props.notificationKey,
-    position: 'fixed-bottom',
-  }) as unknown) as JSX.Element;
+  return context.addNotification({ ...props, key: props.notificationKey, position: 'relative' });
 };
 
-export const RelativeAlert = (props: AlertProps) => {
-  const context = React.useContext<NotificationContextType>(NotificationContext);
-  return context.addNotification({
-    ...props,
-    className: `${props.className} `,
-    key: props.notificationKey,
-    position: 'relative',
-  });
-};
-
-export default Alert;
+export { Alert, TopAlert, FixedTopAlert, FixedBottomAlert, RelativeAlert };

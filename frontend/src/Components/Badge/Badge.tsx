@@ -1,42 +1,32 @@
 import React from 'react';
+import classNames from 'classnames';
 import './Badge.scss';
 
-type Props = {
-  small?: boolean;
-  medium?: boolean;
-  large?: boolean;
+const SIZE_MAP = {
+  small: 1,
+  medium: 2,
+  large: 3,
+};
+
+type BadgeProps = React.HTMLAttributes<HTMLElement> & {
+  size: 'small' | 'medium' | 'large';
   color?: string;
   outline?: boolean;
   circular?: boolean;
 };
 
-const Badge: React.FC<Props & React.HTMLAttributes<HTMLElement>> = ({
-  small = false,
-  medium = false,
-  large = false,
-  outline = false,
-  circular = false,
-  color = 'primary',
-  className = '',
-  children,
-}) => {
-  let size = 0;
-  if (small) size = 1;
-  if (medium) size = 2;
-  if (large) size = 3;
-  return (
-    <span
-      className={`badge Badge
-            ${className}
-            ${circular ? `circular w-h-${size}` : `px-1 py-${size}`}
-            ${outline ? `text-${color} border border-${color}` : `badge-${color}`}`}>
-      {children}
-    </span>
-  );
+const Badge: React.FC<BadgeProps> = (props: BadgeProps) => {
+  const { size, outline = false, circular = false, color = 'primary', className = '', children } = props;
+
+  const sizeNumber = SIZE_MAP[size];
+  const outlineClasses = outline ? `text-${color} border border-${color}` : `badge-${color}`;
+  const circularClasses = circular ? `circular size-${size}` : `px-1 py-${sizeNumber}`;
+  const klassName = classNames('badge', className, outlineClasses, circularClasses);
+  return <span className={klassName}>{children}</span>;
 };
 
-export const CircularBadge: React.FC<Props & React.HTMLAttributes<HTMLElement>> = (props) => {
-  return <Badge {...props} circular className={`${props.className}  rounded-circle`} />;
+export const CircularBadge: React.FC<BadgeProps> = (props) => {
+  return <Badge {...props} circular className={`${props.className} rounded-circle`} />;
 };
 
 export default Badge;

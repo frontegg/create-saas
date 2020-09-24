@@ -28,10 +28,9 @@ const NavBar = ({
   };
 
   return (
-    <div className={`NavBar ${className}`}>
+    <div className={`nav-bar ${className}`}>
       <div className='logo d-none d-md-flex'>
         <a className='d-flex flex-row align-items-center justify-content-start' href='/'>
-          <Notifications />
           <img src='/images/logo.png' alt='' />
           <span>Frontegg</span>
         </a>
@@ -68,6 +67,9 @@ const NavBar = ({
       </svg>
       <Input className='search-field' type='text' placeholder='Search...' />
       <ProfileImage image='/images/profile.jpeg' />
+      <div className='frontegg-notifications'>
+        <Notifications />
+      </div>
       <IconButton color='primary' onClick={() => toggleDrawer(true)}>
         <SettingsIcon fontSize='inherit' />
       </IconButton>

@@ -3,7 +3,7 @@ import './Notifications.scss';
 import Widget from '../../../Widget';
 import { Col, Row } from 'reactstrap';
 import Button from '../../../../../Components/Button';
-import NotificationContext, { NotificationContextType } from '../../../NotificationContext';
+import { NotificationContext, NotificationContextType } from '../../../../../Components/NotificationContext';
 import { NotificationManager } from 'react-notifications';
 
 type notificationType = 'info' | 'success' | 'warning' | 'error';

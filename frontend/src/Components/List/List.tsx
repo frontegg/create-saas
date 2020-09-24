@@ -20,7 +20,7 @@ const Base: React.FC<Props> = ({
     <div className={`list d-flex flex-row p-2 align-items-center ${className}`}>
       <div className='flex-shrink-0'>
         {typeof left === 'string' ? (
-          <CircularBadge className={`mr-3 font-bold text-lg ${leftClassName}`} large>
+          <CircularBadge className={`mr-3 font-bold text-lg ${leftClassName}`} size='large'>
             {left}
           </CircularBadge>
         ) : (
@@ -30,7 +30,7 @@ const Base: React.FC<Props> = ({
       <div className='flex-grow-1 align-self-start'>{children}</div>
       <div className='flex-shrink-0 d-flex'>
         {typeof right === 'number' ? (
-          <CircularBadge className={`ml-3 align-self-center ${rightClassName}`} small>
+          <CircularBadge className={`ml-3 align-self-center ${rightClassName}`} size='small'>
             {right}
           </CircularBadge>
         ) : (

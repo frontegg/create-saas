@@ -1,10 +1,12 @@
 import React from 'react';
 import './ProfileImage.scss';
 
-type Props = {
+type ProfileImageProps = {
   image: string;
 };
-const ProfileImage: React.FC<Props> = ({ image }) => {
+
+const ProfileImage: React.FC<ProfileImageProps> = (props: ProfileImageProps) => {
+  const { image } = props;
   return (
     <div className='profile-image'>
       <img src={image} alt='' />

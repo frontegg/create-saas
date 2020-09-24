@@ -29,8 +29,8 @@ import Images from './UIScreenPage/UIElementsPages/Images';
 import Lists from './UIScreenPage/UIElementsPages/Lists';
 import ProgressBars from './UIScreenPage/UIElementsPages/ProgressBars';
 import Alerts from './UIScreenPage/UIElementsPages/Alerts';
-import Alert from '../../Components/Alert';
-import NotificationContext, { NotificationContextType } from './NotificationContext';
+import { Alert } from '../../Components/Alert';
+import { NotificationContext, NotificationContextType } from '../../Components/NotificationContext';
 import { NotificationContainer } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 import Notifications from './UIScreenPage/UIElementsPages/Notifications';
@@ -246,7 +246,7 @@ const MainLayout: React.FC = () => {
             })}
           <div className='p-4 content'>
             <Switch>
-              <Route path='/sso' component={SSO.Page} />
+              <ProtectedRoute path='/sso' component={SSO.Page} />
               <Route path='/tables/datatable' component={Datatable} />
               <Route path='/dashboard' component={MainDashboard} />
               <Route path='/forms/sample-forms' component={SampleFormPage} />
@@ -267,7 +267,7 @@ const MainLayout: React.FC = () => {
                       <Route path='/ui-elements/alerts' component={Alerts} />
                       <Route path='/ui-elements/badges' component={Badges} />
                       <Route path='/ui-elements/buttons' component={Buttons} />
-                      <ProtectedRoute path='/ui-elements/dropdowns' component={Dropdowns} />
+                      <Route path='/ui-elements/dropdowns' component={Dropdowns} />
                       <Route path='/ui-elements/pagination' component={Paginations} />
                       <Route path='/ui-elements/images' component={Images} />
                       <Route path='/ui-elements/lists' component={Lists} />

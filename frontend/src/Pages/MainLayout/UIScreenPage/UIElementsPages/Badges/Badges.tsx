@@ -1,5 +1,4 @@
 import React from 'react';
-import './Badges.scss';
 import Widget from '../../../Widget';
 import Badge, { CircularBadge } from '../../../../../Components/Badge';
 
@@ -19,35 +18,35 @@ const Badges: React.FC = () => {
           </div>
         </div>
         <div className='w-100 mb-3'>
-          <Badge className='rounded-0 mr-3' large>
+          <Badge className='rounded-0 mr-3' size='large'>
             default
           </Badge>
-          <Badge className='rounded-0 mr-3' medium>
+          <Badge className='rounded-0 mr-3' size='medium'>
             default
           </Badge>
-          <Badge className='rounded-0 mr-3' small>
-            default
-          </Badge>
-        </div>
-        <div className='w-100 mb-3'>
-          <Badge className='mr-3' large>
-            default
-          </Badge>
-          <Badge className='mr-3' medium>
-            default
-          </Badge>
-          <Badge className='mr-3' small>
+          <Badge className='rounded-0 mr-3' size='small'>
             default
           </Badge>
         </div>
         <div className='w-100 mb-3'>
-          <CircularBadge className='mr-3' large>
+          <Badge className='mr-3' size='large'>
+            default
+          </Badge>
+          <Badge className='mr-3' size='medium'>
+            default
+          </Badge>
+          <Badge className='mr-3' size='small'>
+            default
+          </Badge>
+        </div>
+        <div className='w-100 mb-3'>
+          <CircularBadge className='mr-3' size='large'>
             1
           </CircularBadge>
-          <CircularBadge className='mr-3' medium>
+          <CircularBadge className='mr-3' size='medium'>
             1
           </CircularBadge>
-          <CircularBadge className='mr-3' small>
+          <CircularBadge className='mr-3' size='small'>
             1
           </CircularBadge>
         </div>
@@ -62,35 +61,35 @@ const Badges: React.FC = () => {
           </div>
         </div>
         <div className='w-100 mb-3'>
-          <Badge className='rounded-0 mr-3' outline large>
+          <Badge className='rounded-0 mr-3' outline size='large'>
             default
           </Badge>
-          <Badge className='rounded-0 mr-3' outline medium>
+          <Badge className='rounded-0 mr-3' outline size='medium'>
             default
           </Badge>
-          <Badge className='rounded-0 mr-3' outline small>
-            default
-          </Badge>
-        </div>
-        <div className='w-100 mb-3'>
-          <Badge className='mr-3' outline large>
-            default
-          </Badge>
-          <Badge className='mr-3' outline medium>
-            default
-          </Badge>
-          <Badge className='mr-3' outline small>
+          <Badge className='rounded-0 mr-3' outline size='small'>
             default
           </Badge>
         </div>
         <div className='w-100 mb-3'>
-          <CircularBadge className='mr-3' outline large>
+          <Badge className='mr-3' outline size='large'>
+            default
+          </Badge>
+          <Badge className='mr-3' outline size='medium'>
+            default
+          </Badge>
+          <Badge className='mr-3' outline size='small'>
+            default
+          </Badge>
+        </div>
+        <div className='w-100 mb-3'>
+          <CircularBadge className='mr-3' outline size='large'>
             1
           </CircularBadge>
-          <CircularBadge className='mr-3' outline medium>
+          <CircularBadge className='mr-3' outline size='medium'>
             1
           </CircularBadge>
-          <CircularBadge className='mr-3' outline small>
+          <CircularBadge className='mr-3' outline size='small'>
             1
           </CircularBadge>
         </div>

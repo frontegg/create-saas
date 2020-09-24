@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import MainLayout from './MainLayout';
-import { NotificationContextProvider } from './MainLayout/NotificationContext';
+import { NotificationContextProvider } from '../Components/NotificationContext';
 
 const Routes: React.FC = () => (
   <Switch>

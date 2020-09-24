@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface NotificationObject {
+interface INotification {
   key: string;
   open?: boolean;
   color?: string;
@@ -12,12 +12,12 @@ interface NotificationObject {
   className?: string;
 }
 
-interface NotificationQueueObject {
-  notifications: { [key: string]: NotificationObject };
+interface INotificationsObject {
+  notifications: { [key: string]: INotification };
 }
 
-export type NotificationContextType = NotificationQueueObject & {
-  addNotification: (notif: NotificationObject) => void;
+export type NotificationContextType = INotificationsObject & {
+  addNotification: (notification: INotification) => void;
   deleteNotification: (key: string) => void;
 };
 
@@ -32,28 +32,28 @@ const NotificationContext = React.createContext<NotificationContextType>({
 });
 
 const NotificationContextProvider: React.FC<React.HTMLAttributes<HTMLElement>> = ({ children }) => {
-  const [state, setState] = React.useState<NotificationQueueObject>({
+  const [state, setState] = React.useState<INotificationsObject>({
     notifications: {},
   });
-  const addNotification = (notif: NotificationObject) => {
-    const duplState = state.notifications;
-    duplState[notif.key as string] = notif;
-    setState({
-      notifications: duplState,
-    });
+
+  const addNotification = (notification: INotification) => {
+    const { notifications } = state;
+    notifications[notification.key as string] = notification;
+    setState({ notifications });
   };
+
   const deleteNotification = (key: string) => {
-    const duplState = state.notifications;
-    delete duplState[key];
-    setState({
-      notifications: duplState,
-    });
+    const notifications = state.notifications;
+    delete notifications[key];
+    setState({ notifications });
   };
+
   const contextValue = {
     ...state,
     addNotification,
     deleteNotification,
   };
+
   return (
     <NotificationContext.Provider value={contextValue as NotificationContextType}>
       {children}
@@ -61,6 +61,4 @@ const NotificationContextProvider: React.FC<React.HTMLAttributes<HTMLElement>> =
   );
 };
 
-export { NotificationContextProvider };
-
-export default NotificationContext;
+export { NotificationContext, NotificationContextProvider };

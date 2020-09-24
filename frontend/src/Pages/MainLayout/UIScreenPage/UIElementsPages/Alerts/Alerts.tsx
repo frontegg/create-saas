@@ -1,7 +1,7 @@
 import React from 'react';
 import './Alerts.scss';
 import Widget from '../../../Widget';
-import Alert from '../../../../../Components/Alert';
+import { Alert } from '../../../../../Components/Alert';
 import { Row, Col } from 'reactstrap';
 
 const Alerts: React.FC = () => {
