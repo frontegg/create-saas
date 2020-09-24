@@ -20,6 +20,7 @@
     "@types/react-router-dom": "^5.1.5",
     "@types/reactstrap": "^8.5.1",
     "@types/recharts": "^1.8.15",
+    "@types/validatorjs": "^3.15.0",
     "bootstrap": "^4.5.2",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
@@ -33,12 +34,13 @@
     "reactstrap": "^8.5.1",
     "recharts": "^1.8.5",
     "tailwindcss": "^1.8.4",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "validatorjs": "^3.19.2"
   },
   "scripts": {
-    "build:tailwind": "tailwindcss build src/Tailwind.css -c tailwind.js -o src/tailwind.output.css",
-    "prestart": "npm run build:tailwind",
-    "prebuild": "npm run build:tailwind",
+    "build:css": "postcss src/Tailwind.css -o src/tailwind.output.css",
+    "prestart": "npm run build:css",
+    "prebuild": "npm run build:css",
     "start": "PORT=3006 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
