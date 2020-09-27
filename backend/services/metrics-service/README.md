@@ -44,7 +44,7 @@ The service uses `Request` model as an example.
      curl \
        -H "Content-Type: application/json" \
        -H "frontegg-tenant-id: 90b02525-0d38-415e-8e23-dc4d8c1c4cb0" \
-       -d '{ "query": "mutation { addRequest(newRequestData: { url: \"http://localhost:3000/metrics/graphql\", statusCode: 500, ip: \"127.0.0.1\", userAgent: \"chrome\" }) { id } }" }' \
+       -d '{ "query": "mutation { addRequest(newRequestData: { url: \"http://localhost:5000/metrics/graphql\", statusCode: 500, ip: \"127.0.0.1\", userAgent: \"chrome\" }) { id } }" }' \
        http://localhost:5001/graphql
 
 
