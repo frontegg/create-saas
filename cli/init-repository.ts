@@ -76,4 +76,8 @@ export async function initRepo(name: string): Promise<void> {
   await longCommand(`cd ${projectName} && npm i && npx lerna bootstrap`, chalk.white.bold('Installing packages'), () =>
     console.log(chalk.green('✔ ') + chalk.white.bold('Finished installing packages')),
   );
+
+  await longCommand(`make provision`, chalk.white.bold('Calling docker compose'), () =>
+    console.log(chalk.green('✔ ') + chalk.white.bold('Finished calling docker compose')),
+  );
 }
