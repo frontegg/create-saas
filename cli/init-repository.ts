@@ -37,6 +37,15 @@ const questions: prompts.PromptObject[] = [
       { title: 'Yes', value: 'yes' },
     ],
   },
+  {
+    type: 'select',
+    name: 'template',
+    message: 'Choose dashboard template',
+    choices: [
+      { title: 'Airframe', value: 'airframe' },
+      { title: 'Lean', value: 'lean' },
+    ],
+  },
 ];
 
 const longCommand = (command: string, text: string, onSuccess: () => void) => {
@@ -62,7 +71,7 @@ export async function initRepo(name: string): Promise<void> {
     projectName = response.project;
   }
 
-  const { sourceControl, user, password } = await prompts(questions);
+  const { sourceControl, user, password, template } = await prompts(questions);
 
   if (sourceControl && !(user && password)) {
     console.log(chalk.red('✖ ') + chalk.white.bold('User and password must be supplied'));
@@ -71,6 +80,10 @@ export async function initRepo(name: string): Promise<void> {
 
   await longCommand(`git clone https://github.com/frontegg/create-saas ${projectName}`, chalk.white.bold('Fetching data'), () =>
     console.log(chalk.green('✔ ') + chalk.white.bold('Finished fetching data')),
+  );
+
+  await longCommand(`cd ${projectName} && mv -v frontend/templates/${template} . && rm -rf frontend/templates && mv -v ${template}/* frontend && rmdir ${template}`, chalk.white.bold('Copy template'), () =>
+    console.log(chalk.green('✔ ') + chalk.white.bold('Finished copying template')),
   );
 
   await longCommand(`cd ${projectName} && npm i && npx lerna bootstrap`, chalk.white.bold('Installing packages'), () =>

@@ -50,6 +50,15 @@ const questions = [
             { title: 'Yes', value: 'yes' },
         ],
     },
+    {
+        type: 'select',
+        name: 'template',
+        message: 'Choose dashboard template',
+        choices: [
+            { title: 'Airframe', value: 'airframe' },
+            { title: 'Lean', value: 'lean' },
+        ],
+    },
 ];
 const longCommand = (command, text, onSuccess) => {
     return new Promise((resolve, reject) => {
@@ -73,12 +82,13 @@ function initRepo(name) {
             });
             projectName = response.project;
         }
-        const { sourceControl, user, password } = yield prompts_1.default(questions);
+        const { sourceControl, user, password, template } = yield prompts_1.default(questions);
         if (sourceControl && !(user && password)) {
             console.log(chalk_1.default.red('✖ ') + chalk_1.default.white.bold('User and password must be supplied'));
             return;
         }
         yield longCommand(`git clone https://github.com/frontegg/create-saas ${projectName}`, chalk_1.default.white.bold('Fetching data'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished fetching data')));
+        yield longCommand(`cd ${projectName} && mv -v frontend/templates/${template} . && rm -rf frontend/templates && mv -v ${template}/* frontend && rmdir ${template}`, chalk_1.default.white.bold('Copy template'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished copying template')));
         yield longCommand(`cd ${projectName} && npm i && npx lerna bootstrap`, chalk_1.default.white.bold('Installing packages'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished installing packages')));
         yield longCommand(`make provision`, chalk_1.default.white.bold('Calling docker compose'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished calling docker compose')));
     });
