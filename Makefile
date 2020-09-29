@@ -18,3 +18,9 @@ prestart:
 		make provision;\
 	fi
 
+start-frontend:
+	@if [ -d "./frontend/templates" ]; then \
+		cd frontend/templates/airframe && npm run start;\
+	else\
+		cd frontend && npm run start;\
+	fi

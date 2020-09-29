@@ -19,10 +19,11 @@
     "prettier": "prettier 'cli/**/*.{js,ts,json}' --write",
     "provision": "make provision",
     "prestart": "make prestart",
+    "run-frontend": "make start-frontend",
     "run-api-gw": "ts-node backend/api-gw/src/server.ts",
     "run-config-service": "ts-node backend/services/config-service/src/server.ts",
     "run-metrics-service": "cd backend/services/metrics-service && ts-node --project tsconfig.json src/server.ts",
-    "start": "concurrently \"npm run run-config-service\" \"npm run run-metrics-service\" \"sleep 5 && npm run run-api-gw\"",
+    "start": "concurrently \"npm run run-config-service\" \"npm run run-metrics-service\" \"sleep 5 && npm run run-api-gw\" \"npm run run-frontend\"",
     "tsc": "tsc"
   },
   "repository": {
