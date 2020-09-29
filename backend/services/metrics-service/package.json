@@ -13,10 +13,10 @@
     "prettier": "prettier 'src/**/*.{js,ts,json}' --write",
     "provision": "docker-compose up -d",
     "start": "ts-node src/server.ts",
-    "typeorm:migrate": "ts-node ./node_modules/typeorm/cli.js migration:run",
-    "typeorm:migration:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert",
-    "typeorm:seed": "ts-node ./node_modules/typeorm/cli.js migration:run -c seed",
-    "typeorm:seed:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -c seed"
+    "migrate": "ts-node ./node_modules/typeorm/cli.js migration:run",
+    "migration:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert",
+    "seed": "ts-node ./node_modules/typeorm/cli.js migration:run -c seed",
+    "seed:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -c seed"
   },
   "repository": {
     "type": "git",
