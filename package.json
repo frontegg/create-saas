@@ -15,9 +15,10 @@
     "lint": "tslint -p tsconfig.json -c tslint.json --fix",
     "migration": "cd backend/services/metrics-service && npm run typeorm:migrate && npm run typeorm:seed",
     "pre-commit": "npm run prettier && npm run lint",
-    "pre-commit-all": "lerna run pre-commit",
+    "pre-commit-all": "make pre-commit",
     "prettier": "prettier 'cli/**/*.{js,ts,json}' --write",
-    "provision": "lerna run provision",
+    "provision": "make provision",
+    "prestart": "make prestart",
     "run-api-gw": "ts-node backend/api-gw/src/server.ts",
     "run-config-service": "ts-node backend/services/config-service/src/server.ts",
     "run-metrics-service": "cd backend/services/metrics-service && ts-node --project tsconfig.json src/server.ts",
@@ -74,7 +75,7 @@
   "bin": "bin/cli.js",
   "husky": {
     "hooks": {
-      "pre-commit": "npm run pre-commit"
+      "pre-commit": "npm run pre-commit-all"
     }
   }
 }
