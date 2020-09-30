@@ -4,6 +4,7 @@
     "emitDecoratorMetadata": true,
     "target": "es6",
     "module": "commonjs",
+    "outDir": "./dist",
     "moduleResolution": "node",
     "declaration": true,
     "strict": true,

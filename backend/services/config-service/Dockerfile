@@ -15,9 +15,10 @@ RUN npm install
 
 # Copy all other source code to work directory
 ADD . /usr/src/app
+
 # TypeScript
-# RUN npm run build
+RUN npm run build
 
 # Start
-CMD [ "npm", "start" ]
+CMD [ "node", "./dist/server.js" ]
 EXPOSE 5002
