@@ -1,24 +1,24 @@
 # Use the official image as a parent image.
 FROM node:current-slim
 
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
-
 # Set the working directory.
-WORKDIR /usr/src/app
+WORKDIR /app
 
-# Copy the file from your host to your current location.
-COPY package.json .
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
+
+# install app dependencies
+COPY ./templates/airframe/package.json ./
+COPY ./templates/airframe/package-lock.json ./
 
 # Run the command inside your image filesystem.
 RUN npm install
 
-# Copy all other source code to work directory
-ADD . /usr/src/app
+# add app
+COPY ./templates/airframe/ ./
 
-# TypeScript
-RUN npm run build
+# build
+CMD ["npm", "build:prod"]
 
-# Start
-CMD [ "node", "./dist/server.js" ]
-EXPOSE 5000
+# start app
+CMD ["npm", "start:prod"]
