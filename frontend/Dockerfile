@@ -17,8 +17,8 @@ RUN npm install
 ADD . /usr/src/app
 
 # TypeScript
-# RUN npm run build
+RUN npm run build
 
 # Start
-CMD [ "npm", "start" ]
-EXPOSE 5001
+CMD [ "node", "./dist/server.js" ]
+EXPOSE 5000
