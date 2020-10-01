@@ -1,12 +1,11 @@
 import React from 'react';
-import './Alerts.scss';
 import Widget from '../../../Widget';
 import { Alert } from '../../../../../Components/Alert';
 import { Row, Col } from 'reactstrap';
 
 const Alerts: React.FC = () => {
   return (
-    <div className='Alerts'>
+    <div className='relative'>
       <Widget>
         <Col>
           <Row>

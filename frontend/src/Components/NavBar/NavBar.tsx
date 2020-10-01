@@ -7,28 +7,22 @@ import { IconButton } from '@material-ui/core';
 import { stateType } from '../SettingsButton/types';
 import SettingsSidebar from '../SettingsSidebar';
 import { Notifications } from '@frontegg/react';
+import classNames from 'classnames';
 
-const NavBar = ({
-  className,
-  handleThemeChange,
-  palletType,
-  settings,
-  handleChangeNavbar,
-}: {
-  className: string;
+type NavBarProps = {
+  className?: string;
   handleThemeChange: (value: 'light' | 'dark' | 'navbar' | 'sidebar') => void;
   palletType: string;
   settings: { label: string; state: stateType<boolean> }[];
   handleChangeNavbar: (value: string, param: string, theme: string) => void;
-}) => {
+};
+
+const NavBar = (props: NavBarProps) => {
+  const { className, handleChangeNavbar, handleThemeChange, palletType, settings } = props;
   const [open, setOpen] = React.useState(false);
 
-  const toggleDrawer = (isOpen: boolean) => {
-    setOpen(isOpen);
-  };
-
   return (
-    <div className={`nav-bar ${className}`}>
+    <div className={classNames('nav-bar', className)}>
       <div className='logo d-none d-md-flex'>
         <a className='d-flex flex-row align-items-center justify-content-start' href='/'>
           <img src='/images/logo.png' alt='' />
@@ -66,16 +60,16 @@ const NavBar = ({
         <line x1='21' y1='21' x2='16.65' y2='16.65' />
       </svg>
       <Input className='search-field' type='text' placeholder='Search...' />
-      <ProfileImage image='/images/profile.jpeg' />
+      <ProfileImage src='/images/profile.jpeg' />
       <div className='frontegg-notifications'>
         <Notifications />
       </div>
-      <IconButton color='primary' onClick={() => toggleDrawer(true)}>
+      <IconButton color='primary' onClick={() => setOpen(!open)}>
         <SettingsIcon fontSize='inherit' />
       </IconButton>
       <SettingsSidebar
         open={open}
-        toggleDrawer={toggleDrawer}
+        toggleDrawer={() => setOpen(!open)}
         handleThemeChange={handleThemeChange}
         palletType={palletType}
         settings={settings}

@@ -83,7 +83,7 @@ const DefaultTab: React.FC<TabPanelProps> = ({
   );
   if (vertical)
     return (
-      <div className='Tab d-flex flex-row'>
+      <div className='tab d-flex flex-row'>
         <Nav
           vertical
           pills={pills}

@@ -1,13 +1,13 @@
 import React from 'react';
-import './Lists.scss';
 import Widget from '../../../Widget';
-import List from '../../../../../Components/List';
+import { List } from '../../../../../Components/List';
 import { Col } from 'reactstrap';
 
-const img = <img src='/images/profile.jpeg' alt='' className='mr-3 h-8 rounded-circle shadow-outline-blue-300'></img>;
+const img = <img src='/images/profile.jpeg' alt='' className='mr-3 h-8 rounded-circle shadow-outline-blue-300' />;
+
 const Lists: React.FC = () => {
   return (
-    <div className='Lists'>
+    <div className='relative'>
       <div className='text-xl font-bold mb-3'>Lists</div>
       <Widget className='flex-wrap'>
         <Col xs={12}>

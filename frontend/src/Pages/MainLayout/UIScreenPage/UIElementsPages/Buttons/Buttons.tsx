@@ -1,17 +1,16 @@
 import React from 'react';
-import './Buttons.scss';
 import Widget from '../../../Widget';
-import Button, { OutlineButton, CircleButton } from '../../../../../Components/Button';
-import { FlatButton, RaisedButton } from '../../../../../Components/Button/Button';
+import { Button, OutlineButton, CircleButton, RaisedButton, FlatButton } from '../../../../../Components/Button';
 import { ButtonGroup, Row } from 'reactstrap';
 
-const FlatOnHoverStyle = {
+const onHoverStyle = {
   backgroundColor: '#e5f5f5',
   color: '#2525c5',
 };
+
 const Buttons: React.FC = () => {
   return (
-    <div className='Buttons'>
+    <div className='relative'>
       <div className='text-xl font-bold'>Buttons</div>
       <Widget col className='w-100'>
         <div className='mb-3'>
@@ -93,13 +92,13 @@ const Buttons: React.FC = () => {
           </div>
         </div>
         <Row className='m-0'>
-          <FlatButton onHoverStyle={FlatOnHoverStyle} className='rounded-0 mr-3'>
+          <FlatButton onHoverStyle={onHoverStyle} className='rounded-0 mr-3'>
             Button
           </FlatButton>
-          <FlatButton onHoverStyle={FlatOnHoverStyle} className='rounded mr-3'>
+          <FlatButton onHoverStyle={onHoverStyle} className='rounded mr-3'>
             Button
           </FlatButton>
-          <CircleButton outline onHoverStyle={FlatOnHoverStyle} className='border-0 w-8 h-8 mr-3'>
+          <CircleButton outline onHoverStyle={onHoverStyle} className='border-0 w-8 h-8 mr-3'>
             1
           </CircleButton>
         </Row>
@@ -112,17 +111,13 @@ const Buttons: React.FC = () => {
           </div>
         </div>
         <Row className='m-0'>
-          <RaisedButton outline onHoverStyle={FlatOnHoverStyle} color='primary' className='rounded-0 mr-3'>
+          <RaisedButton outline onHoverStyle={onHoverStyle} color='primary' className='rounded-0 mr-3'>
             Button
           </RaisedButton>
-          <RaisedButton outline onHoverStyle={FlatOnHoverStyle} color='primary' className='rounded mr-3'>
+          <RaisedButton outline onHoverStyle={onHoverStyle} color='primary' className='rounded mr-3'>
             Button
           </RaisedButton>
-          <CircleButton
-            outline
-            onHoverStyle={FlatOnHoverStyle}
-            color='primary'
-            className='border-0 shadow w-8 h-8 mr-3'>
+          <CircleButton outline onHoverStyle={onHoverStyle} color='primary' className='border-0 shadow w-8 h-8 mr-3'>
             1
           </CircleButton>
         </Row>
@@ -146,13 +141,13 @@ const Buttons: React.FC = () => {
             <Button color='primary'>Right</Button>
           </ButtonGroup>
           <ButtonGroup className='shadow mb-3 mr-3'>
-            <FlatButton onHoverStyle={FlatOnHoverStyle} color='primary'>
+            <FlatButton onHoverStyle={onHoverStyle} color='primary'>
               Left
             </FlatButton>
-            <FlatButton onHoverStyle={FlatOnHoverStyle} color='primary'>
+            <FlatButton onHoverStyle={onHoverStyle} color='primary'>
               Center
             </FlatButton>
-            <FlatButton onHoverStyle={FlatOnHoverStyle} color='primary'>
+            <FlatButton onHoverStyle={onHoverStyle} color='primary'>
               Right
             </FlatButton>
           </ButtonGroup>

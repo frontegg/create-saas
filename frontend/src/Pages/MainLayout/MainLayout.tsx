@@ -1,18 +1,15 @@
 import React, { useCallback } from 'react';
 import './MainLayout.scss';
 import Sidebar from '../../Components/Sidebar';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import SampleFormPage from './SampleFormPage';
 import ValidationFormPage from './ValidationFormPage';
-import DefaultFormPage from './DefaultFormPage';
+import DefaultFormPage from './FormPage';
 import SliderPage from './SliderPage';
 import DatePickerPage from './DatePickerPage';
 import SwitchPage from './SwitchPage';
 import NavBar from '../../Components/NavBar';
-import Datatable from './DatatablePage';
-import FormStepsPage from './FormStepsPage';
-import RegularTable from './RegularTablePage';
-import SidebarCategoryTable from './SidebarCategoryTablePage';
+import Table from './TablePage';
 import Dashboard from './Dashboard';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { stateType } from '../../Components/SettingsButton/types';
@@ -41,6 +38,7 @@ import { useQuery, gql } from '@apollo/client';
 import { ProtectedRoute, Profile } from '@frontegg/react-auth';
 import { SSO } from '@frontegg/react-auth';
 import * as Frontegg from '@frontegg/react';
+import { MOCK_REQUESTS } from './mockRequests';
 
 const REQUESTS = gql`
   query {
@@ -82,10 +80,14 @@ const ProfilePage = () => {
 const MainDashboard = () => {
   const { loading, error, data } = useQuery(REQUESTS);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  if (error) {
+    console.error(error);
+  }
 
-  return <Dashboard requests={data.requests} />;
+  return <Dashboard requests={data?.requests || MOCK_REQUESTS} />;
 };
 
 const MainLayout: React.FC = () => {
@@ -116,7 +118,7 @@ const MainLayout: React.FC = () => {
 
   const [hovered, hoverExpand] = React.useState<boolean>(false);
 
-  const handleFixeHover = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  const handleFixedHover = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
     if (collapsed) {
       if (fixedSidebar) {
         hoverExpand(!hovered);
@@ -235,7 +237,7 @@ const MainLayout: React.FC = () => {
       </div>
       <NotificationContainer />
       <div
-        className={`mainLayout ${scrolled ? 'scrolled' : 'onTop'} ${fixedSidebar ? 'fixedSidebar' : ''} ${
+        className={`main-layout ${scrolled ? 'scrolled' : 'onTop'} ${fixedSidebar ? 'fixed-sidebar' : ''} ${
           fixedNavbar ? 'fixedNavbar' : ''
         }`}>
         <NavBar
@@ -254,8 +256,8 @@ const MainLayout: React.FC = () => {
                 : 'collapsed'
               : 'expanded'
           }`}
-          onMouseLeave={handleFixeHover}
-          onMouseEnter={handleFixeHover}
+          onMouseLeave={handleFixedHover}
+          onMouseEnter={handleFixedHover}
         />
         <div className='main'>
           {context &&
@@ -271,19 +273,16 @@ const MainLayout: React.FC = () => {
             })}
           <div className='p-4 content'>
             <Switch>
+              <Route exact path='/' render={() => <Redirect to='/dashboard' />} />
               <ProtectedRoute path='/sso' component={SSO.Page} />
-              <Route path='/tables/datatable' component={Datatable} />
               <Route path='/dashboard' component={MainDashboard} />
               <Route path='/forms/sample-forms' component={SampleFormPage} />
               <Route path='/forms/default-forms' component={DefaultFormPage} />
               <Route path='/forms/sliders' component={SliderPage} />
-              <Route path='/tables/datatable' component={Datatable} />
-              <Route path='/tables/regular' component={RegularTable} />
               <Route path='/forms/datepicker' component={DatePickerPage} />
               <Route path='/forms/switches' component={SwitchPage} />
-              <Route path='/forms/formsteps' component={FormStepsPage} />
               <Route path='/forms/validation' component={ValidationFormPage} />
-              <Route path='/tables/sidebar-category' component={SidebarCategoryTable} />
+              <Route path='/tables/regular' component={Table} />
               <ProtectedRoute path='/enterprise/team' component={TeamManagement} />
               <ProtectedRoute path='/enterprise/audits' component={Audits} />
               <ProtectedRoute path='/enterprise/sso' component={Sso} />

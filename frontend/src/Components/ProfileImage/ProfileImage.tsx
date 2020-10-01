@@ -2,14 +2,15 @@ import React from 'react';
 import './ProfileImage.scss';
 
 type ProfileImageProps = {
-  image: string;
+  src: string;
+  alt?: string;
 };
 
 const ProfileImage: React.FC<ProfileImageProps> = (props: ProfileImageProps) => {
-  const { image } = props;
+  const { src, alt = '' } = props;
   return (
     <div className='profile-image'>
-      <img src={image} alt='' />
+      <img src={src} alt={alt} />
     </div>
   );
 };

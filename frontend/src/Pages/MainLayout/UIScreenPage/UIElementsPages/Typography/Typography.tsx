@@ -1,5 +1,4 @@
 import React from 'react';
-import './Typography.scss';
 import Widget from '../../../Widget';
 import { Col, Row } from 'reactstrap';
 
@@ -31,7 +30,7 @@ const Typography: React.FC = () => {
   };
 
   return (
-    <div className='Typography'>
+    <div className='relative'>
       <Widget>
         <Col>
           {Object.entries(colors).map(([color]: [string, any], i: number) => {

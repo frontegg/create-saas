@@ -1,20 +1,19 @@
 import React from 'react';
 import { IconButton, Menu, MenuItem } from '@material-ui/core';
-
 import FilterListIcon from '@material-ui/icons/FilterList';
 
-interface IFilterButoon {
+interface FilterButtonProps {
   items: string[];
   setFilterType: any;
   filterTypes: string[];
 }
 
-const FilterButton = (props: IFilterButoon) => {
+const FilterButton = (props: FilterButtonProps) => {
   const { items, setFilterType, filterTypes } = props;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
-  const handleClickFilters = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
+  const handleClickFilters = ({ currentTarget }: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(currentTarget);
   };
 
   const handleCloseFilters = () => {
@@ -34,7 +33,7 @@ const FilterButton = (props: IFilterButoon) => {
               handleCloseFilters();
               setFilterType((prevState: any) => [...prevState, item]);
             }}
-            disabled={filterTypes.some((el: string) => el === item)}
+            disabled={filterTypes.some((filterType: string) => filterType === item)}
             key={index}>
             {item}
           </MenuItem>
@@ -43,4 +42,5 @@ const FilterButton = (props: IFilterButoon) => {
     </div>
   );
 };
+
 export default FilterButton;

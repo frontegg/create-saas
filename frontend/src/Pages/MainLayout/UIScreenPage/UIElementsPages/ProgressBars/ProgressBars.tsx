@@ -1,12 +1,11 @@
 import React from 'react';
-import './ProgressBars.scss';
 import Widget from '../../../Widget';
 import ProgressBar, { ProgressLine, ProgressBarWithValue } from '../../../../../Components/ProgressBar';
 import { Col } from 'reactstrap';
 
 const ProgressBars: React.FC = () => {
   return (
-    <div className='ProgressBars'>
+    <div className='relative'>
       <div className='text-xl font-bold mb-3'>Progress Bars</div>
       <Widget col>
         <div className='mb-3'>

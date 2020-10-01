@@ -1,10 +1,14 @@
 import React from 'react';
 import './SidebarHeadline.scss';
-import { sidebarHeadlineType } from '../types';
 
-const SidebarHeadline: React.FC<sidebarHeadlineType> = ({ header }) => {
+type SidebarHeadlineProps = {
+  header?: string;
+};
+
+const SidebarHeadline: React.FC<SidebarHeadlineProps> = (props: SidebarHeadlineProps) => {
+  const { header } = props;
   return (
-    <div className='sideBarHeadLine'>
+    <div className='sidebar-headline'>
       <div>{header}</div>
     </div>
   );

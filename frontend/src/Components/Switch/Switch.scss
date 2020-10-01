@@ -1,6 +1,6 @@
 @import '../../Pages/MainLayout/themes.scss';
 
-.content_switch {
+.content-switch {
   width: 100%;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -17,7 +17,7 @@
 }
 
 @media (min-width: 1024px) {
-  .form_switch {
+  .form-switch {
     padding-right: 1rem;
     margin-bottom: 0.5rem;
     width: 25%;

@@ -1,6 +1,5 @@
 import React from 'react';
 import { usePagination, UsePaginationProps } from '@material-ui/lab/Pagination';
-import './Pagination.scss';
 import { CircleButton } from '../Button';
 
 type Props = {

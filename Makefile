@@ -15,14 +15,19 @@ pre-commit:
 	lerna run pre-commit
 
 prestart:
-	$(eval is_docker="$(shell which docker && docker --version)")
+	$(eval is_docker="$(shell command -v docker)")
 	@if [[ $(is_docker) ]]; then\
 		echo "Docker installed";\
 		make verify-setup;\
+	else\
+		echo "Docker is not installed, for full experience please install docker";\
 	fi
 
 start-frontend:
 	cd frontend && npm run start;\
+
+start-backend:
+	concurrently "npm run start-config-service" "npm run start-metrics-service" "sleep 5 && npm run start-api-gw"
 
 verify-setup:
 	$(eval config="$(shell docker ps | grep -E 'config-service')")

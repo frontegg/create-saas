@@ -18,38 +18,18 @@ const prompts_1 = __importDefault(require("prompts"));
 const ora_1 = __importDefault(require("ora"));
 const chalk_1 = __importDefault(require("chalk"));
 const child_process_1 = require("child_process");
+const command_exists_1 = require("command-exists");
 const spinner = ora_1.default('');
 const questions = [
-    {
-        type: 'select',
-        name: 'sourceControl',
-        message: 'Choose source control',
-        choices: [
-            { title: 'Decide later', value: null },
-            { title: 'Github', value: 'github' },
-            { title: 'Bitbucket', value: 'bitbucket' },
-            { title: 'Gitlab', value: 'gitlab' },
-        ],
-    },
-    {
-        type: prev => (prev ? 'text' : null),
-        name: 'user',
-        message: prev => `Insert ${prev} user`,
-    },
-    {
-        type: prev => (prev ? 'password' : null),
-        name: 'password',
-        message: 'Insert password',
-    },
     {
         type: 'select',
         name: 'saasEssentials',
         message: 'Include SaaS essentials',
         choices: [
-            { title: 'Decide later', value: 'later' },
             { title: 'Yes', value: 'yes' },
+            { title: 'Decide later', value: 'later' },
         ],
-    }
+    },
 ];
 const longCommand = (command, text, onSuccess) => {
     return new Promise((resolve, reject) => {
@@ -73,14 +53,19 @@ function initRepo(name) {
             });
             projectName = response.project;
         }
-        const { sourceControl, user, password } = yield prompts_1.default(questions);
-        if (sourceControl && !(user && password)) {
-            console.log(chalk_1.default.red('✖ ') + chalk_1.default.white.bold('User and password must be supplied'));
-            return;
-        }
+        yield prompts_1.default(questions);
         yield longCommand(`git clone https://github.com/frontegg/create-saas ${projectName}`, chalk_1.default.white.bold('Fetching data'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished fetching data')));
-        yield longCommand(`cd ${projectName} && npm i && npx lerna bootstrap`, chalk_1.default.white.bold('Installing packages'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished installing packages')));
-        yield longCommand(`make provision`, chalk_1.default.white.bold('Calling docker compose'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished calling docker compose')));
+        yield longCommand(`cd ${projectName} && npm i && npx lerna bootstrap`, chalk_1.default.white.bold('Installing packages, this might take few minutes'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished installing packages')));
+        if (command_exists_1.sync('docker')) {
+            yield longCommand('make provision', chalk_1.default.white.bold('Calling docker compose'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished calling docker compose')));
+        }
+        else {
+            console.log(chalk_1.default.red('✖ ') + chalk_1.default.white.bold('In order to get the most of Create SaaS, docker command is needed'));
+        }
+        console.log(chalk_1.default.white.bold('👏👏👏 project installed successfully 👏👏👏\n'));
+        console.log(chalk_1.default.white.bold('To start follow this:'));
+        console.log(chalk_1.default.white.blueBright(`  cd ${projectName}`));
+        console.log(chalk_1.default.white.blueBright('  npm run start'));
     });
 }
 exports.initRepo = initRepo;

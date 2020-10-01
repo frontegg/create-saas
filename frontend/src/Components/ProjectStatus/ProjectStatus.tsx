@@ -25,16 +25,17 @@ export type ProjectStatusProps = {
   title: string;
   description: string;
   img: string;
+  alt?: string;
   value: number;
 };
 
 const ProjectStatus = (props: ProjectStatusProps) => {
-  const { title, description, img, value } = props;
+  const { title, description, img, alt, value } = props;
   const classes = useStyles();
 
   return (
     <Paper elevation={0} className={classes.root}>
-      <Avatar className={classes.avatarBorder} alt='Remy Sharp' src={img} />
+      <Avatar className={classes.avatarBorder} alt={alt} src={img} />
       <div className={classes.content}>
         <div className='font-weight-bold'>{title}</div>
         <div>{description}</div>

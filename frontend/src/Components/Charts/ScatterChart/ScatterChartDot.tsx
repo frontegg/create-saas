@@ -1,34 +1,50 @@
 import React from 'react';
-import { SettingsProps, CustomizedDotSettings, CustomizedDotDataDefault } from './ScatterChartDataDefault';
 
-const CustomizedDot = (props: CustomizedDotSettings & any) => {
-  const { cx, cy } = props;
-  const strokeColor = props.strokeColor || CustomizedDotDataDefault.strokeColor;
-  const fillColor = props.fillColor || CustomizedDotDataDefault.fillColor;
-  const r = props.r || CustomizedDotDataDefault.r;
-  const strokeWidth = props.strokeWidth || CustomizedDotDataDefault.strokeWidth;
+type CustomizedDotProps = {
+  cx: number;
+  cy: number;
+  r: number;
+  strokeColor?: string;
+  strokeWidth?: string;
+  fillColor?: string;
+};
+
+const CustomizedDot = (props: CustomizedDotProps) => {
+  const { cx, cy, r, strokeColor, strokeWidth, fillColor } = props;
 
   return (
     <svg x={cx - 10} y={cy - 10} width={20} height={20}>
-      <circle cx='10' cy='10' r={r} stroke={strokeColor} stroke-width={strokeWidth} fill={fillColor} />
+      <circle cx='10' cy='10' r={r} stroke={strokeColor} strokeWidth={strokeWidth} fill={fillColor} />
     </svg>
   );
 };
 
-export const CustomizedLegend = (props: SettingsProps) => {
+type CustomizedLegendProps = {
+  strokeColor?: string;
+  scatterName?: string;
+  fillColor?: string;
+};
+
+const CustomizedLegend = (props: CustomizedLegendProps) => {
   const { strokeColor, fillColor, scatterName } = props;
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <svg height='20' width='20' style={{ marginLeft: '25%' }}>
-        <rect x='0' y='0' width='20' height='20' stroke={strokeColor} fill={fillColor} stroke-width='1' />
+        <rect x='0' y='0' width='20' height='20' stroke={strokeColor} fill={fillColor} strokeWidth='1' />
       </svg>
       <div style={{ marginLeft: '5px' }}>{scatterName}</div>
     </div>
   );
 };
 
-export const CustomizedDotSmile = (props: any) => {
+type CustomizedDotSmileProps = {
+  cx: number;
+  cy: number;
+  value: number;
+};
+
+const CustomizedDotSmile = (props: CustomizedDotSmileProps) => {
   const { cx, cy, value } = props;
 
   if (value > 2500) {
@@ -46,4 +62,4 @@ export const CustomizedDotSmile = (props: any) => {
   );
 };
 
-export default CustomizedDot;
+export { CustomizedDot, CustomizedLegend, CustomizedDotSmile };

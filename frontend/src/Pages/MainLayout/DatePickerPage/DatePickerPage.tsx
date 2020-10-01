@@ -2,9 +2,9 @@ import React from 'react';
 import DatePicker from '../../../Components/DatePicker';
 
 const DatePickerPage: React.FC = () => {
-  const InlineDatepicker = [
+  const inlineDatepicker = [
     {
-      DatePickerType: 'InlineDatepicker',
+      type: 'InlineDatepicker',
       header: 'Inline date picker',
       description: (
         <span>
@@ -14,10 +14,10 @@ const DatePickerPage: React.FC = () => {
     },
   ];
 
-  const Datepicker = [
+  const datepicker = [
     {
-      DatePickerType: 'Datepicker',
-      header: 'Inline date picker',
+      type: 'Datepicker',
+      header: 'Date picker',
       description: (
         <span>
           Use the <code> &lt;Datepicker /&gt;</code> component for an input that displays a date picker
@@ -33,28 +33,14 @@ const DatePickerPage: React.FC = () => {
         <div className='section-name'>Date pickers</div>
       </div>
       <div className='main'>
-        <div className='datepiker'>
-          {InlineDatepicker.map((item, index) => {
-            return (
-              <DatePicker
-                key={index}
-                description={item.description}
-                header={item.header}
-                DatePickerType={item.DatePickerType}
-              />
-            );
+        <div className='datepicker'>
+          {inlineDatepicker.map((item, index) => {
+            return <DatePicker key={index} {...item} />;
           })}
         </div>
-        <div className='datepiker'>
-          {Datepicker.map((item, index) => {
-            return (
-              <DatePicker
-                key={index}
-                description={item.description}
-                header={item.header}
-                DatePickerType={item.DatePickerType}
-              />
-            );
+        <div className='datepicker'>
+          {datepicker.map((item, index) => {
+            return <DatePicker key={index} {...item} />;
           })}
         </div>
       </div>

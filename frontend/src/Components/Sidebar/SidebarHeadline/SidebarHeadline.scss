@@ -1,4 +1,4 @@
-.sideBarHeadLine {
+.sidebar-headline {
   text-transform: uppercase;
   font-weight: 400;
   font-size: 0.75rem;
@@ -32,7 +32,7 @@
     background-color: #eeeeee;
   }
   @media (min-width: 768px) {
-    @at-root .collapsed .sideBarHeadLine {
+    @at-root .collapsed .sidebar-headline {
       padding-left: 0;
       padding-right: 0;
       div {
@@ -44,7 +44,7 @@
         opacity: 1;
       }
     }
-    @at-root .fixedSidebar .collapsed .sideBarHeadLine > div {
+    @at-root .fixed-sidebar .collapsed .sidebar-headline > div {
       display: none;
     }
   }

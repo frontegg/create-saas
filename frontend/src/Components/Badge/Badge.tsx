@@ -25,8 +25,8 @@ const Badge: React.FC<BadgeProps> = (props: BadgeProps) => {
   return <span className={klassName}>{children}</span>;
 };
 
-export const CircularBadge: React.FC<BadgeProps> = (props: BadgeProps) => {
+const CircularBadge: React.FC<BadgeProps> = (props: BadgeProps) => {
   return <Badge {...props} circular className={`${props.className} rounded-circle`} />;
 };
 
-export default Badge;
+export { Badge, CircularBadge };

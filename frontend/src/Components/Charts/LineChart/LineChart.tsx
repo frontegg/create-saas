@@ -1,43 +1,56 @@
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { lineChartDataDefault, lineChartDefaultSettings, LineChartProps } from './lineChartDataDefault';
+import {
+  LineChart as RechartsLineChart,
+  LineChartProps as RechartsLineChartProps,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from 'recharts';
 
-const LineChartComponent: React.FC<LineChartProps> = ({
-  data = lineChartDataDefault,
-  settings = lineChartDefaultSettings,
-}) => {
-  const width = settings.width || lineChartDefaultSettings.width;
-  const height = settings.height || lineChartDefaultSettings.height;
-  const isEnableGrid = settings.isEnableGrid || lineChartDefaultSettings.isEnableGrid;
-  const xType = settings.xaxis?.type || lineChartDefaultSettings.xaxis?.type;
-  const chartLine = settings.line || lineChartDefaultSettings.line;
-  const colors = settings.colors || lineChartDefaultSettings.colors;
+export interface LineChartProps extends RechartsLineChartProps {
+  data: ReadonlyArray<any>;
+  showGrid?: boolean;
+  showLegend?: boolean;
+  xAxis: { type: any };
+  line: {
+    strokeWidth: number;
+    type: any;
+    activeDot: { r: number };
+  };
+  colors: string[];
+}
+
+const LineChart: React.FC<LineChartProps> = (props) => {
+  const { width, height, data, xAxis, line, showGrid, colors } = props;
 
   return (
     <ResponsiveContainer>
-      <LineChart width={width} height={height}>
-        {isEnableGrid ? <CartesianGrid strokeDasharray='3 3' /> : null}
-        <XAxis dataKey='category' type={xType} allowDuplicatedCategory={false} axisLine={false} tickLine={false} />
+      <RechartsLineChart width={width} height={height}>
+        {showGrid ? <CartesianGrid strokeDasharray='3 3' /> : null}
+        <XAxis dataKey='category' type={xAxis.type} allowDuplicatedCategory={false} axisLine={false} tickLine={false} />
         <YAxis dataKey='value' axisLine={false} tickLine={false} />
         <Tooltip />
         <Legend verticalAlign='top' />
-
-        {data.map((line, i) => (
+        {data.map(({ data, name }, index: number) => (
           <Line
-            strokeWidth={chartLine?.strokeWidth}
+            strokeWidth={line.strokeWidth}
             legendType='circle'
-            type={chartLine?.type}
-            stroke={colors[i % colors.length]}
+            type={line.type}
+            stroke={colors[index % colors.length]}
             dataKey='value'
-            data={line.data}
-            name={line.name}
-            key={line.name}
-            activeDot={chartLine?.activeDot}
+            data={data}
+            name={name}
+            key={name}
+            activeDot={line.activeDot}
           />
         ))}
-      </LineChart>
+      </RechartsLineChart>
     </ResponsiveContainer>
   );
 };
 
-export default LineChartComponent;
+export default LineChart;

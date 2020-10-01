@@ -1,12 +1,10 @@
 import React from 'react';
 import Widget from '../Widget';
-import RegularTable from '../../../Components/RegularTable';
+import Table from '../../../Components/Table';
 import LineChart from '../../../Components/Charts/LineChart';
 import PieChart from '../../../Components/Charts/PieChart';
 import BarChart from '../../../Components/Charts/BarChart';
-import { columns, rows } from '../SidebarCategoryTablePage';
-import { Props, SettingsProps } from '../../../Components/Charts/LineChart/lineChartDataDefault';
-import { PieData, PieSettingsProps } from '../../../Components/Charts/PieChart/PieChartDataDefault';
+import { columns, rows } from '../TablePage';
 import ProjectStatus, { ProjectStatusProps } from '../../../Components/ProjectStatus';
 import Activities from '../../../Components/Activities';
 import { Row } from 'reactstrap';
@@ -14,7 +12,7 @@ import { Row } from 'reactstrap';
 import moment from 'moment';
 import { detect } from 'detect-browser';
 
-const MONTHS = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 const widgets = [
   {
@@ -105,7 +103,7 @@ const widgets = [
   },
 ];
 
-const lineChartData: Props = [
+const lineChartData = [
   {
     name: 'sales',
     data: [
@@ -142,11 +140,11 @@ const lineChartData: Props = [
   },
 ];
 
-const lineChartRandomSettings: SettingsProps = {
+const lineChartSettings = {
   width: 400,
   height: 300,
-  isEnableGrid: false,
-  xaxis: {
+  showGrid: false,
+  xAxis: {
     type: 'category',
   },
   line: {
@@ -159,7 +157,7 @@ const lineChartRandomSettings: SettingsProps = {
   colors: ['#90caf9', '#4ca5f5'],
 };
 
-const pieChartRandomSettings: PieSettingsProps = {
+const pieChartSettings = {
   width: 300,
   height: 300,
   pie: {
@@ -171,10 +169,10 @@ const pieChartRandomSettings: PieSettingsProps = {
     outerRadius: 80,
     paddingAngle: 1,
   },
-  customColors: ['#90caf9', '#4ca5f5', '#3d88e5'],
+  colors: ['#90caf9', '#4ca5f5', '#3d88e5'],
 };
 
-const barChartRandomSettings = {
+const barChartSettings = {
   width: 500,
   height: 300,
   showGrid: false,
@@ -253,17 +251,17 @@ function getBarChartData(requests: any) {
       data[month][success]++;
     }
   });
-  const barChartRandomData = [];
+  const barChartData = [];
   for (const month of MONTHS) {
     if (data[month]) {
       const { success, failed } = data[month];
-      barChartRandomData.push({ name: month, success, failed });
+      barChartData.push({ name: month, success, failed });
     }
   }
-  return barChartRandomData;
+  return barChartData;
 }
 
-function getPieChartData(requests: any): PieData {
+function getPieChartData(requests: any) {
   let chromeCount = 0,
     edgeCount = 0,
     firefoxCount = 0,
@@ -307,7 +305,7 @@ class Dashboard extends React.Component<any> {
             <div className='w-100 text-sm font-bold'>
               <span>This year</span>
             </div>
-            <BarChart data={getBarChartData(requests)} {...barChartRandomSettings} />
+            <BarChart data={getBarChartData(requests)} {...barChartSettings} />
           </Widget>
           <Widget col className='w-1/4 flex-shrink-0 justify-content-center'>
             <div className='text-sm font-light text-grey-500'>Requests</div>
@@ -315,15 +313,15 @@ class Dashboard extends React.Component<any> {
               <span>By browser</span>
             </div>
             <div className='w-100 d-flex justify-content-center'>
-              <PieChart data={getPieChartData(requests)} settings={pieChartRandomSettings} />
+              <PieChart data={getPieChartData(requests)} {...pieChartSettings} />
             </div>
           </Widget>
         </Row>
         <Widget className='w-100'>
-          <RegularTable columns={columns} rows={rows} />
+          <Table columns={columns} rows={rows} />
         </Widget>
         <Widget className='flex-grow-1 flex-shrink-0 w-2/3' style={{ minHeight: '320px' }}>
-          <LineChart data={lineChartData} settings={lineChartRandomSettings} />
+          <LineChart data={lineChartData} {...lineChartSettings} />
         </Widget>
         <Widget className='flex-column' label='Project status' value='This week'>
           {projectStatusData.map((item: ProjectStatusProps, index: number) => (

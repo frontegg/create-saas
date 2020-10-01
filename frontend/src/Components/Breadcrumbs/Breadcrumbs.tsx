@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import './Breadcrumbs.scss';
 import { Breadcrumbs as MaterialUIBreadcrumbs, Link } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 
@@ -36,7 +35,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = (props: BreadcrumbsProps) => {
   const linkElements = useMemo(() => links.map((link, index: number) => buildLink(link, index)), [links]);
 
   return (
-    <div className='breadcrumbs'>
+    <div className='relative'>
       <MaterialUIBreadcrumbs separator={separator} aria-label='breadcrumb'>
         {showHomeIcon && (homeIcon || <HomeIcon />)}
         <Link color='inherit' href='/'>

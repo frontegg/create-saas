@@ -1,12 +1,11 @@
 import React from 'react';
-import './Images.scss';
 import Widget from '../../../Widget';
 import { Row, Col } from 'reactstrap';
 
 const Images: React.FC = () => {
   const colors = ['grey', 'red', 'orange', 'yellow', 'green', 'teal', 'blue', 'indigo', 'purple', 'pink'];
   return (
-    <div className='Images'>
+    <div className='relative'>
       <div className='text-xl font-bold mb-3'>Images</div>
       <Widget col className='flex-wrap'>
         <div className='mb-3'>

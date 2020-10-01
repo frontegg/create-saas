@@ -1,15 +1,15 @@
 import React from 'react';
-import './Notifications.scss';
 import Widget from '../../../Widget';
 import { Col, Row } from 'reactstrap';
-import Button from '../../../../../Components/Button';
+import { Button } from '../../../../../Components/Button';
 import { NotificationContext, NotificationContextType } from '../../../../../Components/NotificationContext';
 import { NotificationManager } from 'react-notifications';
 
-type notificationType = 'info' | 'success' | 'warning' | 'error';
+type NotificationType = 'info' | 'success' | 'warning' | 'error';
+
 const Notifications: React.FC = () => {
   const context = React.useContext<NotificationContextType>(NotificationContext);
-  const createNotification = (type: notificationType) => {
+  const createNotification = (type: NotificationType) => {
     switch (type) {
       case 'info':
         NotificationManager.info('Info message');
@@ -28,11 +28,13 @@ const Notifications: React.FC = () => {
     }
   };
   return (
-    <div className='Notifications'>
+    <div className='relative'>
       <Widget>
         <Col>
           <Row>
             <Button
+              color=''
+              style={{ marginRight: '5px' }}
               onClick={() => {
                 context?.addNotification!({
                   position: 'top',
@@ -46,6 +48,8 @@ const Notifications: React.FC = () => {
               top
             </Button>
             <Button
+              color=''
+              style={{ marginRight: '5px' }}
               onClick={() => {
                 context?.addNotification({
                   position: 'fixed-top',
@@ -59,6 +63,8 @@ const Notifications: React.FC = () => {
               fixed top
             </Button>
             <Button
+              color=''
+              style={{ marginRight: '5px' }}
               onClick={() => {
                 context?.addNotification({
                   position: 'fixed-bottom',
@@ -72,6 +78,8 @@ const Notifications: React.FC = () => {
               fixed bottom
             </Button>
             <Button
+              color=''
+              style={{ marginRight: '5px' }}
               onClick={() => {
                 context?.addNotification({
                   position: 'fixed-bottom',
@@ -85,12 +93,16 @@ const Notifications: React.FC = () => {
               fixed bottom padding
             </Button>
             <Button
+              color=''
+              style={{ marginRight: '5px' }}
               onClick={() => {
                 createNotification('success');
               }}>
               at right corner
             </Button>
             <Button
+              color=''
+              style={{ marginRight: '5px' }}
               onClick={() => {
                 createNotification('warning');
               }}>

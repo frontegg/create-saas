@@ -1,5 +1,4 @@
 import React from 'react';
-import './Tabs.scss';
 import Widget from '../../../Widget';
 import DefaultTabs, { VerticalTabs, UnderlinedTabs, IconTabs } from '../../../../../Components/Tab';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
@@ -64,7 +63,7 @@ const tabs2 = [
 
 const Tabs: React.FC = () => {
   return (
-    <div className='Tabs'>
+    <div className='relative'>
       <div className='text-xl font-bold mb-3'>Tabs</div>
       <Widget col>
         <div className='mb-3'>

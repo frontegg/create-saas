@@ -1,65 +1,56 @@
 import React from 'react';
-// import Switches from 'react-input-switch';
-import Switches from '@material-ui/core/Switch';
+import MaterialUISwitch from '@material-ui/core/Switch';
 import { withStyles } from '@material-ui/core/styles';
 import './Switch.scss';
+import classNames from 'classnames';
 
-type SwitchProps = {
+interface SwitchProps extends React.HTMLAttributes<HTMLElement> {
   label: string;
-  text_label: string;
-  track_color: string;
-  slider_color: string;
+  textLabel: string;
+  trackColor: string;
+  sliderColor: string;
   name: string;
   check?: boolean;
   value?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-};
+}
 
-const Switch: React.FC<SwitchProps & React.HTMLAttributes<HTMLElement>> = ({
-  className,
-  label,
-  text_label,
-  slider_color,
-  track_color,
-  name,
-  check,
-  value,
-  onChange,
-}) => {
-  const [state, setState] = React.useState(check || value || false);
+const Switch: React.FC<SwitchProps> = (props: SwitchProps) => {
+  const { className, label, textLabel, sliderColor, trackColor, name, check, value, onChange } = props;
+  const [checked, setChecked] = React.useState(check || value || false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
       onChange(event);
     }
-    setState(!state);
+    setChecked(!checked);
   };
 
   const CustomSwitch = withStyles({
     switchBase: {
       color: 'rgb(238, 238, 238)',
       '&$checked': {
-        color: slider_color,
+        color: sliderColor,
       },
       '&$checked + $track': {
-        backgroundColor: track_color,
+        backgroundColor: trackColor,
       },
     },
     checked: {},
     track: {},
-  })(Switches);
+  })(MaterialUISwitch);
 
   return (
-    <div className={`form_switch d-flex justify-content-between ${className || ''}`}>
-      <div className={`${label ? '' : 'switcher-wrapper'}`}>
+    <div className={classNames('form-switch', 'd-flex', 'justify-content-between', className)}>
+      <div className={classNames({ 'switcher-wrapper': !label })}>
         <div className='label'>{label}</div>
-        <div className='text-label'>{text_label}</div>
+        <div className='text-label'>{textLabel}</div>
       </div>
       <div>
         <CustomSwitch
-          checked={state}
+          checked={checked}
           onChange={handleChange}
-          value={state || undefined}
+          value={checked}
           name={name}
           inputProps={{ 'aria-label': 'secondary checkbox' }}
         />

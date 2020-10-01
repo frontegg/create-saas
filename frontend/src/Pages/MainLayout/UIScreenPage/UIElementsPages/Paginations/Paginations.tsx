@@ -1,11 +1,10 @@
 import React from 'react';
-import './Pagination.scss';
 import Pagination from '../../../../../Components/Pagination';
 import Widget from '../../../Widget';
 
 const Paginations: React.FC = () => {
   return (
-    <div className='Paginations'>
+    <div className='relative'>
       <div className='text-xl font-bold mb-3'>Paginations</div>
       <Widget col className='flex-wrap'>
         <div className='mb-3'>

@@ -1,45 +1,12 @@
-### frontend/src/Components/Alert/Alert.tsx
-
-- [x] line(6): move React.HTMLAttributes & {custom props} to override the default
-- [x] line(33): use classNames from clasnames npm package
-- [x] line(33): don't mutate props, create new className variable
-- [x] line(36): don't use classes with UpperCase, .Alert should be .alert
-- [x] line(36): don't use short component names: `BootstrapAlert` instead of `A`
-- [x] line(55): don't use as unknown
-
-### frontend/src/Components/Alert/index.tsx
-
-- [x] use export  {TopAlert as TA, FixedTopAlert as FTA} not export const...
-
-### frontend/src/Components/Badge/Badge.tsx
-
-- [x] line(4): use `size` property instead of small,medium...
-- [ ] change how do we do export in index.tsx
-
-### frontend/src/Components/Breadcrumbs/Breadcrumbs.tsx
-
-- [X] useMemo for building links and depends on links property
-
-### frontend/src/Components/Button/Button.tsx
-
-- [ ] don't use css camel-case
-- [ ] use classNames instead of merged strings
-- [ ] rewrite buttons logic - it seems too complicated
-- [ ] change how we export in index.tsx
-
 ### frontend/src/Components/ButtonDropDown/ButtonDropDown.tsx
 
 - [ ] toggle function depends on previous state and should call setOpen((prev) => !prev)
-- [ ] use `BootstrapButtonDropdown` instead of `ButtonDropdown` and export `ButtonDropdown` not `ButtonDropDown`
 
 ### frontend/src/Components/DatePicker/DatePicker.tsx
 
-- [ ] move the `import "react-datepicker/dist/react-datepicker.css";` to `DatePicker.scss`
 - [ ] line(28): calculate the `startDate?.toString()` outside JSX, and dont not display empty div if `startDate` is null
 - [ ] line(33): calling `new Date` without calling the constructor, should be `new Date()`
-- [ ] line(34): use `===` instead of `==`
 - [ ] use default values in declaration
-- [ ] remove `types.tsx` if it's empty
 
 ### frontend/src/Components/DefaultForm/DefaultForm.tsx
 
@@ -59,22 +26,8 @@
 - [ ] add `React.HTMLAttributes<HTMLElement>` to the main `Props`, and remove it the component declaration.
 - [ ] line(45): you don't need to pass `props.children` and `children`, and `{...props}` do it for you.
 
-### frontend/src/Components/FilterButton/FilterButton.tsx
-
-- [ ] line(41): move `items.map` to `useMemo`
-
 ### frontend/src/Components/FilterInput/FilterInput.tsx
 
-- [ ] remove `FilterInput.scss` if it's empty
-- [ ] line(46): `visible` should be const and calulcate it with `useMemo` that depends on `[filterTypes, placeholder]`
-- [ ] line(46): use '===' instead of '=='
-- [ ] line(49): use `classNames` like this:
-  ```jsx
-    <form className={classNames({
-      [classes.root]: visible,
-      [classes.hile]: !visible,
-    })}>
-  ```
 - [ ] line(53): add option to change the label, and set the default value `'Search ${placeholder}'`
 
 ### frontend/src/Components/FormSteps/FormSteps.scss
@@ -91,34 +44,11 @@
 - [ ] use `classNames`
 - [ ] remove redundant comments and unused imports
 
-### frontend/src/Components/Image/Image.tsx
-
-- [ ] use dashed className
-- [ ] empty components should be removed
-
-### frontend/src/Components/InputElement/InputElement.tsx
-
-- [ ] remove the `import { type } from 'os'` not working in browsers
-- [ ] destruct props inside the function
-- [ ] label should be optional
-- [ ] add option to placeholder
-- [ ] don't use `setState` in props, use `onChange` with `htmlInputEvent`
-
 ### frontend/src/Components/List/List.tsx
 
 - [ ] `right / left` props, use default values outside jsx
 - [ ] line(6): don't your `JSX.Element` use `React.ReactElement`
 - [ ] line(39): `{...props}` will add the `props.children` to the `<Base>` component
-
-### frontend/src/Components/NavBar/NavBar.tsx
-
-- [ ] create `Props` interface and move the `NavBar types` outside the declaration.
-- [ ] line(21): `toggleDrawer` should toggle the state. use `setDrawerOpen(open: boolean)` instead.
-- [ ] line(29): img `src` attribute should be imported or absolute url
-
-### frontend/src/Components/Notification/Notification.tsx
-
-- [ ] remove empty component
 
 ### frontend/src/Components/Pagination/Pagination.tsx
 
@@ -131,16 +61,16 @@
 - [ ] use `classNames`
 - [ ] line(45): what if the value `< 0` or `> 100`
 
-### frontend/src/Components/ProjectStatusComponent/ProjectStatustsx
+### frontend/src/Components/ProjectStatusComponent/ProjectStatus.tsx
 
 - [ ] line(31): remove `alt` property or set the right text
 
-### frontend/src/Components/RegularTableComponent/RegularTabletsx
+### frontend/src/Components/RegularTableComponent/RegularTable.tsx
 
 - [ ] very long component
 - [ ] move helpers to separate file
 - [ ] split the inner components to separate files
-- [ ] fix freeSearch method (same in DataTableComponent)
+- [ ] fix freeSearch method (same in DataTable)
 
 ### frontend/src/Components/SampleFrom/SampleFrom.tsx
 
@@ -192,15 +122,46 @@
 
 - [ ] change li-darkMod css
 
-
 ### frontend/src/Pages/MainLayout/MainLayout.tsx
 
 - [ ] use defined alerts
 - [ ] rewrite code
-
 
 ### MISC
 
 * Choose createStyles or scss file
 * Choose type or interface for component props
 * Why NotificationContext is in Pages/MainLayout
+
+
+### Component to fix:
+
+#### Components
+1. Table - useMemo, ask David what to change
+2. DefaultForm
+3. FormSteps
+4. Pagination
+5. Tab
+6. Sidebar - check scss themify
+7. SidebarCategory
+8. SampleForm
+9. Slider
+16. NotificationContext
+10. SettingsSidebar
+11. SettingsButton
+
+#### Pages/MainLayout
+1. MainLayout
+2. DatatablePage
+3. DatePickerPage
+4. DefaultFormPage
+5. FormStepsPage
+6. RegularTablePage
+7. SampleFormPage
+8. SidebarCategoryTablePage
+9. SliderPage
+10. SwitchPage
+11. UIScreenPage
+12. ValidationFormPage
+13. Widget
+14. Dashboard

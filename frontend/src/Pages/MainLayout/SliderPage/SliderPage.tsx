@@ -1,9 +1,8 @@
 import React from 'react';
-// import {IField} from '../../../Components/Slider/types';
 import Slider from '../../../Components/Slider';
 
 const SliderPage: React.FC = () => {
-  const DefaultSlider = [
+  const defaultSlider = [
     {
       sliderType: 'DefaultSlider',
       header: 'Default slider',
@@ -16,7 +15,7 @@ const SliderPage: React.FC = () => {
     },
   ];
 
-  const RangeSlider = [
+  const rangeSlider = [
     {
       sliderType: 'RangeSlider',
       header: 'Range slider',
@@ -26,11 +25,10 @@ const SliderPage: React.FC = () => {
         </span>
       ),
       color: 'blue',
-      // colorSlider: <code>.slider-red</code>
     },
   ];
 
-  const SliderColors = [
+  const sliderColors = [
     {
       sliderType: 'DefaultSlider',
       header: 'Range slider',
@@ -174,7 +172,7 @@ const SliderPage: React.FC = () => {
       </div>
       <div className='main'>
         <div className='slider'>
-          {DefaultSlider.map((item, index) => {
+          {defaultSlider.map((item, index) => {
             return (
               <Slider
                 key={index}
@@ -187,7 +185,7 @@ const SliderPage: React.FC = () => {
           })}
         </div>
         <div className='slider'>
-          {RangeSlider.map((item, index) => {
+          {rangeSlider.map((item, index) => {
             return (
               <Slider
                 key={index}
@@ -200,7 +198,7 @@ const SliderPage: React.FC = () => {
           })}
         </div>
         <div className='slider'>
-          {SliderColors.map((item, index) => {
+          {sliderColors.map((item, index) => {
             return (
               <Slider
                 key={index}

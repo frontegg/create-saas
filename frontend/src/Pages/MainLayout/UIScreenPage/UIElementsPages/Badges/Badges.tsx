@@ -1,10 +1,10 @@
 import React from 'react';
 import Widget from '../../../Widget';
-import Badge, { CircularBadge } from '../../../../../Components/Badge';
+import { Badge, CircularBadge } from '../../../../../Components/Badge';
 
 const Badges: React.FC = () => {
   return (
-    <div className='Badges'>
+    <div className='relative'>
       <div className='text-xl font-bold mb-3'>Badges</div>
       <Widget className='w-100 flex-column'>
         <div className='mb-3'>

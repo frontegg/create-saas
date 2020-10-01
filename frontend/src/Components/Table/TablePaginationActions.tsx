@@ -14,14 +14,14 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-interface ITablePaginationActionsProps {
+interface TablePaginationActionsProps {
   count: number;
   page: number;
   rowsPerPage: number;
   onChangePage: (event: React.MouseEvent<HTMLButtonElement>, newPage: number) => void;
 }
 
-const TablePaginationActions = (props: ITablePaginationActionsProps) => {
+const TablePaginationActions = (props: TablePaginationActionsProps) => {
   const classes = useStyles();
   const theme = useTheme();
   const { count, page, rowsPerPage, onChangePage } = props;

@@ -1,6 +1,6 @@
 @import '../../../Pages/MainLayout/themes.scss';
 
-.sidebarLinkWithSub {
+.sidebar-link-with-sub {
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
@@ -26,7 +26,7 @@
     border-left: themed('customSidebarColor');
   }
 
-  @at-root .expanded &.activeLink {
+  @at-root .expanded &.active-link {
     + ul {
       width: auto;
       height: auto;
@@ -34,7 +34,7 @@
   }
   @at-root .collapsed {
     @media (max-width: 767px) {
-      .activeLink {
+      .active-link {
         + ul {
           width: auto;
           height: auto;
@@ -80,7 +80,7 @@
       }
     }
   }
-  &.activeLink,
+  &.active-link,
   &:hover {
     color: #2196f3;
     border-left: 4px solid #2196f3;
@@ -120,11 +120,11 @@
     @media (min-width: 768px) {
       transition: all 0.53s ease;
     }
-    &.activeLink {
+    &.active-link {
       transform: rotate(90deg);
     }
   }
-  .sidebarLink {
+  .sidebar-link {
     width: 100%;
   }
 }

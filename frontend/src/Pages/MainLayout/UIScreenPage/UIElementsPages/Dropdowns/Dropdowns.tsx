@@ -1,6 +1,5 @@
 import React from 'react';
-import './Dropdowns.scss';
-import Dropdown, { Dropup, Dropleft, Dropright } from '../../../../../Components/Dropdown';
+import { Dropdown } from '../../../../../Components/Dropdown';
 import Widget from '../../../Widget';
 
 const DropdownMenu: React.FC = () => {
@@ -163,7 +162,7 @@ const DropdownMenu: React.FC = () => {
 };
 const Dropdowns: React.FC = () => {
   return (
-    <div className='Dropdowns'>
+    <div className='relative'>
       <div className='text-xl font-bold mb-3'>Dropdowns</div>
       <Widget className='w-100 flex-column'>
         <div className='text-sm font-light text-gray-500'>Dropdowns</div>
@@ -185,12 +184,12 @@ const Dropdowns: React.FC = () => {
           <span className='capitalize'>left position</span>
         </div>
         <div className='d-flex flex-row justify-content-evenly w-100'>
-          <Dropleft color='primary' className='w-25' label='Start dropleft'>
+          <Dropdown color='primary' className='w-25' label='Start dropleft' direction='left'>
             <DropdownMenu />
-          </Dropleft>
-          <Dropleft color='primary' className='w-25' label='End dropleft' right>
+          </Dropdown>
+          <Dropdown color='primary' className='w-25' label='End dropleft' direction='left' right>
             <DropdownMenu />
-          </Dropleft>
+          </Dropdown>
         </div>
       </Widget>
       <Widget className='w-100 flex-column'>
@@ -199,12 +198,12 @@ const Dropdowns: React.FC = () => {
           <span className='capitalize'>right position</span>
         </div>
         <div className='d-flex flex-row justify-content-evenly w-100'>
-          <Dropright color='primary' className='w-25' label='Start dropright'>
+          <Dropdown color='primary' className='w-25' label='Start dropright' direction='right'>
             <DropdownMenu />
-          </Dropright>
-          <Dropright color='primary' className='w-25' label='End dropright' right>
+          </Dropdown>
+          <Dropdown color='primary' className='w-25' label='End dropright' direction='right' right>
             <DropdownMenu />
-          </Dropright>
+          </Dropdown>
         </div>
       </Widget>
       <Widget className='w-100 flex-column'>
@@ -213,12 +212,12 @@ const Dropdowns: React.FC = () => {
           <span className='capitalize'>top position</span>
         </div>
         <div className='d-flex flex-row justify-content-evenly w-100'>
-          <Dropup color='primary' className='w-25' label='Left dropup'>
+          <Dropdown color='primary' className='w-25' label='Left dropup' direction='up'>
             <DropdownMenu />
-          </Dropup>
-          <Dropup color='primary' className='w-25' label='Right dropup' right>
+          </Dropdown>
+          <Dropdown color='primary' className='w-25' label='Right dropup' direction='up' right>
             <DropdownMenu />
-          </Dropup>
+          </Dropdown>
         </div>
       </Widget>
     </div>

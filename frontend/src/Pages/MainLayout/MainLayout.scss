@@ -1,6 +1,6 @@
 @import '../../Pages/MainLayout/themes.scss';
 
-.mainLayout {
+.main-layout {
   width: 100%;
   height: auto;
   min-height: 100%;
@@ -26,10 +26,10 @@
     }
   }
   @media screen and (min-width: 768px) {
-    &.fixedSidebar .collapsed + .main {
+    &.fixed-sidebar .collapsed + .main {
       margin-left: 4rem;
     }
-    &.fixedSidebar .expanded + .main {
+    &.fixed-sidebar .expanded + .main {
       margin-left: 16rem;
     }
     [name='notification'] {

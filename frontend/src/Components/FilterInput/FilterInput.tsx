@@ -3,6 +3,7 @@ import { TextField, InputAdornment } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 import CloseIcon from '@material-ui/icons/Close';
+import classNames from 'classnames';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-interface IFilterInput {
+interface FilterInputProps {
   type: string;
   columnId: string;
   placeholder: string;
@@ -31,29 +32,31 @@ interface IFilterInput {
   setFilter: (param: string, value: string) => void;
 }
 
-export default function FilterInput(props: IFilterInput) {
+export default function FilterInput(props: FilterInputProps) {
   const { columnId, placeholder, filterTypes, deleteFilter, setFilter, filterValue } = props;
   const classes = useStyles();
 
-  const visible = filterTypes.some((filterType: string) => filterType === placeholder);
+  const visible = React.useMemo(() => filterTypes.some((filterType: string) => filterType === placeholder), [
+    filterTypes,
+    placeholder,
+  ]);
 
   return (
     <form
-      className={visible ? classes.root : classes.hide}
+      className={classNames({
+        [classes.root]: visible,
+        [classes.hide]: !visible,
+      })}
       noValidate
       autoComplete='off'
-      onSubmit={(e) => {
-        e.preventDefault();
-      }}>
+      onSubmit={(e) => e.preventDefault()}>
       <TextField
         variant='outlined'
         label={`Search ${placeholder}`}
         placeholder={placeholder}
-        InputLabelProps={{
-          shrink: true,
-        }}
+        InputLabelProps={{ shrink: true }}
         value={filterValue}
-        onChange={(event) => setFilter(columnId, event.target.value)}
+        onChange={(e) => setFilter(columnId, e.target.value)}
         InputProps={{
           endAdornment: (
             <InputAdornment

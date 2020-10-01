@@ -1,30 +1,32 @@
 import React from 'react';
 import './ProgressBar.scss';
 
-type Props = {
+type ProgressBarProps = {
   value: number;
   colorClass?: string;
-  colorCss?: string;
+  color?: string;
 };
 
-const ProgressBar: React.FC<Props> = ({ value }) => {
+const ProgressBar: React.FC<ProgressBarProps> = (props: ProgressBarProps) => {
+  const { value } = props;
   return (
     <div className='wrapper'>
       <div className='progress'>
         <div className='progress-bar' style={{ width: `${value}%` }} />
       </div>
-      <div className='progressTxt'>{value}%</div>
+      <div className='progress-txt'>{value}%</div>
     </div>
   );
 };
 
-export const ProgressLine: React.FC<Props> = ({ colorCss, colorClass = '', value }) => {
+export const ProgressLine: React.FC<ProgressBarProps> = (props: ProgressBarProps) => {
+  const { value, color, colorClass = '' } = props;
   return (
     <div className='w-100'>
       <div
         className={`progress-bar my-3 h-1 ${colorClass}`}
         style={{
-          backgroundColor: colorCss,
+          backgroundColor: color,
           width: `${value}%`,
         }}
       />
@@ -32,13 +34,14 @@ export const ProgressLine: React.FC<Props> = ({ colorCss, colorClass = '', value
   );
 };
 
-export const ProgressBarWithValue: React.FC<Props> = ({ colorCss, colorClass = '', value }) => {
+export const ProgressBarWithValue: React.FC<ProgressBarProps> = (props: ProgressBarProps) => {
+  const { value, color, colorClass = '' } = props;
   return (
     <div className='w-100'>
       <div
         className={`progress-bar mb-5 ${colorClass}`}
         style={{
-          backgroundColor: colorCss,
+          backgroundColor: color,
           width: `${value}%`,
         }}>
         {value}%

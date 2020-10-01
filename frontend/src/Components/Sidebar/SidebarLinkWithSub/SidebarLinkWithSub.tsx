@@ -1,14 +1,20 @@
 import React from 'react';
 import './SidebarLinkWithSub.scss';
-import { sidebarLinkWithSubType } from '../types';
+import classNames from 'classnames';
 
-const SidebarLinkWithSub: React.FC<sidebarLinkWithSubType> = ({ icon, label }) => {
-  const [isOpen, setOpen] = React.useState<boolean>(false);
+type SidebarLinkWithSubProps = {
+  label?: string;
+};
+
+const SidebarLinkWithSub: React.FC<SidebarLinkWithSubProps> = (props: SidebarLinkWithSubProps) => {
+  const { label } = props;
+  const [open, setOpen] = React.useState<boolean>(false);
+  const activeClass = open ? 'active-link' : '';
   return (
     <div
-      className={`sidebarLinkWithSub ${isOpen ? 'activeLink' : ''}`}
+      className={classNames('sidebar-link-with-sub', activeClass)}
       onClick={(e: React.MouseEvent) => {
-        setOpen(!isOpen);
+        setOpen(!open);
       }}>
       <div className='icon'>
         <svg
@@ -20,7 +26,7 @@ const SidebarLinkWithSub: React.FC<sidebarLinkWithSubType> = ({ icon, label }) =
           strokeLinejoin='round'
           xmlns='http://www.w3.org/2000/svg'>
           <circle cx='12' cy='12' r='10' />
-          <polygon points='16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76'></polygon>
+          <polygon points='16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76' />
         </svg>
       </div>
       <div className='label'>{label}</div>
@@ -31,7 +37,7 @@ const SidebarLinkWithSub: React.FC<sidebarLinkWithSubType> = ({ icon, label }) =
         viewBox='0 0 24 24'
         strokeLinecap='round'
         strokeLinejoin='round'
-        className={`arrow ${isOpen ? 'activeLink' : ''}`}
+        className={classNames('arrow', activeClass)}
         height='1em'
         width='1em'
         xmlns='http://www.w3.org/2000/svg'>

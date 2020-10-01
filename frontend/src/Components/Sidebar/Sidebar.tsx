@@ -3,48 +3,47 @@ import './Sidebar.scss';
 import SidebarHeadline from './SidebarHeadline';
 import SidebarLink from './SidebarLink';
 import SidebarLinkWithSub from './SidebarLinkWithSub';
-import sidebarContents, { sidebarHeadlineType, sidebarLinkType, sidebarLinkWithSubType } from './types';
-import { links } from './links';
+import { links, LinkType } from './links';
 
 const Sidebar: React.FC<React.HTMLAttributes<HTMLElement>> = ({ className, onMouseEnter, onMouseLeave }) => {
-  const isHeadline = (link: sidebarContents): link is sidebarHeadlineType => {
-    return (link as sidebarHeadlineType).header !== undefined;
+  const isHeadline = (link: LinkType) => {
+    return link.header !== undefined;
   };
 
-  const isSidebarLink = (link: sidebarContents): link is sidebarLinkType => {
-    return (link as sidebarLinkType).path !== undefined;
+  const isSidebarLink = (link: LinkType) => {
+    return link.path !== undefined;
   };
 
-  const isSidebarLinkWithSub = (link: sidebarContents): link is sidebarLinkWithSubType => {
-    return (link as sidebarLinkWithSubType).sublinks !== undefined;
+  const isSidebarLinkWithSub = (link: LinkType) => {
+    return link.sublinks !== undefined;
   };
 
-  const renderSidebarLinks = (sidebarLinkItem: sidebarContents[], parentPath: string = '') => {
+  const renderSidebarLinks = (sidebarLinkItem: LinkType[], parentPath: string = '') => {
     return (
       <ul>
-        {sidebarLinkItem.map((link: sidebarContents, index: number) => {
+        {sidebarLinkItem.map((link: LinkType, index: number) => {
           if (isHeadline(link)) {
             const { header } = link;
             return (
               <li className='li-darkMod' key={index}>
-                <SidebarHeadline key={index} {...{ header }} />
+                <SidebarHeadline key={index} header={header} />
               </li>
             );
           }
           if (isSidebarLinkWithSub(link)) {
-            const { path, icon, label, sublinks } = link;
+            const { sublinks, path, label } = link;
             return (
               <li className='submenu' key={index}>
-                <SidebarLinkWithSub key={index} {...{ path: parentPath + path, icon, label, sublinks }} />
+                <SidebarLinkWithSub key={index} label={label} />
                 {sublinks && renderSidebarLinks(sublinks, parentPath + path)}
               </li>
             );
           }
           if (isSidebarLink(link)) {
-            const { path, icon, label } = link;
+            const { path, ...rest } = link;
             return (
               <li className='li' key={index}>
-                <SidebarLink key={index} {...{ path: parentPath + path, icon, label }} />
+                <SidebarLink key={index} path={parentPath + path} {...rest} />
               </li>
             );
           }

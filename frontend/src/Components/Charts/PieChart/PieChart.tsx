@@ -1,18 +1,31 @@
 import React from 'react';
-import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
-import { PieChartProps, pieChartDataDefault, pieChartDefaultSettings } from './PieChartDataDefault';
+import {
+  PieChart as RechartsPieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  Legend,
+  PieChartProps as RechartsPieChartProps,
+} from 'recharts';
 
-const PieChartComponent: React.FC<PieChartProps> = ({
-  data = pieChartDataDefault,
-  settings = pieChartDefaultSettings,
-}) => {
-  const width = settings.width || pieChartDefaultSettings.width;
-  const height = settings.height || pieChartDefaultSettings.height;
-  const pie = settings.pie || pieChartDefaultSettings.pie;
-  const colors = settings.customColors || pieChartDefaultSettings.customColors;
+export interface PieChartProps extends RechartsPieChartProps {
+  pie?: {
+    cx?: number;
+    cy?: number;
+    startAngle?: number;
+    endAngle?: number;
+    innerRadius?: number;
+    outerRadius?: number;
+    paddingAngle?: number;
+  };
+  colors: string[];
+}
+
+const PieChart: React.FC<PieChartProps> = (props: PieChartProps) => {
+  const { width, height, data = [], colors, pie } = props;
 
   return (
-    <PieChart width={width} height={height}>
+    <RechartsPieChart width={width} height={height}>
       <Tooltip />
       <Legend />
       <Pie
@@ -24,12 +37,12 @@ const PieChartComponent: React.FC<PieChartProps> = ({
         fill='#8884d8'
         paddingAngle={pie?.paddingAngle}
         dataKey='value'>
-        {data.map((entry, index) => (
+        {data.map((_entry, index) => (
           <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
         ))}
       </Pie>
-    </PieChart>
+    </RechartsPieChart>
   );
 };
 
-export default PieChartComponent;
+export default PieChart;

@@ -1,8 +1,12 @@
-import sidebarContents from './types';
+export type LinkType = {
+  header?: string;
+  path?: string;
+  label?: string;
+  icon?: string;
+  sublinks?: LinkType[];
+};
 
-type linksArray = sidebarContents[];
-
-export const links: linksArray = [
+export const links: LinkType[] = [
   {
     header: 'APPLICATIONS',
   },
@@ -91,16 +95,6 @@ export const links: linksArray = [
         label: 'Regular table',
         icon: '',
       },
-      {
-        path: '/sidebar-category',
-        label: 'Sidebar category table',
-        icon: '',
-      },
-      {
-        path: '/datatable',
-        label: 'Datatable',
-        icon: '',
-      },
     ],
   },
   {
@@ -126,11 +120,6 @@ export const links: linksArray = [
       {
         path: '/switches',
         label: 'Switches',
-        icon: '',
-      },
-      {
-        path: '/formsteps',
-        label: 'Form steps',
         icon: '',
       },
       {

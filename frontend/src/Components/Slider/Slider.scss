@@ -6,12 +6,12 @@
   @include themify($themes) {
     background-color: themed('backgroundColor');
   }
-  .content_slider {
+  .content-slider {
     padding: 1rem;
   }
 }
 
-.content_slider {
+.content-slider {
   width: 100%;
   max-width: 30rem;
 }

@@ -1,6 +1,6 @@
 @import '../../../Pages/MainLayout/themes.scss';
 
-.sidebarLink {
+.sidebar-link {
   display: flex;
   flex-flow: row nowrap;
   border-left: 4px solid #fff;
@@ -23,13 +23,13 @@
     color: themed('customSidebarTxtColor');
     border-left: themed('customSidebarColor');
   }
-  &.activeLink {
+  &.active-link {
     + ul {
       width: auto;
       height: auto;
     }
   }
-  &.activeLink,
+  &.active-link,
   &:hover {
     color: #2196f3;
     border-left: 4px solid #2196f3;

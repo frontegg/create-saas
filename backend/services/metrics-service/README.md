@@ -11,14 +11,14 @@ The service uses `Request` model as an example.
 
 
 ### Migrate
-   * `npm run typeorm:migrate`
+   * `npm run migrate`
 
-   * `npm run typeorm:migrate:revert`
+   * `npm run migration:revert`
 
 ### Seed
-   * `npm run typeorm:seed`
+   * `npm run seed`
 
-   * `npm run typeorm:seed:revert`
+   * `npm run seed:revert`
 
 
 ## Development

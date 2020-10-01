@@ -1,25 +1,35 @@
 import React from 'react';
-import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { scatterChartDataDefault, scatterChartDefaultSettings, ScatterChartProps } from './ScatterChartDataDefault';
-import CustomizedDot, { CustomizedLegend } from './ScatterChartDot';
+import {
+  ScatterChart as RechartsScatterChart,
+  Scatter,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  ScatterChartProps as RechartsScatterChartProps,
+} from 'recharts';
+import { CustomizedDot, CustomizedLegend } from './ScatterChartDot';
 
-const LineChart: React.FC<ScatterChartProps> = ({
-  data = scatterChartDataDefault,
-  settings = scatterChartDefaultSettings,
-}) => {
-  const width = settings.width || scatterChartDefaultSettings.width;
-  const height = settings.height || scatterChartDefaultSettings.height;
-  const isEnableGrid = settings.isEnableGrid || scatterChartDefaultSettings.isEnableGrid;
-  const strokeColor = settings.strokeColor || scatterChartDefaultSettings.strokeColor;
-  const fillColor = settings.fillColor || scatterChartDefaultSettings.fillColor;
-  const scatterName = settings.scatterName || scatterChartDefaultSettings.scatterName;
+export interface ScatterChartProps extends RechartsScatterChartProps {
+  data?: any;
+  showGrid?: boolean;
+  strokeColor?: string;
+  fillColor?: string;
+  scatterName?: string;
+  colors: string[];
+}
+
+const ScatterChart: React.FC<ScatterChartProps> = (props: ScatterChartProps) => {
+  const { data, width, height, showGrid, strokeColor, fillColor, scatterName } = props;
 
   return (
     <ResponsiveContainer>
-      <ScatterChart width={width} height={height}>
-        {isEnableGrid ? <CartesianGrid strokeDasharray='3 3' /> : null}
-        <XAxis type='number' dataKey='x' name={data.xname} tickLine={false} />
-        <YAxis type='number' dataKey='y' name={data.yname} tickLine={false} />
+      <RechartsScatterChart width={width} height={height}>
+        {showGrid ? <CartesianGrid strokeDasharray='3 3' /> : null}
+        <XAxis type='number' dataKey='x' name={data?.xname} tickLine={false} />
+        <YAxis type='number' dataKey='y' name={data?.yname} tickLine={false} />
         <Tooltip />
         <Legend
           verticalAlign='top'
@@ -28,11 +38,11 @@ const LineChart: React.FC<ScatterChartProps> = ({
         <Scatter
           name={scatterName}
           data={data.lineChartData}
-          shape={<CustomizedDot strokeColor={strokeColor} fillColor={fillColor} />}
+          shape={<CustomizedDot strokeColor={strokeColor} fillColor={fillColor} r={6} cx={10} cy={10} />}
         />
-      </ScatterChart>
+      </RechartsScatterChart>
     </ResponsiveContainer>
   );
 };
 
-export default LineChart;
+export default ScatterChart;
