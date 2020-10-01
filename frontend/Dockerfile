@@ -8,17 +8,12 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 
 # install app dependencies
-COPY ./templates/airframe/package.json ./
-COPY ./templates/airframe/package-lock.json ./
+COPY package.json /app/
 
 # Run the command inside your image filesystem.
 RUN npm install
 
 # add app
-COPY ./templates/airframe/ ./
+COPY ./ /app/
 
-# build
-CMD ["npm", "build:prod"]
-
-# start app
-CMD ["npm", "start:prod"]
+RUN npm run build

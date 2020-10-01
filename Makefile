@@ -14,12 +14,6 @@ provision:
 pre-commit:
 	lerna run pre-commit
 
-heroku-prebuild:
-	cd backend/api-gw && npm install
-	cd backend/services/metrics-service && npm install
-	cd backend/services/config-service && npm install
-	cd frontend/templates/airframe && npm install
-
 prestart:
 	$(eval is_docker="$(shell which docker && docker --version)")
 	@if [[ $(is_docker) ]]; then\
@@ -28,11 +22,7 @@ prestart:
 	fi
 
 start-frontend:
-	@if [ -d "./frontend/templates" ]; then \
-		cd frontend/templates/airframe && npm run start;\
-	else\
-		cd frontend && npm run start;\
-	fi
+	cd frontend && npm run start;\
 
 verify-setup:
 	$(eval config="$(shell docker ps | grep -E 'config-service')")

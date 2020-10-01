@@ -23,11 +23,14 @@ my-app
 ├── .gitignore
 ├── frontend
 │   ├── Dockerfile
-│   └── templates
-│       ├── airframe
-│       |    └── *
-│       └── lean
-│            └── *
+│   ├── node_modules
+│   ├── package.json
+│   ├── .gitignore
+│   ├── README.md
+│   ├── src
+│   |    └── *
+│   └── public
+│        └── *
 └── backend
     └── api-gw
     │   ├── README.md
