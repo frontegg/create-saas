@@ -1,2 +1,2 @@
-import BarChartComponent from './BarChart';
-export default BarChartComponent;
+import BarChart from './BarChart';
+export default BarChart;

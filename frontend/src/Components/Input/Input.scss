@@ -1,6 +1,6 @@
 @import '../../Pages/MainLayout/themes.scss';
 
-.inputElement {
+.input-element {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
@@ -8,7 +8,7 @@
   .label {
     margin-bottom: 0.5rem;
   }
-  .inputField {
+  .input-field {
     font-size: 0.75rem;
     display: block;
     width: 100%;

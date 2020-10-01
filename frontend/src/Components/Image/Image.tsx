@@ -2,7 +2,7 @@ import React from 'react';
 import './Image.scss';
 
 const Image: React.FC = () => {
-  return <div className='Image'></div>;
+  return <div className='image' />;
 };
 
 export default Image;

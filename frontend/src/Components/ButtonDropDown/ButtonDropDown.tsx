@@ -1,27 +1,32 @@
-import React from 'react';
-import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import React, { useMemo } from 'react';
+import {
+  ButtonDropdown as ReactstrapButtonDropdown,
+  DropdownToggle as ReactstrapDropdownToggle,
+  DropdownMenu as ReactstrapDropdownMenu,
+  DropdownItem as ReactstrapDropdownItem,
+} from 'reactstrap';
 
-interface IButton {
-  lable: string;
+interface ButtonDropDownProps extends React.HTMLAttributes<HTMLElement> {
+  label: string;
   items: string[];
 }
 
-const ButtonDropDown = (props: IButton) => {
+const ButtonDropDown = (props: ButtonDropDownProps): React.ReactNode => {
+  const { items, label } = props;
   const [dropdownOpen, setOpen] = React.useState(false);
-
-  const { items, lable } = props;
-
   const toggle = () => setOpen(!dropdownOpen);
 
+  const dropdownItemElements = useMemo(
+    () =>
+      items.map((item: string, index: number) => <ReactstrapDropdownItem key={index}>{item}</ReactstrapDropdownItem>),
+    [items],
+  );
+
   return (
-    <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-      <DropdownToggle caret>{lable}</DropdownToggle>
-      <DropdownMenu>
-        {items.map((el: string, i: number) => (
-          <DropdownItem key={i}>{el}</DropdownItem>
-        ))}
-      </DropdownMenu>
-    </ButtonDropdown>
+    <ReactstrapButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
+      <ReactstrapDropdownToggle caret>{label}</ReactstrapDropdownToggle>
+      <ReactstrapDropdownMenu>{dropdownItemElements}</ReactstrapDropdownMenu>
+    </ReactstrapButtonDropdown>
   );
 };
 

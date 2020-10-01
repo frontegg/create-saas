@@ -8,12 +8,12 @@ const SIZE_MAP = {
   large: 3,
 };
 
-type BadgeProps = React.HTMLAttributes<HTMLElement> & {
+interface BadgeProps extends React.HTMLAttributes<HTMLElement> {
   size: 'small' | 'medium' | 'large';
   color?: string;
   outline?: boolean;
   circular?: boolean;
-};
+}
 
 const Badge: React.FC<BadgeProps> = (props: BadgeProps) => {
   const { size, outline = false, circular = false, color = 'primary', className = '', children } = props;
@@ -25,7 +25,7 @@ const Badge: React.FC<BadgeProps> = (props: BadgeProps) => {
   return <span className={klassName}>{children}</span>;
 };
 
-export const CircularBadge: React.FC<BadgeProps> = (props) => {
+export const CircularBadge: React.FC<BadgeProps> = (props: BadgeProps) => {
   return <Badge {...props} circular className={`${props.className} rounded-circle`} />;
 };
 

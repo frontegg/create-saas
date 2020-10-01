@@ -7,13 +7,14 @@ import BarChart from '../../../Components/Charts/BarChart';
 import { columns, rows } from '../SidebarCategoryTablePage';
 import { Props, SettingsProps } from '../../../Components/Charts/LineChart/lineChartDataDefault';
 import { PieData, PieSettingsProps } from '../../../Components/Charts/PieChart/PieChartDataDefault';
-import { BarData, BarSettingsProps } from '../../../Components/Charts/BarChart/BarChartDataDefault';
 import ProjectStatus, { ProjectStatusProps } from '../../../Components/ProjectStatus';
 import Activities from '../../../Components/Activities';
 import { Row } from 'reactstrap';
 
 import moment from 'moment';
 import { detect } from 'detect-browser';
+
+const MONTHS = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 const widgets = [
   {
@@ -173,16 +174,16 @@ const pieChartRandomSettings: PieSettingsProps = {
   customColors: ['#90caf9', '#4ca5f5', '#3d88e5'],
 };
 
-const barChartRandomSettings: BarSettingsProps = {
+const barChartRandomSettings = {
   width: 500,
   height: 300,
-  isEnableGrid: false,
-  isEnableLegend: false,
+  showGrid: false,
+  showLegend: false,
   barSize: 10,
   colors: ['#90caf9', '#3d88e5'],
 };
 
-const ProjectStatusData: ProjectStatusProps[] = [
+const projectStatusData: ProjectStatusProps[] = [
   {
     title: 'Harum quia vel vero id.',
     description: 'Et odio facere in quis.',
@@ -213,7 +214,7 @@ const ProjectStatusData: ProjectStatusProps[] = [
   },
 ];
 
-const ActivitiesData = [
+const activitiesData = [
   {
     title: 'Perferendis dignissimos provident saepe in.',
     description: 'Corporis in est quae exercitationem.',
@@ -240,7 +241,7 @@ const ActivitiesData = [
   },
 ];
 
-function getBarChartData(requests: any): BarData {
+function getBarChartData(requests: any) {
   const data: { [key: string]: { success: number; failed: number } } = {};
   requests.forEach(({ createdAt, statusCode }: any) => {
     const month = moment(createdAt).format('MMM');
@@ -252,9 +253,12 @@ function getBarChartData(requests: any): BarData {
       data[month][success]++;
     }
   });
-  const barChartRandomData: BarData = [];
-  for (const [key, { success, failed }] of Object.entries(data)) {
-    barChartRandomData.push({ name: key, pv: success, uv: failed });
+  const barChartRandomData = [];
+  for (const month of MONTHS) {
+    if (data[month]) {
+      const { success, failed } = data[month];
+      barChartRandomData.push({ name: month, success, failed });
+    }
   }
   return barChartRandomData;
 }
@@ -303,7 +307,7 @@ class Dashboard extends React.Component<any> {
             <div className='w-100 text-sm font-bold'>
               <span>This year</span>
             </div>
-            <BarChart data={getBarChartData(requests)} settings={barChartRandomSettings} />
+            <BarChart data={getBarChartData(requests)} {...barChartRandomSettings} />
           </Widget>
           <Widget col className='w-1/4 flex-shrink-0 justify-content-center'>
             <div className='text-sm font-light text-grey-500'>Requests</div>
@@ -322,12 +326,12 @@ class Dashboard extends React.Component<any> {
           <LineChart data={lineChartData} settings={lineChartRandomSettings} />
         </Widget>
         <Widget className='flex-column' label='Project status' value='This week'>
-          {ProjectStatusData.map((item: ProjectStatusProps, index: number) => (
+          {projectStatusData.map((item: ProjectStatusProps, index: number) => (
             <ProjectStatus {...item} key={index} />
           ))}
         </Widget>
         <Widget className='flex-column' label='Activities' value='Today'>
-          {ActivitiesData.map((item, index: number) => (
+          {activitiesData.map((item, index: number) => (
             <Activities {...item} key={index} />
           ))}
         </Widget>

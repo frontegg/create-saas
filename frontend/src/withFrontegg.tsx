@@ -8,8 +8,7 @@ import { AuthPlugin } from '@frontegg/react-auth';
  */
 const contextOptions: ContextOptions = {
   // NOTE: After registering with Frontegg and setting the client ID and api key on the API gateway update this base URL
-  // baseUrl: 'https://saas-demo-api.frontegg.com',
-  baseUrl: 'http://localhost:5000',
+  baseUrl: 'https://demo-saas-api.frontegg.com', // 'http://localhost:5000',
   requestCredentials: 'include',
 };
 

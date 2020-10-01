@@ -1,31 +1,33 @@
 ### frontend/src/Components/Alert/Alert.tsx
 
-- [ ] line(6): move React.HTMLAttributes & {custom props} to override the default
-- [ ] line(33): use classNames from clasnames npm package
-- [ ] line(33): don't mutate props, create new className variable
-- [ ] line(36): don't use classes with UpperCase, .Alert should be .alert
-- [ ] line(36): don't use short component names: `BootstrapAlert` instead of `A`
-- [ ] line(55): don't use as unknown
+- [x] line(6): move React.HTMLAttributes & {custom props} to override the default
+- [x] line(33): use classNames from clasnames npm package
+- [x] line(33): don't mutate props, create new className variable
+- [x] line(36): don't use classes with UpperCase, .Alert should be .alert
+- [x] line(36): don't use short component names: `BootstrapAlert` instead of `A`
+- [x] line(55): don't use as unknown
 
 ### frontend/src/Components/Alert/index.tsx
 
-- [ ] use export  {TopAlert as TA, FixedTopAlert as FTA} not export const...
+- [x] use export  {TopAlert as TA, FixedTopAlert as FTA} not export const...
 
 ### frontend/src/Components/Badge/Badge.tsx
 
-- [ ] line(4): use `size` property instead of small,medium...
-- [ ] line(23): while using `size` property you dont need the if(small), it's should be `.alert-sm = .alert.w-h-1`
+- [x] line(4): use `size` property instead of small,medium...
+- [ ] change how do we do export in index.tsx
 
-### frontend/src/Components/Breadcrumbs
+### frontend/src/Components/Breadcrumbs/Breadcrumbs.tsx
 
-- [ ] useMemo for building links and depends on links property
+- [X] useMemo for building links and depends on links property
 
-### frontend/src/Components/Button
+### frontend/src/Components/Button/Button.tsx
 
 - [ ] don't use css camel-case
 - [ ] use classNames instead of merged strings
+- [ ] rewrite buttons logic - it seems too complicated
+- [ ] change how we export in index.tsx
 
-### frontend/src/Components/ButtonDropDown
+### frontend/src/Components/ButtonDropDown/ButtonDropDown.tsx
 
 - [ ] toggle function depends on previous state and should call setOpen((prev) => !prev)
 - [ ] use `BootstrapButtonDropdown` instead of `ButtonDropdown` and export `ButtonDropdown` not `ButtonDropDown`
@@ -190,7 +192,15 @@
 
 - [ ] change li-darkMod css
 
+
+### frontend/src/Pages/MainLayout/MainLayout.tsx
+
+- [ ] use defined alerts
+- [ ] rewrite code
+
+
 ### MISC
 
 * Choose createStyles or scss file
+* Choose type or interface for component props
 * Why NotificationContext is in Pages/MainLayout

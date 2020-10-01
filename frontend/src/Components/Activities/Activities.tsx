@@ -32,14 +32,14 @@ const useStyles = makeStyles(() =>
   }),
 );
 
-type ActivitiesProps = {
+interface ActivitiesProps {
   title: string;
   description: string;
   status: string;
   value: number;
-};
+}
 
-const Activities = (props: ActivitiesProps) => {
+const Activities = (props: ActivitiesProps): React.ReactElement => {
   const { title, description, value, status } = props;
   const { root, badge, line, content } = useStyles();
   return (

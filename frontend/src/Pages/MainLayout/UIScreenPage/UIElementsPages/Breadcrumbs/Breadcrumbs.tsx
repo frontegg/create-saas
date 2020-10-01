@@ -49,7 +49,7 @@ const BreadcrumbsPage: React.FC = () => {
             </span>
           </div>
         </div>
-        <Breadcrumbs showHome={true} links={Links} separator={<ArrowRightAltIcon />} />
+        <Breadcrumbs showHomeIcon links={Links} separator={<ArrowRightAltIcon />} />
       </Widget>
     </div>
   );

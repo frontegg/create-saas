@@ -3,14 +3,14 @@ import { Alert as ReactstrapAlert } from 'reactstrap';
 import { NotificationContext, NotificationContextType } from '../NotificationContext';
 import './Alert.scss';
 
-type AlertProps = React.HTMLAttributes<HTMLElement> & {
+interface AlertProps extends React.HTMLAttributes<HTMLElement> {
   notificationKey: string;
   isOpen?: boolean;
   raised?: boolean;
   borderLeft?: boolean;
   outlined?: boolean;
   color?: string;
-};
+}
 
 const Alert: React.FC<AlertProps> = (props: AlertProps) => {
   const { notificationKey, isOpen, className = '', style = {}, children, color = 'light' } = props;
