@@ -38,8 +38,9 @@ import Tabs from './UIScreenPage/UIElementsPages/Tabs';
 import Typography from './UIScreenPage/UIElementsPages/Typography';
 import BreadcrumbsPage from './UIScreenPage/UIElementsPages/Breadcrumbs';
 import { useQuery, gql } from '@apollo/client';
-import { ProtectedRoute } from '@frontegg/react-auth';
+import { ProtectedRoute, Profile } from '@frontegg/react-auth';
 import { SSO } from '@frontegg/react-auth';
+import * as Frontegg from '@frontegg/react';
 
 const REQUESTS = gql`
   query {
@@ -53,6 +54,30 @@ const REQUESTS = gql`
     }
   }
 `;
+
+const TeamManagement = () => {
+  return <Frontegg.Team />
+}
+
+const Audits = () => {
+  return <Frontegg.Audits />
+}
+
+const Slack = () => {
+  return <Frontegg.Slack rootDir={'/enterprise/slack'} />
+}
+
+const Webhooks = () => {
+  return <Frontegg.WebHooks rootDir={'/enterprise/webhooks'} />
+}
+
+const Sso = () => {
+  return <Frontegg.SsoConfiguration rootDir={'/enterprise/sso'} />
+}
+
+const ProfileComp = () => {
+  return <Profile.Page />
+}
 
 const MainDashboard = () => {
   const { loading, error, data } = useQuery(REQUESTS);
@@ -259,6 +284,12 @@ const MainLayout: React.FC = () => {
               <Route path='/forms/formsteps' component={FormStepsPage} />
               <Route path='/forms/validation' component={ValidationFormPage} />
               <Route path='/tables/sidebar-category' component={SidebarCategoryTable} />
+              <ProtectedRoute path='/enterprise/team' component={TeamManagement} />
+              <ProtectedRoute path='/enterprise/audits' component={Audits} />
+              <ProtectedRoute path='/enterprise/sso' component={Sso} />
+              <ProtectedRoute path='/enterprise/slack' component={Slack} />
+              <ProtectedRoute path='/enterprise/webhooks' component={Webhooks} />
+              <ProtectedRoute path='/enterprise/profile' component={ProfileComp} />
               <Route
                 path='/ui-elements'
                 render={(props) => (

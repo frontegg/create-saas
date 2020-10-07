@@ -140,4 +140,41 @@ export const links: linksArray = [
       },
     ],
   },
+  {
+    path: '/enterprise',
+    label: 'Enterprise',
+    icon: '',
+    sublinks: [
+      {
+        path: '/team',
+        label: 'Team Management',
+        icon: '',
+      },
+      {
+        path: '/audits',
+        label: 'Audit Logs',
+        icon: '',
+      },
+      {
+        path: '/sso',
+        label: 'SSO',
+        icon: '',
+      },
+      {
+        path: '/webhooks',
+        label: 'Webhooks',
+        icon: '',
+      },
+      {
+        path: '/slack',
+        label: 'Slack',
+        icon: '',
+      },
+      {
+        path: '/validation',
+        label: 'Form validation',
+        icon: '',
+      },
+    ],
+  },
 ];

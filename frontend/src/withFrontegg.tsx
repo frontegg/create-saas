@@ -1,6 +1,6 @@
 import React, { ComponentType } from 'react';
 import { ContextOptions, PluginConfig, FronteggProvider } from '@frontegg/react-core';
-import { uiLibrary } from '@frontegg/react-elements-material-ui';
+import { uiLibrary } from '@frontegg/react-elements-semantic';
 import { AuthPlugin } from '@frontegg/react-auth';
 
 /**
