@@ -75,7 +75,7 @@ const Sso = () => {
   return <Frontegg.SsoConfiguration rootDir={'/enterprise/sso'} />
 }
 
-const ProfileComp = () => {
+const ProfilePage = () => {
   return <Profile.Page />
 }
 
@@ -289,7 +289,7 @@ const MainLayout: React.FC = () => {
               <ProtectedRoute path='/enterprise/sso' component={Sso} />
               <ProtectedRoute path='/enterprise/slack' component={Slack} />
               <ProtectedRoute path='/enterprise/webhooks' component={Webhooks} />
-              <ProtectedRoute path='/enterprise/profile' component={ProfileComp} />
+              <ProtectedRoute path='/enterprise/profile' component={ProfilePage} />
               <Route
                 path='/ui-elements'
                 render={(props) => (
