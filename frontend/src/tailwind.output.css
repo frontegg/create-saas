@@ -545,6 +545,26 @@ samp {
 }
 
 /**
+ * Make replaced elements `display: block` by default as that's
+ * the behavior you want almost all of the time. Inspired by
+ * CSS Remedy, with `svg` added as well.
+ *
+ * https://github.com/mozdevs/cssremedy/issues/14
+ */
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  vertical-align: middle;
+}
+
+/**
  * Constrain images and videos to the parent width and preserve
  * their instrinsic aspect ratio.
  *
@@ -597,10 +617,6 @@ video {
   margin-left: calc(0.5rem * calc(1 - var(--space-x-reverse)));
 }
 
-.bg-transparent {
-  background-color: transparent;
-}
-
 .bg-white {
   --bg-opacity: 1;
   background-color: #fff;
@@ -617,10 +633,6 @@ video {
   --bg-opacity: 1;
   background-color: #4299e1;
   background-color: rgba(66, 153, 225, var(--bg-opacity));
-}
-
-.border-current {
-  border-color: currentColor;
 }
 
 .border-red-500 {
@@ -647,16 +659,8 @@ video {
   border-width: 1px;
 }
 
-.border-l-4 {
-  border-left-width: 4px;
-}
-
 .cursor-pointer {
   cursor: pointer;
-}
-
-.block {
-  display: block;
 }
 
 .inline {
@@ -701,10 +705,6 @@ video {
 
 .h-1 {
   height: 0.25rem;
-}
-
-.h-6 {
-  height: 1.5rem;
 }
 
 .h-8 {
@@ -889,11 +889,6 @@ video {
   padding-bottom: 1rem;
 }
 
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
@@ -982,18 +977,6 @@ video {
 
 .sticky {
   position: sticky;
-}
-
-.top-0 {
-  top: 0;
-}
-
-.right-0 {
-  right: 0;
-}
-
-.bottom-0 {
-  bottom: 0;
 }
 
 .resize {
@@ -1418,10 +1401,6 @@ video {
 
 .focus\:shadow-none:focus {
   box-shadow: none;
-}
-
-.fill-current {
-  fill: currentColor;
 }
 
 .stroke-current {
@@ -2084,10 +2063,6 @@ video {
   visibility: visible;
 }
 
-.w-6 {
-  width: 1.5rem;
-}
-
 .w-8 {
   width: 2rem;
 }
@@ -2174,10 +2149,6 @@ video {
     .sm\:container {
       max-width: 1280px;
     }
-  }
-
-  .sm\:inline {
-    display: inline;
   }
 }
 

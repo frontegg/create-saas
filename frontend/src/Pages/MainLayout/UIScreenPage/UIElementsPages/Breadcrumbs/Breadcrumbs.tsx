@@ -5,7 +5,7 @@ import Breadcrumbs from '../../../../../Components/Breadcrumbs';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 
 const BreadcrumbsPage: React.FC = () => {
-  const Links = [
+  const links = [
     {
       href: '/ui-elements/',
       label: 'UI Elements',
@@ -26,7 +26,7 @@ const BreadcrumbsPage: React.FC = () => {
             </span>
           </div>
         </div>
-        <Breadcrumbs links={Links} />
+        <Breadcrumbs links={links} />
       </Widget>
       <Widget col>
         <div className='mb-3'>
@@ -37,8 +37,8 @@ const BreadcrumbsPage: React.FC = () => {
             </span>
           </div>
         </div>
-        <Breadcrumbs links={Links} separator='>' />
-        <Breadcrumbs links={Links} separator={<ArrowRightAltIcon />} />
+        <Breadcrumbs links={links} separator='>' />
+        <Breadcrumbs links={links} separator={<ArrowRightAltIcon />} />
       </Widget>
       <Widget col>
         <div className='mb-3'>
@@ -49,7 +49,7 @@ const BreadcrumbsPage: React.FC = () => {
             </span>
           </div>
         </div>
-        <Breadcrumbs showHomeIcon links={Links} separator={<ArrowRightAltIcon />} />
+        <Breadcrumbs showHomeIcon links={links} separator={<ArrowRightAltIcon />} />
       </Widget>
     </div>
   );

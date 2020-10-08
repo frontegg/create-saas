@@ -1,12 +1,12 @@
 import React from 'react';
 import Widget from '../../../Widget';
-import DefaultTabs, { VerticalTabs, UnderlinedTabs, IconTabs } from '../../../../../Components/Tab';
+import { VerticalTabs, HorizontalTabs, IconTabs, UnderlinedTabs } from '../../../../../Components/Tab';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 const tabs = [
   {
-    tabId: 'tab_favorites',
+    tabId: 'tab-favorites',
     label: (
       <>
         <FavoriteBorderOutlinedIcon className='mb-2 mx-2' />
@@ -17,7 +17,7 @@ const tabs = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Molestie ac feugiat sed lectus vestibulum mattis ullamcorper velit sed. Condimentum vitae sapien pellentesque habitant morbi. Nec ullamcorper sit amet risus nullam eget felis. Dignissim sodales ut eu sem integer vitae justo eget. In pellentesque massa placerat duis ultricies.',
   },
   {
-    tabId: 'tab_options',
+    tabId: 'tab-options',
     label: (
       <>
         <DehazeIcon className='mb-2 mx-2' />
@@ -28,7 +28,7 @@ const tabs = [
       'Id cursus metus aliquam eleifend mi in. Etiam sit amet nisl purus in. At quis risus sed vulputate odio ut enim blandit. Aliquet enim tortor at auctor urna nunc id cursus metus. Massa enim nec dui nunc. Penatibus et magnis dis parturient montes. Nisl nisi scelerisque eu ultrices vitae auctor eu augue. Enim ut tellus elementum sagittis vitae. Quisque sagittis purus sit amet. Augue lacus viverra vitae congue eu.',
   },
   {
-    tabId: 'tab_settings',
+    tabId: 'tab-settings',
     label: (
       <>
         <SettingsOutlinedIcon className='mb-2 mx-2' />
@@ -42,19 +42,19 @@ const tabs = [
 
 const tabs2 = [
   {
-    tabId: 'tab_favorites',
+    tabId: 'tab-favorites',
     label: 'Favourites',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Molestie ac feugiat sed lectus vestibulum mattis ullamcorper velit sed. Condimentum vitae sapien pellentesque habitant morbi. Nec ullamcorper sit amet risus nullam eget felis. Dignissim sodales ut eu sem integer vitae justo eget. In pellentesque massa placerat duis ultricies.',
   },
   {
-    tabId: 'tab_options',
+    tabId: 'tab-options',
     label: 'Options',
     content:
       'Id cursus metus aliquam eleifend mi in. Etiam sit amet nisl purus in. At quis risus sed vulputate odio ut enim blandit. Aliquet enim tortor at auctor urna nunc id cursus metus. Massa enim nec dui nunc. Penatibus et magnis dis parturient montes. Nisl nisi scelerisque eu ultrices vitae auctor eu augue. Enim ut tellus elementum sagittis vitae. Quisque sagittis purus sit amet. Augue lacus viverra vitae congue eu.',
   },
   {
-    tabId: 'tab_settings',
+    tabId: 'tab-settings',
     label: 'Settings',
     content:
       'Natoque penatibus et magnis dis parturient montes nascetur ridiculus mus. Sed nisi lacus sed viverra. Varius sit amet mattis vulputate enim nulla aliquet porttitor. Adipiscing elit pellentesque habitant morbi tristique senectus. Laoreet suspendisse interdum consectetur libero id. Tincidunt nunc pulvinar sapien et ligula.',
@@ -70,11 +70,11 @@ const Tabs: React.FC = () => {
           <div className='text-sm font-light text-grey-500'>Default tabs</div>
           <div className='text-sm font-bold'>
             <span>
-              Use the <code>&lt;DefaultTabs /&gt;</code> component for tabs with <code>pills</code> prop
+              Use the <code>&lt;HorizontalTabs /&gt;</code> component for tabs with <code>pills</code> prop
             </span>
           </div>
         </div>
-        <DefaultTabs navClass='mx-3' activeTabId='tab_favorites' tabs={tabs} pills />
+        <HorizontalTabs navClass='mx-3' activeTabId='tab-favorites' tabs={tabs} pills />
       </Widget>
       <Widget col>
         <div className='mb-3'>
@@ -85,7 +85,7 @@ const Tabs: React.FC = () => {
             </span>
           </div>
         </div>
-        <VerticalTabs activeTabId='tab_favorites' vertical tabs={tabs} pills />
+        <VerticalTabs activeTabId='tab-favorites' tabs={tabs} pills />
       </Widget>
       <Widget col>
         <div className='mb-3'>
@@ -96,7 +96,7 @@ const Tabs: React.FC = () => {
             </span>
           </div>
         </div>
-        <UnderlinedTabs activeTabId='tab_favorites' tabs={tabs2} activeClass='border-primary' />
+        <UnderlinedTabs activeTabId='tab-favorites' tabs={tabs2} activeClass='border-primary' />
       </Widget>
       <Widget col>
         <div className='mb-3'>
@@ -107,21 +107,18 @@ const Tabs: React.FC = () => {
             </span>
           </div>
         </div>
-        <IconTabs activeTabId='tab_favorites' tabs={tabs} />
+        <IconTabs activeTabId='tab-favorites' tabs={tabs} />
       </Widget>
       <Widget col>
         <div className='mb-3'>
           <div className='text-sm font-light text-grey-500'>Default tabs</div>
           <div className='text-sm font-bold'>
             <span>
-              Use the <code>&lt;DefaultTabs /&gt;</code> component for tabs with <code>pills</code> prop
+              Use the <code>&lt;HorizontalTabs /&gt;</code> component for tabs with <code>pills</code> prop
             </span>
           </div>
         </div>
-        <DefaultTabs activeTabId='tab_favorites' tabs={tabs2} pills />
-      </Widget>
-      <Widget>
-        <DefaultTabs />
+        <HorizontalTabs activeTabId='tab-favorites' tabs={tabs2} pills />
       </Widget>
     </div>
   );

@@ -5,7 +5,7 @@ import './DatePicker.scss';
 type DatePickerProps = {
   type?: string;
   header: string;
-  description: string | JSX.Element;
+  description: string | React.ReactElement;
 };
 
 const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {

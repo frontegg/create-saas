@@ -57,7 +57,10 @@ typings/
 bin
 
 # Visual Studio Code directory
-.vscode
+.vscode/
+
+# WebStorm directory
+.idea/
 
 # Microbundle cache
 .rpt2_cache/

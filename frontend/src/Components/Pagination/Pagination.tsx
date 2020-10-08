@@ -1,39 +1,30 @@
 import React from 'react';
 import { usePagination, UsePaginationProps } from '@material-ui/lab/Pagination';
 import { CircleButton } from '../Button';
+import classNames from 'classnames';
 
-type Props = {
-  first?: JSX.Element | string;
-  last?: JSX.Element | string;
-  prev?: JSX.Element | string;
-  next?: JSX.Element | string;
-  numberComponent?: React.ComponentType<any> | React.ElementType<any>;
-  numberRender?: (props: React.HTMLAttributes<HTMLElement>) => JSX.Element;
+interface PaginationProps extends React.HTMLAttributes<HTMLElement>, UsePaginationProps {
+  first?: React.ReactElement | string;
+  last?: React.ReactElement | string;
+  prev?: React.ReactElement | string;
+  next?: React.ReactElement | string;
+  onChange?: () => void;
   count?: number;
   perScreen?: number;
-} & React.HTMLAttributes<HTMLElement> &
-  UsePaginationProps;
+}
 
-export const Base: React.FC<Props> = ({
-  first,
-  last,
-  prev = 'Previous',
-  next = 'Next',
-  count = 1,
-  page = 1,
-  numberComponent = 'button',
-  numberRender,
-  ...props
-}) => {
+export const Pagination: React.FC<PaginationProps> = (props) => {
+  const { first, last, prev = 'Previous', next = 'Next', count = 1, page = 1, className, ...rest } = props;
   const { items } = usePagination({
     count,
     showFirstButton: !!first,
     showLastButton: !!last,
     siblingCount: Infinity,
-    ...props,
+    defaultPage: page,
+    ...rest,
   });
   return (
-    <div className={props.className}>
+    <div className={className}>
       <ul className='d-inline-flex list-style-none m-0 p-0 align-items-center flex-wrap'>
         {items.map(({ type, selected, ...item }, index) => {
           let children = null;
@@ -41,15 +32,19 @@ export const Base: React.FC<Props> = ({
           if (type === 'start-ellipsis' || type === 'end-ellipsis') {
             children = '…';
           } else if (type === 'page') {
-            const NumberComponent: React.ElementType<any> = numberRender ? numberRender : numberComponent;
             children = (
-              <NumberComponent
+              <CircleButton
                 active={selected}
-                className={`${selected ? 'active' : ''}`}
+                outline
+                className={classNames('ml-2', 'font-bold', 'text-xs', 'w-8', 'h-8', 'shadow-none', className, {
+                  active: selected,
+                })}
+                hoverClassName='bg-grey-200'
+                activeClassName='text-white font-bold bg-blue-500'
                 style={{ fontWeight: selected ? 'bold' : undefined }}
                 {...item}>
                 {item.page}
-              </NumberComponent>
+              </CircleButton>
             );
           } else if (type === 'first') {
             children = (
@@ -84,28 +79,4 @@ export const Base: React.FC<Props> = ({
   );
 };
 
-const DefaultPagination: React.FC<Props> = ({ className, children, count, page, prev, next, first, last }) => {
-  return (
-    <Base
-      defaultPage={page}
-      first={first}
-      last={last}
-      prev={prev}
-      next={next}
-      className={className}
-      numberRender={(props) => (
-        <CircleButton
-          {...props}
-          outline
-          className={`ml-2 font-bold text-xs w-8 h-8 shadow-none ${props.className}`}
-          hoverClassName='bg-grey-200'
-          activeClassName='text-white font-bold bg-blue-500'>
-          {props.children}
-        </CircleButton>
-      )}
-      count={count}
-    />
-  );
-};
-
-export default DefaultPagination;
+export default Pagination;

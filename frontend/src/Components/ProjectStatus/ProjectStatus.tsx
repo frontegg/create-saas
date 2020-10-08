@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { Paper, Avatar } from '@material-ui/core';
-import ProgressBar from '../ProgressBar';
+import { ProgressBar } from '../ProgressBar';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -30,7 +30,7 @@ export type ProjectStatusProps = {
 };
 
 const ProjectStatus = (props: ProjectStatusProps) => {
-  const { title, description, img, alt, value } = props;
+  const { title, description, img, alt = '', value } = props;
   const classes = useStyles();
 
   return (

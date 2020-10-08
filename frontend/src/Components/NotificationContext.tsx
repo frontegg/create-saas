@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface INotification {
+type NotificationType = {
   key: string;
   open?: boolean;
   color?: string;
@@ -8,16 +8,15 @@ interface INotification {
   position?: string;
   outlined?: boolean;
   raised?: boolean;
-  borderLeft?: boolean;
   className?: string;
-}
+};
 
-interface INotificationsObject {
-  notifications: { [key: string]: INotification };
-}
+type NotificationObjectType = {
+  notifications: { [key: string]: NotificationType };
+};
 
-export type NotificationContextType = INotificationsObject & {
-  addNotification: (notification: INotification) => void;
+export type NotificationContextType = NotificationObjectType & {
+  addNotification: (notification: NotificationType) => void;
   deleteNotification: (key: string) => void;
 };
 
@@ -31,12 +30,12 @@ const NotificationContext = React.createContext<NotificationContextType>({
   },
 });
 
-const NotificationContextProvider: React.FC<React.HTMLAttributes<HTMLElement>> = ({ children }) => {
-  const [state, setState] = React.useState<INotificationsObject>({
+const NotificationContextProvider: React.FC<React.HTMLAttributes<HTMLElement>> = (props) => {
+  const [state, setState] = React.useState<NotificationObjectType>({
     notifications: {},
   });
 
-  const addNotification = (notification: INotification) => {
+  const addNotification = (notification: NotificationType) => {
     const { notifications } = state;
     notifications[notification.key as string] = notification;
     setState({ notifications });
@@ -54,11 +53,7 @@ const NotificationContextProvider: React.FC<React.HTMLAttributes<HTMLElement>> =
     deleteNotification,
   };
 
-  return (
-    <NotificationContext.Provider value={contextValue as NotificationContextType}>
-      {children}
-    </NotificationContext.Provider>
-  );
+  return <NotificationContext.Provider value={contextValue as NotificationContextType} {...props} />;
 };
 
 export { NotificationContext, NotificationContextProvider };

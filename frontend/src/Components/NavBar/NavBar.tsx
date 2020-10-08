@@ -4,7 +4,6 @@ import './NavBar.scss';
 import ProfileImage from '../ProfileImage';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { IconButton } from '@material-ui/core';
-import { stateType } from '../SettingsButton/types';
 import SettingsSidebar from '../SettingsSidebar';
 import { Notifications } from '@frontegg/react';
 import classNames from 'classnames';
@@ -13,7 +12,7 @@ type NavBarProps = {
   className?: string;
   handleThemeChange: (value: 'light' | 'dark' | 'navbar' | 'sidebar') => void;
   palletType: string;
-  settings: { label: string; state: stateType<boolean> }[];
+  settings: { label: string; state: any }[];
   handleChangeNavbar: (value: string, param: string, theme: string) => void;
 };
 

@@ -5,6 +5,7 @@ import Select, { OptionType } from './Inputs/Select';
 import CheckBox from './Inputs/CheckBox';
 import Input from './Inputs/Input';
 import classNames from 'classnames';
+import './Form.scss';
 
 type InputTypes = 'select' | 'radio' | 'checkbox' | 'email' | 'text' | 'password' | 'number';
 

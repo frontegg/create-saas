@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 import SettingsIcon from '@material-ui/icons/Settings';
-import LabelSwitch from '../../Components/Switch';
+import Switch from '../../Components/Switch';
 import './SettingsButton.scss';
 
 type SettingsButtonProps<T = boolean> = {
@@ -13,19 +13,19 @@ type SettingsButtonProps<T = boolean> = {
 
 const SettingsButton: React.FC<SettingsButtonProps> = (props: SettingsButtonProps) => {
   const { settings } = props;
-  const [dropdownOpen, setDropdownOpen] = React.useState(false);
-  const toggle = () => setDropdownOpen((prevState) => !prevState);
+  const [open, setOpen] = React.useState(false);
+  const toggle = () => setOpen((prevState) => !prevState);
   return (
-    <Dropdown className='settings position-fixed pl-2 d-none d-md-block' isOpen={dropdownOpen} toggle={toggle}>
+    <Dropdown className='settings position-fixed pl-2 d-none d-md-block' isOpen={open} toggle={toggle}>
       <DropdownToggle className='btn-dropdown-settings'>
         <SettingsIcon />
       </DropdownToggle>
       <DropdownMenu>
-        {settings.map((item, index) => {
+        {settings.map((item, index: number) => {
           const [state, setState] = item.state;
           return (
-            <div className='settingsItem flex-row'>
-              <LabelSwitch
+            <div key={index} className='settings-item flex-row'>
+              <Switch
                 className='w-100 p-2'
                 label=''
                 textLabel={item.label}

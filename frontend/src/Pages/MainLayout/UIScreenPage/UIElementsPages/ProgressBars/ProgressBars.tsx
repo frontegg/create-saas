@@ -1,6 +1,6 @@
 import React from 'react';
 import Widget from '../../../Widget';
-import ProgressBar, { ProgressLine, ProgressBarWithValue } from '../../../../../Components/ProgressBar';
+import { ProgressBar, ProgressLine, ProgressBarWithValue } from '../../../../../Components/ProgressBar';
 import { Col } from 'reactstrap';
 
 const ProgressBars: React.FC = () => {

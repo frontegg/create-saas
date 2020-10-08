@@ -20,9 +20,7 @@ const Switch: React.FC<SwitchProps> = (props: SwitchProps) => {
   const [checked, setChecked] = React.useState(check || value || false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (onChange) {
-      onChange(event);
-    }
+    onChange?.(event);
     setChecked(!checked);
   };
 

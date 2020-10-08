@@ -1,6 +1,6 @@
 @import '../../Pages/MainLayout/themes.scss';
 
-.sampleformpage {
+.form-page {
   background-color: #fafafa;
   @include themify($themes) {
     color: themed('textColor');

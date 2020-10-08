@@ -14,7 +14,7 @@ import {
   Avatar,
 } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
-import ProgressBar from '../ProgressBar';
+import { ProgressBar } from '../ProgressBar';
 
 import SearchIcon from '@material-ui/icons/Search';
 import TablePaginationActions from './TablePaginationActions';

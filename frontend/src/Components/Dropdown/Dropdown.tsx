@@ -8,7 +8,7 @@ import {
 } from 'reactstrap';
 
 interface DropdownProps extends ReactstrapDropdownProps {
-  label: string | JSX.Element;
+  label: string | React.ReactElement;
   caret?: boolean;
   right?: boolean;
   color?: string;

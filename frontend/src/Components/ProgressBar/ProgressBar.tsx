@@ -19,7 +19,7 @@ const ProgressBar: React.FC<ProgressBarProps> = (props: ProgressBarProps) => {
   );
 };
 
-export const ProgressLine: React.FC<ProgressBarProps> = (props: ProgressBarProps) => {
+const ProgressLine: React.FC<ProgressBarProps> = (props: ProgressBarProps) => {
   const { value, color, colorClass = '' } = props;
   return (
     <div className='w-100'>
@@ -34,7 +34,7 @@ export const ProgressLine: React.FC<ProgressBarProps> = (props: ProgressBarProps
   );
 };
 
-export const ProgressBarWithValue: React.FC<ProgressBarProps> = (props: ProgressBarProps) => {
+const ProgressBarWithValue: React.FC<ProgressBarProps> = (props: ProgressBarProps) => {
   const { value, color, colorClass = '' } = props;
   return (
     <div className='w-100'>
@@ -50,4 +50,4 @@ export const ProgressBarWithValue: React.FC<ProgressBarProps> = (props: Progress
   );
 };
 
-export default ProgressBar;
+export { ProgressBar, ProgressLine, ProgressBarWithValue };

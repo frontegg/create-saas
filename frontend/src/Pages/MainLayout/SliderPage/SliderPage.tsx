@@ -4,7 +4,6 @@ import Slider from '../../../Components/Slider';
 const SliderPage: React.FC = () => {
   const defaultSlider = [
     {
-      sliderType: 'DefaultSlider',
       header: 'Default slider',
       description: (
         <span>
@@ -30,137 +29,175 @@ const SliderPage: React.FC = () => {
 
   const sliderColors = [
     {
-      sliderType: 'DefaultSlider',
       header: 'Range slider',
-      description: 'Use the following classNames to change the slider styles',
+      description: (
+        <span>
+          Use the <code>red color</code> to change the slider style
+        </span>
+      ),
       color: 'red',
-      colorSlider: <code>.slider-red</code>,
     },
     {
-      sliderType: 'DefaultSlider',
       header: 'Range slider',
-      description: 'Use the following classNames to change the slider styles',
+      description: (
+        <span>
+          Use the <code>pink color</code> to change the slider style
+        </span>
+      ),
       color: 'pink',
-      colorSlider: <code>.slider-pink</code>,
     },
     {
-      sliderType: 'DefaultSlider',
       header: 'Range slider',
-      description: 'Use the following classNames to change the slider styles',
+      description: (
+        <span>
+          Use the <code>purple color</code> to change the slider style
+        </span>
+      ),
       color: 'purple',
-      colorSlider: <code>.slider-purple</code>,
     },
     {
-      sliderType: 'DefaultSlider',
       header: 'Range slider',
-      description: 'Use the following classNames to change the slider styles',
+      description: (
+        <span>
+          Use the <code>deep-purple color</code> to change the slider style
+        </span>
+      ),
       color: 'deep-purple',
-      colorSlider: <code>.slider-deep-purple</code>,
     },
     {
-      sliderType: 'DefaultSlider',
       header: 'Range slider',
-      description: 'Use the following classNames to change the slider styles',
+      description: (
+        <span>
+          Use the <code>indigo color</code> to change the slider style
+        </span>
+      ),
       color: 'indigo',
-      colorSlider: <code>.slider-indigo</code>,
     },
     {
-      sliderType: 'DefaultSlider',
       header: 'Range slider',
-      description: 'Use the following classNames to change the slider styles',
+      description: (
+        <span>
+          Use the <code>blue color</code> to change the slider style
+        </span>
+      ),
       color: 'blue',
-      colorSlider: <code>.slider-blue</code>,
     },
     {
-      sliderType: 'DefaultSlider',
       header: 'Range slider',
-      description: 'Use the following classNames to change the slider styles',
+      description: (
+        <span>
+          Use the <code>light-blue color</code> to change the slider style
+        </span>
+      ),
       color: 'light-blue',
-      colorSlider: <code>.slider-light-blue</code>,
     },
     {
-      sliderType: 'DefaultSlider',
       header: 'Range slider',
-      description: 'Use the following classNames to change the slider styles',
+      description: (
+        <span>
+          Use the <code>cyan color</code> to change the slider style
+        </span>
+      ),
       color: 'cyan',
-      colorSlider: <code>.slider-cyan</code>,
     },
     {
-      sliderType: 'DefaultSlider',
       header: 'Range slider',
-      description: 'Use the following classNames to change the slider styles',
+      description: (
+        <span>
+          Use the <code>teal color</code> to change the slider style
+        </span>
+      ),
       color: 'teal',
-      colorSlider: <code>.slider-teal</code>,
     },
     {
-      sliderType: 'DefaultSlider',
       header: 'Range slider',
-      description: 'Use the following classNames to change the slider styles',
+      description: (
+        <span>
+          Use the <code>green color</code> to change the slider style
+        </span>
+      ),
       color: 'green',
-      colorSlider: <code>.slider-green</code>,
     },
     {
-      sliderType: 'DefaultSlider',
       header: 'Range slider',
-      description: 'Use the following classNames to change the slider styles',
+      description: (
+        <span>
+          Use the <code>light-green color</code> to change the slider style
+        </span>
+      ),
       color: 'light-green',
-      colorSlider: <code>.slider-light-green</code>,
     },
     {
-      sliderType: 'DefaultSlider',
       header: 'Range slider',
-      description: 'Use the following classNames to change the slider styles',
+      description: (
+        <span>
+          Use the <code>lime color</code> to change the slider style
+        </span>
+      ),
       color: 'lime',
-      colorSlider: <code>.slider-lime</code>,
     },
     {
-      sliderType: 'DefaultSlider',
       header: 'Range slider',
-      description: 'Use the following classNames to change the slider styles',
+      description: (
+        <span>
+          Use the <code>yellow color</code> to change the slider style
+        </span>
+      ),
       color: 'yellow',
-      colorSlider: <code>.slider-yellow</code>,
     },
     {
-      sliderType: 'DefaultSlider',
       header: 'Range slider',
-      description: 'Use the following classNames to change the slider styles',
+      description: (
+        <span>
+          Use the <code>amber color</code> to change the slider style
+        </span>
+      ),
       color: 'amber',
-      colorSlider: <code>.slider-amber</code>,
     },
     {
-      sliderType: 'DefaultSlider',
       header: 'Range slider',
-      description: 'Use the following classNames to change the slider styles',
+      description: (
+        <span>
+          Use the <code>orange color</code> to change the slider style
+        </span>
+      ),
       color: 'orange',
-      colorSlider: <code>.slider-orange</code>,
     },
     {
-      sliderType: 'DefaultSlider',
       header: 'Range slider',
-      description: 'Use the following classNames to change the slider styles',
+      description: (
+        <span>
+          Use the <code>deep-orange color</code> to change the slider style
+        </span>
+      ),
       color: 'deep-orange',
-      colorSlider: <code>.slider-deep-orange</code>,
     },
     {
-      sliderType: 'DefaultSlider',
       header: 'Range slider',
-      description: 'Use the following classNames to change the slider styles',
+      description: (
+        <span>
+          Use the <code>brown color</code> to change the slider style
+        </span>
+      ),
       color: 'brown',
-      colorSlider: <code>.slider-brown</code>,
     },
     {
-      sliderType: 'DefaultSlider',
       header: 'Range slider',
-      description: 'Use the following classNames to change the slider styles',
+      description: (
+        <span>
+          Use the <code>grey color</code> to change the slider style
+        </span>
+      ),
       color: 'grey',
-      colorSlider: <code>.slider-grey</code>,
     },
     {
-      sliderType: 'DefaultSlider',
       header: 'Range slider',
-      description: 'Use the following classNames to change the slider styles',
+      description: (
+        <span>
+          Use the <code>blue-grey color</code> to change the slider style
+        </span>
+      ),
       color: 'blue-grey',
-      colorSlider: <code>.slider-blue-grey</code>,
     },
   ];
 
@@ -178,7 +215,7 @@ const SliderPage: React.FC = () => {
                 key={index}
                 description={item.description}
                 header={item.header}
-                sliderType={item.sliderType}
+                value={Math.trunc(Math.random() * 50)}
                 color={item.color}
               />
             );
@@ -191,7 +228,7 @@ const SliderPage: React.FC = () => {
                 key={index}
                 description={item.description}
                 header={item.header}
-                sliderType={item.sliderType}
+                value={[Math.trunc(Math.random() * 50), Math.trunc(Math.random() * 50)]}
                 color={item.color}
               />
             );
@@ -204,9 +241,8 @@ const SliderPage: React.FC = () => {
                 key={index}
                 description={item.description}
                 header={item.header}
-                sliderType={item.sliderType}
+                value={Math.trunc(Math.random() * 50)}
                 color={item.color}
-                colorSlider={item.colorSlider}
               />
             );
           })}

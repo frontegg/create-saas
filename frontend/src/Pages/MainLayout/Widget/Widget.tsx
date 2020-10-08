@@ -4,7 +4,7 @@ import './Widget.scss';
 type Props = {
   label?: string;
   value?: string;
-  icon?: JSX.Element;
+  icon?: React.ReactElement;
   col?: boolean;
 };
 
