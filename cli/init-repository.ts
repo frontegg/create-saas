@@ -59,6 +59,9 @@ export async function initRepo(name: string): Promise<void> {
     await longCommand('make provision', chalk.white.bold('Calling docker compose'), () =>
       console.log(chalk.green('✔ ') + chalk.white.bold('Finished calling docker compose')),
     );
+    await longCommand('make migrate', chalk.white.bold('Running migrations'), () =>
+      console.log(chalk.green('✔ ') + chalk.white.bold('Finished running migrations')),
+    );
   } else {
     console.log(chalk.red('✖ ') + chalk.white.bold('In order to get the most of Create SaaS, docker command is needed'));
   }
