@@ -1,9 +1,9 @@
 import React from 'react';
-import Widget from '../../../Widget';
+import { NotificationManager } from 'react-notifications';
 import { Col, Row } from 'reactstrap';
+import Widget from '../../../Widget';
 import { Button } from '../../../../../Components/Button';
 import { NotificationContext, NotificationContextType } from '../../../../../Components/NotificationContext';
-import { NotificationManager } from 'react-notifications';
 
 type NotificationType = 'info' | 'success' | 'warning' | 'error';
 

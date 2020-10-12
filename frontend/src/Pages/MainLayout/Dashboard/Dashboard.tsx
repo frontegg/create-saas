@@ -5,7 +5,7 @@ import LineChart from '../../../Components/Charts/LineChart';
 import PieChart from '../../../Components/Charts/PieChart';
 import BarChart from '../../../Components/Charts/BarChart';
 import { columns, rows } from '../TablePage';
-import ProjectStatus, { ProjectStatusProps } from '../../../Components/ProjectStatus';
+import { ProjectStatusProps, ProjectStatus } from '../../../Components/ProjectStatus';
 import Activities from '../../../Components/Activities';
 import { Row } from 'reactstrap';
 

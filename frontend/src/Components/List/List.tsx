@@ -4,13 +4,13 @@ import classNames from 'classnames';
 
 interface ListProps extends React.HTMLAttributes<HTMLElement> {
   right?: number | string;
-  left?: React.ReactElement | string;
+  left?: React.ReactNode;
   leftClassName?: string;
   rightClassName?: string;
 }
 
 const List: React.FC<ListProps> = (props: ListProps) => {
-  const { right, children, left, className = '', leftClassName = '', rightClassName = '' } = props;
+  const { children, right = '', left = '', className = '', leftClassName = '', rightClassName = '' } = props;
   return (
     <div className={classNames('relative', 'd-flex', 'flex-row', 'p-2', 'align-items-center', className)}>
       <div className='flex-shrink-0'>

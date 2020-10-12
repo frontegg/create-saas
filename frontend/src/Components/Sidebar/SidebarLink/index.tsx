@@ -1,3 +1,1 @@
-import SidebarLink from './SidebarLink';
-
-export default SidebarLink;
+export { default } from './SidebarLink';

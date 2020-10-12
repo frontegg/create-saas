@@ -45,4 +45,4 @@ const ProjectStatus = (props: ProjectStatusProps) => {
   );
 };
 
-export default ProjectStatus;
+export { ProjectStatus };

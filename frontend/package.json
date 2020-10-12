@@ -10,7 +10,7 @@
     "prebuild": "npm run build:css",
     "pre-commit": "npm run prettier && npm run lint",
     "prestart": "npm run build:css",
-    "prettier": "prettier --write 'src/**/*.{ts,tsx,json,scss,md}'",
+    "prettier": "prettier --write 'src/**/*.{ts,tsx,json,scss,css,md}'",
     "start": "react-scripts start",
     "test": "react-scripts test"
   },

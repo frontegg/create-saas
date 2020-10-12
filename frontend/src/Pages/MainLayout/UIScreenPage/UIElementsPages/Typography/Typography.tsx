@@ -2,39 +2,40 @@ import React from 'react';
 import Widget from '../../../Widget';
 import { Col, Row } from 'reactstrap';
 
-const Typography: React.FC = () => {
-  const colors = {
-    black: '#000',
-    gray: {},
-    red: {},
-    orange: {},
-    yellow: {},
-    green: {},
-    teal: {},
-    blue: {},
-    indigo: {},
-    purple: {},
-    pink: {},
-  };
-  const fontSize = {
-    xs: '0.75rem',
-    sm: '0.875rem',
-    base: '1rem',
-    lg: '1.125rem',
-    xl: '1.25rem',
-    '2xl': '1.5rem',
-    '3xl': '1.875rem',
-    '4xl': '2.25rem',
-    '5xl': '3rem',
-    '6xl': '4rem',
-  };
+const COLORS = {
+  black: '#000',
+  gray: {},
+  red: {},
+  orange: {},
+  yellow: {},
+  green: {},
+  teal: {},
+  blue: {},
+  indigo: {},
+  purple: {},
+  pink: {},
+};
 
+const SIZES = {
+  xs: '0.75rem',
+  sm: '0.875rem',
+  base: '1rem',
+  lg: '1.125rem',
+  xl: '1.25rem',
+  '2xl': '1.5rem',
+  '3xl': '1.875rem',
+  '4xl': '2.25rem',
+  '5xl': '3rem',
+  '6xl': '4rem',
+};
+
+const Typography: React.FC = () => {
   return (
     <div className='relative'>
       <Widget>
         <Col>
-          {Object.entries(colors).map(([color]: [string, any], i: number) => {
-            return Object.entries(fontSize).map(([size]: [string, any], j: number) => {
+          {Object.entries(COLORS).map(([color]: [string, any], i: number) => {
+            return Object.entries(SIZES).map(([size]: [string, any], j: number) => {
               if (color !== 'black') {
                 const arr = [];
                 for (let k = 1; k < 10; k++) {

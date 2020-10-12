@@ -1,24 +1,18 @@
 import React from 'react';
+import classNames from 'classnames';
 import './Widget.scss';
 
-type Props = {
+interface WidgetProps extends React.HTMLAttributes<HTMLElement> {
   label?: string;
   value?: string;
   icon?: React.ReactElement;
   col?: boolean;
-};
+}
 
-const Widget: React.FC<Props & React.HTMLAttributes<HTMLElement>> = ({
-  col,
-  label,
-  value,
-  icon,
-  className = '',
-  style = {},
-  children,
-}) => {
+const Widget: React.FC<WidgetProps> = (props) => {
+  const { col, label = '', value = '', icon, className = '', style = {}, children } = props;
   return (
-    <div className={`widget d-flex mr-2 mb-4 ${className}`} style={style}>
+    <div className={classNames('widget', 'd-flex', 'mr-2', 'mb-4', className)} style={style}>
       <div className='d-flex flex-column'>
         <div className='label'>{label}</div>
         <div className='value'>{value}</div>
@@ -28,4 +22,5 @@ const Widget: React.FC<Props & React.HTMLAttributes<HTMLElement>> = ({
     </div>
   );
 };
+
 export default Widget;

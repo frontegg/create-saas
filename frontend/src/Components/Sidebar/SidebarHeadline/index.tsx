@@ -1,3 +1,1 @@
-import SidebarHeadline from './SidebarHeadline';
-
-export default SidebarHeadline;
+export { default } from './SidebarHeadline';

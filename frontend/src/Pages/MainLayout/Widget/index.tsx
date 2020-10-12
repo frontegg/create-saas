@@ -1,2 +1,1 @@
-import Widget from './Widget';
-export default Widget;
+export { default } from './Widget';

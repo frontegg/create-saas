@@ -16,7 +16,7 @@ type SelectProps = {
   options?: OptionType[];
 };
 
-const Select: React.FC<SelectProps> = (props) => {
+export const Select: React.FC<SelectProps> = (props) => {
   const { label, name, valid = false, signature, className, options = [] } = props;
   return (
     <div className={className}>
@@ -46,5 +46,3 @@ const Select: React.FC<SelectProps> = (props) => {
     </div>
   );
 };
-
-export default Select;

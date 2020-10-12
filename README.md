@@ -22,6 +22,14 @@ cd my-app
 npm run start
 ```
 
+<br/>
+
+<p align='center'>
+<img src='./npx-create-saas.gif' width='600' alt='npx create-saas my-app'>
+</p>
+
+<br/>
+
 Api gateway default port is 5000.
 
 Metrics service default port is 5001.

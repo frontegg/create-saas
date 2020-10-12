@@ -1,12 +1,13 @@
 import React from 'react';
-import './UIScreenPage.scss';
 
-type Props = {
+interface UIScreenPageProps extends React.HTMLAttributes<HTMLElement> {
   category?: string;
-};
-const UIScreenPage: React.FC<Props & React.HTMLAttributes<HTMLElement>> = ({ category = 'UI Elements', children }) => {
+}
+
+const UIScreenPage: React.FC<UIScreenPageProps> = (props) => {
+  const { category = 'UI Elements', children } = props;
   return (
-    <div className='uiScreenPage'>
+    <div className='ui-screen-page'>
       <div className='text-xs uppercase font-light text-gray-500'>{category}</div>
       {children}
     </div>

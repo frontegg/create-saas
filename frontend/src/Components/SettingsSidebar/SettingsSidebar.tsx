@@ -21,7 +21,7 @@ const useStyles = makeStyles({
 
 type SettingsSidebarProps = {
   open: boolean;
-  toggleDrawer: (open: boolean) => void;
+  toggle: (open: boolean) => void;
   palletType: string;
   handleThemeChange: (value: 'light' | 'dark' | 'navbar' | 'sidebar') => void;
   settings: { label: string; state: any }[];
@@ -29,7 +29,7 @@ type SettingsSidebarProps = {
 };
 
 const SettingsSidebar = (props: SettingsSidebarProps) => {
-  const { open, toggleDrawer, palletType, settings, handleChangeNavbar, handleThemeChange } = props;
+  const { open, toggle, palletType, settings, handleChangeNavbar, handleThemeChange } = props;
   const [styles, setStyles] = React.useState({
     background: '#fff',
     txt: '#000',
@@ -44,7 +44,7 @@ const SettingsSidebar = (props: SettingsSidebarProps) => {
   const classes = useStyles();
 
   return (
-    <Drawer anchor={'right'} open={open} onClose={() => toggleDrawer(false)}>
+    <Drawer anchor={'right'} open={open} onClose={() => toggle(false)}>
       <div className={classes.header}>SETTINGS</div>
       <List className={classes.list}>
         {[

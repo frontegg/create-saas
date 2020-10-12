@@ -1,2 +1,1 @@
-import Buttons from './Buttons';
-export default Buttons;
+export { default } from './Buttons';

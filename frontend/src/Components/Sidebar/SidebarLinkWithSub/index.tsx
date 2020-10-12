@@ -1,3 +1,1 @@
-import SidebarLinkWithSub from './SidebarLinkWithSub';
-
-export default SidebarLinkWithSub;
+export { default } from './SidebarLinkWithSub';

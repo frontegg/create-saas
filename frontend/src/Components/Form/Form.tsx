@@ -1,9 +1,6 @@
 import React from 'react';
 import { Form as ReactstrapForm } from 'reactstrap';
-import Radio from './Inputs/Radio';
-import Select, { OptionType } from './Inputs/Select';
-import CheckBox from './Inputs/CheckBox';
-import Input from './Inputs/Input';
+import { Radio, CheckBox, Select, Input, OptionType } from './Inputs';
 import classNames from 'classnames';
 import './Form.scss';
 
@@ -27,7 +24,7 @@ type FormProps = {
   inline?: boolean;
 };
 
-const Inputs = {
+const INPUTS = {
   select: Select,
   radio: Radio,
   checkbox: CheckBox,
@@ -69,7 +66,7 @@ const Form: React.FC<FormProps> = (props) => {
       <div className={classNames({ row: !inline })}>
         {inputs.map((input: InputType, index: number) => {
           const { type, placeholder = '', options = [], values = [], ...rest } = input;
-          const InputElement = Inputs[type];
+          const InputElement = INPUTS[type];
           const klassName = prepareClassName(type, inline);
           return (
             <InputElement

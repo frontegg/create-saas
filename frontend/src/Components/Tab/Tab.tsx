@@ -6,9 +6,9 @@ import classNames from 'classnames';
 
 type TabType = {
   tabId: string;
-  label: React.ReactElement | string;
+  label: React.ReactNode;
   active?: boolean;
-  content?: any;
+  content?: React.ReactNode;
 };
 
 interface TabsProps extends React.HTMLAttributes<HTMLElement> {
@@ -102,11 +102,12 @@ export const HorizontalTabs: React.FC<TabsProps> = (props) => {
         })}
       </Nav>
       <TabContent className='mt-3' activeTab={activeTab}>
-        {tabs.map((item, index) => {
+        {tabs.map((tab: TabType, index: number) => {
+          const { content, tabId } = tab;
           return (
-            <TabPane key={index} tabId={item.tabId}>
+            <TabPane key={index} tabId={tabId}>
               <Row>
-                <Col sm='12'>{item.content}</Col>
+                <Col sm='12'>{content}</Col>
               </Row>
             </TabPane>
           );

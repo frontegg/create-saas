@@ -31,41 +31,19 @@ const Alerts: React.FC = () => {
       <Widget>
         <Col>
           <Row>
-            <Alert notificationKey='outline_primary' outlined color='primary'>
+            <Alert notificationKey='outlinePrimary' outlined color='primary'>
               {' '}
               I'm alert!
             </Alert>
           </Row>
           <Row>
-            <Alert notificationKey='outline_danger' outlined color='danger'>
+            <Alert notificationKey='outlineDanger' outlined color='danger'>
               {' '}
               I'm alert!
             </Alert>
           </Row>
           <Row>
-            <Alert notificationKey='outline_warning' outlined color='warning'>
-              {' '}
-              I'm alert!
-            </Alert>
-          </Row>
-        </Col>
-      </Widget>
-      <Widget>
-        <Col>
-          <Row>
-            <Alert notificationKey='raised_primary' raised color='primary'>
-              {' '}
-              I'm alert!
-            </Alert>
-          </Row>
-          <Row>
-            <Alert notificationKey='raised_danger' raised color='danger'>
-              {' '}
-              I'm alert!
-            </Alert>
-          </Row>
-          <Row>
-            <Alert notificationKey='raised_warning' raised color='warning'>
+            <Alert notificationKey='outlineWarning' outlined color='warning'>
               {' '}
               I'm alert!
             </Alert>
@@ -75,19 +53,41 @@ const Alerts: React.FC = () => {
       <Widget>
         <Col>
           <Row>
-            <Alert notificationKey='borderLeft_primary' borderLeft color='primary'>
+            <Alert notificationKey='raisedPrimary' raised color='primary'>
               {' '}
               I'm alert!
             </Alert>
           </Row>
           <Row>
-            <Alert notificationKey='borderLeft_danger' borderLeft color='danger'>
+            <Alert notificationKey='raisedDanger' raised color='danger'>
               {' '}
               I'm alert!
             </Alert>
           </Row>
           <Row>
-            <Alert notificationKey='borderLeft_warning' borderLeft color='warning'>
+            <Alert notificationKey='raisedWarning' raised color='warning'>
+              {' '}
+              I'm alert!
+            </Alert>
+          </Row>
+        </Col>
+      </Widget>
+      <Widget>
+        <Col>
+          <Row>
+            <Alert notificationKey='borderLeftPrimary' borderLeft color='primary'>
+              {' '}
+              I'm alert!
+            </Alert>
+          </Row>
+          <Row>
+            <Alert notificationKey='borderLeftDanger' borderLeft color='danger'>
+              {' '}
+              I'm alert!
+            </Alert>
+          </Row>
+          <Row>
+            <Alert notificationKey='borderLeftWarning' borderLeft color='warning'>
               {' '}
               I'm alert!
             </Alert>

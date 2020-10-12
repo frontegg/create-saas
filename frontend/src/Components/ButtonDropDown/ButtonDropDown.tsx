@@ -13,8 +13,8 @@ interface ButtonDropDownProps extends React.HTMLAttributes<HTMLElement> {
 
 const ButtonDropDown = (props: ButtonDropDownProps): React.ReactNode => {
   const { items, label } = props;
-  const [dropdownOpen, setOpen] = React.useState(false);
-  const toggle = () => setOpen(!dropdownOpen);
+  const [open, setOpen] = React.useState(false);
+  const toggle = () => setOpen((prev) => !prev);
 
   const dropdownItemElements = useMemo(
     () =>
@@ -23,7 +23,7 @@ const ButtonDropDown = (props: ButtonDropDownProps): React.ReactNode => {
   );
 
   return (
-    <ReactstrapButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
+    <ReactstrapButtonDropdown isOpen={open} toggle={toggle}>
       <ReactstrapDropdownToggle caret>{label}</ReactstrapDropdownToggle>
       <ReactstrapDropdownMenu>{dropdownItemElements}</ReactstrapDropdownMenu>
     </ReactstrapButtonDropdown>

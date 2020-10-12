@@ -1,2 +1,1 @@
-import SettingsSidebar from './SettingsSidebar';
-export default SettingsSidebar;
+export { default } from './SettingsSidebar';

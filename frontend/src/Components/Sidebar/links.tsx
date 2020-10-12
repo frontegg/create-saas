@@ -113,6 +113,11 @@ export const links: LinkType[] = [
         icon: '',
       },
       {
+        path: '/datepickers',
+        label: 'Datepickers',
+        icon: '',
+      },
+      {
         path: '/switches',
         label: 'Switches',
         icon: '',
@@ -147,11 +152,6 @@ export const links: LinkType[] = [
       {
         path: '/slack',
         label: 'Slack',
-        icon: '',
-      },
-      {
-        path: '/validation',
-        label: 'Form validation',
         icon: '',
       },
     ],

@@ -4,11 +4,10 @@ import DatePicker from '../../../Components/DatePicker';
 const DatePickerPage: React.FC = () => {
   const inlineDatepicker = [
     {
-      type: 'InlineDatepicker',
       header: 'Inline date picker',
       description: (
         <span>
-          Use the <code> &lt;InlineDatepicker /&gt;</code> component to display a datepicker
+          Use the <code> &lt;Datepicker inline/&gt;</code> component to display a datepicker
         </span>
       ),
     },
@@ -16,7 +15,6 @@ const DatePickerPage: React.FC = () => {
 
   const datepicker = [
     {
-      type: 'Datepicker',
       header: 'Date picker',
       description: (
         <span>
@@ -35,7 +33,7 @@ const DatePickerPage: React.FC = () => {
       <div className='main'>
         <div className='datepicker'>
           {inlineDatepicker.map((item, index) => {
-            return <DatePicker key={index} {...item} />;
+            return <DatePicker inline key={index} {...item} />;
           })}
         </div>
         <div className='datepicker'>

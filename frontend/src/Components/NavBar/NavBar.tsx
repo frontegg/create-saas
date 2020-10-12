@@ -6,6 +6,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import { IconButton } from '@material-ui/core';
 import SettingsSidebar from '../SettingsSidebar';
 import { Notifications } from '@frontegg/react';
+import { useAuth } from '@frontegg/react-auth';
 import classNames from 'classnames';
 
 type NavBarProps = {
@@ -19,6 +20,7 @@ type NavBarProps = {
 const NavBar = (props: NavBarProps) => {
   const { className, handleChangeNavbar, handleThemeChange, palletType, settings } = props;
   const [open, setOpen] = React.useState(false);
+  const { isAuthenticated } = useAuth();
 
   return (
     <div className={classNames('nav-bar', className)}>
@@ -60,15 +62,17 @@ const NavBar = (props: NavBarProps) => {
       </svg>
       <Input className='search-field' type='text' placeholder='Search...' />
       <ProfileImage src='/images/profile.jpeg' />
-      <div className='frontegg-notifications'>
-        <Notifications />
-      </div>
+      {isAuthenticated && (
+        <div className='frontegg-notifications'>
+          <Notifications />
+        </div>
+      )}
       <IconButton color='primary' onClick={() => setOpen(!open)}>
         <SettingsIcon fontSize='inherit' />
       </IconButton>
       <SettingsSidebar
         open={open}
-        toggleDrawer={() => setOpen(!open)}
+        toggle={() => setOpen(!open)}
         handleThemeChange={handleThemeChange}
         palletType={palletType}
         settings={settings}

@@ -59,15 +59,6 @@ const SliderPage: React.FC = () => {
       header: 'Range slider',
       description: (
         <span>
-          Use the <code>deep-purple color</code> to change the slider style
-        </span>
-      ),
-      color: 'deep-purple',
-    },
-    {
-      header: 'Range slider',
-      description: (
-        <span>
           Use the <code>indigo color</code> to change the slider style
         </span>
       ),
@@ -122,15 +113,6 @@ const SliderPage: React.FC = () => {
       header: 'Range slider',
       description: (
         <span>
-          Use the <code>light-green color</code> to change the slider style
-        </span>
-      ),
-      color: 'light-green',
-    },
-    {
-      header: 'Range slider',
-      description: (
-        <span>
           Use the <code>lime color</code> to change the slider style
         </span>
       ),
@@ -149,28 +131,10 @@ const SliderPage: React.FC = () => {
       header: 'Range slider',
       description: (
         <span>
-          Use the <code>amber color</code> to change the slider style
-        </span>
-      ),
-      color: 'amber',
-    },
-    {
-      header: 'Range slider',
-      description: (
-        <span>
           Use the <code>orange color</code> to change the slider style
         </span>
       ),
       color: 'orange',
-    },
-    {
-      header: 'Range slider',
-      description: (
-        <span>
-          Use the <code>deep-orange color</code> to change the slider style
-        </span>
-      ),
-      color: 'deep-orange',
     },
     {
       header: 'Range slider',
@@ -189,15 +153,6 @@ const SliderPage: React.FC = () => {
         </span>
       ),
       color: 'grey',
-    },
-    {
-      header: 'Range slider',
-      description: (
-        <span>
-          Use the <code>blue-grey color</code> to change the slider style
-        </span>
-      ),
-      color: 'blue-grey',
     },
   ];
 

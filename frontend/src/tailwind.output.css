@@ -577,6 +577,18 @@ video {
   height: auto;
 }
 
+img,
+  svg,
+  video,
+  canvas,
+  audio,
+  iframe,
+  embed,
+  object {
+  display: inline;
+  vertical-align: baseline;
+}
+
 .container {
   width: 100%;
 }

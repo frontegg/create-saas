@@ -1,15 +1,14 @@
 import React from 'react';
 import Widget from '../../../Widget';
 import { VerticalTabs, HorizontalTabs, IconTabs, UnderlinedTabs } from '../../../../../Components/Tab';
-import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
-import DehazeIcon from '@material-ui/icons/Dehaze';
-import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
+import { Dehaze, FavoriteBorderOutlined, SettingsOutlined } from '@material-ui/icons';
+
 const tabs = [
   {
     tabId: 'tab-favorites',
     label: (
       <>
-        <FavoriteBorderOutlinedIcon className='mb-2 mx-2' />
+        <FavoriteBorderOutlined className='mb-2 mx-2' />
         <div className='mb-2 mx-2'>Favourites</div>
       </>
     ),
@@ -20,7 +19,7 @@ const tabs = [
     tabId: 'tab-options',
     label: (
       <>
-        <DehazeIcon className='mb-2 mx-2' />
+        <Dehaze className='mb-2 mx-2' />
         <div className='mb-2 mx-2'>Options</div>
       </>
     ),
@@ -31,7 +30,7 @@ const tabs = [
     tabId: 'tab-settings',
     label: (
       <>
-        <SettingsOutlinedIcon className='mb-2 mx-2' />
+        <SettingsOutlined className='mb-2 mx-2' />
         <div className='mb-2 mx-2'>Settings</div>
       </>
     ),

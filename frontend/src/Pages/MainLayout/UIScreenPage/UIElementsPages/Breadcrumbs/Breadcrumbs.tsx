@@ -1,5 +1,4 @@
 import React from 'react';
-import './Breadcrumbs.scss';
 import Widget from '../../../Widget';
 import Breadcrumbs from '../../../../../Components/Breadcrumbs';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
@@ -15,7 +14,7 @@ const BreadcrumbsPage: React.FC = () => {
     },
   ];
   return (
-    <div className='Breadcrumbs'>
+    <div className='relative'>
       <div className='text-xl font-bold mb-3'>Breadcrumbs</div>
       <Widget col>
         <div className='mb-3'>

@@ -1,11 +1,13 @@
 import React from 'react';
-import './Sidebar.scss';
 import SidebarHeadline from './SidebarHeadline';
 import SidebarLink from './SidebarLink';
 import SidebarLinkWithSub from './SidebarLinkWithSub';
 import { links, LinkType } from './links';
+import classNames from 'classnames';
+import './Sidebar.scss';
 
-const Sidebar: React.FC<React.HTMLAttributes<HTMLElement>> = ({ className, onMouseEnter, onMouseLeave }) => {
+const Sidebar: React.FC<React.HTMLAttributes<HTMLElement>> = (props) => {
+  const { className, onMouseEnter, onMouseLeave } = props;
   const isHeadline = (link: LinkType) => {
     return link.header !== undefined;
   };
@@ -25,7 +27,7 @@ const Sidebar: React.FC<React.HTMLAttributes<HTMLElement>> = ({ className, onMou
           if (isHeadline(link)) {
             const { header } = link;
             return (
-              <li className='li-darkMod' key={index}>
+              <li className='li-headline' key={index}>
                 <SidebarHeadline key={index} header={header} />
               </li>
             );
@@ -54,7 +56,7 @@ const Sidebar: React.FC<React.HTMLAttributes<HTMLElement>> = ({ className, onMou
   };
 
   return (
-    <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className={`sideBar ${className}`}>
+    <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className={classNames('sidebar', className)}>
       <div className='logo'>
         <a className='d-flex flex-row align-items-center justify-content-start space-x-2' href='/'>
           <img src='/images/logo.png' alt='' />

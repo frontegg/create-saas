@@ -1,2 +1,1 @@
-import Dropdowns from './Dropdowns';
-export default Dropdowns;
+export { default } from './Dropdowns';

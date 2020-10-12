@@ -187,7 +187,7 @@ const TablePage: React.FC = () => {
     <div className='table-page'>
       <div className='section-title'>
         <div className='category'>TABLES</div>
-        <div className='section-name'>Regular Table</div>
+        <div className='section-name'>Table Example</div>
       </div>
       <Table columns={columns} rows={rows} />
     </div>

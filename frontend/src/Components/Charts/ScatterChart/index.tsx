@@ -1,2 +1,1 @@
-import ScatterChartComponent from './ScatterChart';
-export default ScatterChartComponent;
+export { default } from './ScatterChart';

@@ -8,9 +8,9 @@ type LinkType = {
 };
 
 interface BreadcrumbsProps extends React.HTMLAttributes<HTMLElement> {
-  separator?: React.ReactElement | string;
+  separator?: React.ReactNode;
   showHomeIcon?: boolean;
-  homeIcon?: React.ReactElement | string;
+  homeIcon?: React.ReactNode;
   links: LinkType[];
 }
 
