@@ -5,15 +5,19 @@
 <br/>
 
 ### The Monorepo project consists of two micro services with an api gateway in front of them and a dashboard.
-### One service uses [PostgreSQL](https://www.postgresql.org/) and the other [MongoDB](https://www.mongodb.com/).
-### The frontend is based on [React](https://reactjs.org/) framework and connected to the backend with [GraphQL](https://graphql.org/) data query.
-### The project is written in [Typescript](https://www.typescriptlang.org/).
-### Create SAAS works with [Docker](https://www.docker.com/).
 
+### One service uses [PostgreSQL](https://www.postgresql.org/) and the other [MongoDB](https://www.mongodb.com/).
+
+### The frontend is based on [React](https://reactjs.org/) framework and connected to the backend with [GraphQL](https://graphql.org/) data query.
+
+### The project is written in [Typescript](https://www.typescriptlang.org/).
+
+### Create SAAS works with [Docker](https://www.docker.com/).
 
 <br/>
 
 ## Quick Start
+
 <br/>
 
 ```sh
@@ -25,16 +29,20 @@ npm run start
 <br/>
 
 <p align='center'>
-<img src='./npx-create-saas.gif' width='600' alt='npx create-saas my-app'>
+<img src='./npx-create-saas.gif' width='600' alt='npx create-saas my-project'>
 </p>
 
 <br/>
 
-Api gateway default port is 5000.
+### Port bindings
 
-Metrics service default port is 5001.
+<br/>
 
-Config service default port is 5002.
+Api gateway default port is <b>5000</b>.
+
+Metrics service default port is <b>5001</b>.
+
+Config service default port is <b>5002</b>.
 
 The dashboard can be opened on http://localhost:3000/.
 
@@ -147,8 +155,8 @@ my-app
       --data '{ "query": "{ requests { url } }" }' \
       http://localhost:5000/graphql
 
-
 <br>
 
 ### License
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
