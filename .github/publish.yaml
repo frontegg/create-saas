@@ -1,0 +1,23 @@
+name: Build, Test and Publish
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        run: npm install
+      - name: Build
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        run: npm run build
+      - name: Publish
+        uses: mikeal/merge-release@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}

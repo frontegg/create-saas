@@ -5,6 +5,7 @@ import schema from './graphql/schema';
 import { ApolloServer } from 'apollo-server-express';
 import morgan from 'morgan';
 
+const TENANT_HEADER = 'frontegg-tenant-id';
 const app: express.Application = express();
 
 interface Context {
@@ -18,10 +19,9 @@ app.get('/', (req, res) => {
 });
 
 async function main() {
-  await connectDB(DB_URI);
+  await connectDB(DB_URI || '');
   const context = ({ req }: Context) => {
-    const tenantId = req.headers['frontegg-tenant-id'] || '';
-    return { tenantId };
+    return { tenantId: req.headers[TENANT_HEADER] || '' };
   };
   const server = new ApolloServer({ schema, context });
   server.applyMiddleware({ app });

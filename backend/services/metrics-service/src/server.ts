@@ -3,9 +3,11 @@ import express from 'express';
 import morgan from 'morgan';
 import { createConnection } from 'typeorm';
 import { ApolloServer } from 'apollo-server-express';
-import { buildFederatedSchema } from './helpers/buildFederatedSchema';
-import { RequestResolver } from './resolvers/Request';
+import { buildFederatedSchema } from './helpers/build-federated-schema';
+import { RequestResolver } from './resolvers/request';
 import { APP_PORT } from './lib/config';
+
+const TENANT_HEADER = 'frontegg-tenant-id';
 
 const app: express.Application = express();
 
@@ -23,8 +25,7 @@ async function main() {
   await createConnection();
   const schema = await buildFederatedSchema({ resolvers: [RequestResolver] });
   const context = ({ req }: Context) => {
-    const tenantId = req.headers['frontegg-tenant-id'] || '';
-    return { tenantId };
+    return { tenantId: req.headers[TENANT_HEADER] || '' };
   };
   const server = new ApolloServer({ schema, context });
   server.applyMiddleware({ app });

@@ -1,5 +1,5 @@
 import { Resolver, Query, Ctx, Mutation, Arg } from 'type-graphql';
-import { Request } from '../db/entity/Request';
+import { Request } from '../db/entity/request';
 import { Context } from './types/context';
 import { NewRequestInput } from '../dto/new-request.input';
 

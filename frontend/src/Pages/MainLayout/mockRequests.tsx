@@ -2,7 +2,7 @@ export const MOCK_REQUESTS = [
   {
     id: '1',
     tenantId: '90b02525-0d38-415e-8e23-dc4d8c1c4cb0',
-    url: 'http://localhost:3000/metrics/graphql',
+    url: 'api/v1/config',
     userAgent: 'chrome',
     statusCode: 500,
     createdAt: '2020-09-13T08:27:35.880Z',

@@ -1,4 +1,5 @@
 import { DB_PORT, DB_DB, DB_HOST, DB_PASSWORD, DB_USER } from './src/lib/config';
+const rootDir = process.env.NODE_ENV === 'production' ? 'dist/src' : 'src';
 
 module.exports = [
   {
@@ -11,13 +12,13 @@ module.exports = [
     synchronize: true,
     logging: false,
     keepConnectionAlive: true,
-    entities: ['src/db/entity/**/*.ts'],
-    migrations: ['src/db/migration/**/*.ts'],
-    subscribers: ['src/db/subscriber/**/*.ts'],
+    entities: [`${rootDir}/db/entity/**/*.{js,ts}`],
+    migrations: [`${rootDir}/db/migration/**/*.{js,ts}`],
+    subscribers: [`${rootDir}/db/subscriber/**/*.{js,ts}`],
     cli: {
-      entitiesDir: 'src/db/entity',
-      migrationsDir: 'src/db/migration',
-      subscribersDir: 'src/db/subscriber',
+      entitiesDir: `${rootDir}/db/entity`,
+      migrationsDir: `${rootDir}/db/migration`,
+      subscribersDir: `${rootDir}/db/subscriber`,
     },
   },
   {
@@ -31,13 +32,13 @@ module.exports = [
     synchronize: true,
     logging: false,
     keepConnectionAlive: true,
-    entities: ['src/db/entity/**/*.ts'],
-    migrations: ['src/db/seed/**/*.ts'],
-    subscribers: ['src/db/subscriber/**/*.ts'],
+    entities: [`${rootDir}/db/entity/**/*.{js,ts}`],
+    migrations: [`${rootDir}/db/seed/**/*.{js,ts}`],
+    subscribers: [`${rootDir}/db/subscriber/**/*.{js,ts}`],
     cli: {
-      entitiesDir: 'src/db/entity',
-      migrationsDir: 'src/db/seed',
-      subscribersDir: 'src/db/subscriber',
+      entitiesDir: `${rootDir}/db/entity`,
+      migrationsDir: `${rootDir}/db/seed`,
+      subscribersDir: `${rootDir}/db/subscriber`,
     },
   },
 ];
