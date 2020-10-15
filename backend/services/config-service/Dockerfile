@@ -1,5 +1,5 @@
 # Use the official image as a parent image.
-FROM node:current-slim
+FROM node:12.19.0-alpine
 
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
