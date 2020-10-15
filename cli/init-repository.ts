@@ -45,8 +45,10 @@ export async function initRepo(name: string): Promise<void> {
 
   await prompts(questions);
 
-  await longCommand(`git clone https://github.com/frontegg/create-saas ${projectName}`, chalk.white.bold('Fetching data'), () =>
-    console.log(chalk.green('✔ ') + chalk.white.bold('Finished fetching data')),
+  await longCommand(
+    `git clone --depth 1 https://github.com/frontegg/create-saas ${projectName}`,
+    chalk.white.bold('Fetching data'),
+    () => console.log(chalk.green('✔ ') + chalk.white.bold('Finished fetching data')),
   );
 
   await longCommand(

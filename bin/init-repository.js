@@ -54,10 +54,11 @@ function initRepo(name) {
             projectName = response.project;
         }
         yield prompts_1.default(questions);
-        yield longCommand(`git clone https://github.com/frontegg/create-saas ${projectName}`, chalk_1.default.white.bold('Fetching data'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished fetching data')));
+        yield longCommand(`git clone --depth 1 https://github.com/frontegg/create-saas ${projectName}`, chalk_1.default.white.bold('Fetching data'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished fetching data')));
         yield longCommand(`cd ${projectName} && npm i && npx lerna bootstrap`, chalk_1.default.white.bold('Installing packages, this might take few minutes'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished installing packages')));
         if (command_exists_1.sync('docker')) {
             yield longCommand('make provision', chalk_1.default.white.bold('Calling docker compose'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished calling docker compose')));
+            yield longCommand('make migrate', chalk_1.default.white.bold('Running migrations'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished running migrations')));
         }
         else {
             console.log(chalk_1.default.red('✖ ') + chalk_1.default.white.bold('In order to get the most of Create SaaS, docker command is needed'));
