@@ -5,19 +5,16 @@ import classNames from 'classnames';
 import { Alert } from '../../Components/Alert';
 import Sidebar from '../../Components/Sidebar';
 import NavBar from '../../Components/NavBar';
-import LineChart from '../../Components/Charts/LineChart';
-import PieChart from '../../Components/Charts/PieChart';
-import BarChart from '../../Components/Charts/BarChart';
-import ScatterChart from '../../Components/Charts/ScatterChart';
 import { NotificationContext, NotificationContextType } from '../../Components/NotificationContext';
 
-import DefaultFormPage from './FormPage';
+import FormPage from './FormPage';
 import SliderPage from './SliderPage';
 import DatePickerPage from './DatePickerPage';
 import SwitchPage from './SwitchPage';
 import Table from './TablePage';
 import Dashboard from './Dashboard';
 import UIScreenPage from './UIScreenPage';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import Badges from './UIScreenPage/UIElementsPages/Badges';
 import Dropdowns from './UIScreenPage/UIElementsPages/Dropdowns';
 import Buttons from './UIScreenPage/UIElementsPages/Buttons';
@@ -270,7 +267,7 @@ const MainLayout: React.FC = () => {
               <Route exact path='/' render={() => <Redirect to='/dashboard' />} />
               <ProtectedRoute path='/sso' component={SSO.Page} />
               <Route path='/dashboard' component={MainDashboard} />
-              <Route path='/forms/example' component={DefaultFormPage} />
+              <Route path='/forms/example' component={FormPage} />
               <Route path='/forms/sliders' component={SliderPage} />
               <Route path='/forms/datepickers' component={DatePickerPage} />
               <Route path='/forms/switches' component={SwitchPage} />
@@ -298,23 +295,12 @@ const MainLayout: React.FC = () => {
                       <Route path='/ui-elements/tabs' component={Tabs} />
                       <Route path='/ui-elements/typography' component={Typography} />
                       <Route path='/ui-elements/breadcrumbs' component={BreadcrumbsPage} />
+                      <Redirect from='*' to='/404' />
                     </Switch>
                   </UIScreenPage>
                 )}
               />
-              <Route
-                path='/charts'
-                render={(props) => (
-                  <UIScreenPage>
-                    <Switch>
-                      <Route path='/charts/line-charts' component={LineChart} />
-                      <Route path='/charts/scatter-charts' component={ScatterChart} />
-                      <Route path='/charts/pie-charts' component={PieChart} />
-                      <Route path='/charts/bar-charts' component={BarChart} />
-                    </Switch>
-                  </UIScreenPage>
-                )}
-              />
+              <Route path='*' exact={true} component={NotFoundPage} />
             </Switch>
           </div>
         </div>
