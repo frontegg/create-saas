@@ -1,9 +1,6 @@
 # Use the official image as a parent image.
 FROM node:12.19.0-alpine
 
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
-
 # Set the working directory.
 WORKDIR /usr/src/app
 
