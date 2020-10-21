@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://frontegg.github.io/create-saas",
+  "homepage": "http://frontegg.github.io/opensaas",
   "scripts": {
     "build:css": "postcss src/Tailwind.css -o src/tailwind.output.css",
     "build": "react-scripts build",

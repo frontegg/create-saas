@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/frontegg/create-saas.git"
+    "url": "git+https://github.com/frontegg/opensaas.git"
   },
   "keywords": [
     "api",
@@ -32,9 +32,9 @@
   "author": "Frontegg LTD",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/frontegg/create-saas/issues"
+    "url": "https://github.com/frontegg/opensaas/issues"
   },
-  "homepage": "https://github.com/frontegg/create-saas#readme",
+  "homepage": "https://github.com/frontegg/opensaas#readme",
   "dependencies": {
     "@apollo/federation": "^0.20.0",
     "apollo-server-express": "^2.16.1",

@@ -1,4 +1,4 @@
-# Create SAAS
+# Open SAAS
 
 ### Create fully bundled SaaS application (Backend & Frontend) using an interactive CLI.
 
@@ -12,7 +12,7 @@
 
 ### The project is written in [Typescript](https://www.typescriptlang.org/).
 
-### Create SAAS works with [Docker](https://www.docker.com/).
+### Open SAAS works with [Docker](https://www.docker.com/).
 
 <br/>
 
@@ -21,7 +21,7 @@
 <br/>
 
 ```sh
-npx create-saas my-app
+npx opensaas my-app
 cd my-app
 npm run start
 ```
@@ -29,7 +29,7 @@ npm run start
 <br/>
 
 <p align='center'>
-<img src='./npx-create-saas.gif' width='600' alt='npx create-saas my-project'>
+<img src='./npx-opensaas.gif' width='600' alt='npx opensaas my-project'>
 </p>
 
 <br/>

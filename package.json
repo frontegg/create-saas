@@ -1,5 +1,5 @@
 {
-  "name": "create-saas",
+  "name": "opensaas",
   "version": "1.0.0",
   "description": "Create fully bundled SaaS application (Backend & Frontend) using an interactive CLI",
   "main": "bin/cli.js",
@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/frontegg/create-saas.git"
+    "url": "git+https://github.com/frontegg/opensaas.git"
   },
   "keywords": [
     "react",
@@ -45,9 +45,9 @@
   "author": "Frontegg LTD",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/frontegg/create-saas/issues"
+    "url": "https://github.com/frontegg/opensaas/issues"
   },
-  "homepage": "https://github.com/frontegg/create-saas#readme",
+  "homepage": "https://github.com/frontegg/opensaas#readme",
   "dependencies": {
     "chalk": "^4.1.0",
     "child_process": "^1.0.2",

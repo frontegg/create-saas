@@ -46,7 +46,7 @@ export async function initRepo(name: string): Promise<void> {
   await prompts(questions);
 
   await longCommand(
-    `git clone --depth 1 https://github.com/frontegg/create-saas ${projectName}`,
+    `git clone --depth 1 https://github.com/frontegg/opensaas ${projectName}`,
     chalk.white.bold('Fetching data'),
     () => console.log(chalk.green('✔ ') + chalk.white.bold('Finished fetching data')),
   );
@@ -65,7 +65,7 @@ export async function initRepo(name: string): Promise<void> {
       console.log(chalk.green('✔ ') + chalk.white.bold('Finished running migrations')),
     );
   } else {
-    console.log(chalk.red('✖ ') + chalk.white.bold('In order to get the most of Create SaaS, docker command is needed'));
+    console.log(chalk.red('✖ ') + chalk.white.bold('In order to get the most of Open SaaS, docker command is needed'));
   }
 
   console.log(chalk.white.bold('👏👏👏 project installed successfully 👏👏👏\n'));
