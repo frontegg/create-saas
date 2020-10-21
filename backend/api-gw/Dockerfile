@@ -1,21 +1,21 @@
-# Use the official image as a parent image.
-FROM node:12.19.0-alpine
+FROM node:12.19.0 as base
 
-# Set the working directory.
+FROM base as builder
+
 WORKDIR /usr/src/app
-
-# Copy the file from your host to your current location.
 COPY package.json .
-
-# Run the command inside your image filesystem.
-RUN npm install
-
-# Copy all other source code to work directory
-ADD . /usr/src/app
-
-# TypeScript
+RUN npm install --production
+COPY . .
 RUN npm run build
 
-# Start
-CMD [ "node", "./dist/server.js" ]
+
+FROM base as final
+
+WORKDIR /usr/src/app
+COPY package.json .
+COPY entrypoint.sh .
+COPY --from=builder /usr/src/app/dist /usr/src/app/dist
+COPY --from=builder /usr/src/app/node_modules /usr/src/app/node_modules
+
+CMD [ "/bin/bash", "./entrypoint.sh"]
 EXPOSE 5000

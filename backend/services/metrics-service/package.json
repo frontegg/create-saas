@@ -8,15 +8,16 @@
     "build": "tsc",
     "debug": "nodemon",
     "lint": "tslint -p tsconfig.json -c tslint.json --fix",
+    "migrate": "ts-node ./node_modules/typeorm/cli.js migration:run",
+    "migration:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert",
     "nodemon": "nodemon",
     "pre-commit": "npm run prettier && npm run lint",
     "prettier": "prettier 'src/**/*.{js,ts,json}' --write",
     "provision": "docker-compose up -d",
-    "start": "ts-node src/server.ts",
-    "migrate": "ts-node ./node_modules/typeorm/cli.js migration:run",
-    "migration:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert",
     "seed": "ts-node ./node_modules/typeorm/cli.js migration:run -c seed",
-    "seed:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -c seed"
+    "seed:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -c seed",
+    "start": "ts-node src/server.ts",
+    "start:prod": "node dist/server.js"
   },
   "repository": {
     "type": "git",

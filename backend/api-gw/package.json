@@ -11,7 +11,8 @@
     "nodemon": "nodemon",
     "pre-commit": "npm run prettier && npm run lint",
     "prettier": "prettier 'src/**/*.{js,ts,json}' --write",
-    "start": "ts-node src/server.ts"
+    "start": "ts-node src/server.ts",
+    "start:prod": "node dist/server.js"
   },
   "repository": {
     "type": "git",

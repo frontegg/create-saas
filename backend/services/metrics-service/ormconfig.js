@@ -1,5 +1,5 @@
-import { DB_PORT, DB_DB, DB_HOST, DB_PASSWORD, DB_USER } from './src/lib/config';
-const rootDir = process.env.NODE_ENV === 'production' ? 'dist/src' : 'src';
+const rootDir = process.env.NODE_ENV === 'production' ? 'dist' : 'src';
+const { DB_PORT, DB_DB, DB_HOST, DB_PASSWORD, DB_USER } = require(`./${rootDir}/lib/config`);
 
 module.exports = [
   {
