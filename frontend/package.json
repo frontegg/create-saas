@@ -5,7 +5,7 @@
   "homepage": "http://frontegg.github.io/opensaas",
   "scripts": {
     "build:css": "postcss src/Tailwind.css -o src/tailwind.output.css",
-    "build": "react-scripts build",
+    "build": "PUBLIC_URL=/ react-scripts build",
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
     "lint": "tslint -p tsconfig.json -c tslint.json --fix",
