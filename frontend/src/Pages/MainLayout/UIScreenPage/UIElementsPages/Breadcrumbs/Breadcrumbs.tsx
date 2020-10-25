@@ -6,7 +6,6 @@ import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 const BreadcrumbsPage: React.FC = () => {
   const links = [
     {
-      href: '/ui-elements/',
       label: 'UI Elements',
     },
     {
