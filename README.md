@@ -4,6 +4,10 @@
 
 <br />
 
+### [Link to Dashboard](https://frontegg.github.io/opensaas/dashboard)
+
+<br />
+
 ### The Monorepo project consists of two micro services with an api gateway in front of them and a dashboard.
 
 ### One service uses [PostgreSQL](https://www.postgresql.org/) and the other [MongoDB](https://www.mongodb.com/).
