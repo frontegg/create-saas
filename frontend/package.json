@@ -2,10 +2,10 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://frontegg.github.io/opensaas",
+  "homepage": "https://frontegg.github.io/opensaas",
   "scripts": {
     "build:css": "postcss src/Tailwind.css -o src/tailwind.output.css",
-    "build": "PUBLIC_URL=/ react-scripts build",
+    "build": "react-scripts build",
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
     "lint": "tslint -p tsconfig.json -c tslint.json --fix",
