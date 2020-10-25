@@ -42,8 +42,9 @@ const longCommand = (command, text, onSuccess) => {
         });
     });
 };
-function initRepo(name) {
+function initRepo(args) {
     return __awaiter(this, void 0, void 0, function* () {
+        const { name, clientId, apiKey } = args;
         let projectName = name || '';
         while (!projectName.length) {
             const response = yield prompts_1.default({
@@ -55,6 +56,14 @@ function initRepo(name) {
         }
         yield prompts_1.default(questions);
         yield longCommand(`git clone --depth 1 https://github.com/frontegg/opensaas ${projectName}`, chalk_1.default.white.bold('Fetching data'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished fetching data')));
+        if (clientId && apiKey) {
+            yield longCommand(`echo FRONTEGG_CLIENT_ID=${clientId} >> ${projectName}/backend/api-gw/.env.development`, '', () => {
+                return;
+            });
+            yield longCommand(`echo FRONTEGG_API_KEY=${apiKey} >> ${projectName}/backend/api-gw/.env.development`, '', () => {
+                return;
+            });
+        }
         yield longCommand(`cd ${projectName} && npm i && npx lerna bootstrap`, chalk_1.default.white.bold('Installing packages, this might take few minutes'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished installing packages')));
         if (command_exists_1.sync('docker')) {
             yield longCommand('make provision', chalk_1.default.white.bold('Calling docker compose'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished calling docker compose')));

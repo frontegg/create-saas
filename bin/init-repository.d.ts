@@ -1,2 +1,8 @@
 #!/usr/bin/env node
-export declare function initRepo(name: string): Promise<void>;
+declare type ArgsObject = {
+    name?: string;
+    apiKey?: string;
+    clientId?: string;
+};
+export declare function initRepo(args: ArgsObject): Promise<void>;
+export {};

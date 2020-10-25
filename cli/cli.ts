@@ -21,12 +21,22 @@ function getCommandAndArgs(argv: any) {
     return { command: args[0], args: args.slice(1) };
   }
 
-  return { command: 'init', args: argv.name || args[0] };
+  const { name, clientId, apiKey } = argv;
+  return {
+    command: 'init',
+    args: {
+      clientId,
+      apiKey,
+      name: name || args[0],
+    },
+  };
 }
 
 function run() {
   const argv = yargs.options({
     name: { type: 'string' },
+    clientId: { type: 'string' },
+    apiKey: { type: 'string' },
   }).argv;
 
   const { command, args } = getCommandAndArgs(argv);
