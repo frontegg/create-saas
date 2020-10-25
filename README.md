@@ -4,7 +4,7 @@
 
 <br />
 
-### [Link to Dashboard](https://frontegg.github.io/opensaas/dashboard)
+### [Link to Dashboard](https://frontegg.github.io/opensaas)
 
 <br />
 
