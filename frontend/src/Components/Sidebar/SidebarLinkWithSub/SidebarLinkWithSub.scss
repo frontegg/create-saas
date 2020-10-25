@@ -115,13 +115,13 @@
   }
   .arrow {
     flex: 1 0 1em;
-    transform: rotate(-90deg);
+    transform: rotate(90deg);
     opacity: 1;
     @media (min-width: 768px) {
       transition: all 0.53s ease;
     }
     &.active-link {
-      transform: rotate(90deg);
+      transform: rotate(-90deg);
     }
   }
   .sidebar-link {
