@@ -10,8 +10,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "cli": "ts-node cli/cli.ts",
-    "heroku-prebuild": "make heroku-prebuild",
-    "heroku-postbuild": "echo 'npm run provision && npm run migration'",
     "lint": "tslint -p tsconfig.json -c tslint.json --fix",
     "migration": "make migrate && make seed",
     "pre-commit": "npm run prettier && npm run lint",
