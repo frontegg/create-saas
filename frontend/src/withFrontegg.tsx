@@ -1,6 +1,6 @@
 import React, { ComponentType } from 'react';
 import { ContextOptions, PluginConfig, FronteggProvider } from '@frontegg/react-core';
-import { uiLibrary } from '@frontegg/react-elements-semantic';
+import { uiLibrary } from '@frontegg/react-elements-material-ui';
 import { AuthPlugin } from '@frontegg/react-auth';
 
 /**
@@ -15,6 +15,7 @@ const contextOptions: ContextOptions = {
 const plugins: PluginConfig[] = [
   // add frontegg plugin here
   AuthPlugin({
+    header: <img alt='logo' src='http://acmelogos.com/images/logo-1.svg' />
     /* auth options, find more information at https://github.com/frontegg/frontegg-react/tree/master/packages/auth */
   }),
 ];

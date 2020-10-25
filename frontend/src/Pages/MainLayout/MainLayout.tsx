@@ -30,7 +30,7 @@ import BreadcrumbsPage from './UIScreenPage/UIElementsPages/Breadcrumbs';
 
 import { useQuery, gql } from '@apollo/client';
 import { ProtectedRoute, Profile } from '@frontegg/react-auth';
-import { SSO } from '@frontegg/react-auth';
+import { SSO, Team } from '@frontegg/react-auth';
 import * as Frontegg from '@frontegg/react';
 import { MOCK_REQUESTS } from './mockRequests';
 
@@ -52,7 +52,7 @@ const REQUESTS = gql`
 `;
 
 const TeamManagement = () => {
-  return <Frontegg.Team />;
+  return <Team.Page />;
 };
 
 const Audits = () => {
@@ -68,7 +68,7 @@ const Webhooks = () => {
 };
 
 const Sso = () => {
-  return <Frontegg.SsoConfiguration rootDir={'/enterprise/sso'} />;
+  return <SSO.Page />;
 };
 
 const ProfilePage = () => {

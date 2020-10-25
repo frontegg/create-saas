@@ -33,9 +33,10 @@
   "dependencies": {
     "@apollo/client": "^3.1.5",
     "@frontegg/react": "^0.3.16",
-    "@frontegg/react-auth": "^1.0.70",
-    "@frontegg/react-core": "^1.0.70",
-    "@frontegg/react-elements-semantic": "^1.0.71",
+    "@frontegg/react-auth": "^1.2.0",
+    "@frontegg/react-core": "^1.2.0",
+    "@frontegg/react-elements-material-ui": "^1.2.0",
+    "@frontegg/react-elements-semantic": "^1.2.0",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
