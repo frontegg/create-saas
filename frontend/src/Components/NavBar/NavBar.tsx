@@ -2,6 +2,7 @@ import React from 'react';
 import { Input } from 'reactstrap';
 import './NavBar.scss';
 import ProfileImage from '../ProfileImage';
+import Image from '../Image';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { IconButton } from '@material-ui/core';
 import SettingsSidebar from '../SettingsSidebar';
@@ -26,7 +27,7 @@ const NavBar = (props: NavBarProps) => {
     <div className={classNames('nav-bar', className)}>
       <div className='logo d-none d-md-flex'>
         <a className='d-flex flex-row align-items-center justify-content-start' href='/'>
-          <img src='/images/logo.png' alt='' />
+          <Image src='/images/logo.png' />
           <span>Frontegg</span>
         </a>
       </div>

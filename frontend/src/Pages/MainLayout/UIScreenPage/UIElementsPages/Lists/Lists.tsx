@@ -1,9 +1,10 @@
 import React from 'react';
 import Widget from '../../../Widget';
 import { List } from '../../../../../Components/List';
+import Image from '../../../../../Components/Image';
 import { Col } from 'reactstrap';
 
-const img = <img src='/images/profile.jpeg' alt='' className='mr-3 h-8 rounded-circle shadow-outline-blue-300' />;
+const img = <Image src='/images/profile.jpeg' className='mr-3 h-8 rounded-circle shadow-outline-blue-300' />;
 
 const Lists: React.FC = () => {
   return (

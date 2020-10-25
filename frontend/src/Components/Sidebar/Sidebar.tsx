@@ -1,6 +1,7 @@
 import React from 'react';
 import SidebarHeadline from './SidebarHeadline';
 import SidebarLink from './SidebarLink';
+import Image from '../Image';
 import SidebarLinkWithSub from './SidebarLinkWithSub';
 import { links, LinkType } from './links';
 import classNames from 'classnames';
@@ -59,7 +60,7 @@ const Sidebar: React.FC<React.HTMLAttributes<HTMLElement>> = (props) => {
     <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className={classNames('sidebar', className)}>
       <div className='logo'>
         <a className='d-flex flex-row align-items-center justify-content-start space-x-2' href='/'>
-          <img src='/images/logo.png' alt='' />
+          <Image src='/images/logo.png' />
           <span>Frontegg</span>
         </a>
         <label htmlFor='collapsing' className='ml-auto mr-4 d-md-none'>

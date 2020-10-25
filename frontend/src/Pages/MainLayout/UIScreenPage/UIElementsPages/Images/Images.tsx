@@ -1,5 +1,6 @@
 import React from 'react';
 import Widget from '../../../Widget';
+import Image from '../../../../../Components/Image';
 import { Row, Col } from 'reactstrap';
 
 const Images: React.FC = () => {
@@ -17,11 +18,11 @@ const Images: React.FC = () => {
           </div>
         </div>
         <Row>
-          <img src='/images/profile.jpeg' alt='' className='mx-3 h-8 rounded' />
-          <img src='/images/profile.jpeg' alt='' className='mx-3 h-16 rounded' />
-          <img src='/images/profile.jpeg' alt='' className='mx-3 h-20 rounded' />
-          <img src='/images/profile.jpeg' alt='' className='mx-3 h-24 rounded' />
-          <img src='/images/profile.jpeg' alt='' className='mx-3 h-32 rounded' />
+          <Image src='/images/profile.jpeg' className='mx-3 h-8 rounded' />
+          <Image src='/images/profile.jpeg' className='mx-3 h-16 rounded' />
+          <Image src='/images/profile.jpeg' className='mx-3 h-20 rounded' />
+          <Image src='/images/profile.jpeg' className='mx-3 h-24 rounded' />
+          <Image src='/images/profile.jpeg' className='mx-3 h-32 rounded' />
         </Row>
       </Widget>
       <Widget col className='flex-wrap'>
@@ -34,11 +35,11 @@ const Images: React.FC = () => {
           </div>
         </div>
         <Row>
-          <img src='/images/profile.jpeg' alt='' className='mx-3 h-8 rounded-circle' />
-          <img src='/images/profile.jpeg' alt='' className='mx-3 h-16 rounded-circle' />
-          <img src='/images/profile.jpeg' alt='' className='mx-3 h-20 rounded-circle' />
-          <img src='/images/profile.jpeg' alt='' className='mx-3 h-24 rounded-circle' />
-          <img src='/images/profile.jpeg' alt='' className='mx-3 h-32 rounded-circle' />
+          <Image src='/images/profile.jpeg' className='mx-3 h-8 rounded-circle' />
+          <Image src='/images/profile.jpeg' className='mx-3 h-16 rounded-circle' />
+          <Image src='/images/profile.jpeg' className='mx-3 h-20 rounded-circle' />
+          <Image src='/images/profile.jpeg' className='mx-3 h-24 rounded-circle' />
+          <Image src='/images/profile.jpeg' className='mx-3 h-32 rounded-circle' />
         </Row>
       </Widget>
       <Widget col className='flex-wrap'>
@@ -51,11 +52,11 @@ const Images: React.FC = () => {
           </div>
         </div>
         <Row>
-          <img src='/images/profile.jpeg' alt='' className='mx-3 h-8  rounded-circle shadow' />
-          <img src='/images/profile.jpeg' alt='' className='mx-3 h-16 rounded-circle shadow' />
-          <img src='/images/profile.jpeg' alt='' className='mx-3 h-20 rounded-circle shadow' />
-          <img src='/images/profile.jpeg' alt='' className='mx-3 h-24 rounded-circle shadow' />
-          <img src='/images/profile.jpeg' alt='' className='mx-3 h-32 rounded-circle shadow' />
+          <Image src='/images/profile.jpeg' className='mx-3 h-8  rounded-circle shadow' />
+          <Image src='/images/profile.jpeg' className='mx-3 h-16 rounded-circle shadow' />
+          <Image src='/images/profile.jpeg' className='mx-3 h-20 rounded-circle shadow' />
+          <Image src='/images/profile.jpeg' className='mx-3 h-24 rounded-circle shadow' />
+          <Image src='/images/profile.jpeg' className='mx-3 h-32 rounded-circle shadow' />
         </Row>
       </Widget>
       <Widget col>
@@ -72,10 +73,9 @@ const Images: React.FC = () => {
             const array = [];
             for (let i = 3; i < 10; i++) {
               array.push(
-                <img
+                <Image
                   key={i}
                   src='/images/profile.jpeg'
-                  alt=''
                   className={`mx-3 h-8 rounded-circle shadow-outline-${value}-${i}00`}
                 />,
               );

@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from '../Image';
 import './ProfileImage.scss';
 
 type ProfileImageProps = {
@@ -10,7 +11,7 @@ const ProfileImage: React.FC<ProfileImageProps> = (props: ProfileImageProps) => 
   const { src, alt = '' } = props;
   return (
     <div className='profile-image'>
-      <img src={src} alt={alt} />
+      <Image src={src} alt={alt} />
     </div>
   );
 };
