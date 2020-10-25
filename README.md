@@ -2,7 +2,7 @@
 
 ### Create fully bundled SaaS application (Backend & Frontend) using an interactive CLI.
 
-<br/>
+<br />
 
 ### The Monorepo project consists of two micro services with an api gateway in front of them and a dashboard.
 
@@ -14,11 +14,21 @@
 
 ### Open SAAS works with [Docker](https://www.docker.com/).
 
-<br/>
+<br />
+
+## Pre-requisites
+
+<br />
+
+- node.js - [Download page](https://nodejs.org/en/download/)
+- git - [Installation guide](https://www.linode.com/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/)
+- docker - [Download page](https://docs.docker.com/get-docker)
+
+<br />
 
 ## Quick Start
 
-<br/>
+<br />
 
 ```sh
 npx opensaas my-app
@@ -26,17 +36,17 @@ cd my-app
 npm run start
 ```
 
-<br/>
+<br />
 
 <p align='center'>
 <img src='./npx-opensaas.gif' width='600' alt='npx opensaas my-project'>
 </p>
 
-<br/>
+<br />
 
 ### Port bindings
 
-<br/>
+<br />
 
 Api gateway default port is <b>5000</b>.
 
@@ -46,11 +56,11 @@ Config service default port is <b>5002</b>.
 
 The dashboard can be opened on http://localhost:3000/.
 
-<br/>
+<br />
 
 ## Project structure
 
-<br/>
+<br />
 
 ```
 my-app
@@ -115,21 +125,13 @@ my-app
 
 ```
 
-<br>
+<br />
 
-## Pre-requisites
-
-<br>
-
-- node.js - [Download page](https://nodejs.org/en/download/)
-- git - [Installation guide](https://www.linode.com/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/)
-- docker - [Download page](https://docs.docker.com/get-docker)
-
-<br>
+<br />
 
 ## CLI
 
-<br>
+<br />
 
 #### Add new service
 
@@ -147,11 +149,11 @@ my-app
 
 `npm run cli init`
 
-<br/>
+<br />
 
 ## Example of requests to backend using GraphQL
 
-<br>
+<br />
 
     curl \
       -X POST \
@@ -165,7 +167,7 @@ my-app
       --data '{ "query": "{ requests { url } }" }' \
       http://localhost:5000/graphql
 
-<br>
+<br />
 
 ### License
 
