@@ -116,16 +116,7 @@ const MainLayout: React.FC = () => {
 
   const [windowDimensions, setWindowDimensions] = React.useState(getWindowDimensions());
 
-  const [hovered, hoverExpand] = React.useState<boolean>(false);
-
-  const handleFixedHover = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    if (collapsed && fixedSidebar) {
-      hoverExpand(!hovered);
-    }
-    if (!fixedSidebar) {
-      hoverExpand(false);
-    }
-  };
+  const [hovered] = React.useState<boolean>(false);
   const context = React.useContext<NotificationContextType>(NotificationContext);
   const [scrolled, setScrolled] = React.useState<boolean>(false);
 
@@ -250,7 +241,7 @@ const MainLayout: React.FC = () => {
             fixed: fixedNavbar,
           })}
         />
-        <Sidebar className={sideBarClassName} onMouseLeave={handleFixedHover} onMouseEnter={handleFixedHover} />
+        <Sidebar className={sideBarClassName} />
         <div className='main'>
           {Object.entries(context.notifications).map(([key, value]) => {
             if (value.position === 'top') {

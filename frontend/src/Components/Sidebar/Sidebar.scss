@@ -20,6 +20,10 @@
     border-right: themed('customSidebarColor');
   }
 
+  .links-container {
+    height: 100%;
+  }
+
   @at-root {
     @media screen and (min-width: 768px) {
       .fixed-sidebar {

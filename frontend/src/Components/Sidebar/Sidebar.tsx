@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import './Sidebar.scss';
 
 const Sidebar: React.FC<React.HTMLAttributes<HTMLElement>> = (props) => {
-  const { className, onMouseEnter, onMouseLeave } = props;
+  const { className } = props;
   const isHeadline = (link: LinkType) => {
     return link.header !== undefined;
   };
@@ -57,30 +57,30 @@ const Sidebar: React.FC<React.HTMLAttributes<HTMLElement>> = (props) => {
   };
 
   return (
-    <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className={classNames('sidebar', className)}>
+    <div className={classNames('sidebar', className)}>
       <div className='logo'>
         <a className='d-flex flex-row align-items-center justify-content-start space-x-2' href='/'>
           <Image src='/images/logo.png' />
           <span>Frontegg</span>
         </a>
-        <label htmlFor='collapsing' className='ml-auto mr-4 d-md-none'>
-          <svg
-            stroke='currentColor'
-            fill='none'
-            strokeWidth='2'
-            viewBox='0 0 24 24'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-            height='20'
-            width='20'
-            xmlns='http://www.w3.org/2000/svg'>
-            <line x1='3' y1='12' x2='21' y2='12' />
-            <line x1='3' y1='6' x2='21' y2='6' />
-            <line x1='3' y1='18' x2='21' y2='18' />
-          </svg>
-        </label>
       </div>
-      {renderSidebarLinks(links)}
+      <div className='links-container'>{renderSidebarLinks(links)}</div>
+      <label htmlFor='collapsing' className='ml-4 mr-4 text-right cursor-pointer'>
+        <svg
+          stroke='currentColor'
+          fill='none'
+          strokeWidth='2'
+          viewBox='0 0 24 24'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          height='20'
+          width='20'
+          xmlns='http://www.w3.org/2000/svg'>
+          <line x1='3' y1='12' x2='21' y2='12' />
+          <line x1='3' y1='6' x2='21' y2='6' />
+          <line x1='3' y1='18' x2='21' y2='18' />
+        </svg>
+      </label>
     </div>
   );
 };
