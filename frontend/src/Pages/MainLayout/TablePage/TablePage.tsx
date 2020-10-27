@@ -1,36 +1,46 @@
 import React from 'react';
-import { Table, TableColumnProps } from '@frontegg/react-core'
+import { Table, TableColumnProps } from '@frontegg/react-core';
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
 import { ProgressBar } from '../../../Components/ProgressBar';
 
-export const columns: TableColumnProps[] = [{
-  accessor: 'country',
-  Header: 'Country',
-  sortable: true,
-}, {
-  accessor: 'activeUsers',
-  Header: 'Active Users',
-  sortable: true,
-}, {
-  accessor: 'teamMembers',
-  Header: 'Team Members',
-  Cell: (props: any) => <AvatarGroup max={6}>
-    {props.value.map((src: string, index: number) => (
-      <Avatar className='avatar-image' alt='avatar' src={src} key={index} />
-    ))}
-  </AvatarGroup>
-}, {
-  accessor: 'progress',
-  Header: 'Progress',
-  Cell: ({ value }: any) => <div style={{ width: '100%' }}> <ProgressBar value={value} /></div>
-}]
+export const columns: TableColumnProps[] = [
+  {
+    accessor: 'country',
+    Header: 'Country',
+    sortable: true,
+  },
+  {
+    accessor: 'activeUsers',
+    Header: 'Active Users',
+    sortable: true,
+  },
+  {
+    accessor: 'teamMembers',
+    Header: 'Team Members',
+    Cell: (props: any) => (
+      <AvatarGroup max={6}>
+        {props.value.map((src: string, index: number) => (
+          <Avatar className='avatar-image' alt='avatar' src={src} key={index} />
+        ))}
+      </AvatarGroup>
+    ),
+  },
+  {
+    accessor: 'progress',
+    Header: 'Progress',
+    Cell: ({ value }: any) => (
+      <div style={{ width: '100%' }}>
+        {' '}
+        <ProgressBar value={value} />
+      </div>
+    ),
+  },
+];
 
 function createData(country: string, activeUsers: number, teamMembers: string[], progress: number) {
   return { country, activeUsers, teamMembers, progress };
 }
-
-
 
 export const rows = [
   createData(
@@ -185,27 +195,39 @@ export const rows = [
   ),
 ];
 
-const columns2: TableColumnProps[] = [{
-  accessor: 'country',
-  Header: 'Country',
-  sortable: true,
-}, {
-  accessor: 'activeUsers',
-  Header: 'Active Users',
-  sortable: true,
-}, {
-  accessor: 'teamMembers',
-  Header: 'Team Members',
-  Cell: (props: any) => <AvatarGroup max={6}>
-    {props.value.map((src: string, index: number) => (
-      <Avatar className='avatar-image' alt='avatar' src={src} key={index} />
-    ))}
-  </AvatarGroup>
-}, {
-  accessor: 'progress',
-  Header: 'Progress',
-  Cell: ({ value }: any) => <div style={{ width: '100%' }}> <ProgressBar value={value} /></div>
-}]
+const columns2: TableColumnProps[] = [
+  {
+    accessor: 'country',
+    Header: 'Country',
+    sortable: true,
+  },
+  {
+    accessor: 'activeUsers',
+    Header: 'Active Users',
+    sortable: true,
+  },
+  {
+    accessor: 'teamMembers',
+    Header: 'Team Members',
+    Cell: (props: any) => (
+      <AvatarGroup max={6}>
+        {props.value.map((src: string, index: number) => (
+          <Avatar className='avatar-image' alt='avatar' src={src} key={index} />
+        ))}
+      </AvatarGroup>
+    ),
+  },
+  {
+    accessor: 'progress',
+    Header: 'Progress',
+    Cell: ({ value }: any) => (
+      <div style={{ width: '100%' }}>
+        {' '}
+        <ProgressBar value={value} />
+      </div>
+    ),
+  },
+];
 const TablePage: React.FC = () => {
   return (
     <div className='table-page'>
@@ -214,11 +236,18 @@ const TablePage: React.FC = () => {
         <div className='section-name'>Table Example</div>
       </div>
 
-      <Table data={rows}
+      <Table
+        data={rows}
         totalData={rows.length}
         selection='multi'
-        onRowSelected={(selected) => { console.log(selected) }}
-        columns={columns2} rowKey='country' pagination='pages' pageSize={5} />
+        onRowSelected={(selected) => {
+          console.log(selected);
+        }}
+        columns={columns2}
+        rowKey='country'
+        pagination='pages'
+        pageSize={5}
+      />
       {/* <Table columns={columns} rows={rows} /> */}
     </div>
   );

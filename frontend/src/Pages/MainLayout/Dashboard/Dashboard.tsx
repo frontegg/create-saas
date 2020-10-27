@@ -7,7 +7,7 @@ import { columns, rows } from '../TablePage';
 import { ProjectStatusProps, ProjectStatus } from '../../../Components/ProjectStatus';
 import Activities from '../../../Components/Activities';
 import { Row } from 'reactstrap';
-import { Table } from '@frontegg/react-core'
+import { Table } from '@frontegg/react-core';
 
 import moment from 'moment';
 import { detect } from 'detect-browser';
@@ -318,11 +318,18 @@ class Dashboard extends React.Component<any> {
           </Widget>
         </Row>
         <Widget className='w-100'>
-          <Table data={rows}
+          <Table
+            data={rows}
             totalData={rows.length}
             selection='multi'
-            onRowSelected={(selected) => { console.log(selected) }}
-            columns={columns} rowKey='country' pagination='pages' pageSize={5} />
+            onRowSelected={(selected) => {
+              console.log(selected);
+            }}
+            columns={columns}
+            rowKey='country'
+            pagination='pages'
+            pageSize={5}
+          />
         </Widget>
         <Widget className='flex-grow-1 flex-shrink-0 w-2/3' style={{ minHeight: '320px' }}>
           <LineChart data={lineChartData} {...lineChartSettings} />
