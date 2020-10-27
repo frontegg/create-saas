@@ -7,7 +7,7 @@ import { columns, rows } from '../TablePage';
 import { ProjectStatusProps, ProjectStatus } from '../../../Components/ProjectStatus';
 import Activities from '../../../Components/Activities';
 import { Row } from 'reactstrap';
-import { Table } from '@frontegg/react-core';
+import { Table } from '../../../Components/Table';
 
 import moment from 'moment';
 import { detect } from 'detect-browser';

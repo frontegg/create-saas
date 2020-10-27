@@ -1,10 +1,10 @@
 import React from 'react';
-import { Table, TableColumnProps } from '@frontegg/react-core';
 import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
+import { Table } from '../../../Components/Table';
 import { ProgressBar } from '../../../Components/ProgressBar';
 
-export const columns: TableColumnProps[] = [
+export const columns: any[] = [
   {
     accessor: 'country',
     Header: 'Country',
@@ -195,7 +195,7 @@ export const rows = [
   ),
 ];
 
-const columns2: TableColumnProps[] = [
+const columns2: any[] = [
   {
     accessor: 'country',
     Header: 'Country',
@@ -248,7 +248,6 @@ const TablePage: React.FC = () => {
         pagination='pages'
         pageSize={5}
       />
-      {/* <Table columns={columns} rows={rows} /> */}
     </div>
   );
 };
