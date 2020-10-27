@@ -683,24 +683,12 @@ img,
   display: flex;
 }
 
-.table {
-  display: table;
-}
-
-.hidden {
-  display: none;
-}
-
 .flex-row {
   flex-direction: row;
 }
 
 .flex-wrap {
   flex-wrap: wrap;
-}
-
-.self-end {
-  align-self: flex-end;
 }
 
 .flex-shrink-0 {
@@ -859,10 +847,6 @@ img,
   margin-bottom: 1.25rem;
 }
 
-.ml-auto {
-  margin-left: auto;
-}
-
 .p-0 {
   padding: 0;
 }
@@ -989,10 +973,6 @@ img,
 
 .relative {
   position: relative;
-}
-
-.sticky {
-  position: sticky;
 }
 
 .resize {
