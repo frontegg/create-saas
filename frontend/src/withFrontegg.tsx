@@ -14,7 +14,7 @@ const contextOptions: ContextOptions = {
 const plugins: PluginConfig[] = [
   // add frontegg plugin here
   AuthPlugin({
-    header: <img alt='logo' src='http://acmelogos.com/images/logo-1.svg' />,
+    header: <img alt='logo' src='https://assets.frontegg.com/public-frontegg-assets/acme-logo.svg' />
     /* auth options, find more information at https://github.com/frontegg/frontegg-react/tree/master/packages/auth */
   }),
 ];
