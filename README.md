@@ -35,7 +35,7 @@
 <br />
 
 ```sh
-npx opensaas my-app
+npx opensaas my-app --client-id=MY_CLIENT_ID --api-key=MY_API_KEY
 cd my-app
 npm run start
 ```
@@ -43,7 +43,7 @@ npm run start
 <br />
 
 <p align='center'>
-<img src='./npx-opensaas.gif' width='600' alt='npx opensaas my-project'>
+<img src='./npx-opensaas.gif' width='800' alt='npx opensaas my-project'>
 </p>
 
 <br />
