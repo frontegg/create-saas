@@ -2,6 +2,9 @@ BIN = node_modules/.bin
 PATH := $(BIN):$(PATH)
 SHELL := /bin/bash
 
+init:
+	npm i && npx lerna bootstrap
+
 migrate:
 	lerna run migrate
 
