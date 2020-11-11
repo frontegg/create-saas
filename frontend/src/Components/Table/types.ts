@@ -15,7 +15,7 @@ import {
   UseRowSelectInstanceProps,
 } from 'react-table';
 
-interface ITableColumnProps<T extends object = any> {
+export interface ITableColumnProps<T extends object = any> {
   accessor?: string | IdType<T> | never;
   id?: string;
   Header?: Renderer<HeaderProps<T>>;

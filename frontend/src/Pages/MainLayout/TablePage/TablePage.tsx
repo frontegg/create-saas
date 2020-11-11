@@ -3,8 +3,9 @@ import { Avatar } from '@material-ui/core';
 import { AvatarGroup } from '@material-ui/lab';
 import { Table } from '../../../Components/Table';
 import { ProgressBar } from '../../../Components/ProgressBar';
+import { ITableColumnProps } from '../../../Components/Table/types';
 
-export const columns: any[] = [
+export const columns: ITableColumnProps[] = [
   {
     accessor: 'country',
     Header: 'Country',
@@ -195,7 +196,7 @@ export const rows = [
   ),
 ];
 
-const columns2: any[] = [
+const columns2: ITableColumnProps[] = [
   {
     accessor: 'country',
     Header: 'Country',
