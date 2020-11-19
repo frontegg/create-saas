@@ -3,6 +3,7 @@
 import prompts from 'prompts';
 import ora from 'ora';
 import chalk from 'chalk';
+import fs from 'fs';
 import { spawn } from 'child_process';
 import { sync as commandExists } from 'command-exists';
 
@@ -65,6 +66,10 @@ export async function initRepo(args: ArgsObject): Promise<void> {
     await longCommand(`echo FRONTEGG_API_KEY=${apiKey} >> ${projectName}/backend/api-gw/.env.development`, '', () => {
       return;
     });
+
+    const navBarFile = `${projectName}/frontend/src/Components/NavBar/NavBar.tsx`;
+    const data = fs.readFileSync(navBarFile, { encoding:'utf8', flag:'r' });
+    fs.writeFileSync(navBarFile, data.replace(/\/images\/logo.png/g, `https://assets.frontegg.com/public-frontegg-assets/${clientId}/assets/logo.png`));
   }
 
   await longCommand(

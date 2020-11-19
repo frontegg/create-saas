@@ -17,6 +17,7 @@ exports.initRepo = void 0;
 const prompts_1 = __importDefault(require("prompts"));
 const ora_1 = __importDefault(require("ora"));
 const chalk_1 = __importDefault(require("chalk"));
+const fs_1 = __importDefault(require("fs"));
 const child_process_1 = require("child_process");
 const command_exists_1 = require("command-exists");
 const spinner = ora_1.default('');
@@ -63,6 +64,9 @@ function initRepo(args) {
             yield longCommand(`echo FRONTEGG_API_KEY=${apiKey} >> ${projectName}/backend/api-gw/.env.development`, '', () => {
                 return;
             });
+            const navBarFile = `${projectName}/frontend/src/Components/NavBar/NavBar.tsx`;
+            const data = fs_1.default.readFileSync(navBarFile, { encoding: 'utf8', flag: 'r' });
+            fs_1.default.writeFileSync(navBarFile, data.replace(/\/images\/logo.png/g, `https://assets.frontegg.com/public-frontegg-assets/${clientId}/assets/logo.png`));
         }
         yield longCommand(`cd ${projectName} && npm i && npx lerna bootstrap`, chalk_1.default.white.bold('Installing packages, this might take few minutes'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished installing packages')));
         if (command_exists_1.sync('docker')) {
