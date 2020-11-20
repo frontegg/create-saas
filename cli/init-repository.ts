@@ -14,22 +14,16 @@ type ArgsObject = {
 
 const spinner = ora('');
 
-const questions: prompts.PromptObject[] = [
-  {
-    type: 'select',
-    name: 'saasEssentials',
-    message: 'Include SaaS essentials',
-    choices: [
-      { title: 'Yes', value: 'yes' },
-      { title: 'Decide later', value: 'later' },
-    ],
-  },
-];
-
-const longCommand = (command: string, text: string, onSuccess: () => void) => {
+const longCommand = (command: string, text: string, onSuccess: () => void, onData?: (text: string) => void) => {
   return new Promise((resolve, reject) => {
+
     const process = spawn(command, { shell: true });
     spinner.start(text);
+    process.stdout.on('data', (data) => {
+      if (onData) {
+        onData(Buffer.from(data).toString());
+      }
+    });
     process.on('exit', () => {
       spinner.stop();
       onSuccess();
@@ -50,19 +44,21 @@ export async function initRepo(args: ArgsObject): Promise<void> {
     projectName = response.project;
   }
 
-  await prompts(questions);
-
   await longCommand(
     `git clone --depth 1 https://github.com/frontegg/opensaas ${projectName}`,
     chalk.white.bold('Fetching data'),
     () => console.log(chalk.green('✔ ') + chalk.white.bold('Finished fetching data')),
-  );
+    console.log);
 
   if (clientId && apiKey) {
-    await longCommand(`echo FRONTEGG_CLIENT_ID=${clientId} >> ${projectName}/backend/api-gw/.env.development`, '', () => {
+    await longCommand(`echo #Don't include this file in the source control >> ${projectName}/frontend/.env`, '',
+                      () => { return; });
+
+    await longCommand(`echo FRONTEGG_CLIENT_ID=${clientId} >> ${projectName}/frontend/.env`, '', () => {
       return;
     });
-    await longCommand(`echo FRONTEGG_API_KEY=${apiKey} >> ${projectName}/backend/api-gw/.env.development`, '', () => {
+
+    await longCommand(`echo FRONTEGG_API_KEY=${apiKey} >> ${projectName}/frontend/.env`, '', () => {
       return;
     });
   }
@@ -71,7 +67,7 @@ export async function initRepo(args: ArgsObject): Promise<void> {
     `cd ${projectName} && npm i && npx lerna bootstrap`,
     chalk.white.bold('Installing packages, this might take few minutes'),
     () => console.log(chalk.green('✔ ') + chalk.white.bold('Finished installing packages')),
-  );
+    console.info);
 
   if (commandExists('docker')) {
     await longCommand('make provision', chalk.white.bold('Calling docker compose'), () =>

@@ -20,21 +20,15 @@ const chalk_1 = __importDefault(require("chalk"));
 const child_process_1 = require("child_process");
 const command_exists_1 = require("command-exists");
 const spinner = ora_1.default('');
-const questions = [
-    {
-        type: 'select',
-        name: 'saasEssentials',
-        message: 'Include SaaS essentials',
-        choices: [
-            { title: 'Yes', value: 'yes' },
-            { title: 'Decide later', value: 'later' },
-        ],
-    },
-];
-const longCommand = (command, text, onSuccess) => {
+const longCommand = (command, text, onSuccess, onData) => {
     return new Promise((resolve, reject) => {
         const process = child_process_1.spawn(command, { shell: true });
         spinner.start(text);
+        process.stdout.on('data', (data) => {
+            if (onData) {
+                onData(Buffer.from(data).toString());
+            }
+        });
         process.on('exit', () => {
             spinner.stop();
             onSuccess();
@@ -54,17 +48,17 @@ function initRepo(args) {
             });
             projectName = response.project;
         }
-        yield prompts_1.default(questions);
-        yield longCommand(`git clone --depth 1 https://github.com/frontegg/opensaas ${projectName}`, chalk_1.default.white.bold('Fetching data'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished fetching data')));
+        yield longCommand(`git clone --depth 1 https://github.com/frontegg/opensaas ${projectName}`, chalk_1.default.white.bold('Fetching data'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished fetching data')), console.log);
         if (clientId && apiKey) {
-            yield longCommand(`echo FRONTEGG_CLIENT_ID=${clientId} >> ${projectName}/backend/api-gw/.env.development`, '', () => {
+            yield longCommand(`echo #Don't include this file in the source control >> ${projectName}/frontend/.env`, '', () => { return; });
+            yield longCommand(`echo FRONTEGG_CLIENT_ID=${clientId} >> ${projectName}/frontend/.env`, '', () => {
                 return;
             });
-            yield longCommand(`echo FRONTEGG_API_KEY=${apiKey} >> ${projectName}/backend/api-gw/.env.development`, '', () => {
+            yield longCommand(`echo FRONTEGG_API_KEY=${apiKey} >> ${projectName}/frontend/.env`, '', () => {
                 return;
             });
         }
-        yield longCommand(`cd ${projectName} && npm i && npx lerna bootstrap`, chalk_1.default.white.bold('Installing packages, this might take few minutes'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished installing packages')));
+        yield longCommand(`cd ${projectName} && npm i && npx lerna bootstrap`, chalk_1.default.white.bold('Installing packages, this might take few minutes'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished installing packages')), console.info);
         if (command_exists_1.sync('docker')) {
             yield longCommand('make provision', chalk_1.default.white.bold('Calling docker compose'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished calling docker compose')));
             yield longCommand('make migrate', chalk_1.default.white.bold('Running migrations'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished running migrations')));

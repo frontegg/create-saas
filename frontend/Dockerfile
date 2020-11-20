@@ -4,18 +4,13 @@ FROM base as builder
 
 WORKDIR /usr/src/app
 COPY package.json .
+COPY package-lock.json package-lock.json
+
 RUN npm install --production
 RUN npm install postcss-cli
 COPY . .
 RUN npm run build
 
+CMD ["node", "index"]
 
-FROM nginx:1.19-alpine
-
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-
-COPY --from=builder /usr/src/app/build /usr/share/nginx/html/
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 8080
