@@ -7,7 +7,7 @@
   color: black;
   justify-content: flex-start;
   align-items: center;
-  height: 2.5rem;
+  height: 3.5rem;
   width: auto;
   cursor: pointer;
   position: relative;
@@ -33,6 +33,7 @@
   &:hover {
     color: #2196f3;
     border-left: 4px solid #2196f3;
+    background-color: #f4faff;
 
     @include themify($themes) {
       color: themed('customSidebarActiveTab');

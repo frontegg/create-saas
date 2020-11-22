@@ -5,7 +5,7 @@
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: center;
-  height: 2.5rem;
+  height: 3.5rem;
   cursor: pointer;
   color: black;
   position: relative;
@@ -117,6 +117,8 @@
     flex: 1 0 1em;
     transform: rotate(90deg);
     opacity: 1;
+
+    margin-right: 0.6rem;
     @media (min-width: 768px) {
       transition: all 0.53s ease;
     }
