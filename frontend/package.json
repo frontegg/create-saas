@@ -1,12 +1,16 @@
 {
   "name": "frontend",
   "version": "0.1.0",
+  "engines": {
+    "node": "12.x"
+  },
   "private": true,
   "scripts": {
     "build:css": "postcss src/Tailwind.css -o src/tailwind.output.css",
     "build": "react-scripts build",
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
+    "heroku-postbuild": "react-scripts build",
     "lint": "tslint -p tsconfig.json -c tslint.json --fix",
     "prebuild": "npm run build:css",
     "predeploy": "npm run build",

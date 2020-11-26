@@ -2,6 +2,7 @@
 
 import yargs from 'yargs';
 import { startServices } from './run-services';
+import { deployServices } from './deploy-services';
 import { add } from './add';
 import { remove } from './remove';
 import { initRepo } from './init-repository';
@@ -11,9 +12,10 @@ const commands: any = {
   remove,
   init: initRepo,
   run: startServices,
+  deploy: deployServices,
 };
 
-const COMMANDS = ['run', 'add', 'remove'];
+const COMMANDS = ['run', 'add', 'remove', 'deploy'];
 
 function getCommandAndArgs(argv: any) {
   const args = argv._;
