@@ -11,6 +11,7 @@ import { Table } from '@frontegg/react-core';
 
 import moment from 'moment';
 import { detect } from 'detect-browser';
+import { Icon } from '../../../Components/Icon';
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -18,87 +19,25 @@ const widgets = [
   {
     label: 'USERS',
     value: '588',
-    icon: (
-      <svg
-        stroke='currentColor'
-        fill='none'
-        strokeWidth='2'
-        viewBox='0 0 24 24'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-        className='stroke-current text-grey-500'
-        height='24'
-        width='24'
-        xmlns='http://www.w3.org/2000/svg'>
-        <path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2' />
-        <circle cx='9' cy='7' r='4' />
-        <path d='M23 21v-2a4 4 0 0 0-3-3.87' />
-        <path d='M16 3.13a4 4 0 0 1 0 7.75' />
-      </svg>
-    ),
+    icon: <Icon type='users'/>,
     className: 'flex-row justify-content-between',
   },
   {
     label: 'SESSIONS',
     value: '435',
-    icon: (
-      <svg
-        stroke='currentColor'
-        fill='none'
-        strokeWidth='2'
-        viewBox='0 0 24 24'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-        className='stroke-current text-grey-500'
-        height='24'
-        width='24'
-        xmlns='http://www.w3.org/2000/svg'>
-        <polyline points='22 12 18 12 15 21 9 3 6 12 2 12' />
-      </svg>
-    ),
+    icon: <Icon type='pulse'/>,
     className: 'flex-row justify-content-between',
   },
   {
     label: 'BOUNCE RATE',
     value: '40.5%',
-    icon: (
-      <svg
-        stroke='currentColor'
-        fill='none'
-        strokeWidth='2'
-        viewBox='0 0 24 24'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-        className='stroke-current text-grey-500'
-        height='24'
-        width='24'
-        xmlns='http://www.w3.org/2000/svg'>
-        <path d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6' />
-        <polyline points='15 3 21 3 21 9' />
-        <line x1='10' y1='14' x2='21' y2='3' />
-      </svg>
-    ),
+    icon: <Icon type='bounce'/>,
     className: 'flex-row justify-content-between',
   },
   {
     label: 'SESSION DURATION',
     value: '1m 24s',
-    icon: (
-      <svg
-        stroke='currentColor'
-        fill='none'
-        strokeWidth='2'
-        viewBox='0 0 24 24'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-        className='stroke-current text-grey-500'
-        height='24'
-        width='24'
-        xmlns='http://www.w3.org/2000/svg'>
-        <circle cx='12' cy='12' r='10' />
-        <polyline points='12 6 12 12 16 14' />
-      </svg>
-    ),
+    icon: <Icon type='clock'/>,
     className: 'flex-row justify-content-between',
   },
 ];

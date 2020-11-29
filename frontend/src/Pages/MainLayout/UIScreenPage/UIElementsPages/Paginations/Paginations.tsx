@@ -1,4 +1,5 @@
 import React from 'react';
+import { Icon } from '../../../../../Components/Icon';
 import Pagination from '../../../../../Components/Pagination';
 import Widget from '../../../Widget';
 
@@ -29,110 +30,22 @@ const Paginations: React.FC = () => {
         <Pagination
           className='mb-3'
           page={5}
-          prev={
-            <svg
-              stroke='currentColor'
-              fill='none'
-              strokeWidth='2'
-              viewBox='0 0 24 24'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              className='stroke-current'
-              height='16'
-              width='16'
-              xmlns='http://www.w3.org/2000/svg'>
-              <polyline points='15 18 9 12 15 6' />
-            </svg>
-          }
-          next={
-            <svg
-              stroke='currentColor'
-              fill='none'
-              strokeWidth='2'
-              viewBox='0 0 24 24'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              className='stroke-current'
-              height='16'
-              width='16'
-              xmlns='http://www.w3.org/2000/svg'>
-              <polyline points='9 18 15 12 9 6' />
-            </svg>
-          }
+          prev={<Icon type='left-arrow' className='stroke-current' style={{ width: '16', height: '16' }} />}
+          next={<Icon type='right-arrow' className='stroke-current' style={{ width: '16', height: '16' }} />}
           count={10}
         />
         <Pagination
           className='mb-3'
           page={5}
-          prev={
-            <svg
-              stroke='currentColor'
-              fill='none'
-              strokeWidth='2'
-              viewBox='0 0 24 24'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              className='stroke-current'
-              height='16'
-              width='16'
-              xmlns='http://www.w3.org/2000/svg'>
-              <polyline points='11 17 6 12 11 7' />
-              <polyline points='18 17 13 12 18 7' />
-            </svg>
-          }
-          next={
-            <svg
-              stroke='currentColor'
-              fill='none'
-              strokeWidth='2'
-              viewBox='0 0 24 24'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              className='stroke-current'
-              height='16'
-              width='16'
-              xmlns='http://www.w3.org/2000/svg'>
-              <polyline points='13 17 18 12 13 7' />
-              <polyline points='6 17 11 12 6 7' />
-            </svg>
-          }
+          prev={<Icon type='double-left-arrow' className='stroke-current' style={{ width: '16', height: '16' }} />}
+          next={<Icon type='double-right-arrow' className='stroke-current' style={{ width: '16', height: '16' }} />}
           count={10}
         />
         <Pagination
           className='mb-3'
           page={5}
-          prev={
-            <svg
-              stroke='currentColor'
-              fill='none'
-              strokeWidth='2'
-              viewBox='0 0 24 24'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              className='stroke-current'
-              height='16'
-              width='16'
-              xmlns='http://www.w3.org/2000/svg'>
-              <line x1='19' y1='12' x2='5' y2='12' />
-              <polyline points='12 19 5 12 12 5' />
-            </svg>
-          }
-          next={
-            <svg
-              stroke='currentColor'
-              fill='none'
-              strokeWidth='2'
-              viewBox='0 0 24 24'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              className='stroke-current'
-              height='16'
-              width='16'
-              xmlns='http://www.w3.org/2000/svg'>
-              <line x1='5' y1='12' x2='19' y2='12' />
-              <polyline points='12 5 19 12 12 19' />
-            </svg>
-          }
+          prev={<Icon type='left-arrow-2' className='stroke-current' style={{ width: '16', height: '16' }} />}
+          next={<Icon type='right-arrow-2' className='stroke-current' style={{ width: '16', height: '16' }} />}
           count={10}
         />
       </Widget>
@@ -147,68 +60,10 @@ const Paginations: React.FC = () => {
         </div>
         <Pagination
           page={5}
-          first={
-            <svg
-              stroke='currentColor'
-              fill='none'
-              strokeWidth='2'
-              viewBox='0 0 24 24'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              className='stroke-current'
-              height='16'
-              width='16'
-              xmlns='http://www.w3.org/2000/svg'>
-              <polyline points='11 17 6 12 11 7' />
-              <polyline points='18 17 13 12 18 7' />
-            </svg>
-          }
-          last={
-            <svg
-              stroke='currentColor'
-              fill='none'
-              strokeWidth='2'
-              viewBox='0 0 24 24'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              className='stroke-current'
-              height='16'
-              width='16'
-              xmlns='http://www.w3.org/2000/svg'>
-              <polyline points='13 17 18 12 13 7' />
-              <polyline points='6 17 11 12 6 7' />
-            </svg>
-          }
-          prev={
-            <svg
-              stroke='currentColor'
-              fill='none'
-              strokeWidth='2'
-              viewBox='0 0 24 24'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              className='stroke-current'
-              height='16'
-              width='16'
-              xmlns='http://www.w3.org/2000/svg'>
-              <polyline points='15 18 9 12 15 6' />
-            </svg>
-          }
-          next={
-            <svg
-              stroke='currentColor'
-              fill='none'
-              strokeWidth='2'
-              viewBox='0 0 24 24'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              className='stroke-current'
-              height='16'
-              width='16'
-              xmlns='http://www.w3.org/2000/svg'>
-              <polyline points='9 18 15 12 9 6' />
-            </svg>
-          }
+          first={<Icon type='double-left-arrow' className='stroke-current' style={{ width: '16', height: '16' }} />}
+          last={<Icon type='double-right-arrow' className='stroke-current' style={{ width: '16', height: '16' }} />}
+          prev={<Icon type='left-arrow' className='stroke-current' style={{ width: '16', height: '16' }} />}
+          next={<Icon type='right-arrow' className='stroke-current' style={{ width: '16', height: '16' }} />}
           count={10}
         />
       </Widget>
