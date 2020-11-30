@@ -32,7 +32,7 @@ const longCommand = (command, text, onSuccess, onData) => {
         });
         process.on('exit', () => {
             spinner.stop();
-            onSuccess();
+            onSuccess === null || onSuccess === void 0 ? void 0 : onSuccess();
             resolve();
         });
     });
@@ -51,16 +51,14 @@ function initRepo(args) {
         }
         yield longCommand(`git clone --depth 1 https://github.com/frontegg/opensaas ${projectName}`, chalk_1.default.white.bold('Fetching data'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished fetching data')), console.log);
         if (clientId && apiKey) {
-            yield longCommand(`echo #Don't include this file in the source control >> ${projectName}/frontend/.env`, '', () => { return; });
-            yield longCommand(`echo FRONTEGG_CLIENT_ID=${clientId} >> ${projectName}/frontend/.env`, '', () => {
-                return;
-            });
-            yield longCommand(`echo FRONTEGG_API_KEY=${apiKey} >> ${projectName}/frontend/.env`, '', () => {
-                return;
-            });
-            const navBarFile = `${projectName}/frontend/src/Components/NavBar/NavBar.tsx`;
-            const data = fs_1.default.readFileSync(navBarFile, { encoding: 'utf8', flag: 'r' });
-            fs_1.default.writeFileSync(navBarFile, data.replace(/\/images\/logo.png/g, `https://assets.frontegg.com/public-frontegg-assets/${clientId}/assets/logo.png`));
+            yield longCommand(`echo #Don't include this file in the source control >> ${projectName}/frontend/.env`, '');
+            yield longCommand(`echo FRONTEGG_CLIENT_ID=${clientId} >> ${projectName}/frontend/.env`, '');
+            yield longCommand(`echo FRONTEGG_API_KEY=${apiKey} >> ${projectName}/frontend/.env`, '');
+            const files = [`${projectName}/frontend/src/Components/NavBar/NavBar.tsx`, `${projectName}/frontend/src/Components/Sidebar/Sidebar.tsx`];
+            for (const file of files) {
+                const data = fs_1.default.readFileSync(file, { encoding: 'utf8', flag: 'r' });
+                fs_1.default.writeFileSync(file, data.replace(/\/images\/logo.png/g, `https://assets.frontegg.com/public-frontegg-assets/${clientId}/assets/logo.png`));
+            }
         }
         yield longCommand(`cd ${projectName} && npm i && npx lerna bootstrap`, chalk_1.default.white.bold('Installing packages, this might take few minutes'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished installing packages')), console.info);
         if (command_exists_1.sync('docker')) {

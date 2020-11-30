@@ -15,7 +15,7 @@ type ArgsObject = {
 
 const spinner = ora('');
 
-const longCommand = (command: string, text: string, onSuccess: () => void, onData?: (text: string) => void) => {
+const longCommand = (command: string, text: string, onSuccess?: () => void, onData?: (text: string) => void) => {
   return new Promise((resolve, reject) => {
 
     const process = spawn(command, { shell: true });
@@ -27,7 +27,7 @@ const longCommand = (command: string, text: string, onSuccess: () => void, onDat
     });
     process.on('exit', () => {
       spinner.stop();
-      onSuccess();
+      onSuccess?.();
       resolve();
     });
   });
@@ -52,20 +52,15 @@ export async function initRepo(args: ArgsObject): Promise<void> {
     console.log);
 
   if (clientId && apiKey) {
-    await longCommand(`echo #Don't include this file in the source control >> ${projectName}/frontend/.env`, '',
-                      () => { return; });
+    await longCommand(`echo #Don't include this file in the source control >> ${projectName}/frontend/.env`, '');
+    await longCommand(`echo FRONTEGG_CLIENT_ID=${clientId} >> ${projectName}/frontend/.env`, '');
+    await longCommand(`echo FRONTEGG_API_KEY=${apiKey} >> ${projectName}/frontend/.env`, '');
 
-    await longCommand(`echo FRONTEGG_CLIENT_ID=${clientId} >> ${projectName}/frontend/.env`, '', () => {
-      return;
-    });
-
-    await longCommand(`echo FRONTEGG_API_KEY=${apiKey} >> ${projectName}/frontend/.env`, '', () => {
-      return;
-    });
-
-    const navBarFile = `${projectName}/frontend/src/Components/NavBar/NavBar.tsx`;
-    const data = fs.readFileSync(navBarFile, { encoding:'utf8', flag:'r' });
-    fs.writeFileSync(navBarFile, data.replace(/\/images\/logo.png/g, `https://assets.frontegg.com/public-frontegg-assets/${clientId}/assets/logo.png`));
+    const files = [`${projectName}/frontend/src/Components/NavBar/NavBar.tsx`, `${projectName}/frontend/src/Components/Sidebar/Sidebar.tsx`];
+    for (const file of files) {
+      const data = fs.readFileSync(file, { encoding:'utf8', flag:'r' });
+      fs.writeFileSync(file, data.replace(/\/images\/logo.png/g, `https://assets.frontegg.com/public-frontegg-assets/${clientId}/assets/logo.png`));
+    }
   }
 
   await longCommand(
