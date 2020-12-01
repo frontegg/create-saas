@@ -67,7 +67,7 @@ const Sidebar: React.FC<React.HTMLAttributes<HTMLElement>> = (props) => {
       </div>
       <div className='links-container'>{renderSidebarLinks(links)}</div>
       <label htmlFor='collapsing' className='ml-4 mr-4 text-right cursor-pointer'>
-      <Icon type='hamburger' />
+        <Icon type='hamburger' />
       </label>
     </div>
   );

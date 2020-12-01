@@ -32,7 +32,7 @@ const NavBar = (props: NavBarProps) => {
           <span>Frontegg</span>
         </a>
       </div>
-      <Icon type='search' className='search-icon'/>
+      <Icon type='search' className='search-icon' />
       <Input className='search-field' type='text' placeholder='Search...' />
       <ProfileImage src='/images/profile.jpeg' />
       {isAuthenticated && (

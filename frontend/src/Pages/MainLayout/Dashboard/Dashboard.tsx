@@ -19,25 +19,25 @@ const widgets = [
   {
     label: 'USERS',
     value: '588',
-    icon: <Icon type='users'/>,
+    icon: <Icon type='users' />,
     className: 'flex-row justify-content-between',
   },
   {
     label: 'SESSIONS',
     value: '435',
-    icon: <Icon type='pulse'/>,
+    icon: <Icon type='pulse' />,
     className: 'flex-row justify-content-between',
   },
   {
     label: 'BOUNCE RATE',
     value: '40.5%',
-    icon: <Icon type='bounce'/>,
+    icon: <Icon type='bounce' />,
     className: 'flex-row justify-content-between',
   },
   {
     label: 'SESSION DURATION',
     value: '1m 24s',
-    icon: <Icon type='clock'/>,
+    icon: <Icon type='clock' />,
     className: 'flex-row justify-content-between',
   },
 ];
