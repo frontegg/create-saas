@@ -2,6 +2,7 @@
 
 import { spawnSync } from 'child_process';
 import { sync as commandExists } from 'command-exists';
+import fs from 'fs';
 
 export async function deployServices(): Promise<void> {
   if (!commandExists('heroku')) {
@@ -11,6 +12,12 @@ export async function deployServices(): Promise<void> {
   runCommand('heroku', ['login']);
   if (!isAppCreated()) {
     runCommand('heroku', ['create']);
+  }
+  const data = fs.readFileSync('frontend/.env', { encoding:'utf8', flag:'r' });
+  const clientID = data.match(/FRONTEGG_CLIENT_ID=([^\n\r]*)/)?.[0];
+  const apiKey = data.match(/FRONTEGG_API_KEY=([^\n\r]*)/)?.[0];
+  if (clientID && apiKey) {
+    runCommand('heroku', ['config:set', clientID, apiKey]);
   }
   runCommand('git', ['subtree', 'push', '--prefix', 'frontend', 'heroku', 'master']);
 }

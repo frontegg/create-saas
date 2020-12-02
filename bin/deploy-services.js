@@ -9,11 +9,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deployServices = void 0;
 const child_process_1 = require("child_process");
 const command_exists_1 = require("command-exists");
+const fs_1 = __importDefault(require("fs"));
 function deployServices() {
+    var _a, _b;
     return __awaiter(this, void 0, void 0, function* () {
         if (!command_exists_1.sync('heroku')) {
             console.log('Please install heroku client');
@@ -22,6 +27,12 @@ function deployServices() {
         runCommand('heroku', ['login']);
         if (!isAppCreated()) {
             runCommand('heroku', ['create']);
+        }
+        const data = fs_1.default.readFileSync('frontend/.env', { encoding: 'utf8', flag: 'r' });
+        const clientID = (_a = data.match(/FRONTEGG_CLIENT_ID=([^\n\r]*)/)) === null || _a === void 0 ? void 0 : _a[0];
+        const apiKey = (_b = data.match(/FRONTEGG_API_KEY=([^\n\r]*)/)) === null || _b === void 0 ? void 0 : _b[0];
+        if (clientID && apiKey) {
+            runCommand('heroku', ['config:set', clientID, apiKey]);
         }
         runCommand('git', ['subtree', 'push', '--prefix', 'frontend', 'heroku', 'master']);
     });

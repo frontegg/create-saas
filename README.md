@@ -171,6 +171,12 @@ my-app
 
 <br />
 
+#### Deploy project to Heroku
+
+`npm run cli deploy`
+
+<br />
+
 ## Example of requests to backend using GraphQL
 
 <br />
