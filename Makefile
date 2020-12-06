@@ -2,6 +2,10 @@ BIN = node_modules/.bin
 PATH := $(BIN):$(PATH)
 SHELL := /bin/bash
 
+# npm i -g tree-cli
+dir-tree:
+	tree -l 4 -o output.txt --ignore 'node_modules/, .git/, .gitignore'
+
 init:
 	npm i && npx lerna bootstrap
 

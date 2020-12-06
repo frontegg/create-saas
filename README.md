@@ -84,64 +84,155 @@ Dashboard BFF is running on http://localhost:8080/.
 
 ```
 my-app
+├── CONTRIBUTING.md
+├── LICENSE
+├── Makefile
 ├── README.md
-├── node_modules
-├── package.json
-├── .gitignore
+├── backend
+|  ├── api-gw
+|  |  ├── Dockerfile
+|  |  ├── entrypoint.sh
+|  |  ├── nodemon.json
+|  |  ├── package-lock.json
+|  |  ├── package.json
+|  |  ├── src
+|  |  |  ├── autenticated-data-source.ts
+|  |  |  ├── lib
+|  |  |  |  └── config.ts
+|  |  |  └── server.ts
+|  |  ├── tsconfig.json
+|  |  └── tslint.json
+|  └── services
+|     ├── config-service
+|     |  ├── Dockerfile
+|     |  ├── README.md
+|     |  ├── docker-compose.yml
+|     |  ├── entrypoint.sh
+|     |  ├── nodemon.json
+|     |  ├── package-lock.json
+|     |  ├── package.json
+|     |  ├── src
+|     |  |  ├── db.ts
+|     |  |  ├── graphql
+|     |  |  ├── lib
+|     |  |  ├── models
+|     |  |  └── server.ts
+|     |  ├── tsconfig.json
+|     |  └── tslint.json
+|     └── metrics-service
+|        ├── Dockerfile
+|        ├── README.md
+|        ├── docker-compose.yml
+|        ├── entrypoint.sh
+|        ├── nodemon.json
+|        ├── ormconfig.js
+|        ├── package-lock.json
+|        ├── package.json
+|        ├── src
+|        |  ├── db
+|        |  ├── dto
+|        |  ├── helpers
+|        |  ├── lib
+|        |  ├── resolvers
+|        |  └── server.ts
+|        ├── tsconfig.json
+|        └── tslint.json
+├── bin
+|  └── *
+├── cli
+|  ├── add-service.ts
+|  ├── add.ts
+|  ├── cli.ts
+|  ├── deploy-services.ts
+|  ├── init-repository.ts
+|  ├── remove-service.ts
+|  ├── remove.ts
+|  └── run-services.ts
 ├── frontend
-│   ├── Dockerfile
-│   ├── node_modules
-│   ├── package.json
-│   ├── .gitignore
-│   ├── README.md
-│   ├── src
-│   |    └── Componentes
-│   |          └── *
-│   |    └── Pages
-│   |          └── *
-│   |    └── *
-│   └── public
-│        └── *
-└── backend
-    └── api-gw
-    │   ├── README.md
-    │   ├── node_modules
-    │   ├── package.json
-    │   └── src
-    |       ├── server.ts
-    |       ├── autenticated-data-source.ts
-    |       └── lib
-    |            └── config.ts
-    └── services
-        └── config-service
-        |   ├── README.md
-        |   ├── node_modules
-        |   ├── package.json
-        |   └── src
-        |       ├── server.ts
-        |       ├── db.ts
-        |       ├── graphql
-        |       |    └── *
-        |       ├── models
-        |       |    └── *
-        |       └── lib
-        |            └── *
-        └── metrics-service
-                ├── README.md
-                ├── node_modules
-                ├── package.json
-                └── src
-                    ├── server.ts
-                    ├── db
-                    |    └── *
-                    ├── dto
-                    |    └── *
-                    ├── helpers
-                    |    └── *
-                    ├── lib
-                    |    └── *
-                    └── resolvers
-                         └── *
+|  ├── Dockerfile
+|  ├── Procfile
+|  ├── README.md
+|  ├── build
+|  ├── index.js
+|  ├── nginx.conf
+|  ├── package-lock.json
+|  ├── package.json
+|  ├── postcss.config.js
+|  ├── public
+|  ├── src
+|  |  ├── App.scss
+|  |  ├── App.tsx
+|  |  ├── Components
+|  |  |  ├── Activities
+|  |  |  ├── Alert
+|  |  |  ├── Badge
+|  |  |  ├── Breadcrumbs
+|  |  |  ├── Button
+|  |  |  ├── ButtonDropDown
+|  |  |  ├── Charts
+|  |  |  ├── DatePicker
+|  |  |  ├── Dropdown
+|  |  |  ├── FilterButton
+|  |  |  ├── FilterInput
+|  |  |  ├── Form
+|  |  |  ├── Icon
+|  |  |  ├── Image
+|  |  |  ├── Input
+|  |  |  ├── List
+|  |  |  ├── Loader
+|  |  |  ├── NavBar
+|  |  |  ├── NotificationContext.tsx
+|  |  |  ├── Pagination
+|  |  |  ├── Popup
+|  |  |  ├── ProfileImage
+|  |  |  ├── ProgressBar
+|  |  |  ├── ProjectStatus
+|  |  |  ├── SettingsButton
+|  |  |  ├── SettingsSidebar
+|  |  |  ├── Sidebar
+|  |  |  ├── Slider
+|  |  |  ├── Switch
+|  |  |  ├── Tab
+|  |  |  └── Table
+|  |  ├── Pages
+|  |  |  ├── MainLayout
+|  |  |  |  ├── Dashboard
+|  |  |  |  ├── DatePickerPage
+|  |  |  |  ├── FormPage
+|  |  |  |  ├── MainLayout.scss
+|  |  |  |  ├── MainLayout.tsx
+|  |  |  |  ├── SliderPage
+|  |  |  |  ├── SwitchPage
+|  |  |  |  ├── TablePage
+|  |  |  |  ├── UIScreenPage
+|  |  |  |  ├── Widget
+|  |  |  |  ├── index.tsx
+|  |  |  |  ├── mockRequests.tsx
+|  |  |  |  └── themes.scss
+|  |  |  ├── NotFoundPage
+|  |  |  |  └── NotFoundPage.tsx
+|  |  |  └── Routes.tsx
+|  |  ├── Tailwind.css
+|  |  ├── declaration.d.ts
+|  |  ├── hooks.ts
+|  |  ├── index.scss
+|  |  ├── index.tsx
+|  |  ├── logo.svg
+|  |  ├── react-app-env.d.ts
+|  |  ├── serviceWorker.ts
+|  |  ├── setupTests.ts
+|  |  ├── tailwind.output.css
+|  |  └── withFrontegg.tsx
+|  ├── tailwind.js
+|  ├── tsconfig.json
+|  └── tslint.json
+├── lerna.json
+├── npx-opensaas.gif
+├── output.txt
+├── package-lock.json
+├── package.json
+├── tsconfig.json
+└── tslint.json
 
 ```
 
