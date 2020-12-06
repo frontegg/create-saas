@@ -13,7 +13,7 @@
 The application comes bundled with fully enabled dashboard including UI elements based on bootstrap and Material UI.<br />
 
 ### Dashboard and charts
-The application is bundled with re-charts which include a fully enabled dashboard with charts (line, donut, pie) and data hooks which loads the data from the backend directly<br/>
+The application is bundled with [Recharts](https://recharts.org) which include a fully enabled dashboard with charts (line, donut, pie) and data hooks which loads the data from the backend directly<br/>
 
 ### Frontend
 The frontend is based on [React](https://reactjs.org/) including [Apollo client](https://www.apollographql.com/docs/react/) for the GraphQL operations <br/>
@@ -54,7 +54,7 @@ npm run start
 
 <br />
 
-(?) The Frontegg clientId and api key are available upon registration with [Frontegg](https://portal.frontegg.com) via the [Administration](https://portal.frontegg.com/administration) menu
+(?) The Frontegg clientId and api key are available upon registration with [Frontegg](https://portal.frontegg.com) via the [Administration](https://portal.frontegg.com/administration) menu.
 
 <br />
 
@@ -259,8 +259,6 @@ my-app
 #### Init project
 
 `npm run cli init`
-
-<br />
 
 #### Deploy project to Heroku
 
