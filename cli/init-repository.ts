@@ -59,7 +59,7 @@ export async function initRepo(args: ArgsObject): Promise<void> {
     const files = [`${projectName}/frontend/src/Components/NavBar/NavBar.tsx`, `${projectName}/frontend/src/Components/Sidebar/Sidebar.tsx`];
     for (const file of files) {
       const data = fs.readFileSync(file, { encoding:'utf8', flag:'r' });
-      fs.writeFileSync(file, data.replace(/\/images\/logo.png/g, `https://assets.frontegg.com/public-frontegg-assets/${clientId}/assets/logo.png`));
+      fs.writeFileSync(file, data.replace(/\/images\/logo.png/g, `https://assets.frontegg.com/public-vendor-assets/${clientId}/assets/logo.png`));
     }
   }
 

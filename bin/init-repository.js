@@ -57,7 +57,7 @@ function initRepo(args) {
             const files = [`${projectName}/frontend/src/Components/NavBar/NavBar.tsx`, `${projectName}/frontend/src/Components/Sidebar/Sidebar.tsx`];
             for (const file of files) {
                 const data = fs_1.default.readFileSync(file, { encoding: 'utf8', flag: 'r' });
-                fs_1.default.writeFileSync(file, data.replace(/\/images\/logo.png/g, `https://assets.frontegg.com/public-frontegg-assets/${clientId}/assets/logo.png`));
+                fs_1.default.writeFileSync(file, data.replace(/\/images\/logo.png/g, `https://assets.frontegg.com/public-vendor-assets/${clientId}/assets/logo.png`));
             }
         }
         yield longCommand(`cd ${projectName} && npm i && npx lerna bootstrap`, chalk_1.default.white.bold('Installing packages, this might take few minutes'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished installing packages')), console.info);
