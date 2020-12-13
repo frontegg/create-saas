@@ -29,7 +29,6 @@ const NavBar = (props: NavBarProps) => {
       <div className='logo d-none d-md-flex'>
         <a className='d-flex flex-row align-items-center justify-content-start' href='/'>
           <Image src='/images/logo.png' />
-          <span>Frontegg</span>
         </a>
       </div>
       <Icon type='search' className='search-icon' />

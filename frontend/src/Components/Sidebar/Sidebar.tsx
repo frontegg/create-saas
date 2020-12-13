@@ -62,7 +62,6 @@ const Sidebar: React.FC<React.HTMLAttributes<HTMLElement>> = (props) => {
       <div className='logo'>
         <a className='d-flex flex-row align-items-center justify-content-start space-x-2' href='/'>
           <Image src='/images/logo.png' />
-          <span>Frontegg</span>
         </a>
       </div>
       <div className='links-container'>{renderSidebarLinks(links)}</div>
