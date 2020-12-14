@@ -1,6 +1,9 @@
 import React from 'react';
 import { Row } from 'react-table';
-import { Box, Collapse, TableCell, TableRow } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import Collapse from '@material-ui/core/Collapse';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
 
 type TableExpandableProps<T extends object> = {
   isExpanded: boolean;

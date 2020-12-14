@@ -1,5 +1,5 @@
 import React, { forwardRef, useMemo } from 'react';
-import { PopoverProps } from '@material-ui/core';
+import { PopoverProps } from '@material-ui/core/Popover';
 import { PopupClick } from './PopupClick';
 import { PopupHover } from './PopupHover';
 import { PopupFocus } from './PopupFocus';

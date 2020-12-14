@@ -1,5 +1,6 @@
 import React, { forwardRef, useCallback, useState } from 'react';
-import { Popover, Box } from '@material-ui/core';
+import Popover from '@material-ui/core/Popover';
+import Box from '@material-ui/core/Box';
 import { PopoverProps } from './types';
 import { useStyles } from './styles';
 

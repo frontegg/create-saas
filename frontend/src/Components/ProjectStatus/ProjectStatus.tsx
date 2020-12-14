@@ -1,6 +1,11 @@
 import React from 'react';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { Paper, Avatar } from '@material-ui/core';
+import makeStyles from '@material-ui/styles/makeStyles';
+import createStyles from '@material-ui/styles/createStyles';
+import { Theme } from '@material-ui/core/styles';
+
+import Paper from '@material-ui/core/Paper';
+import Avatar from '@material-ui/core/Avatar';
+
 import { ProgressBar } from '../ProgressBar';
 
 const useStyles = makeStyles((theme: Theme) =>

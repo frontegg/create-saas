@@ -1,7 +1,9 @@
 import React from 'react';
 import Widget from '../../../Widget';
 import { VerticalTabs, HorizontalTabs, IconTabs, UnderlinedTabs } from '../../../../../Components/Tab';
-import { Dehaze, FavoriteBorderOutlined, SettingsOutlined } from '@material-ui/icons';
+import Dehaze from '@material-ui/icons/Dehaze';
+import FavoriteBorderOutlined from '@material-ui/icons/FavoriteBorderOutlined';
+import SettingsOutlined from '@material-ui/icons/SettingsOutlined';
 
 const tabs = [
   {

@@ -1,5 +1,7 @@
 import React, { useMemo } from 'react';
-import { Breadcrumbs as MaterialUIBreadcrumbs, Link } from '@material-ui/core';
+import MaterialUIBreadcrumbs from '@material-ui/core/Breadcrumbs';
+import Link from '@material-ui/core/Link';
+
 import HomeIcon from '@material-ui/icons/Home';
 
 type LinkType = {

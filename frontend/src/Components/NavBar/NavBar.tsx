@@ -4,7 +4,7 @@ import './NavBar.scss';
 import ProfileImage from '../ProfileImage';
 import Image from '../Image';
 import SettingsIcon from '@material-ui/icons/Settings';
-import { IconButton } from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
 import SettingsSidebar from '../SettingsSidebar';
 import { Notifications } from '@frontegg/react';
 import { useAuth } from '@frontegg/react-auth';

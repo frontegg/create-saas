@@ -1,5 +1,8 @@
 import React from 'react';
-import { TableBody as MaterialUITableBody, TableRow, TableCell, makeStyles } from '@material-ui/core';
+import MaterialUITableBody from '@material-ui/core/TableBody';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
+import makeStyles from '@material-ui/core/styles/makeStyles';
 import { Row, TableBodyPropGetter, TableBodyProps, UseExpandedRowProps } from 'react-table';
 import { TableExpandable } from './TableExpandable';
 import { Loader } from '../Loader';

@@ -1,6 +1,9 @@
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import FilterListIcon from '@material-ui/icons/FilterList';
-import { Box, IconButton, Tooltip, makeStyles } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
+import makeStyles from '@material-ui/core/styles/makeStyles';
 import { Popup } from '../Popup';
 import { TableColumnProps } from './types';
 import { useDebounce } from '../../hooks';

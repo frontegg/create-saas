@@ -1,5 +1,11 @@
 import React, { useCallback, useMemo, useEffect, useRef } from 'react';
-import { Table as MaterialUITable, Checkbox, IconButton, TablePagination, Paper, makeStyles } from '@material-ui/core';
+import MaterialUITable from '@material-ui/core/Table';
+import Checkbox from '@material-ui/core/Checkbox';
+import IconButton from '@material-ui/core/IconButton';
+import TablePagination from '@material-ui/core/TablePagination';
+import Paper from '@material-ui/core/Paper';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+
 import './style.scss';
 import {
   useTable,

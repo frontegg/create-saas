@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { CircularProgress, CircularProgressProps } from '@material-ui/core';
+import CircularProgress, { CircularProgressProps } from '@material-ui/core/CircularProgress';
 import classNames from 'classnames';
 import './style.scss';
 

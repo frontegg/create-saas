@@ -1,15 +1,13 @@
 import React from 'react';
 import { TableColumnProps } from './types';
 import { HeaderGroup, TableSortByToggleProps } from 'react-table';
-import {
-  TableHead as MaterialUITableHead,
-  TableRow,
-  TableCell,
-  TableSortLabel,
-  Checkbox,
-  Box,
-  makeStyles,
-} from '@material-ui/core';
+import MaterialUITableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
+import TableSortLabel from '@material-ui/core/TableSortLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Box from '@material-ui/core/Box';
+import makeStyles from '@material-ui/core/styles/makeStyles';
 import { TableFilterColumn } from './TableFilterColumn';
 
 const useStyles = makeStyles((theme) => ({
