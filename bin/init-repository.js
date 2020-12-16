@@ -1,5 +1,24 @@
 #!/usr/bin/env node
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -20,6 +39,7 @@ const chalk_1 = __importDefault(require("chalk"));
 const fs_1 = __importDefault(require("fs"));
 const child_process_1 = require("child_process");
 const command_exists_1 = require("command-exists");
+const path = __importStar(require("path"));
 const spinner = ora_1.default('');
 const longCommand = (command, text, onSuccess, onData) => {
     return new Promise((resolve, reject) => {
@@ -56,8 +76,14 @@ function initRepo(args) {
             yield longCommand(`echo FRONTEGG_API_KEY=${apiKey} >> ${projectName}/frontend/.env`, '');
             const files = [`${projectName}/frontend/src/Components/NavBar/NavBar.tsx`, `${projectName}/frontend/src/Components/Sidebar/Sidebar.tsx`];
             for (const file of files) {
-                const data = fs_1.default.readFileSync(file, { encoding: 'utf8', flag: 'r' });
-                fs_1.default.writeFileSync(file, data.replace(/\/images\/logo.png/g, `https://assets.frontegg.com/public-vendor-assets/${clientId}/assets/logo.png`));
+                const filePath = fs_1.default.existsSync(file) ? file : path.join(__dirname, file);
+                try {
+                    const data = fs_1.default.readFileSync(filePath, { encoding: 'utf8', flag: 'r' });
+                    fs_1.default.writeFileSync(filePath, data.replace(/\/images\/logo.png/g, `https://assets.frontegg.com/public-vendor-assets/${clientId}/assets/logo.png`));
+                }
+                catch (error) {
+                    console.error(error);
+                }
             }
         }
         yield longCommand(`cd ${projectName} && npm i && npx lerna bootstrap`, chalk_1.default.white.bold('Installing packages, this might take few minutes'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished installing packages')), console.info);

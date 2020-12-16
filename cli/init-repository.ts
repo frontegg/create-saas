@@ -6,6 +6,7 @@ import chalk from 'chalk';
 import fs from 'fs';
 import { spawn } from 'child_process';
 import { sync as commandExists } from 'command-exists';
+import * as path from 'path';
 
 type ArgsObject = {
   name?: string;
@@ -58,8 +59,13 @@ export async function initRepo(args: ArgsObject): Promise<void> {
 
     const files = [`${projectName}/frontend/src/Components/NavBar/NavBar.tsx`, `${projectName}/frontend/src/Components/Sidebar/Sidebar.tsx`];
     for (const file of files) {
-      const data = fs.readFileSync(file, { encoding:'utf8', flag:'r' });
-      fs.writeFileSync(file, data.replace(/\/images\/logo.png/g, `https://assets.frontegg.com/public-vendor-assets/${clientId}/assets/logo.png`));
+      const filePath = fs.existsSync(file) ? file : path.join(__dirname, file);
+      try {
+        const data = fs.readFileSync(filePath, { encoding:'utf8', flag:'r' });
+        fs.writeFileSync(filePath, data.replace(/\/images\/logo.png/g, `https://assets.frontegg.com/public-vendor-assets/${clientId}/assets/logo.png`));
+      } catch (error) {
+        console.error(error);
+      }
     }
   }
 
