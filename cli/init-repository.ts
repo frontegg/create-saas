@@ -6,13 +6,14 @@ import chalk from 'chalk';
 import fs from 'fs';
 import { spawn } from 'child_process';
 import { sync as commandExists } from 'command-exists';
-import * as path from 'path';
 
 type ArgsObject = {
   name?: string;
   apiKey?: string;
   clientId?: string;
 };
+
+const REQUIRED_COMMANDS = ['git', 'make'];
 
 const spinner = ora('');
 
@@ -29,7 +30,7 @@ const longCommand = (command: string, text: string, onSuccess?: () => void, onDa
     process.on('exit', () => {
       spinner.stop();
       onSuccess?.();
-      resolve();
+      resolve({});
     });
   });
 };
@@ -46,6 +47,13 @@ export async function initRepo(args: ArgsObject): Promise<void> {
     projectName = response.project;
   }
 
+  for (const command of REQUIRED_COMMANDS) {
+    if (!commandExists(command)) {
+      console.log(chalk.red('✖ ') + chalk.white.bold(`please install command: "${command}" to continue`));
+      return;
+    }
+  }
+
   await longCommand(
     `git clone --depth 1 https://github.com/frontegg/opensaas ${projectName}`,
     chalk.white.bold('Fetching data'),
@@ -59,12 +67,9 @@ export async function initRepo(args: ArgsObject): Promise<void> {
 
     const files = [`${projectName}/frontend/src/Components/NavBar/NavBar.tsx`, `${projectName}/frontend/src/Components/Sidebar/Sidebar.tsx`];
     for (const file of files) {
-      const filePath = fs.existsSync(file) ? file : path.join(__dirname, file);
-      try {
-        const data = fs.readFileSync(filePath, { encoding:'utf8', flag:'r' });
-        fs.writeFileSync(filePath, data.replace(/\/images\/logo.png/g, `https://assets.frontegg.com/public-vendor-assets/${clientId}/assets/logo.png`));
-      } catch (error) {
-        console.error(error);
+      if (fs.existsSync(file)) {
+        const data = fs.readFileSync(file, { encoding:'utf8', flag:'r' });
+        fs.writeFileSync(file, data.replace(/\/images\/logo.png/g, `https://assets.frontegg.com/public-vendor-assets/${clientId}/assets/logo.png`));
       }
     }
   }
