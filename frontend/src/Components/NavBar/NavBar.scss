@@ -1,6 +1,6 @@
 @import '../../Pages/MainLayout/themes.scss';
 
-.fe-account-popup{
+.fe-account-popup {
   max-height: 100vh !important;
 }
 .nav-bar {
@@ -68,21 +68,18 @@
       box-shadow: none;
     }
   }
-  .frontegg .wrap_notifications {
-    margin-top: 5px;
+
+  .frontegg {
+    .wrap_notifications {
+      margin-top: 5px;
   }
 
   .account-wrapper {
     display: flex;
     justify-self: right;
     float: right;
-    /* margin-left: 549px; */
     position: absolute;
     right: 50px;
-  }
-
-  .fe-account-popup{
-    max-height: 100vh !important;
   }
 
   .logo {
