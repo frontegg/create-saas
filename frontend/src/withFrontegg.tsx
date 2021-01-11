@@ -1,8 +1,7 @@
 import React, { ComponentType } from 'react';
+import { AuthPlugin } from '@frontegg/react-auth';
 import { ContextHolder } from '@frontegg/rest-api';
 import { ContextOptions, PluginConfig, FronteggProvider } from '@frontegg/react-core';
-import { uiLibrary } from '@frontegg/react-elements-material-ui';
-import { AuthPlugin } from '@frontegg/react-auth';
 import { FronteggProvider as LegacyProvider, ContextOptions as LegacyOptions } from '@frontegg/react';
 
 /**
@@ -35,7 +34,7 @@ const plugins: PluginConfig[] = [
  */
 export const withFrontegg = <P extends {}>(AppComponent: ComponentType<P>) => (props: P) => {
   return (
-    <FronteggProvider plugins={plugins} context={contextOptions} uiLibrary={uiLibrary}>
+    <FronteggProvider plugins={plugins} context={contextOptions}>
       <LegacyProvider contextOptions={legacyContextOptions}>
         <AppComponent {...props} />
       </LegacyProvider>

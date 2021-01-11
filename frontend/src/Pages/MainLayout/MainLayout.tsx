@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Redirect } from 'react-router-dom';
 import { NotificationContainer } from 'react-notifications';
 import classNames from 'classnames';
 import { Alert } from '../../Components/Alert';
@@ -255,43 +255,43 @@ const MainLayout: React.FC = () => {
           })}
           <div className='p-4 content'>
             <Switch>
-              <Route exact path='/' render={() => <Redirect to='/dashboard' />} />
+              <ProtectedRoute exact path='/' render={() => <Redirect to='/dashboard' />} />
               <ProtectedRoute path='/sso' component={SSO.Page} />
-              <Route path='/dashboard' component={MainDashboard} />
-              <Route path='/forms/example' component={FormPage} />
-              <Route path='/forms/sliders' component={SliderPage} />
-              <Route path='/forms/datepickers' component={DatePickerPage} />
-              <Route path='/forms/switches' component={SwitchPage} />
-              <Route path='/tables/example' component={Table} />
+              <ProtectedRoute path='/dashboard' component={MainDashboard} />
+              <ProtectedRoute path='/forms/example' component={FormPage} />
+              <ProtectedRoute path='/forms/sliders' component={SliderPage} />
+              <ProtectedRoute path='/forms/datepickers' component={DatePickerPage} />
+              <ProtectedRoute path='/forms/switches' component={SwitchPage} />
+              <ProtectedRoute path='/tables/example' component={Table} />
               <ProtectedRoute path='/enterprise/team' component={TeamManagement} />
               <ProtectedRoute path='/enterprise/audits' component={Audits} />
               <ProtectedRoute path='/enterprise/sso' component={Sso} />
               <ProtectedRoute path='/enterprise/slack' component={Slack} />
               <ProtectedRoute path='/enterprise/webhooks' component={Webhooks} />
               <ProtectedRoute path='/enterprise/profile' component={ProfilePage} />
-              <Route
+              <ProtectedRoute
                 path='/ui-elements'
                 render={(props) => (
                   <UIScreenPage>
                     <Switch>
-                      <Route path='/ui-elements/alerts' component={Alerts} />
-                      <Route path='/ui-elements/badges' component={Badges} />
-                      <Route path='/ui-elements/buttons' component={Buttons} />
-                      <Route path='/ui-elements/dropdowns' component={Dropdowns} />
-                      <Route path='/ui-elements/pagination' component={Paginations} />
-                      <Route path='/ui-elements/images' component={Images} />
-                      <Route path='/ui-elements/lists' component={Lists} />
-                      <Route path='/ui-elements/progress-bar' component={ProgressBars} />
-                      <Route path='/ui-elements/notifications' component={Notifications} />
-                      <Route path='/ui-elements/tabs' component={Tabs} />
-                      <Route path='/ui-elements/typography' component={Typography} />
-                      <Route path='/ui-elements/breadcrumbs' component={BreadcrumbsPage} />
+                      <ProtectedRoute path='/ui-elements/alerts' component={Alerts} />
+                      <ProtectedRoute path='/ui-elements/badges' component={Badges} />
+                      <ProtectedRoute path='/ui-elements/buttons' component={Buttons} />
+                      <ProtectedRoute path='/ui-elements/dropdowns' component={Dropdowns} />
+                      <ProtectedRoute path='/ui-elements/pagination' component={Paginations} />
+                      <ProtectedRoute path='/ui-elements/images' component={Images} />
+                      <ProtectedRoute path='/ui-elements/lists' component={Lists} />
+                      <ProtectedRoute path='/ui-elements/progress-bar' component={ProgressBars} />
+                      <ProtectedRoute path='/ui-elements/notifications' component={Notifications} />
+                      <ProtectedRoute path='/ui-elements/tabs' component={Tabs} />
+                      <ProtectedRoute path='/ui-elements/typography' component={Typography} />
+                      <ProtectedRoute path='/ui-elements/breadcrumbs' component={BreadcrumbsPage} />
                       <Redirect from='*' to='/404' />
                     </Switch>
                   </UIScreenPage>
                 )}
               />
-              <Route path='*' exact={true} component={NotFoundPage} />
+              <ProtectedRoute path='*' exact={true} component={NotFoundPage} />
             </Switch>
           </div>
         </div>
