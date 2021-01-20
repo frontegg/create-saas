@@ -1,5 +1,7 @@
 import React, { ComponentType } from 'react';
 import { AuthPlugin } from '@frontegg/react-auth';
+import { AuditsPlugin } from '@frontegg/react-audits';
+import { ConnectivityPlugin } from '@frontegg/react-connectivity';
 import { ContextHolder } from '@frontegg/rest-api';
 import { ContextOptions, PluginConfig, FronteggProvider } from '@frontegg/react-core';
 import { FronteggProvider as LegacyProvider, ContextOptions as LegacyOptions } from '@frontegg/react';
@@ -26,6 +28,8 @@ const plugins: PluginConfig[] = [
     header: <img alt='logo' src='https://assets.frontegg.com/public-frontegg-assets/acme-logo.svg' />,
     /* auth options, find more information at https://github.com/frontegg/frontegg-react/tree/master/packages/auth */
   }),
+  ConnectivityPlugin(),
+  AuditsPlugin(),
 ];
 
 /**

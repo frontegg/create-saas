@@ -8,7 +8,7 @@ export type LinkType = {
 
 export const links: LinkType[] = [
   {
-    header: 'APPLICATIONS',
+    header: 'CORE',
   },
   {
     path: '/dashboard',
@@ -16,144 +16,41 @@ export const links: LinkType[] = [
     icon: '',
   },
   {
-    header: 'COMPONENTS',
+    path: '/services',
+    label: 'Services',
+    icon: '',
   },
   {
-    path: '/ui-elements',
-    label: 'UI Elements',
+    path: '/anomalies',
+    label: 'Anomalies',
     icon: '',
-    sublinks: [
-      {
-        path: '/badges',
-        label: 'Badges',
-        icon: '',
-      },
-      {
-        path: '/breadcrumbs',
-        label: 'Breadcrumbs',
-        icon: '',
-      },
-      {
-        path: '/buttons',
-        label: 'Buttons',
-        icon: '',
-      },
-      {
-        path: '/dropdowns',
-        label: 'Dropdowns',
-        icon: '',
-      },
-      {
-        path: '/images',
-        label: 'Images',
-        icon: '',
-      },
-      {
-        path: '/lists',
-        label: 'Lists',
-        icon: '',
-      },
-      {
-        path: '/progress-bar',
-        label: 'Progress bar',
-        icon: '',
-      },
-      {
-        path: '/pagination',
-        label: 'Pagination',
-        icon: '',
-      },
-      {
-        path: '/tabs',
-        label: 'Tabs',
-        icon: '',
-      },
-      {
-        path: '/typography',
-        label: 'Typography',
-        icon: '',
-      },
-      {
-        path: '/alerts',
-        label: 'Alerts',
-        icon: '',
-      },
-      {
-        path: '/notifications',
-        label: 'React notifications',
-        icon: '',
-      },
-    ],
   },
   {
-    path: '/tables',
-    label: 'Table screen',
-    icon: '',
-    sublinks: [
-      {
-        path: '/example',
-        label: 'Table',
-        icon: '',
-      },
-    ],
+    header: 'ADMINISTRATION',
   },
   {
-    path: '/forms',
-    label: 'Form screen',
+    path: '/administration/team',
+    label: 'Team Management',
     icon: '',
-    sublinks: [
-      {
-        path: '/example',
-        label: 'Form',
-        icon: '',
-      },
-      {
-        path: '/sliders',
-        label: 'Sliders',
-        icon: '',
-      },
-      {
-        path: '/datepickers',
-        label: 'Datepickers',
-        icon: '',
-      },
-      {
-        path: '/switches',
-        label: 'Switches',
-        icon: '',
-      },
-    ],
   },
   {
-    path: '/enterprise',
-    label: 'Enterprise',
+    path: '/administration/audits',
+    label: 'Audit Logs',
     icon: '',
-    sublinks: [
-      {
-        path: '/team',
-        label: 'Team Management',
-        icon: '',
-      },
-      {
-        path: '/audits',
-        label: 'Audit Logs',
-        icon: '',
-      },
-      {
-        path: '/sso',
-        label: 'SSO',
-        icon: '',
-      },
-      {
-        path: '/webhooks',
-        label: 'Webhooks',
-        icon: '',
-      },
-      {
-        path: '/slack',
-        label: 'Slack',
-        icon: '',
-      },
-    ],
   },
+  {
+    path: '/administration/sso',
+    label: 'SSO',
+    icon: '',
+  },
+  {
+    path: '/administration/webhooks',
+    label: 'Webhooks',
+    icon: '',
+  },
+  {
+      path: '/administration/slack',
+      label: 'Slack',
+      icon: '',
+    },
 ];

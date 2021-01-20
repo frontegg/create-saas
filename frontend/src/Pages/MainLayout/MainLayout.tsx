@@ -29,9 +29,9 @@ import Typography from './UIScreenPage/UIElementsPages/Typography';
 import BreadcrumbsPage from './UIScreenPage/UIElementsPages/Breadcrumbs';
 
 import { useQuery, gql } from '@apollo/client';
-import { ProtectedRoute, Profile } from '@frontegg/react-auth';
-import { SSO, Team } from '@frontegg/react-auth';
-import * as Frontegg from '@frontegg/react';
+import { Audits } from '@frontegg/react-audits';
+import { ProtectedRoute, Profile, SSO, Team } from '@frontegg/react-auth';
+import { WebhookComponent, ConnectivityPage } from '@frontegg/react-connectivity';
 import { MOCK_REQUESTS } from './mockRequests';
 
 import 'react-notifications/lib/notifications.css';
@@ -55,16 +55,16 @@ const TeamManagement = () => {
   return <Team.Page />;
 };
 
-const Audits = () => {
-  return <Frontegg.Audits />;
+const AuditsPage = () => {
+  return <Audits.Page />;
 };
 
-const Slack = () => {
-  return <Frontegg.Slack rootDir={'/enterprise/slack'} />;
+const Connectivity = () => {
+  return <ConnectivityPage />;
 };
 
 const Webhooks = () => {
-  return <Frontegg.WebHooks rootDir={'/enterprise/webhooks'} />;
+  return <WebhookComponent />;
 };
 
 const Sso = () => {
@@ -263,12 +263,12 @@ const MainLayout: React.FC = () => {
               <ProtectedRoute path='/forms/datepickers' component={DatePickerPage} />
               <ProtectedRoute path='/forms/switches' component={SwitchPage} />
               <ProtectedRoute path='/tables/example' component={Table} />
-              <ProtectedRoute path='/enterprise/team' component={TeamManagement} />
-              <ProtectedRoute path='/enterprise/audits' component={Audits} />
-              <ProtectedRoute path='/enterprise/sso' component={Sso} />
-              <ProtectedRoute path='/enterprise/slack' component={Slack} />
-              <ProtectedRoute path='/enterprise/webhooks' component={Webhooks} />
-              <ProtectedRoute path='/enterprise/profile' component={ProfilePage} />
+              <ProtectedRoute path='/administration/team' component={TeamManagement} />
+              <ProtectedRoute path='/administration/audits' component={AuditsPage} />
+              <ProtectedRoute path='/administration/sso' component={Sso} />
+              <ProtectedRoute path='/administration/events' component={Connectivity} />
+              <ProtectedRoute path='/administration/webhooks' component={Webhooks} />
+              <ProtectedRoute path='/profile' component={ProfilePage} />
               <ProtectedRoute
                 path='/ui-elements'
                 render={(props) => (
