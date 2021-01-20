@@ -13,44 +13,56 @@ export const links: LinkType[] = [
   {
     path: '/dashboard',
     label: 'Dashboard',
-    icon: '',
   },
   {
     path: '/services',
     label: 'Services',
-    icon: '',
   },
   {
     path: '/anomalies',
     label: 'Anomalies',
-    icon: '',
   },
   {
     header: 'ADMINISTRATION',
   },
   {
-    path: '/administration/team',
-    label: 'Team Management',
-    icon: '',
+    path: '/administration/profile',
+    label: 'My Profile',
   },
   {
-    path: '/administration/audits',
-    label: 'Audit Logs',
-    icon: '',
+    path: '/administration/team',
+    label: 'Team Management',
   },
   {
     path: '/administration/sso',
     label: 'SSO',
-    icon: '',
+  },
+  {
+    path: '/administration/api',
+    label: 'API management',
+  },
+  {
+    path: '/administration/account',
+    label: 'Account',
+  },
+  {
+    path: '/administration/personal',
+    label: 'Personal',
   },
   {
     path: '/administration/webhooks',
     label: 'Webhooks',
-    icon: '',
   },
   {
-      path: '/administration/slack',
-      label: 'Slack',
-      icon: '',
-    },
+    path: '/administration/events',
+    label: 'Events & Alerts',
+  },
+  {
+    path: '/administration/audits',
+    label: 'Audit Logs',
+  },
+  {
+    path: '/administration/reports',
+    label: 'Reports',
+  },
 ];

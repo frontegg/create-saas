@@ -1,7 +1,13 @@
 import React, { useCallback } from 'react';
 import { Switch, Redirect } from 'react-router-dom';
 import { NotificationContainer } from 'react-notifications';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import classNames from 'classnames';
+import { useQuery, gql } from '@apollo/client';
+import { Audits } from '@frontegg/react-audits';
+import { ProtectedRoute, Profile, SSO, Team } from '@frontegg/react-auth';
+import { WebhookComponent, ConnectivityPage } from '@frontegg/react-connectivity';
+
 import { Alert } from '../../Components/Alert';
 import Sidebar from '../../Components/Sidebar';
 import NavBar from '../../Components/NavBar';
@@ -28,14 +34,9 @@ import Tabs from './UIScreenPage/UIElementsPages/Tabs';
 import Typography from './UIScreenPage/UIElementsPages/Typography';
 import BreadcrumbsPage from './UIScreenPage/UIElementsPages/Breadcrumbs';
 
-import { useQuery, gql } from '@apollo/client';
-import { Audits } from '@frontegg/react-audits';
-import { ProtectedRoute, Profile, SSO, Team } from '@frontegg/react-auth';
-import { WebhookComponent, ConnectivityPage } from '@frontegg/react-connectivity';
 import { MOCK_REQUESTS } from './mockRequests';
 
 import 'react-notifications/lib/notifications.css';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import './MainLayout.scss';
 
 const REQUESTS = gql`
@@ -60,11 +61,11 @@ const AuditsPage = () => {
 };
 
 const Connectivity = () => {
-  return <ConnectivityPage />;
+  return <ConnectivityPage rootPath='/administration/events/' />;
 };
 
 const Webhooks = () => {
-  return <WebhookComponent />;
+  return <WebhookComponent rootPath='/administration/webhooks' />;
 };
 
 const Sso = () => {
@@ -268,7 +269,7 @@ const MainLayout: React.FC = () => {
               <ProtectedRoute path='/administration/sso' component={Sso} />
               <ProtectedRoute path='/administration/events' component={Connectivity} />
               <ProtectedRoute path='/administration/webhooks' component={Webhooks} />
-              <ProtectedRoute path='/profile' component={ProfilePage} />
+              <ProtectedRoute path='/administration/profile' component={ProfilePage} />
               <ProtectedRoute
                 path='/ui-elements'
                 render={(props) => (

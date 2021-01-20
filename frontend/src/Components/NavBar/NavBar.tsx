@@ -28,7 +28,7 @@ const NavBar = (props: NavBarProps) => {
       <Icon type='search' className='search-icon' />
       <Input className='search-field' type='text' placeholder='Search...' />
 
-      <div className="account-wrapper" style={{display: 'flex'}}>
+      <div className='account-wrapper' style={{ display: 'flex' }}>
         <Notifications />
         <AccountDropdown />
       </div>
