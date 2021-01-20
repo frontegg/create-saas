@@ -33,11 +33,12 @@ import Notifications from './UIScreenPage/UIElementsPages/Notifications';
 import Tabs from './UIScreenPage/UIElementsPages/Tabs';
 import Typography from './UIScreenPage/UIElementsPages/Typography';
 import BreadcrumbsPage from './UIScreenPage/UIElementsPages/Breadcrumbs';
-
+import { APIManagement } from './APIManagement';
 import { MOCK_REQUESTS } from './mockRequests';
 
 import 'react-notifications/lib/notifications.css';
 import './MainLayout.scss';
+import { APIManagementRoute } from '../../Components/Sidebar/links';
 
 const REQUESTS = gql`
   query {
@@ -269,7 +270,8 @@ const MainLayout: React.FC = () => {
               <ProtectedRoute path='/administration/sso' component={Sso} />
               <ProtectedRoute path='/administration/events' component={Connectivity} />
               <ProtectedRoute path='/administration/webhooks' component={Webhooks} />
-              <ProtectedRoute path='/administration/profile' component={ProfilePage} />
+              <ProtectedRoute path={APIManagementRoute.path} component={APIManagement} />
+              <ProtectedRoute path='/profile' component={ProfilePage} />
               <ProtectedRoute
                 path='/ui-elements'
                 render={(props) => (

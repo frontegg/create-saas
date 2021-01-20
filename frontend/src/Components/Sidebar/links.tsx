@@ -6,6 +6,11 @@ export type LinkType = {
   sublinks?: LinkType[];
 };
 
+export const APIManagementRoute = {
+  path: '/administration/api',
+  label: 'API management',
+};
+
 export const links: LinkType[] = [
   {
     header: 'CORE',
@@ -26,7 +31,7 @@ export const links: LinkType[] = [
     header: 'ADMINISTRATION',
   },
   {
-    path: '/administration/profile',
+    path: '/profile',
     label: 'My Profile',
   },
   {
@@ -37,10 +42,7 @@ export const links: LinkType[] = [
     path: '/administration/sso',
     label: 'SSO',
   },
-  {
-    path: '/administration/api',
-    label: 'API management',
-  },
+  APIManagementRoute,
   {
     path: '/administration/account',
     label: 'Account',
