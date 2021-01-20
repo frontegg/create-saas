@@ -1,19 +1,19 @@
 import React, { FC } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { PageHeader, PageTabProps, PageTabs } from '@frontegg/react-core';
-import { APIManagementRoute } from '../../../Components/Sidebar/links';
+import { routes } from '../../../routes';
 
 import './APIManagement.scss';
 
 const tabs: PageTabProps[] = [
   {
     Title: () => <>Tab 1</>,
-    route: `${APIManagementRoute.path}/tab1`,
+    route: `${routes.api.path}/tab1`,
     comp: () => <div>Tab 1</div>,
   },
   {
     Title: () => <>Tab 2</>,
-    route: `${APIManagementRoute.path}/tab2`,
+    route: `${routes.api.path}/tab2`,
     comp: () => <div>Tba 2</div>,
   },
 ];

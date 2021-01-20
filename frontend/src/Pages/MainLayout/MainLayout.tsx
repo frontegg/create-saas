@@ -38,7 +38,7 @@ import { MOCK_REQUESTS } from './mockRequests';
 
 import 'react-notifications/lib/notifications.css';
 import './MainLayout.scss';
-import { APIManagementRoute } from '../../Components/Sidebar/links';
+import { routes } from '../../routes';
 
 const REQUESTS = gql`
   query {
@@ -62,11 +62,11 @@ const AuditsPage = () => {
 };
 
 const Connectivity = () => {
-  return <ConnectivityPage rootPath='/administration/events/' />;
+  return <ConnectivityPage rootPath={routes.events.path} />;
 };
 
 const Webhooks = () => {
-  return <WebhookComponent rootPath='/administration/webhooks' />;
+  return <WebhookComponent rootPath={routes.webhooks.path} />;
 };
 
 const Sso = () => {
@@ -258,20 +258,19 @@ const MainLayout: React.FC = () => {
           <div className='p-4 content'>
             <Switch>
               <ProtectedRoute exact path='/' render={() => <Redirect to='/dashboard' />} />
-              <ProtectedRoute path='/sso' component={SSO.Page} />
-              <ProtectedRoute path='/dashboard' component={MainDashboard} />
+              <ProtectedRoute path={routes.dashboard.path} component={MainDashboard} />
+              <ProtectedRoute path={routes.team.path} component={TeamManagement} />
+              <ProtectedRoute path={routes.audits.path} component={AuditsPage} />
+              <ProtectedRoute path={routes.sso.path} component={Sso} />
+              <ProtectedRoute path={routes.events.path} component={Connectivity} />
+              <ProtectedRoute path={routes.webhooks.path} component={Webhooks} />
+              <ProtectedRoute path={routes.api.path} component={APIManagement} />
+              <ProtectedRoute path={routes.profile.path} component={ProfilePage} />
               <ProtectedRoute path='/forms/example' component={FormPage} />
               <ProtectedRoute path='/forms/sliders' component={SliderPage} />
               <ProtectedRoute path='/forms/datepickers' component={DatePickerPage} />
               <ProtectedRoute path='/forms/switches' component={SwitchPage} />
               <ProtectedRoute path='/tables/example' component={Table} />
-              <ProtectedRoute path='/administration/team' component={TeamManagement} />
-              <ProtectedRoute path='/administration/audits' component={AuditsPage} />
-              <ProtectedRoute path='/administration/sso' component={Sso} />
-              <ProtectedRoute path='/administration/events' component={Connectivity} />
-              <ProtectedRoute path='/administration/webhooks' component={Webhooks} />
-              <ProtectedRoute path={APIManagementRoute.path} component={APIManagement} />
-              <ProtectedRoute path='/profile' component={ProfilePage} />
               <ProtectedRoute
                 path='/ui-elements'
                 render={(props) => (
