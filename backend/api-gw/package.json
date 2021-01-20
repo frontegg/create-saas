@@ -32,7 +32,7 @@
   "homepage": "https://github.com/frontegg/opensaas#readme",
   "dependencies": {
     "@apollo/gateway": "^0.20.4",
-    "@frontegg/client": "^1.2.2",
+    "@frontegg/client": "^1.2.16",
     "apollo-server-express": "^2.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
