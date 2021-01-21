@@ -3,7 +3,7 @@
 import prompts from 'prompts';
 import ora from 'ora';
 import chalk from 'chalk';
-import fs from 'fs';
+// import fs from 'fs';
 import { spawn } from 'child_process';
 import { sync as commandExists } from 'command-exists';
 
