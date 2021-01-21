@@ -69,15 +69,15 @@ export async function initRepo(args: ArgsObject): Promise<void> {
       `${projectName}/frontend/src/Components/NavBar/NavBar.tsx`,
       `${projectName}/frontend/src/Components/Sidebar/Sidebar.tsx`,
     ];
-    for (const file of files) {
-      if (fs.existsSync(file)) {
-        const data = fs.readFileSync(file, { encoding: 'utf8', flag: 'r' });
-        fs.writeFileSync(
-          file,
-          data.replace(/\/images\/logo.png/g, `https://assets.frontegg.com/public-vendor-assets/${clientId}/assets/logo.png`),
-        );
-      }
-    }
+    // for (const file of files) {
+    //   if (fs.existsSync(file)) {
+    //     const data = fs.readFileSync(file, { encoding: 'utf8', flag: 'r' });
+    //     fs.writeFileSync(
+    //       file,
+    //       data.replace(/\/images\/logo.png/g, `https://assets.frontegg.com/public-vendor-assets/${clientId}/assets/logo.png`),
+    //     );
+    //   }
+    // }
   }
 
   await longCommand(
