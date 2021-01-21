@@ -25,7 +25,7 @@ const legacyContextOptions: LegacyOptions = {
 const plugins: PluginConfig[] = [
   // add frontegg plugin here
   AuthPlugin({
-    header: <img alt='logo' src='/images/logo.svg' />,
+    header: <img alt='logo' src='images/logo.svg' />,
     /* auth options, find more information at https://github.com/frontegg/frontegg-react/tree/master/packages/auth */
   }),
   ConnectivityPlugin(),

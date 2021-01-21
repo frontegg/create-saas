@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './tailwind.output.css';
 import { BrowserRouter } from 'react-router-dom';
 
-const basename = process.env.PUBLIC_URL;
+const basename = process.env.PUBLIC_URL || '/';
 const AppWithFrontegg = withFrontegg(App);
 ReactDOM.render(
   <BrowserRouter basename={basename}>
