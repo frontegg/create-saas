@@ -42,6 +42,7 @@ const Menu = (
           </li>
         );
       }
+      return null;
     })}
   </ul>
 );
