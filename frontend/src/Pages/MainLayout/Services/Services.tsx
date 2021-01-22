@@ -9,10 +9,8 @@ export const Services: FC = () => {
 
   return (
     <div>
-      <div>{Search}</div>
-      <div>
-        <Table rowKey='id' columns={columns} data={filterData} totalData={rows.length} />
-      </div>
+      <div className='fe-connectivity-component'>{Search}</div>
+      <Table rowKey='id' columns={columns} data={filterData} totalData={rows.length} />
     </div>
   );
 };

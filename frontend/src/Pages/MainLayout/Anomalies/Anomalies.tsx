@@ -23,14 +23,12 @@ export const Anomalies: FC = () => {
     return rows;
   }, [hash]);
 
-  const [filterData, Search] = useSearch({ filteredBy: 'id', data, filterFunction });
+  const [filterData, Search] = useSearch({ filteredBy: 'id', data, filterFunction, placeholder: 'Search ...' });
 
   return (
     <div>
-      <div>{Search}</div>
-      <div>
-        <Table rowKey='id' columns={columns} data={filterData} totalData={rows.length} />
-      </div>
+      <div className='fe-connectivity-component'>{Search}</div>
+      <Table rowKey='id' columns={columns} data={filterData} totalData={rows.length} />
     </div>
   );
 };

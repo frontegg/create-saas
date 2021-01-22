@@ -10,12 +10,12 @@ const tabs: PageTabProps[] = [
   {
     Title: () => <>Account</>,
     route: `${routes.api.path}/account`,
-    comp: () => <TenantApiTokens.Page />,
+    comp: () => <TenantApiTokens.Layout />,
   },
   {
     Title: () => <>Personal</>,
     route: `${routes.api.path}/personal`,
-    comp: () => <UserApiTokens.Page />,
+    comp: () => <UserApiTokens.Layout />,
   },
 ];
 
