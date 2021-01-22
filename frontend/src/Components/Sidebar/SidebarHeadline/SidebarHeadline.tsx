@@ -5,8 +5,7 @@ type SidebarHeadlineProps = {
   header?: string;
 };
 
-const SidebarHeadline: React.FC<SidebarHeadlineProps> = (props: SidebarHeadlineProps) => {
-  const { header } = props;
+const SidebarHeadline: React.FC<SidebarHeadlineProps> = ({ header }) => {
   return (
     <div className='sidebar-headline'>
       <div>{header}</div>

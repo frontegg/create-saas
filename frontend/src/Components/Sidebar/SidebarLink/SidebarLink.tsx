@@ -8,8 +8,7 @@ type SidebarLinkProps = {
   label?: string;
 };
 
-const SidebarLink: React.FC<SidebarLinkProps> = (props: SidebarLinkProps) => {
-  const { path = '', label } = props;
+const SidebarLink: React.FC<SidebarLinkProps> = ({ path = '', label }) => {
   return (
     <NavLink to={path} className='sidebar-link' activeClassName='active-link'>
       <Icon type='compass' className='icon' />

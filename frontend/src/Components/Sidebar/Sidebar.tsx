@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, HTMLAttributes } from 'react';
 import classNames from 'classnames';
 import SidebarHeadline from './SidebarHeadline';
 import SidebarLink from './SidebarLink';
@@ -19,12 +19,9 @@ const Menu = (
       'team',
       'sso',
       'api',
-      'account',
-      'personal',
       'webhooks',
       'events',
       'audits',
-      'reports',
     ].map((key, idx) => {
       if (!routes[key]) return null;
       const { header, path, ...rest } = routes[key];
@@ -47,9 +44,7 @@ const Menu = (
   </ul>
 );
 
-const Sidebar: React.FC<React.HTMLAttributes<HTMLElement>> = (props) => {
-  const { className } = props;
-
+const Sidebar: FC<HTMLAttributes<HTMLElement>> = ({ className }) => {
   return (
     <div className={classNames('sidebar', className)}>
       <div className='logo'>

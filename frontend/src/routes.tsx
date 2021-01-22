@@ -42,14 +42,6 @@ export const routes: TObjectRoute = {
     path: '/administration/api',
     label: 'API management',
   },
-  account: {
-    path: '/administration/account',
-    label: 'Account',
-  },
-  personal: {
-    path: '/administration/personal',
-    label: 'Personal',
-  },
   webhooks: {
     path: '/administration/webhooks',
     label: 'Webhooks',
@@ -62,6 +54,7 @@ export const routes: TObjectRoute = {
     path: '/administration/audits',
     label: 'Audit Logs',
   },
+  // It doesn't use now
   reports: {
     path: '/administration/reports',
     label: 'Reports',

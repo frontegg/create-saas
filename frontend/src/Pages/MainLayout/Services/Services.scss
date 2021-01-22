@@ -1,0 +1,17 @@
+.badge {
+  padding: 0.25rem !important;
+  &-soft {
+    &-down {
+      background-color: rgba(255, 92, 117, 0.2);
+      color: #ff5c75;
+    }
+    &-valid {
+      background-color: rgba(67, 211, 158, 0.2);
+      color: #43d39e;
+    }
+    &-overload {
+      background-color: rgba(255, 190, 11, 0.2);
+      color: #ffbe0b;
+    }
+  }
+}

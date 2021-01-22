@@ -20,7 +20,6 @@ import SwitchPage from './SwitchPage';
 import Table from './TablePage';
 import Dashboard from './Dashboard';
 import UIScreenPage from './UIScreenPage';
-import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import Badges from './UIScreenPage/UIElementsPages/Badges';
 import Dropdowns from './UIScreenPage/UIElementsPages/Dropdowns';
 import Buttons from './UIScreenPage/UIElementsPages/Buttons';
@@ -35,10 +34,12 @@ import Typography from './UIScreenPage/UIElementsPages/Typography';
 import BreadcrumbsPage from './UIScreenPage/UIElementsPages/Breadcrumbs';
 import { APIManagement } from './APIManagement';
 import { MOCK_REQUESTS } from './mockRequests';
+import { routes } from '../../routes';
+import { Anomalies } from './Anomalies';
+import { Services } from './Services';
 
 import 'react-notifications/lib/notifications.css';
 import './MainLayout.scss';
-import { routes } from '../../routes';
 
 const REQUESTS = gql`
   query {
@@ -266,6 +267,8 @@ const MainLayout: React.FC = () => {
               <ProtectedRoute path={routes.webhooks.path} component={Webhooks} />
               <ProtectedRoute path={routes.api.path} component={APIManagement} />
               <ProtectedRoute path={routes.profile.path} component={ProfilePage} />
+              <ProtectedRoute path={routes.anomalies.path} component={Anomalies} />
+              <ProtectedRoute path={routes.services.path} component={Services} />
               <ProtectedRoute path='/forms/example' component={FormPage} />
               <ProtectedRoute path='/forms/sliders' component={SliderPage} />
               <ProtectedRoute path='/forms/datepickers' component={DatePickerPage} />
@@ -293,7 +296,7 @@ const MainLayout: React.FC = () => {
                   </UIScreenPage>
                 )}
               />
-              <ProtectedRoute path='*' exact={true} component={NotFoundPage} />
+              <Redirect from='*' to='/' />
             </Switch>
           </div>
         </div>
