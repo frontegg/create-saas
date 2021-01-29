@@ -19,7 +19,6 @@ import {
   UseSortByState,
   useExpanded,
   UseExpandedOptions,
-  Cell,
   UseExpandedRowProps,
   Row,
   Column,
@@ -36,6 +35,8 @@ import {
   UseRowSelectOptions,
   UseRowSelectInstanceProps,
   UseRowSelectState,
+  UseTableCellProps,
+  UseTableRowProps,
 } from 'react-table';
 import { TableHead } from './TableHead';
 import { TableBody } from './TableBody';
@@ -95,6 +96,30 @@ export const Table: React.FC<TableProps> = <T extends object>(props: TableProps<
   const classes = useStyles();
   const tableRef = useRef<HTMLTableElement>(null);
 
+  const hasSortBy = props.hasOwnProperty('sortBy');
+  const hasFilters = props.hasOwnProperty('filters');
+  const hasPagination = props.hasOwnProperty('pagination');
+  const hasOnPageChange = props.hasOwnProperty('onPageChange');
+  const hasSelectedRowIds = props.hasOwnProperty('selectedRowIds');
+
+  const onRowSelected = useCallback(
+    (row: UseRowSelectRowProps<T> & Row<T> & UseTableRowProps<T>, value: boolean) => {
+      const id = (row.original as any)[rowKey];
+      if (hasSelectedRowIds) {
+        const newSelectedRows: any = { ...selectedRowIds };
+        if (value) {
+          newSelectedRows[id] = true;
+        } else {
+          delete newSelectedRows[id];
+        }
+        propsOnRowSelected?.(newSelectedRows);
+      } else {
+        row.toggleRowSelected(value);
+      }
+    },
+    [hasSelectedRowIds, rowKey, selectedRowIds, propsOnRowSelected],
+  );
+
   const columns = useMemo(() => {
     const columns = propsColumns.map(
       ({ sortable, Filter, Header, ...rest }) =>
@@ -112,7 +137,7 @@ export const Table: React.FC<TableProps> = <T extends object>(props: TableProps<
         id: 'expander',
         minWidth: 60,
         maxWidth: '60px' as any,
-        Cell: (cell: Cell<T>) => {
+        Cell: (cell: UseTableCellProps<T>) => {
           const row = cell.row as Row<T> & UseExpandedRowProps<T>;
           return (
             <IconButton className={classes.expandIcon} {...row.getToggleRowExpandedProps()}>
@@ -127,21 +152,21 @@ export const Table: React.FC<TableProps> = <T extends object>(props: TableProps<
         id: 'selection',
         minWidth: 60,
         maxWidth: '60px' as any,
-        Cell: (cell: Cell<T>) => {
-          const row = cell.row as Row<T> & UseRowSelectRowProps<T>;
+        Cell: (cell: UseTableCellProps<T>) => {
+          const row = cell.row as UseRowSelectRowProps<T> & Row<T> & UseTableRowProps<T>;
           return (
             <Checkbox
               className={classes.checkBox}
               {...row.getToggleRowSelectedProps()}
               checked={row.isSelected}
-              onChange={(e) => onRowSelected(row.original, e.target.checked)}
+              onChange={(e) => onRowSelected(row, e.target.checked)}
             />
           );
         },
       });
     }
     return columns as Column<T>[];
-  }, [propsColumns, expandable, classes.checkBox, classes.expandIcon, selection]);
+  }, [propsColumns, expandable, classes, selection, onRowSelected]);
 
   const tableHooks: PluginHook<T>[] = [useFilters, useSortBy];
   if (expandable) {
@@ -170,7 +195,6 @@ export const Table: React.FC<TableProps> = <T extends object>(props: TableProps<
     toggleAllRowsSelected,
     isAllRowsSelected,
     selectedFlatRows,
-    toggleRowSelected,
   } = useTable(
     {
       columns,
@@ -202,12 +226,6 @@ export const Table: React.FC<TableProps> = <T extends object>(props: TableProps<
       UsePaginationOptions<T>,
     ...tableHooks,
   ) as TableInstance<T> & UseTableInstanceProps<T> & UsePaginationInstanceProps<T> & UseRowSelectInstanceProps<T>;
-
-  const hasSortBy = props.hasOwnProperty('sortBy');
-  const hasFilters = props.hasOwnProperty('filters');
-  const hasPagination = props.hasOwnProperty('pagination');
-  const hasOnPageChange = props.hasOwnProperty('onPageChange');
-  const hasSelectedRowIds = props.hasOwnProperty('selectedRowIds');
 
   if (expandable && !renderExpandedComponent) {
     throw Error('Table: you must provide renderExpandedComponent property if the table is expandable');
@@ -273,24 +291,6 @@ export const Table: React.FC<TableProps> = <T extends object>(props: TableProps<
       }
     },
     [hasSelectedRowIds, data, rowKey, propsOnRowSelected, toggleAllRowsSelected],
-  );
-
-  const onRowSelected = useCallback(
-    (row: any, value: boolean) => {
-      const id = row[rowKey];
-      if (hasSelectedRowIds) {
-        const newSelectedRows: any = { ...selectedRowIds };
-        if (value) {
-          newSelectedRows[id] = true;
-        } else {
-          delete newSelectedRows[id];
-        }
-        propsOnRowSelected?.(newSelectedRows);
-      } else {
-        toggleRowSelected(id, value);
-      }
-    },
-    [hasSelectedRowIds, rowKey, selectedRowIds, toggleRowSelected, propsOnRowSelected],
   );
 
   useEffect(() => {

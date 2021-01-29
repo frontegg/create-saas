@@ -43,7 +43,6 @@ function download(uri, filename, callback) {
 
       request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
     }
-
   });
 }
 
@@ -81,7 +80,8 @@ export async function initRepo(args: ArgsObject): Promise<void> {
     download(
       `https://assets.frontegg.com/public-vendor-assets/${clientId}/assets/logo.png`,
       `${projectName}/frontend/public/images/logo.png`,
-      () => console.log('done downloading logo'));
+      () => console.log('done downloading logo'),
+    );
   }
 
   await longCommand(
