@@ -4,9 +4,7 @@ import { NotificationContainer } from 'react-notifications';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import { useQuery, gql } from '@apollo/client';
-import { Audits } from '@frontegg/react-audits';
-import { ProtectedRoute, Profile, SSO, Team } from '@frontegg/react-auth';
-import { WebhookComponent, ConnectivityPage } from '@frontegg/react-connectivity';
+import { ProtectedRoute } from '@frontegg/react-auth';
 
 import { Alert } from '../../Components/Alert';
 import Sidebar from '../../Components/Sidebar';
@@ -32,7 +30,6 @@ import Notifications from './UIScreenPage/UIElementsPages/Notifications';
 import Tabs from './UIScreenPage/UIElementsPages/Tabs';
 import Typography from './UIScreenPage/UIElementsPages/Typography';
 import BreadcrumbsPage from './UIScreenPage/UIElementsPages/Breadcrumbs';
-import { APIManagement } from './APIManagement';
 import { MOCK_REQUESTS } from './mockRequests';
 import { routes } from '../../routes';
 import { Anomalies } from './Anomalies';
@@ -53,30 +50,6 @@ const REQUESTS = gql`
     }
   }
 `;
-
-const TeamManagement = () => {
-  return <Team.Page />;
-};
-
-const AuditsPage = () => {
-  return <Audits.Page />;
-};
-
-const Connectivity = () => {
-  return <ConnectivityPage rootPath={routes.events.path} />;
-};
-
-const Webhooks = () => {
-  return <WebhookComponent rootPath={routes.webhooks.path} />;
-};
-
-const Sso = () => {
-  return <SSO.Page />;
-};
-
-const ProfilePage = () => {
-  return <Profile.Page />;
-};
 
 const MainDashboard = () => {
   const { loading, error, data } = useQuery(REQUESTS);
@@ -260,13 +233,6 @@ const MainLayout: React.FC = () => {
             <Switch>
               <ProtectedRoute exact path='/' render={() => <Redirect to='/dashboard' />} />
               <ProtectedRoute path={routes.dashboard.path} component={MainDashboard} />
-              <ProtectedRoute path={routes.team.path} component={TeamManagement} />
-              <ProtectedRoute path={routes.audits.path} component={AuditsPage} />
-              <ProtectedRoute path={routes.sso.path} component={Sso} />
-              <ProtectedRoute path={routes.events.path} component={Connectivity} />
-              <ProtectedRoute path={routes.webhooks.path} component={Webhooks} />
-              <ProtectedRoute path={routes.api.path} component={APIManagement} />
-              <ProtectedRoute path={routes.profile.path} component={ProfilePage} />
               <ProtectedRoute path={routes.anomalies.path} component={Anomalies} />
               <ProtectedRoute path={routes.services.path} component={Services} />
               <ProtectedRoute path='/forms/example' component={FormPage} />

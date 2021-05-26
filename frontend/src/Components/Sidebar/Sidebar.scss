@@ -25,6 +25,12 @@
     margin-top: 5rem;
   }
 
+  .admin-link {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 13px;
+  }
+
   @at-root {
     @media screen and (min-width: 768px) {
       .fixed-sidebar {
@@ -34,7 +40,7 @@
           left: 0;
           height: 100%;
           &.expanded {
-            width: 18rem;
+            width: 16rem;
             overflow-y: auto;
             &::-webkit-scrollbar {
               display: none;

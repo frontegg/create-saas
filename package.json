@@ -47,6 +47,8 @@
   },
   "homepage": "https://github.com/frontegg/opensaas#readme",
   "dependencies": {
+    "@frontegg/admin-portal": "^0.4.2",
+    "@frontegg/react-hooks": "^1.23.41-alpha",
     "chalk": "^4.1.0",
     "child_process": "^1.0.2",
     "command-exists": "^1.2.9",
