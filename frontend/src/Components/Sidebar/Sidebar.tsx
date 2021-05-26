@@ -14,6 +14,7 @@ const Menu = (
       'dashboard',
       'services',
       'anomalies',
+      'hello',
       'administration',
       'profile',
       'team',

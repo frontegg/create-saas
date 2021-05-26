@@ -19,6 +19,7 @@ import DatePickerPage from './DatePickerPage';
 import SwitchPage from './SwitchPage';
 import Table from './TablePage';
 import Dashboard from './Dashboard';
+import Hello from './Hello'
 import UIScreenPage from './UIScreenPage';
 import Badges from './UIScreenPage/UIElementsPages/Badges';
 import Dropdowns from './UIScreenPage/UIElementsPages/Dropdowns';
@@ -91,6 +92,21 @@ const MainDashboard = () => {
   const requests = data?.requests.length ? data.requests : MOCK_REQUESTS;
 
   return <Dashboard requests={requests} />;
+};
+
+const MainHello = () => {
+  const { loading, error, data } = useQuery(REQUESTS);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  if (error) {
+    console.error(error);
+  }
+
+  const requests = data?.requests.length ? data.requests : MOCK_REQUESTS;
+
+  return <Hello requests={requests} />;
 };
 
 const MainLayout: React.FC = () => {
@@ -260,6 +276,7 @@ const MainLayout: React.FC = () => {
             <Switch>
               <ProtectedRoute exact path='/' render={() => <Redirect to='/dashboard' />} />
               <ProtectedRoute path={routes.dashboard.path} component={MainDashboard} />
+              <ProtectedRoute path={routes.hello.path} component={MainHello} />
               <ProtectedRoute path={routes.team.path} component={TeamManagement} />
               <ProtectedRoute path={routes.audits.path} component={AuditsPage} />
               <ProtectedRoute path={routes.sso.path} component={Sso} />
